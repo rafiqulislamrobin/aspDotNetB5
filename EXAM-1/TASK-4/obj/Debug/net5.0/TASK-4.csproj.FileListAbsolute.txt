@@ -1,0 +1,16 @@
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASK-4\bin\Debug\net5.0\TASK-4.exe
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASK-4\bin\Debug\net5.0\TASK-4.deps.json
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASK-4\bin\Debug\net5.0\TASK-4.runtimeconfig.json
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASK-4\bin\Debug\net5.0\TASK-4.runtimeconfig.dev.json
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASK-4\bin\Debug\net5.0\TASK-4.dll
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASK-4\bin\Debug\net5.0\ref\TASK-4.dll
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASK-4\bin\Debug\net5.0\TASK-4.pdb
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASK-4\obj\Debug\net5.0\TASK-4.csprojAssemblyReference.cache
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASK-4\obj\Debug\net5.0\TASK-4.GeneratedMSBuildEditorConfig.editorconfig
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASK-4\obj\Debug\net5.0\TASK-4.AssemblyInfoInputs.cache
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASK-4\obj\Debug\net5.0\TASK-4.AssemblyInfo.cs
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASK-4\obj\Debug\net5.0\TASK-4.csproj.CoreCompileInputs.cache
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASK-4\obj\Debug\net5.0\TASK-4.dll
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASK-4\obj\Debug\net5.0\ref\TASK-4.dll
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASK-4\obj\Debug\net5.0\TASK-4.pdb
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASK-4\obj\Debug\net5.0\TASK-4.genruntimeconfig.cache

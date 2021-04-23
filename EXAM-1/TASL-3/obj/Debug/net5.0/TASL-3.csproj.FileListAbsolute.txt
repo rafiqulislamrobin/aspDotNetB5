@@ -1,0 +1,16 @@
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASL-3\obj\Debug\net5.0\TASL-3.csprojAssemblyReference.cache
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASL-3\obj\Debug\net5.0\TASL-3.GeneratedMSBuildEditorConfig.editorconfig
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASL-3\obj\Debug\net5.0\TASL-3.AssemblyInfoInputs.cache
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASL-3\obj\Debug\net5.0\TASL-3.AssemblyInfo.cs
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASL-3\obj\Debug\net5.0\TASL-3.csproj.CoreCompileInputs.cache
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASL-3\bin\Debug\net5.0\TASL-3.exe
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASL-3\bin\Debug\net5.0\TASL-3.deps.json
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASL-3\bin\Debug\net5.0\TASL-3.runtimeconfig.json
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASL-3\bin\Debug\net5.0\TASL-3.runtimeconfig.dev.json
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASL-3\bin\Debug\net5.0\TASL-3.dll
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASL-3\bin\Debug\net5.0\ref\TASL-3.dll
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASL-3\bin\Debug\net5.0\TASL-3.pdb
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASL-3\obj\Debug\net5.0\TASL-3.dll
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASL-3\obj\Debug\net5.0\ref\TASL-3.dll
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASL-3\obj\Debug\net5.0\TASL-3.pdb
+D:\ASPDOTNET\aspDotNetB5\EXAM-1\TASL-3\obj\Debug\net5.0\TASL-3.genruntimeconfig.cache
