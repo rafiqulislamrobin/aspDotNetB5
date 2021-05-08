@@ -7,22 +7,27 @@ namespace TASL_3
     {
         static void Main(string[] args)
         {
-            Type y = typeof(BaseModel);
+
+
             Type[] types = Assembly.GetExecutingAssembly().GetTypes();
-            foreach ( var type in types)
+
+            foreach (Type type in types)
             {
-                if (type != typeof(BaseModel))
+
+
+                if (type.IsSubclassOf(typeof(BaseModel)))
                 {
                     Console.WriteLine(type.Name);
                 }
-                
+
             }
         }
     }
-    public abstract class BaseModel
+    public class BaseModel
     {
+
     }
-    public class AnotherClass :BaseModel
+    public class AnotherClass : BaseModel
     {
 
     }

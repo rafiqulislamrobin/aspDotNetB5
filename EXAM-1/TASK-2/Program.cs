@@ -11,7 +11,7 @@ namespace TASK_2
         public delegate IList<T> Sort<T>(IList<T> elements, Func<T, T, int> compare);
         static void Main(string[] args)
         {
-          static class
+        
         }
     }
     public static class SmartSort
