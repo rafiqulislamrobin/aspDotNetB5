@@ -1,13 +1,19 @@
-﻿namespace task_2
+﻿using System;
+using System.Reflection;
+
+namespace task_2
 {
+
     class Program
     {
         static void Main(string[] args)
         {
-            ReflectionUtility reflectionUtility = new ReflectionUtility();
+            ClassWithPrivateMethod target = new ClassWithPrivateMethod();
 
-            reflectionUtility.UsingReflection();
+            ReflectionUtility utility = new ReflectionUtility();
+            utility.CallPrivate(target, "Print", new object[] { "Hello World" });
+
         }
     }
-    
+
 }
