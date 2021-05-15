@@ -12,6 +12,7 @@ namespace task_2
 
             foreach (var item in types)
             {
+
                 if (item.Name == objectType.Name)
                 {
                     var method = item.GetMethod(
