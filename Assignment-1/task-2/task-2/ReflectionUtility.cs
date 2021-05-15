@@ -7,17 +7,27 @@ namespace task_2
     {
         public void CallPrivate(object targetObject, string methodName, object[] args)
         {
-            var method = typeof(ClassWithPrivateMethod).GetMethod(
-                           methodName,
-                           BindingFlags.NonPublic
-                         | BindingFlags.Instance
-                         | BindingFlags.DeclaredOnly);
+            var types = Assembly.GetExecutingAssembly().GetTypes();
+            var objectType = targetObject.GetType();
 
-            method.Invoke(targetObject, args);
+            foreach (var item in types)
+            {
+                if (item.Name == objectType.Name)
+                {
+                    var method = item.GetMethod(
+                              methodName,
+                              BindingFlags.NonPublic
+                            | BindingFlags.Instance
+                            | BindingFlags.DeclaredOnly);
+
+                    method.Invoke(targetObject, args);
+                }
+
+            }
 
 
 
-        }  
+        }
     }
 
 }
