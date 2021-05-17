@@ -30,13 +30,13 @@ namespace Task_1
                 .ReadFrom.Configuration(configBuilder)
                      .WriteTo
                      .MSSqlServer(
-                         connectionString: @"Server=DESKTOP-QO6CDJ4\SQLEXPRESS; Database=SeriDB; Integrated Security=True;",
+                         connectionString: @"Server=DESKTOP-QO6CDJ4\SQLEXPRESS; Database=SerilogDatabase; Integrated Security=True;",
                          sinkOptions: new MSSqlServerSinkOptions { TableName = "Logs" })
-                     .CreateLogger();
+                    
 
 
            // Email
-            Log.Logger = new LoggerConfiguration()
+          
                 .WriteTo.Email(new EmailConnectionInfo
                 {
                     FromEmail = "demo1@gmail.com",
