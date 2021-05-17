@@ -39,13 +39,13 @@ namespace Task_1
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.Email(new EmailConnectionInfo
                 {
-                    FromEmail = "nusratxahannj@gmail.com",
-                    ToEmail = "kratosrobin467@gmail.com",
+                    FromEmail = "demo1@gmail.com",
+                    ToEmail = "demo2@gmail.com",
                     MailServer = "smtp.gmail.com",
                     NetworkCredentials = new NetworkCredential
                     {
-                        UserName = "nusratxahannj@gmail.com",
-                        Password = "allahhelpme"
+                        UserName = "demo1@gmail.com",
+                        Password = "xyz123"
                     },
                     EnableSsl = true,
                     Port = 465,
