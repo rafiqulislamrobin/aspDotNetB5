@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Data.SqlClient;
+
+namespace assignment_2
+{
+    public interface IData
+    {
+      int Id { get; set; }
+      
+
+    }
+}
