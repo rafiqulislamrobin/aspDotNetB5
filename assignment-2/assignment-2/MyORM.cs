@@ -21,7 +21,6 @@ namespace assignment_2
 
         }
 
-
         public void Insert(T item) 
         {
             var sql = new StringBuilder("insert into ");
@@ -31,18 +30,14 @@ namespace assignment_2
            
             sql.Append('(');
             foreach (var property in properties)
-            {
-            
+            {           
                 if (property.Name!="Id")
                 {
                     sql.Append(' ').Append(property.Name).Append(',');
                 }
-
-
             }
 
             sql.Remove(sql.Length - 1, 1);
-
             sql.Append(") values (");
 
             foreach (var property in properties)
@@ -58,25 +53,18 @@ namespace assignment_2
 
             var query = sql.ToString();
 
-
             if (_sqlConnection.State == System.Data.ConnectionState.Closed)
 
                 _sqlConnection.Open();
 
               using  var command = new SqlCommand(query, _sqlConnection);
 
-
-
             foreach (var property in properties)
             {
-
                 command.Parameters.AddWithValue(property.Name,property.GetValue(item));
-
             }
-
             command.ExecuteNonQuery();
         }
-
         public void Update(T item)
         {
             var sql = new StringBuilder("UPDATE ");
@@ -87,17 +75,14 @@ namespace assignment_2
 
             foreach (var property in properties)
             {
-
                 if (property.Name != "Id")
                 {
                     sql.Append(' ').Append(property.Name).Append(" = ").Append($"@{property.Name} ").Append(",");
                 }
-
-
             }
             sql.Remove(sql.Length - 1, 1);
-
             sql.Append("where ");
+
             foreach (var property in properties)
             {
                 if (property.Name=="Id")
@@ -105,10 +90,7 @@ namespace assignment_2
                     sql.Append(' ').Append(property.Name).Append(" = ").Append($"@{property.Name} ");
                 }
             }
-
-
             var query = sql.ToString();
-
 
             if (_sqlConnection.State == System.Data.ConnectionState.Closed)
 
@@ -116,16 +98,10 @@ namespace assignment_2
 
             using var command = new SqlCommand(query, _sqlConnection);
 
-
-
             foreach (var property in properties)
             {
-
                 command.Parameters.AddWithValue(property.Name, property.GetValue(item));
-
-
             }
-
 
             command.ExecuteNonQuery();
         }
@@ -139,9 +115,7 @@ namespace assignment_2
             foreach (var property in properties)
             {
 
-
-                sql.Append(' ').Append(property.Name).Append(" = ").Append($" @{property.Name} ").Append(" AND " );
-                
+                sql.Append(' ').Append(property.Name).Append(" = ").Append($" @{property.Name} ").Append(" AND " );               
             }
             sql.Remove(sql.Length - 4, 4);
 
@@ -176,22 +150,16 @@ namespace assignment_2
             }
             var query = sql.ToString();
 
-
             if (_sqlConnection.State == System.Data.ConnectionState.Closed)
 
                 _sqlConnection.Open();
 
             using  var command = new SqlCommand(query, _sqlConnection);
-
-
-
-
             command.ExecuteNonQuery();
 
         }
         public T GetById(int id)
         {
-
             var sql = new StringBuilder("select * from ");
             var type = typeof(T);
             var properties = type.GetProperties();
@@ -206,7 +174,6 @@ namespace assignment_2
                 }
             }
 
-
             var query = sql.ToString();
             if (_sqlConnection.State == System.Data.ConnectionState.Closed)
 
@@ -216,26 +183,19 @@ namespace assignment_2
             command.CommandText = query;
             command.Connection = _sqlConnection;
 
-
-
             var reader = command.ExecuteReader();
            
-            var stud = (T)Activator.CreateInstance(type);
+            var student = (T)Activator.CreateInstance(type);
             
             while (reader.Read())
-            {
-              
-
+            { 
                 foreach (var property in properties)
                 {
-                    property.SetValue( stud,reader[property.Name] );
+                    property.SetValue( student,reader[property.Name] );
                 }
 
-
-
             }
-
-            return stud;
+            return student;
         }
 
         public IList<T> GetAll()
@@ -276,9 +236,5 @@ namespace assignment_2
 
             return (IList <T>) studentList;
         }
-
-
-
-
     }
 }
