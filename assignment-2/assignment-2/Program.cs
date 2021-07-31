@@ -18,21 +18,21 @@ namespace assignment_2
             student Student = new();
 
 
-            Student.Id = 2;
-            Student.name = "Rafiq";
-            Student.amount = 500;
+            Student.Id = 18;
+            Student.name = "DevSkill";
+            Student.amount = 1500;
 
-            myorm.Insert(Student);
-            myorm.Update(Student);
+            //myorm.Insert(Student);
+           // myorm.Update(Student);
             myorm.Delete(Student);
-            myorm.Delete(2);
+            //myorm.Delete(2);
 
-            var students = myorm.GetAll();  //getall
-            All(students);
+            //var students = myorm.GetAll();  //getall
+            //All(students);
 
 
-            var std = myorm.GetById(2);   //by id
-            ById(std);
+            //var std = myorm.GetById(2);   //by id
+            //ById(std);
 
 
             Console.WriteLine("complete");
