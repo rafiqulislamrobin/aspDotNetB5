@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using TicketBookingSystem.Booking;
+using TicketBookingSystem.Booking.Context;
 using TicketBookingSystem.Data;
 
 
@@ -36,7 +38,7 @@ namespace TicketBookingSystem
         public void ConfigureContainer(ContainerBuilder builder)
         {
             var connectionInfo = GetConnectionStringAndAssemblyName();
-            builder.RegisterModule(new DataModule
+            builder.RegisterModule(new BookingModule
                 (connectionInfo.connectionString,connectionInfo.migrationAssemblyName));
 
             builder.RegisterModule (new WebModule());

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TicketBookingSystem.Areas.Admin.Models;
 
 namespace TicketBookingSystem
 {
@@ -10,6 +11,8 @@ namespace TicketBookingSystem
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType<BookingModel>().AsSelf();
+                
             base.Load(builder);
         }
     }

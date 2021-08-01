@@ -21,10 +21,10 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TicketBookingSystem.Booking\TicketBookingSystem.Booking.csproj" />
     <ProjectReference Include="..\TicketBookingSystem.Data\TicketBookingSystem.Data.csproj" />
   </ItemGroup>
 
