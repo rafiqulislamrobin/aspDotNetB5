@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetwork", "SocialNetwork\SocialNetwork.csproj", "{8144C178-00F3-43F4-B567-8EC5E4E7020D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialNetwork", "SocialNetwork\SocialNetwork.csproj", "{8144C178-00F3-43F4-B567-8EC5E4E7020D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetwork.Data", "SocialNetwork.Data\SocialNetwork.Data.csproj", "{DC9EDC92-3265-45E3-B32E-5DF07B103E15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialNetwork.Data", "SocialNetwork.Data\SocialNetwork.Data.csproj", "{DC9EDC92-3265-45E3-B32E-5DF07B103E15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetwork.Gallery", "SocialNetwork.Gallery\SocialNetwork.Gallery.csproj", "{A5300342-340A-4C52-8F50-2C7055E3BD95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{DC9EDC92-3265-45E3-B32E-5DF07B103E15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC9EDC92-3265-45E3-B32E-5DF07B103E15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC9EDC92-3265-45E3-B32E-5DF07B103E15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5300342-340A-4C52-8F50-2C7055E3BD95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5300342-340A-4C52-8F50-2C7055E3BD95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5300342-340A-4C52-8F50-2C7055E3BD95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5300342-340A-4C52-8F50-2C7055E3BD95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

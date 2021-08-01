@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SocialNetwork.Data;
+using SocialNetwork.Gallery;
+using SocialNetwork.Gallery.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +40,7 @@ namespace SocialNetwork
         public void ConfigureContainer(ContainerBuilder builder)
         {
             var connectionInfo = GetConnectionStringAndAssemblyName();
-            builder.RegisterModule(new DataModule
+            builder.RegisterModule(new GalleryModule
                 (connectionInfo.connectionString, connectionInfo.migrationAssemblyName));
 
             builder.RegisterModule(new WebModule());

@@ -21,11 +21,11 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ECommerceSystem.Data\ECommerceSystem.Data.csproj" />
+    <ProjectReference Include="..\ECommerceSystem.ProductInfo\ECommerceSystem.ProductInfo.csproj" />
   </ItemGroup>
 
 </Project>

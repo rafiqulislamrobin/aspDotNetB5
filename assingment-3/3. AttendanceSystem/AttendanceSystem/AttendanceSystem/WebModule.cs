@@ -1,4 +1,5 @@
-﻿using Autofac;
+﻿using AttendanceSystem.Areas.Admin.Models;
+using Autofac;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace AttendanceSystem
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType<AttendanceModel>().AsSelf();
             base.Load(builder);
         }
     }

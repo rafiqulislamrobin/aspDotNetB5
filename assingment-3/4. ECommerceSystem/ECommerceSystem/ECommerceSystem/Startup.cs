@@ -1,6 +1,7 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using ECommerceSystem.Data;
+using ECommerceSystem.ProductInfo;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -37,7 +38,7 @@ namespace ECommerceSystem
         {
             var connectionInfo = GetConnectionStringAndMigraitonAssemblyName();
 
-            builder.RegisterModule(new DataModule(
+            builder.RegisterModule(new ProductModule(
                 connectionInfo.connectiontionString,connectionInfo.migrationAssemblyName));
 
             builder.RegisterModule(new WebModule());

@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using InventorySystem.Areas.Admin.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace InventorySystem
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType<InventoryModel>().AsSelf();
             base.Load(builder);
         }
     }

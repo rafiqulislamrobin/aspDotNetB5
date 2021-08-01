@@ -5,20 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using TicketBookingSystem.Booking.Business_Object;
 using TicketBookingSystem.Booking.Context;
+using TicketBookingSystem.Booking.Unit_of_Work;
 
 namespace TicketBookingSystem.Booking.Services
 {
     public class BookingService : IBookingService
     {
-        private readonly BookingDbContext _bookingDbContext;
-        public BookingService(BookingDbContext bookingDbContext )
+        private readonly IBookingUnitOfWork _bookingUnitOfWork;
+        public BookingService(IBookingUnitOfWork bookingUnitOfWork)
         {
-            _bookingDbContext = bookingDbContext;
+            _bookingUnitOfWork = bookingUnitOfWork;
         } 
         public IList<CustomerBO> GetAllCustomer()
         {
 
-            var customerEntities = _bookingDbContext.customers.ToList();
+            var customerEntities = _bookingUnitOfWork.Customers.GetAll();
             var customers = new List<CustomerBO>();
 
             foreach (var entity in customerEntities)
@@ -32,6 +33,18 @@ namespace TicketBookingSystem.Booking.Services
                 customers.Add(customer);
             }
             return customers;
+        }
+
+        public void CreateCustomer(CustomerBO customer)
+        {
+            _bookingUnitOfWork.Customers.Add(
+                new Entites.Customer
+                {
+                    Id =customer.Id,
+                    name=customer.name,
+                    address=customer.address
+                });
+            _bookingUnitOfWork.Save();
         }
 
        

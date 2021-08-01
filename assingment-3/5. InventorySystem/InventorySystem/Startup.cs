@@ -1,6 +1,8 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using InventorySystem.Data;
+using InventorySystem.Store;
+using InventorySystem.Store.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -38,7 +40,7 @@ namespace InventorySystem
         public void ConfigureContainer(ContainerBuilder builder)
         {
             var connectionInfo = GetConnectionStringAndAssemblyName();
-            builder.RegisterModule(new DataModule
+            builder.RegisterModule(new InventoryModule
                 (connectionInfo.connectionString, connectionInfo.migrationAssemblyName));
 
             builder.RegisterModule(new WebModule());

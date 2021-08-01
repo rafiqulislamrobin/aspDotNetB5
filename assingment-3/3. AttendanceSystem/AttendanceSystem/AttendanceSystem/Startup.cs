@@ -1,4 +1,6 @@
 using AttendanceSystem.Data;
+using AttendanceSystem.Presenet;
+using AttendanceSystem.Present.Context;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
@@ -36,7 +38,7 @@ namespace AttendanceSystem
         {
             var connectionInfo = GetConnectionStringAndAssemblyName();
 
-            builder.RegisterModule(new DataModule
+            builder.RegisterModule(new AttendanceModule
                 (connectionInfo.connectionString, connectionInfo.migrationAssemblyName));
             builder.RegisterModule(new WebModule());
         }

@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using ECommerceSystem.Areas.Admin.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace ECommerceSystem
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType<ProductModel>().AsSelf();
             base.Load(builder);
         }
     }
