@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+@{
+    foreach (var customer in Model.Customers)
+    {
+        <h1>@customer.name</h1>
+        <h2>@customer.age</h2>
+        <h2>@customer.address</h2> <br />
+    }
+}
+
