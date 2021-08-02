@@ -16,5 +16,19 @@ namespace TicketBookingSystem.Areas.Admin.Controllers
             model.LoadModelData();
             return View(model);
         }
+
+        public IActionResult Booking()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Booking(TicketBookingModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                
+            }
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

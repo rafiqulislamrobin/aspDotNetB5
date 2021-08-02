@@ -9,6 +9,7 @@ namespace TicketBookingSystem.Booking.Services
 {
     public interface IBookingService
     {
+        void BookingTicket(CustomerBO customer, TicketBO ticket);
         IList<CustomerBO> GetAllCustomer();
     }
 }

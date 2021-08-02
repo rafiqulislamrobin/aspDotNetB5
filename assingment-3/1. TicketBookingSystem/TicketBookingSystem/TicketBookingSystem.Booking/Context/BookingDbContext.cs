@@ -9,7 +9,7 @@ using TicketBookingSystem.Booking.Entites;
 namespace TicketBookingSystem.Booking.Context
 
 {
-    public class BookingDbContext : DbContext
+    public class BookingDbContext : DbContext, IBookingDbContext
     {
         private readonly string _connectionString;
         private readonly string _migrationAssemblyName;
@@ -31,8 +31,17 @@ namespace TicketBookingSystem.Booking.Context
 
             base.OnConfiguring(dbContextOptionsBuilder);
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Customer>()
+                .HasMany(b => b.Tickets)
+                .WithOne(t => t.Customer);
+              
+
+            base.OnModelCreating(modelBuilder);
+        }
 
         public DbSet<Customer> customers { get; set; }
-        public DbSet<Ticket>  tickets { get; set; }
+        public DbSet<Ticket> tickets { get; set; }
     }
 }

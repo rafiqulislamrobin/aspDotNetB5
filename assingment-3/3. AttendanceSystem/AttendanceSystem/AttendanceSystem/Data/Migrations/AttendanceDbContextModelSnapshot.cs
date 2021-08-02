@@ -19,7 +19,7 @@ namespace AttendanceSystem.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("AttendanceSystem.Presenet.Attendance", b =>
+            modelBuilder.Entity("AttendanceSystem.Present.Entity.Attendance", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -29,15 +29,17 @@ namespace AttendanceSystem.Data.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("studentId")
+                    b.Property<int>("StudentId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("StudentId");
+
                     b.ToTable("attendances");
                 });
 
-            modelBuilder.Entity("AttendanceSystem.Presenet.Student", b =>
+            modelBuilder.Entity("AttendanceSystem.Present.Entity.Student", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -53,6 +55,22 @@ namespace AttendanceSystem.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("students");
+                });
+
+            modelBuilder.Entity("AttendanceSystem.Present.Entity.Attendance", b =>
+                {
+                    b.HasOne("AttendanceSystem.Present.Entity.Student", "Student")
+                        .WithMany("Attendances")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("AttendanceSystem.Present.Entity.Student", b =>
+                {
+                    b.Navigation("Attendances");
                 });
 #pragma warning restore 612, 618
         }

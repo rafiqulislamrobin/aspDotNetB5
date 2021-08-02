@@ -47,6 +47,29 @@ namespace TicketBookingSystem.Booking.Services
             _bookingUnitOfWork.Save();
         }
 
+        public void BookingTicket ( CustomerBO customer, TicketBO ticket)
+        {
+            var customerEntity = _bookingUnitOfWork.Customers.GetById(customer.Id);
+
+            if (customerEntity==null)
+            {
+                throw new InvalidOperationException("Course was not found"); 
+            }
+            if (customerEntity.Tickets == null)
+                customerEntity.Tickets = new List<Entites.Ticket>();
+
+
+            customerEntity.Tickets.Add(new Entites.Ticket
+             {
+                 Fees =ticket.fees,
+                 Destination = ticket.destination,
+             
+            });
+
+              _bookingUnitOfWork.Save();
+            
+          
+        }
        
     }
 }

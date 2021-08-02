@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketBookingSystem", "Tick
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketBookingSystem.Data", "TicketBookingSystem.Data\TicketBookingSystem.Data.csproj", "{7019960E-C499-4B55-93FA-D0AA91B0F18F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketBookingSystem.Booking", "TicketBookingSystem.Booking\TicketBookingSystem.Booking.csproj", "{84B7D12F-F3DB-496A-905B-A544269B9D30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketBookingSystem.Booking", "TicketBookingSystem.Booking\TicketBookingSystem.Booking.csproj", "{84B7D12F-F3DB-496A-905B-A544269B9D30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

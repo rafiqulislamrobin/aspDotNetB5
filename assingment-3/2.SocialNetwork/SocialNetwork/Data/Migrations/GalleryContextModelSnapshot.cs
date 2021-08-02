@@ -4,8 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SocialNetwork.Data;
-using SocialNetwork.Gallery;
 using SocialNetwork.Gallery.Context;
 
 namespace SocialNetwork.Data.Migrations
@@ -21,7 +19,7 @@ namespace SocialNetwork.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("SocialNetwork.Data.Member", b =>
+            modelBuilder.Entity("SocialNetwork.Gallery.Entities.Member", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -42,33 +40,40 @@ namespace SocialNetwork.Data.Migrations
                     b.ToTable("members");
                 });
 
-            modelBuilder.Entity("SocialNetwork.Data.Photo", b =>
+            modelBuilder.Entity("SocialNetwork.Gallery.Entities.Photo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("MemberId")
+                        .HasColumnType("int");
+
                     b.Property<string>("PhotoFileName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("memberIdId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("memberIdId");
+                    b.HasIndex("MemberId");
 
                     b.ToTable("photos");
                 });
 
-            modelBuilder.Entity("SocialNetwork.Data.Photo", b =>
+            modelBuilder.Entity("SocialNetwork.Gallery.Entities.Photo", b =>
                 {
-                    b.HasOne("SocialNetwork.Data.Member", "memberId")
-                        .WithMany()
-                        .HasForeignKey("memberIdId");
+                    b.HasOne("SocialNetwork.Gallery.Entities.Member", "Member")
+                        .WithMany("Photos")
+                        .HasForeignKey("MemberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("memberId");
+                    b.Navigation("Member");
+                });
+
+            modelBuilder.Entity("SocialNetwork.Gallery.Entities.Member", b =>
+                {
+                    b.Navigation("Photos");
                 });
 #pragma warning restore 612, 618
         }

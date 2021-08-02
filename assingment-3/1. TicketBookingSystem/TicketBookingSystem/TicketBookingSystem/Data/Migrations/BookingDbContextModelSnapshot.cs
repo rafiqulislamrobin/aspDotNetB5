@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TicketBookingSystem.Booking.Context;
 
-
 namespace TicketBookingSystem.Data.Migrations
 {
     [DbContext(typeof(BookingDbContext))]
@@ -19,7 +18,7 @@ namespace TicketBookingSystem.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("TicketBookingSystem.Data.Customer", b =>
+            modelBuilder.Entity("TicketBookingSystem.Booking.Entites.Customer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -40,43 +39,43 @@ namespace TicketBookingSystem.Data.Migrations
                     b.ToTable("customers");
                 });
 
-            modelBuilder.Entity("TicketBookingSystem.Data.Ticket", b =>
+            modelBuilder.Entity("TicketBookingSystem.Booking.Entites.Ticket", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("customerId")
+                    b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<string>("destination")
+                    b.Property<string>("Destination")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("fees")
+                    b.Property<int>("Fees")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("customerId");
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("tickets");
                 });
 
-            modelBuilder.Entity("TicketBookingSystem.Data.Ticket", b =>
+            modelBuilder.Entity("TicketBookingSystem.Booking.Entites.Ticket", b =>
                 {
-                    b.HasOne("TicketBookingSystem.Data.Customer", "customer")
-                        .WithMany("tickets")
-                        .HasForeignKey("customerId")
+                    b.HasOne("TicketBookingSystem.Booking.Entites.Customer", "Customer")
+                        .WithMany("Tickets")
+                        .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("customer");
+                    b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("TicketBookingSystem.Data.Customer", b =>
+            modelBuilder.Entity("TicketBookingSystem.Booking.Entites.Customer", b =>
                 {
-                    b.Navigation("tickets");
+                    b.Navigation("Tickets");
                 });
 #pragma warning restore 612, 618
         }

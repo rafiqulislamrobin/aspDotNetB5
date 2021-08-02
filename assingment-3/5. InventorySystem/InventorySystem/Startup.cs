@@ -25,7 +25,7 @@ namespace InventorySystem
         public IConfiguration Configuration { get; }
 
         public IWebHostEnvironment webHostEnvironment { get; set; }
-        public static ILifetimeScope AutofacConfig { get; set; }
+        public static ILifetimeScope AutofacContainer { get; set; }
         public Startup(IWebHostEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -95,7 +95,7 @@ namespace InventorySystem
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            AutofacConfig = app.ApplicationServices.GetAutofacRoot();
+            AutofacContainer = app.ApplicationServices.GetAutofacRoot();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
