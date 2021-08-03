@@ -1,0 +1,15 @@
+2021-08-03 04:06:50.474 +06:00 [INF] Application started.
+2021-08-03 04:07:34.260 +06:00 [INF] Application started.
+2021-08-03 20:36:11.920 +06:00 [INF] Application started.
+2021-08-03 22:00:33.718 +06:00 [INF] Application started.
+2021-08-03 22:02:25.381 +06:00 [INF] Application started.
+2021-08-03 22:04:51.319 +06:00 [INF] Application started.
+2021-08-03 22:07:26.810 +06:00 [INF] Application started.
+2021-08-03 22:08:14.736 +06:00 [INF] Application started.
+2021-08-03 22:17:27.647 +06:00 [INF] Application started.
+2021-08-03 22:18:04.737 +06:00 [ERR] Add Product Failed
+TicketBookingSystem.Booking.Exceptions.DuplicateException: Customer Name
+   at InventorySystem.Store.Services.InventoryService.CreateProduct(Product product) in D:\assingment-3\5. InventorySystem\InventorySystem.Store\Services\InventoryService.cs:line 48
+   at InventorySystem.Areas.Admin.Models.CreateProductModel.CreateProduct() in D:\assingment-3\5. InventorySystem\InventorySystem\Areas\Admin\Models\CreateProductModel.cs:line 33
+   at InventorySystem.Areas.Admin.Controllers.InventoryController.Create(CreateProductModel model) in D:\assingment-3\5. InventorySystem\InventorySystem\Areas\Admin\Controllers\InventoryController.cs:line 52
+2021-08-03 23:43:50.854 +06:00 [INF] Application started.
