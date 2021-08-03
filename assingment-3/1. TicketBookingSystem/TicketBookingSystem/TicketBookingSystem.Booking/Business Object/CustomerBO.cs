@@ -9,8 +9,8 @@ namespace TicketBookingSystem.Booking.Business_Object
      public class CustomerBO
      {
         public int Id { get; set; }
-        public string name { get; set; }
-        public int age { get; set; }
-        public string address { get; set; }
-     }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public string Address { get; set; }
+    }
 }

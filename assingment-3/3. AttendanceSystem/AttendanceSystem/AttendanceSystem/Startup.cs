@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SocialNetworl.Common;
 using System;
 
 namespace AttendanceSystem
@@ -40,6 +41,7 @@ namespace AttendanceSystem
 
             builder.RegisterModule(new AttendanceModule
                 (connectionInfo.connectionString, connectionInfo.migrationAssemblyName));
+            builder.RegisterModule(new CommonModule());
             builder.RegisterModule(new WebModule());
         }
         private (string connectionString, string migrationAssemblyName) GetConnectionStringAndAssemblyName()

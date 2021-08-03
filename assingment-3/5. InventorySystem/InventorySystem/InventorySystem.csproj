@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\InventorySystem.Common\InventorySystem.Common.csproj" />
     <ProjectReference Include="..\InventorySystem.Data\InventorySystem.Data.csproj" />
     <ProjectReference Include="..\InventorySystem.Store\InventorySystem.Store.csproj" />
   </ItemGroup>

@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SocialNetworl.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,7 @@ namespace InventorySystem
             var connectionInfo = GetConnectionStringAndAssemblyName();
             builder.RegisterModule(new InventoryModule
                 (connectionInfo.connectionString, connectionInfo.migrationAssemblyName));
+            builder.RegisterModule(new CommonModule());
 
             builder.RegisterModule(new WebModule());
         }

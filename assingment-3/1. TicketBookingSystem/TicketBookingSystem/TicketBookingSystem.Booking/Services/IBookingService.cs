@@ -11,5 +11,6 @@ namespace TicketBookingSystem.Booking.Services
     {
         void BookingTicket(CustomerBO customer, TicketBO ticket);
         IList<CustomerBO> GetAllCustomer();
+        void CreateCustomer(CustomerBO customer);
     }
 }

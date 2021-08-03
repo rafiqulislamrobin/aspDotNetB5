@@ -11,9 +11,9 @@ namespace TicketBookingSystem.Booking.Entites
     {
 
         public int Id { get; set; }
-        public string name { get; set; }
-        public int age { get; set; }
-        public string address { get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public string Address { get; set; }
         public List<Ticket> Tickets { get; set; }
     }
 }

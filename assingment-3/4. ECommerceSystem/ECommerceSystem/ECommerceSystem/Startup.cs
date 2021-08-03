@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SocialNetworl.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,7 @@ namespace ECommerceSystem
 
             builder.RegisterModule(new ProductModule(
                 connectionInfo.connectiontionString,connectionInfo.migrationAssemblyName));
+            builder.RegisterModule(new CommonModule());
 
             builder.RegisterModule(new WebModule());
             

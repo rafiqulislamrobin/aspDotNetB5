@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SocialNetworl.Common;
 using System;
 using TicketBookingSystem.Booking;
 using TicketBookingSystem.Booking.Context;
@@ -40,6 +41,8 @@ namespace TicketBookingSystem
             var connectionInfo = GetConnectionStringAndAssemblyName();
             builder.RegisterModule(new BookingModule
                 (connectionInfo.connectionString,connectionInfo.migrationAssemblyName));
+
+            builder.RegisterModule(new CommonModule());
 
             builder.RegisterModule (new WebModule());
         }

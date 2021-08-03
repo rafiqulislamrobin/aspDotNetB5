@@ -1,10 +1,12 @@
-﻿using System;
+﻿using SocialNetworl.Common.Utility;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TicketBookingSystem.Booking.Business_Object;
 using TicketBookingSystem.Booking.Context;
+using TicketBookingSystem.Booking.Exceptions;
 using TicketBookingSystem.Booking.Unit_of_Work;
 
 namespace TicketBookingSystem.Booking.Services
@@ -12,9 +14,11 @@ namespace TicketBookingSystem.Booking.Services
     public class BookingService : IBookingService
     {
         private readonly IBookingUnitOfWork _bookingUnitOfWork;
-        public BookingService(IBookingUnitOfWork bookingUnitOfWork)
+
+        public BookingService(IDatetimeUtility datetimeUtility, IBookingUnitOfWork bookingUnitOfWork)
         {
             _bookingUnitOfWork = bookingUnitOfWork;
+            
         } 
         public IList<CustomerBO> GetAllCustomer()
         {
@@ -26,9 +30,9 @@ namespace TicketBookingSystem.Booking.Services
             {
                 var customer = new CustomerBO()
                 {
-                    name = entity.name,
-                    age = entity.age,
-                    address = entity.address
+                    Name = entity.Name,
+                    Age = entity.Age,
+                    Address = entity.Address
                 };
                 customers.Add(customer);
             }
@@ -37,27 +41,37 @@ namespace TicketBookingSystem.Booking.Services
 
         public void CreateCustomer(CustomerBO customer)
         {
+            if (customer == null)
+                throw new InvalidParameterException("Customer was not found");
+            
+            if (IsNameAlreadyUsed(customer.Name))
+                throw new DuplicateException("Customer Name");
+
             _bookingUnitOfWork.Customers.Add(
-                new Entites.Customer
-                {
-                    Id =customer.Id,
-                    name=customer.name,
-                    address=customer.address
-                });
-            _bookingUnitOfWork.Save();
+                    new Entites.Customer
+                    {
+
+                        Name = customer.Name,
+                        Age =customer.Age,
+                        Address = customer.Address
+
+                    }
+                   );
+                _bookingUnitOfWork.Save();
+            
+
+
         }
 
         public void BookingTicket ( CustomerBO customer, TicketBO ticket)
         {
             var customerEntity = _bookingUnitOfWork.Customers.GetById(customer.Id);
-
             if (customerEntity==null)
             {
                 throw new InvalidOperationException("Course was not found"); 
             }
             if (customerEntity.Tickets == null)
                 customerEntity.Tickets = new List<Entites.Ticket>();
-
 
             customerEntity.Tickets.Add(new Entites.Ticket
              {
@@ -70,6 +84,14 @@ namespace TicketBookingSystem.Booking.Services
             
           
         }
-       
+
+        private bool IsNameAlreadyUsed (string name)=>
+            _bookingUnitOfWork.Customers.GetCount(n => n.Name == name) > 0;
+
+
+
+    
+
+
     }
 }

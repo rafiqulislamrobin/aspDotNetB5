@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SocialNetwork.Data\SocialNetwork.Data.csproj" />
     <ProjectReference Include="..\SocialNetwork.Gallery\SocialNetwork.Gallery.csproj" />
+    <ProjectReference Include="..\SocialNetworl.Common\SocialNetworl.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>

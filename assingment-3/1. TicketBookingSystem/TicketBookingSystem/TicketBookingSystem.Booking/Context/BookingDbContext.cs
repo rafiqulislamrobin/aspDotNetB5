@@ -31,12 +31,13 @@ namespace TicketBookingSystem.Booking.Context
 
             base.OnConfiguring(dbContextOptionsBuilder);
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>()
                 .HasMany(b => b.Tickets)
                 .WithOne(t => t.Customer);
-              
+
 
             base.OnModelCreating(modelBuilder);
         }
