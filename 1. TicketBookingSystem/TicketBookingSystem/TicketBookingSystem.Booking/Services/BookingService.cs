@@ -91,7 +91,7 @@ namespace TicketBookingSystem.Booking.Services
         string searchText, string sortText)
         {
             var customerData = _bookingUnitOfWork.Customers.GetDynamic(
-                string.IsNullOrWhiteSpace(searchText) ? null : x => x.Name == searchText,
+                string.IsNullOrWhiteSpace(searchText) ? null : x => x.Name.Contains(searchText),
                 sortText, string.Empty, pageIndex, pageSize);
 
             var resultData = (from customer in customerData.data
@@ -109,5 +109,53 @@ namespace TicketBookingSystem.Booking.Services
         private bool IsNameAlreadyUsed(string name) =>
             _bookingUnitOfWork.Customers.GetCount(n => n.Name == name) > 0;
 
+        private bool IsNameAlreadyUsed(string name ,int id) =>
+           _bookingUnitOfWork.Customers.GetCount(n => n.Name == name && n.Id!=id) > 0;
+
+        public CustomerBO GetCustomer(int id)
+        {
+
+           var customer =  _bookingUnitOfWork.Customers.GetById(id);
+            if (customer==null)
+            {
+                return null;
+            }
+
+            return new CustomerBO
+            {
+                Id = customer.Id,
+                Name = customer.Name,
+                Age = customer.Age,
+                Address = customer.Address
+
+
+            };
+        }
+
+        public void UpdateCustomer(CustomerBO customer)
+        {
+            if (customer==null)
+            {
+                throw new InvalidOperationException("Customer is missing");
+            }
+            if (IsNameAlreadyUsed(customer.Name, customer.Id))
+            {
+                throw new DuplicateException("Customer name is already used");
+            }
+            var customerInfo =_bookingUnitOfWork.Customers.GetById(customer.Id);
+            if (customerInfo != null)
+            {
+                customerInfo.Id = customer.Id;
+                customerInfo.Name = customer.Name;
+                customerInfo.Age = customer.Age;
+                customerInfo.Address = customer.Address;
+                _bookingUnitOfWork.Save();
+            }
+            else
+            {
+                throw new InvalidOperationException("Customer is not available");
+            }
+            
+        }
     }
 }

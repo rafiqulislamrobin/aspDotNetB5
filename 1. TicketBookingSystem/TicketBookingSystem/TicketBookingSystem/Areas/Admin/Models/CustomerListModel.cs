@@ -10,7 +10,7 @@ namespace TicketBookingSystem.Areas.Admin.Models
 {
     public class CustomerListModel
     {
-        public IList<CustomerBO> Customers { get; set; }
+        
 
         private readonly IBookingService _bookingService;
         public CustomerListModel()
@@ -20,10 +20,6 @@ namespace TicketBookingSystem.Areas.Admin.Models
         public CustomerListModel(IBookingService bookingService)
         {
             _bookingService = bookingService;
-        }
-        public void LoadModelData()
-        {
-            Customers = _bookingService.GetAllCustomer();
         }
 
         internal object GetCustomers(DataTablesAjaxRequestModel dataTableAjaxRequestModel)

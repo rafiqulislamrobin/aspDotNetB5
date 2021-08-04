@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using SocialNetwork.Gallery.Context;
 using SocialNetwork.Gallery.Unit_of_work;
 using SocialNetworl.Common.Utility;
@@ -44,10 +43,7 @@ namespace SocialNetwork.Gallery.Services
 
         public void CreateMember(MemberBusinessObject member)
         {
-            if (!IsValidStartDate(member.DateOfBirth))
-            {
-                throw new InvalidOperationException("Datetime invalid");
-            }
+ 
             if (IsNameAlreadyUsed(member.Name))
                 throw new DuplicateException("Member Name already exist");
 
@@ -101,9 +97,55 @@ namespace SocialNetwork.Gallery.Services
 
             return (resultData, memberData.total, memberData.totalDisplay);
         }
-        private bool IsNameAlreadyUsed(string name) =>
-           _galleryUnitOfWork.Members.GetCount(n => n.Name == name) > 0;
-        private bool IsValidStartDate(DateTime startDate) =>
-            startDate.Subtract(_datetimeUtility.Now).TotalDays < 0;
+            private bool IsNameAlreadyUsed(string name) =>
+                  _galleryUnitOfWork.Members.GetCount(n => n.Name == name) > 0;
+            private bool IsNameAlreadyUsed(string name, int id) =>
+                 _galleryUnitOfWork.Members.GetCount(n => n.Name == name && n.Id != id) > 0;
+
+        public MemberBusinessObject GetMember(int id)
+        {
+
+            var member = _galleryUnitOfWork.Members.GetById(id);
+            if (member == null)
+            {
+                return null;
+            }
+
+            return new MemberBusinessObject
+            {
+                Id = member.Id,
+                Name = member.Name,
+                DateOfBirth = member.DateOfBirth,
+                Address = member.Address
+
+
+            };
+        }
+
+        public void UpdateMember(MemberBusinessObject member)
+        {
+            if (member == null)
+            {
+                throw new InvalidOperationException("member is missing");
+            }
+            if (IsNameAlreadyUsed(member.Name, member.Id))
+            {
+                throw new DuplicateException("member name is already used");
+            }
+            var memberEntity = _galleryUnitOfWork.Members.GetById(member.Id);
+            if (memberEntity != null)
+            {
+                memberEntity.Id = member.Id;
+                memberEntity.Name = member.Name;
+                memberEntity.DateOfBirth = member.DateOfBirth;
+                memberEntity.Address = member.Address;
+                _galleryUnitOfWork.Save();
+            }
+            else
+            {
+                throw new InvalidOperationException("member is not available");
+            }
+
+        }
     }
 }

@@ -69,5 +69,24 @@ namespace AttendanceSystem.Areas.Admin.Controllers
             }
             return View(model);
         }
+        public IActionResult Edit(int id)
+        {
+            var model = new EditStudentModel();
+            model.LoadModelData(id);
+            return View(model);
+
+        }
+
+
+        [HttpPost, AutoValidateAntiforgeryToken]
+
+        public IActionResult Edit(EditStudentModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.Update();
+            }
+            return View(model);
+        }
     }
 }

@@ -72,8 +72,52 @@ namespace ECommerceSystem.ProductInfo.Service
             return (resultData, productData.total, productData.totalDisplay);
         }
 
+
+        public Product GetProduct(int id)
+        {
+
+            var student = _productUnitOfWork.Products.GetById(id);
+            if (student == null)
+            {
+                return null;
+            }
+            return new Product
+            {
+                Id = student.Id,
+                Name = student.Name,
+                Price = student.Price,
+
+            };
+        }
+
+        public void UpdateProduct(Product product)
+        {
+            if (product == null)
+            {
+                throw new InvalidOperationException("product is missing");
+            }
+            if (IsNameAlreadyUsed(product.Name, product.Id))
+            {
+                throw new DuplicateException("product name is already used");
+            }
+            var productEntity = _productUnitOfWork.Products.GetById(product.Id);
+            if (productEntity != null)
+            {
+                productEntity.Id = product.Id;
+                productEntity.Name = product.Name;
+                productEntity.Price = product.Price;
+
+                _productUnitOfWork.Save();
+            }
+            else
+                throw new InvalidOperationException("product is not available");
+            
+
+        }
         private bool IsNameAlreadyUsed(string name) =>
-              _productUnitOfWork.Products.GetCount(n => n.Name == name) > 0;
+      _productUnitOfWork.Products.GetCount(n => n.Name == name) > 0;
+        private bool IsNameAlreadyUsed(string name, int id) =>
+            _productUnitOfWork.Products.GetCount(n => n.Name == name && n.Id != id) > 0;
 
     }
 }

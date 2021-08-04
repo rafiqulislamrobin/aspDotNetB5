@@ -5,14 +5,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
 using InventorySystem.Store.Business_Object;
+using System.ComponentModel.DataAnnotations;
 
 namespace InventorySystem.Areas.Admin.Models
 {
     public class CreateProductModel
     {
 
+        public int? Id { get; set; }
+        [Required, MaxLength(100, ErrorMessage = "Nameshould be less than 100 characters")]
         public string Name { get; set; }
-        public int Price { get; set; }
+
+        [Required, Range(0, 1000000)]
+        public int? Price { get; set; }
 
         private readonly IInvenStoryService _invenStoryService;
         public CreateProductModel()
@@ -28,7 +33,7 @@ namespace InventorySystem.Areas.Admin.Models
             var product = new Product()
             {
                 Name = Name,
-                Price = Price
+                Price = Price.Value
             };
             _invenStoryService.CreateProduct(product);
         }

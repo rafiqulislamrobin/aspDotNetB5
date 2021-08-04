@@ -68,5 +68,25 @@ namespace SocialNetwork.Areas.Admin.Controllers
             }
             return View(model);
         }
+
+        public IActionResult Edit(int id)
+        {
+            var model = new EditMemberModel();
+            model.LoadModelData(id);
+            return View(model);
+
+        }
+
+
+        [HttpPost, AutoValidateAntiforgeryToken]
+
+        public IActionResult Edit(EditMemberModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.Update();
+            }
+            return View(model);
+        }
     }
 }

@@ -70,5 +70,24 @@ namespace InventorySystem.Areas.Admin.Controllers
             }
             return View(model);
         }
+        public IActionResult Edit(int id)
+        {
+            var model = new EditProductModel();
+            model.LoadModelData(id);
+            return View(model);
+
+        }
+
+
+        [HttpPost, AutoValidateAntiforgeryToken]
+
+        public IActionResult Edit(EditProductModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.Update();
+            }
+            return View(model);
+        }
     }
 }

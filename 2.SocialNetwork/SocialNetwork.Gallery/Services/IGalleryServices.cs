@@ -17,5 +17,8 @@ namespace SocialNetwork.Gallery.Services
         void CreateMember(MemberBusinessObject member);
         (IList<MemberBusinessObject> records, int total, int totalDisplay) GetMembers(int pageIndex, int pageSize,
                                                               string searchText, string sortText);
+
+        MemberBusinessObject GetMember(int id);
+        void UpdateMember(MemberBusinessObject member);
     }
 }

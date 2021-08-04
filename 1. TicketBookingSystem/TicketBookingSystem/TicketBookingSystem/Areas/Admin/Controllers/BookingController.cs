@@ -21,7 +21,7 @@ namespace TicketBookingSystem.Areas.Admin.Controllers
         public IActionResult Index()
         {
             var model = new CustomerListModel();
-            model.LoadModelData();
+            
             return View(model);
         }
         public JsonResult GetCustomerData()
@@ -72,6 +72,22 @@ namespace TicketBookingSystem.Areas.Admin.Controllers
                     _logger.LogError(ex, "Add Customer Failed");
                 }
                 
+            }
+            return View(model);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var model = new EditCustomerModel();
+            model.LoadModelData(id);
+            return View(model);
+        }
+        [HttpPost, AutoValidateAntiforgeryToken]
+        public IActionResult Edit(EditCustomerModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.Update();
             }
             return View(model);
         }

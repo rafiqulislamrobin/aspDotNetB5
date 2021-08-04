@@ -101,9 +101,57 @@ namespace AttendanceSystem.Present.Services
 
             return (resultData, studentData.total, studentData.totalDisplay);
         }
-        private bool IsRollNumberAlreadyUsed(int rollNumber) => 
-              _PresentUnitOfWork.Students.GetCount(n => n.StudentRollNumber == rollNumber) > 0;
+
+        public Student GetStudent(int id)
+        {
+
+            var student = _PresentUnitOfWork.Students.GetById(id);
+            if (student == null)
+            {
+                return null;
+            }
+
+            return new Student
+            {
+                Id = student.Id,
+                Name = student.Name,
+                StudentRollNumber = student.StudentRollNumber,
+               
 
 
+            };
+        }
+
+        public void UpdateStudent(Student student)
+        {
+            if (student == null)
+            {
+                throw new InvalidOperationException("student is missing");
+            }
+            if (IsNameAlreadyUsed(student.Name, student.Id))
+            {
+                throw new DuplicateException("student name is already used");
+            }
+            var studentEntity = _PresentUnitOfWork.Students.GetById(student.Id);
+            if (studentEntity != null)
+            {
+                studentEntity.Id = student.Id;
+                studentEntity.Name = student.Name;
+                studentEntity.StudentRollNumber = student.StudentRollNumber;
+               
+                _PresentUnitOfWork.save();
+            }
+            else
+            {
+                throw new InvalidOperationException("student is not available");
+            }
+
+        }
+        private bool IsRollNumberAlreadyUsed(int rollNumber) =>
+      _PresentUnitOfWork.Students.GetCount(n => n.StudentRollNumber == rollNumber) > 0;
+        private bool IsNameAlreadyUsed(string name, int id) =>
+      _PresentUnitOfWork.Students.GetCount(n => n.Name == name && n.Id != id) > 0;
+
+     
     }
 }
