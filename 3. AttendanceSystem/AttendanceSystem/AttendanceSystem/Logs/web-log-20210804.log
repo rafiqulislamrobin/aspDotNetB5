@@ -1,0 +1,11 @@
+2021-08-04 18:42:37.541 +06:00 [INF] Application Started
+2021-08-04 18:48:23.475 +06:00 [INF] Application Started
+2021-08-04 18:48:57.878 +06:00 [INF] Application Started
+2021-08-04 18:53:21.375 +06:00 [INF] Application Started
+2021-08-04 18:55:41.514 +06:00 [INF] Application Started
+2021-08-04 18:56:26.045 +06:00 [ERR] Add Student Failed
+TicketBookingSystem.Booking.Exceptions.DuplicateException: Student Roll Number Already Used
+   at AttendanceSystem.Present.Services.AttendanceService.CreateStudent(Student student) in D:\assingment-3\3. AttendanceSystem\AttendanceSystem\AttendanceSystem.Present\Services\AttendanceService.cs:line 72
+   at AttendanceSystem.Areas.Admin.Models.CreateStudentModel.CreateStudent() in D:\assingment-3\3. AttendanceSystem\AttendanceSystem\AttendanceSystem\Areas\Admin\Models\CreateStudentModel.cs:line 35
+   at AttendanceSystem.Areas.Admin.Controllers.AttendanceController.Create(CreateStudentModel model) in D:\assingment-3\3. AttendanceSystem\AttendanceSystem\AttendanceSystem\Areas\Admin\Controllers\AttendanceController.cs:line 61
+2021-08-04 20:29:17.660 +06:00 [INF] Application Started

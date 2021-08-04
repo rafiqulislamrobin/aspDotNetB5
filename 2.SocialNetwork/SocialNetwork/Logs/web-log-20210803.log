@@ -1,0 +1,40 @@
+2021-08-03 20:35:28.030 +06:00 [INF] Application Starting up
+2021-08-03 21:18:18.712 +06:00 [INF] Application Starting up
+2021-08-03 21:41:32.101 +06:00 [INF] Application Starting up
+2021-08-03 21:41:54.109 +06:00 [INF] Application Starting up
+2021-08-03 22:52:27.022 +06:00 [INF] Application Starting up
+2021-08-03 23:00:42.360 +06:00 [INF] Application Starting up
+2021-08-03 23:01:40.452 +06:00 [ERR] Add Member Failed
+System.InvalidOperationException: Datetime invalid
+   at SocialNetwork.Gallery.Services.GalleryServices.CreateMember(MemberBusinessObject member) in D:\assingment-3\2.SocialNetwork\SocialNetwork.Gallery\Services\GalleryServices.cs:line 49
+   at SocialNetwork.Areas.Admin.Models.CreateMemberModel.CreateMember() in D:\assingment-3\2.SocialNetwork\SocialNetwork\Areas\Admin\Models\CreateMemberModel.cs:line 37
+   at SocialNetwork.Areas.Admin.Controllers.GalleryController.Create(CreateMemberModel model) in D:\assingment-3\2.SocialNetwork\SocialNetwork\Areas\Admin\Controllers\GalleryController.cs:line 53
+2021-08-03 23:01:47.673 +06:00 [ERR] Add Member Failed
+System.InvalidOperationException: Datetime invalid
+   at SocialNetwork.Gallery.Services.GalleryServices.CreateMember(MemberBusinessObject member) in D:\assingment-3\2.SocialNetwork\SocialNetwork.Gallery\Services\GalleryServices.cs:line 49
+   at SocialNetwork.Areas.Admin.Models.CreateMemberModel.CreateMember() in D:\assingment-3\2.SocialNetwork\SocialNetwork\Areas\Admin\Models\CreateMemberModel.cs:line 37
+   at SocialNetwork.Areas.Admin.Controllers.GalleryController.Create(CreateMemberModel model) in D:\assingment-3\2.SocialNetwork\SocialNetwork\Areas\Admin\Controllers\GalleryController.cs:line 53
+2021-08-03 23:02:24.068 +06:00 [ERR] Add Member Failed
+System.InvalidOperationException: Datetime invalid
+   at SocialNetwork.Gallery.Services.GalleryServices.CreateMember(MemberBusinessObject member) in D:\assingment-3\2.SocialNetwork\SocialNetwork.Gallery\Services\GalleryServices.cs:line 49
+   at SocialNetwork.Areas.Admin.Models.CreateMemberModel.CreateMember() in D:\assingment-3\2.SocialNetwork\SocialNetwork\Areas\Admin\Models\CreateMemberModel.cs:line 37
+   at SocialNetwork.Areas.Admin.Controllers.GalleryController.Create(CreateMemberModel model) in D:\assingment-3\2.SocialNetwork\SocialNetwork\Areas\Admin\Controllers\GalleryController.cs:line 53
+2021-08-03 23:02:38.476 +06:00 [ERR] Add Member Failed
+System.InvalidOperationException: Datetime invalid
+   at SocialNetwork.Gallery.Services.GalleryServices.CreateMember(MemberBusinessObject member) in D:\assingment-3\2.SocialNetwork\SocialNetwork.Gallery\Services\GalleryServices.cs:line 49
+   at SocialNetwork.Areas.Admin.Models.CreateMemberModel.CreateMember() in D:\assingment-3\2.SocialNetwork\SocialNetwork\Areas\Admin\Models\CreateMemberModel.cs:line 37
+   at SocialNetwork.Areas.Admin.Controllers.GalleryController.Create(CreateMemberModel model) in D:\assingment-3\2.SocialNetwork\SocialNetwork\Areas\Admin\Controllers\GalleryController.cs:line 53
+2021-08-03 23:03:16.921 +06:00 [INF] Application Starting up
+2021-08-03 23:04:14.482 +06:00 [ERR] Add Member Failed
+System.InvalidOperationException: Datetime invalid
+   at SocialNetwork.Gallery.Services.GalleryServices.CreateMember(MemberBusinessObject member) in D:\assingment-3\2.SocialNetwork\SocialNetwork.Gallery\Services\GalleryServices.cs:line 49
+   at SocialNetwork.Areas.Admin.Models.CreateMemberModel.CreateMember() in D:\assingment-3\2.SocialNetwork\SocialNetwork\Areas\Admin\Models\CreateMemberModel.cs:line 37
+   at SocialNetwork.Areas.Admin.Controllers.GalleryController.Create(CreateMemberModel model) in D:\assingment-3\2.SocialNetwork\SocialNetwork\Areas\Admin\Controllers\GalleryController.cs:line 53
+2021-08-03 23:04:46.124 +06:00 [ERR] Add Member Failed
+System.InvalidOperationException: Datetime invalid
+   at SocialNetwork.Gallery.Services.GalleryServices.CreateMember(MemberBusinessObject member) in D:\assingment-3\2.SocialNetwork\SocialNetwork.Gallery\Services\GalleryServices.cs:line 49
+   at SocialNetwork.Areas.Admin.Models.CreateMemberModel.CreateMember() in D:\assingment-3\2.SocialNetwork\SocialNetwork\Areas\Admin\Models\CreateMemberModel.cs:line 37
+   at SocialNetwork.Areas.Admin.Controllers.GalleryController.Create(CreateMemberModel model) in D:\assingment-3\2.SocialNetwork\SocialNetwork\Areas\Admin\Controllers\GalleryController.cs:line 53
+2021-08-03 23:04:59.058 +06:00 [INF] Application Starting up
+2021-08-03 23:06:34.461 +06:00 [INF] Application Starting up
+2021-08-03 23:06:45.589 +06:00 [INF] Application Starting up

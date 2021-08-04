@@ -1,0 +1,49 @@
+2021-08-04 14:12:30.635 +06:00 [INF] Application Starting up
+2021-08-04 15:58:01.195 +06:00 [INF] Application Starting up
+2021-08-04 15:59:55.639 +06:00 [INF] Application Starting up
+2021-08-04 16:03:24.808 +06:00 [INF] Application Starting up
+2021-08-04 16:05:50.046 +06:00 [INF] Application Starting up
+2021-08-04 16:10:21.595 +06:00 [INF] Application Starting up
+2021-08-04 16:11:48.991 +06:00 [INF] Application Starting up
+2021-08-04 16:15:13.149 +06:00 [INF] Application Starting up
+2021-08-04 16:16:42.878 +06:00 [INF] Application Starting up
+2021-08-04 16:19:34.960 +06:00 [INF] Application Starting up
+2021-08-04 16:19:49.381 +06:00 [ERR] The view 'Booking' was not found. Searched locations: ["/Areas/Admin/Views/Booking/Booking.cshtml","/Areas/Admin/Views/Shared/Booking.cshtml","/Views/Shared/Booking.cshtml","/Pages/Shared/Booking.cshtml"]
+2021-08-04 16:19:49.391 +06:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'Booking' was not found. The following locations were searched:
+/Areas/Admin/Views/Booking/Booking.cshtml
+/Areas/Admin/Views/Shared/Booking.cshtml
+/Views/Shared/Booking.cshtml
+/Pages/Shared/Booking.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|29_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-08-04 16:25:16.054 +06:00 [INF] Application Starting up
+2021-08-04 16:27:00.982 +06:00 [INF] Application Starting up
+2021-08-04 16:27:46.273 +06:00 [INF] Application Starting up
+2021-08-04 16:29:27.790 +06:00 [INF] Application Starting up
+2021-08-04 16:31:29.217 +06:00 [INF] Application Starting up
+2021-08-04 16:37:05.572 +06:00 [INF] Application Starting up
+2021-08-04 16:45:03.051 +06:00 [INF] Application Starting up
+2021-08-04 16:46:36.522 +06:00 [INF] Application Starting up
+2021-08-04 18:04:23.643 +06:00 [INF] Application Starting up
+2021-08-04 18:44:22.475 +06:00 [INF] Application Starting up
+2021-08-04 20:28:35.786 +06:00 [INF] Application Starting up

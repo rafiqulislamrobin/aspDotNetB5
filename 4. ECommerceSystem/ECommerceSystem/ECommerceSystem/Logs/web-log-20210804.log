@@ -1,0 +1,9 @@
+2021-08-04 19:00:31.467 +06:00 [INF] Application Starting up
+2021-08-04 19:27:28.717 +06:00 [INF] Application Starting up
+2021-08-04 19:28:26.940 +06:00 [INF] Application Starting up
+2021-08-04 19:29:17.390 +06:00 [ERR] Add Product Failed
+TicketBookingSystem.Booking.Exceptions.DuplicateException: Product Name is Already available
+   at ECommerceSystem.ProductInfo.Service.ProductService.CreateProduct(Product product) in D:\assingment-3\4. ECommerceSystem\ECommerceSystem\ECommerceSystem.ProductInfo\Service\ProductService.cs:line 45
+   at ECommerceSystem.Areas.Admin.Models.CreateProductModel.CreateProduct() in D:\assingment-3\4. ECommerceSystem\ECommerceSystem\ECommerceSystem\Areas\Admin\Models\CreateProductModel.cs:line 32
+   at ECommerceSystem.Areas.Admin.Controllers.ProductController.Create(CreateProductModel model) in D:\assingment-3\4. ECommerceSystem\ECommerceSystem\ECommerceSystem\Areas\Admin\Controllers\ProductController.cs:line 51
+2021-08-04 20:29:24.131 +06:00 [INF] Application Starting up
