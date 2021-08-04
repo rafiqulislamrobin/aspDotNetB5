@@ -47,5 +47,10 @@ namespace TicketBookingSystem.Areas.Admin.Models
                 };
             
         }
+
+        internal void Delete(int id)
+        {
+            _bookingService.DeleteCustomer(id);
+        }
     }
 }

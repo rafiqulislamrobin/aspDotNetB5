@@ -17,6 +17,7 @@ namespace ECommerceSystem.ProductInfo.Service
 
         Product GetProduct(int id);
         void UpdateProduct(Product student);
+        void DeleteProduct(int id);
     }
 
 }

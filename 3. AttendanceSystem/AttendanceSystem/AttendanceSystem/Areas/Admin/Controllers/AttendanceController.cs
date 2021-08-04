@@ -88,5 +88,11 @@ namespace AttendanceSystem.Areas.Admin.Controllers
             }
             return View(model);
         }
+        public IActionResult Delete(int id)
+        {
+            var model = new AttendanceModel();
+            model.Delete(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

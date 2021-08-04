@@ -16,5 +16,6 @@ namespace InventorySystem.Store.Services
                                                           string searchText, string sortText);
         Product GetProduct(int id);
         void UpdateProduct(Product student);
+        void DeleteProduct(int id);
     }
 }

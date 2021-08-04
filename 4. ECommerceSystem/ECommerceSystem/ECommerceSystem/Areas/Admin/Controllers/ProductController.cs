@@ -78,5 +78,11 @@ namespace ECommerceSystem.Areas.Admin.Controllers
             }
             return View(model);
         }
+        public IActionResult Delete(int id)
+        {
+            var model = new ProductModel();
+            model.Delete(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

@@ -143,5 +143,11 @@ namespace InventorySystem.Store.Services
       _iInventoryUnitOfWork.Products.GetCount(n => n.Name == name) > 0;
         private bool IsNameAlreadyUsed(string name, int id) =>
             _iInventoryUnitOfWork.Products.GetCount(n => n.Name == name && n.Id != id) > 0;
+
+        public void DeleteProduct(int id)
+        {
+            _iInventoryUnitOfWork.Products.Remove(id);
+            _iInventoryUnitOfWork.Save();
+        }
     } 
 }

@@ -17,5 +17,6 @@ namespace AttendanceSystem.Present.Services
 
         Student GetStudent(int id);
         void UpdateStudent(Student student);
+        void DeleteStudent(int id);
     }
 }

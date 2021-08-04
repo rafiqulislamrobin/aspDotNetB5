@@ -119,5 +119,10 @@ namespace ECommerceSystem.ProductInfo.Service
         private bool IsNameAlreadyUsed(string name, int id) =>
             _productUnitOfWork.Products.GetCount(n => n.Name == name && n.Id != id) > 0;
 
+        public void DeleteProduct(int id)
+        {
+            _productUnitOfWork.Products.Remove(id);
+            _productUnitOfWork.Save();
+        }
     }
 }

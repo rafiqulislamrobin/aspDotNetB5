@@ -148,10 +148,14 @@ namespace AttendanceSystem.Present.Services
 
         }
         private bool IsRollNumberAlreadyUsed(int rollNumber) =>
-      _PresentUnitOfWork.Students.GetCount(n => n.StudentRollNumber == rollNumber) > 0;
+           _PresentUnitOfWork.Students.GetCount(n => n.StudentRollNumber == rollNumber) > 0;
         private bool IsNameAlreadyUsed(string name, int id) =>
-      _PresentUnitOfWork.Students.GetCount(n => n.Name == name && n.Id != id) > 0;
+           _PresentUnitOfWork.Students.GetCount(n => n.Name == name && n.Id != id) > 0;
 
-     
+        public void DeleteStudent(int id)
+        {
+            _PresentUnitOfWork.Students.Remove(id);
+            _PresentUnitOfWork.save();
+        }
     }
 }

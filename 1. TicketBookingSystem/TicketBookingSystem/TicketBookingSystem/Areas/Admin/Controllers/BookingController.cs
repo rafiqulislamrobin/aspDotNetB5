@@ -91,5 +91,11 @@ namespace TicketBookingSystem.Areas.Admin.Controllers
             }
             return View(model);
         }
+        public IActionResult Delete(int id)
+        {
+            var model = new CustomerListModel();
+            model.Delete(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

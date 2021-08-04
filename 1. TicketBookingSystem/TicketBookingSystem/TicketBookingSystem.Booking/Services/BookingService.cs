@@ -157,5 +157,12 @@ namespace TicketBookingSystem.Booking.Services
             }
             
         }
+
+        public void DeleteCustomer(int id)
+        {
+            _bookingUnitOfWork.Customers.Remove(id);
+            _bookingUnitOfWork.Save();
+           
+        }
     }
 }

@@ -50,5 +50,10 @@ namespace AttendanceSystem.Areas.Admin.Models
             };
 
         }
+
+        internal void Delete(int id)
+        {
+            _attendanceService.DeleteStudent(id);
+        }
     }
 }

@@ -16,5 +16,6 @@ namespace TicketBookingSystem.Booking.Services
                                                                  string searchText, string sortText);
         CustomerBO GetCustomer(int id);
         void UpdateCustomer(CustomerBO customer);
+        void DeleteCustomer(int id);
     }
 }

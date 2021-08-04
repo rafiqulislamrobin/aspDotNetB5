@@ -89,5 +89,11 @@ namespace InventorySystem.Areas.Admin.Controllers
             }
             return View(model);
         }
+        public IActionResult Delete(int id)
+        {
+            var model = new ProductListModel();
+            model.Delete(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

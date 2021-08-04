@@ -52,5 +52,10 @@ namespace InventorySystem.Areas.Admin.Models
             };
 
         }
+
+        internal void Delete(int id)
+        {
+            _invenStoryService.DeleteProduct(id);
+        }
     }
 }

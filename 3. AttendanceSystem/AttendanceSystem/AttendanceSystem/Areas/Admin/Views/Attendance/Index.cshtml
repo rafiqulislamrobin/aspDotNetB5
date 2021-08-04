@@ -43,7 +43,19 @@
                 ]
 
             });
+            $('#Student').on('click', '.show-bs-modal', function (event) {
+                var id = $(this).data("id");
+                var modal = $("#modal-default");
+                modal.find('.modal-body p').text('Are you sure you want to delete this record?')
+                $("#deleteId").val(id);
+                $("#deleteForm").attr("action", "/admin/attendance/delete")
+                modal.modal('show');
+            });
+            $("#deleteButton").click(function () {
+                $("#deleteForm").submit();
+            });
         });
+       
     </script>
 }
 
@@ -84,7 +96,7 @@
 
                                 </tr>
                             </thead>
-                            
+
                             <tfoot>
                                 <tr>
                                     <th>Name</th>
@@ -94,6 +106,7 @@
                                 </tr>
                             </tfoot>
                         </table>
+                        <partial name="_deletePartial" />
                     </div>
                     <!-- /.card-body -->
                 </div>

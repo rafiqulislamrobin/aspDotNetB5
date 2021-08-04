@@ -147,5 +147,11 @@ namespace SocialNetwork.Gallery.Services
             }
 
         }
+
+        public void DeleteMember(int id)
+        {
+            _galleryUnitOfWork.Members.Remove(id);
+            _galleryUnitOfWork.Save();
+        }
     }
 }

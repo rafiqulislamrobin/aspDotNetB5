@@ -20,5 +20,6 @@ namespace SocialNetwork.Gallery.Services
 
         MemberBusinessObject GetMember(int id);
         void UpdateMember(MemberBusinessObject member);
+        void DeleteMember(int id);
     }
 }

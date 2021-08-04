@@ -52,5 +52,10 @@ namespace SocialNetwork.Areas.Admin.Models
             };
 
         }
+
+        internal void Delete(int id)
+        {
+            _galleryServices.DeleteMember(id);
+        }
     }
 }
