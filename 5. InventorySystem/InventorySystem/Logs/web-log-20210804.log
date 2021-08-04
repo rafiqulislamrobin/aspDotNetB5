@@ -19,3 +19,4 @@ TicketBookingSystem.Booking.Exceptions.DuplicateException: Product Name
    at InventorySystem.Areas.Admin.Models.CreateProductModel.CreateProduct() in D:\assingment-3\5. InventorySystem\InventorySystem\Areas\Admin\Models\CreateProductModel.cs:line 33
    at InventorySystem.Areas.Admin.Controllers.InventoryController.Create(CreateProductModel model) in D:\assingment-3\5. InventorySystem\InventorySystem\Areas\Admin\Controllers\InventoryController.cs:line 62
 2021-08-04 20:29:15.179 +06:00 [INF] Application started.
+2021-08-04 20:44:05.916 +06:00 [INF] Application started.
