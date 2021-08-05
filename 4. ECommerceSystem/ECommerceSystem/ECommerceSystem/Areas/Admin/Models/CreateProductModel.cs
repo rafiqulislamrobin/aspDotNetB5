@@ -15,7 +15,7 @@ namespace ECommerceSystem.Areas.Admin.Models
         [Required, MaxLength(100, ErrorMessage = "Nameshould be less than 100 characters")]
         public string Name { get; set; }
 
-        [Required, Range(0, 1000000)]
+        [Required, Range(1, 1000000)]
         public int? Price { get; set; }
 
         private readonly IProductService _iProductService;
