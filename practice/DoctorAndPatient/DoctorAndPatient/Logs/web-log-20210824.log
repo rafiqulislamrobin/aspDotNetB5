@@ -7,3 +7,36 @@
 2021-08-24 22:04:14.443 +06:00 [INF] Application Starting up
 2021-08-24 22:07:19.338 +06:00 [INF] Application Starting up
 2021-08-24 22:09:55.061 +06:00 [INF] Application Starting up
+2021-08-24 22:36:23.530 +06:00 [INF] Application Starting up
+2021-08-24 22:37:16.695 +06:00 [ERR] Add Doctor Failed
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> Doctor
+System.Object -> DoctorAndPatient.Chember.Business_Object.Doctor
+   at lambda_method656(Closure , Object , Doctor , ResolutionContext )
+   at DoctorAndPatient.Areas.Admin.Models.CreateDoctorModel.CreateDoctor() in D:\practice\aspDotNetB5\practice\DoctorAndPatient\DoctorAndPatient\Areas\Admin\Models\CreateDoctorModel.cs:line 35
+   at DoctorAndPatient.Areas.Admin.Controllers.ChemberController.Create(CreateDoctorModel model) in D:\practice\aspDotNetB5\practice\DoctorAndPatient\DoctorAndPatient\Areas\Admin\Controllers\ChemberController.cs:line 52
+2021-08-24 22:37:31.629 +06:00 [ERR] Add Doctor Failed
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> Doctor
+System.Object -> DoctorAndPatient.Chember.Business_Object.Doctor
+   at lambda_method656(Closure , Object , Doctor , ResolutionContext )
+   at DoctorAndPatient.Areas.Admin.Models.CreateDoctorModel.CreateDoctor() in D:\practice\aspDotNetB5\practice\DoctorAndPatient\DoctorAndPatient\Areas\Admin\Models\CreateDoctorModel.cs:line 35
+   at DoctorAndPatient.Areas.Admin.Controllers.ChemberController.Create(CreateDoctorModel model) in D:\practice\aspDotNetB5\practice\DoctorAndPatient\DoctorAndPatient\Areas\Admin\Controllers\ChemberController.cs:line 52
+2021-08-24 22:56:00.062 +06:00 [INF] Application Starting up
+2021-08-24 23:01:09.785 +06:00 [INF] Application Starting up
+2021-08-24 23:03:20.189 +06:00 [INF] Application Starting up
+2021-08-24 23:04:35.351 +06:00 [INF] Application Starting up
+2021-08-24 23:06:20.691 +06:00 [INF] Application Starting up
+2021-08-24 23:12:11.778 +06:00 [INF] Application Starting up
+2021-08-24 23:19:29.645 +06:00 [INF] Application Starting up
+2021-08-24 23:23:08.139 +06:00 [INF] Application Starting up
+2021-08-24 23:24:53.934 +06:00 [INF] Application Starting up
+2021-08-24 23:29:52.504 +06:00 [INF] Application Starting up
+2021-08-24 23:33:16.253 +06:00 [INF] Application Starting up
+2021-08-24 23:38:03.121 +06:00 [INF] Application Starting up
+2021-08-24 23:54:16.770 +06:00 [INF] Application Starting up
+2021-08-24 23:55:10.325 +06:00 [INF] Application Starting up

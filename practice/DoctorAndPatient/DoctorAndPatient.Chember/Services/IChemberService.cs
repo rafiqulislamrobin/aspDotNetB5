@@ -11,5 +11,10 @@ namespace DoctorAndPatient.Chember.Services
     {
         (IList<Doctor> records, int total, int totalDisplay) GetDoctors(int pageIndex, int pageSize,
                                                                  string searchText, string sortText);
+        void CreateDoctor(Doctor doctor);
+        Doctor GetDoctors(int id);
+       
+        void UpdateDoctor(Doctor doctor);
+        void DeleteCustomer(int id);
     }
 }

@@ -1,4 +1,6 @@
 ﻿@model DoctorListModel
+
+@{
     ViewData["Title"] = "DoctorList";
 }
 
@@ -29,15 +31,15 @@
                         "targets": 3,
                         "render": function (data, type, row) {
                             return `<button type="submit" class="btn btn-info btn-sm" onclick="window.location.href='/admin/chember/edit/${data}'" value='${data}'>
-                                                <i class="fas fa-pencil-alt">
-                                                </i>
-                                                Edit
-                                            </button>
-                                            <button type="submit" class="btn btn-danger btn-sm show-bs-modal" href="#" data-id='${data}' value='${data}'>
-                                                <i class="fas fa-trash">
-                                                </i>
-                                                Delete
-                                            </button>`;
+                                                        <i class="fas fa-pencil-alt">
+                                                        </i>
+                                                        Edit
+                                                    </button>
+                                                    <button type="submit" class="btn btn-danger btn-sm show-bs-modal" href="#" data-id='${data}' value='${data}'>
+                                                        <i class="fas fa-trash">
+                                                        </i>
+                                                        Delete
+                                                    </button>`;
                         }
                     }
                 ]
@@ -63,12 +65,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Available Customers</h1>
+                <h1>Available Doctors</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Customers</li>
+                    <li class="breadcrumb-item active">Doctors</li>
                 </ol>
             </div>
         </div>
@@ -81,7 +83,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">All Customer List</h3>
+                        <h3 class="card-title">All Doctors List</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">

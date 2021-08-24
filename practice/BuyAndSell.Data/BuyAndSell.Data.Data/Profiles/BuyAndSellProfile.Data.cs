@@ -9,7 +9,7 @@ using EO = BuyAndSell.Data.Info.Entities;
 
 namespace BuyAndSell.Data.Info.Profiles
 {
-    class BuyAndSellProfile : Profile
+    public class BuyAndSellProfile : Profile
     {
         public BuyAndSellProfile()
         {

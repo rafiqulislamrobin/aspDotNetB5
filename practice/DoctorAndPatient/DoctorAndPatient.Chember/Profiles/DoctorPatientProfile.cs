@@ -2,17 +2,20 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using BO = DoctorAndPatient.Chember.Business_Object;
 using EO = DoctorAndPatient.Chember.Entities;
-namespace DoctorAndPatient.Profiles
+
+namespace DoctorAndPatient.Chember.Profiles
 {
-    public class ChemberProfile : Profile
+  
+    public class DoctorPatientProfile : Profile
     {
-        public ChemberProfile()
+        public DoctorPatientProfile()
         {
             CreateMap<EO.Doctor, BO.Doctor>().ReverseMap();
-          
+            
         }
     }
 }

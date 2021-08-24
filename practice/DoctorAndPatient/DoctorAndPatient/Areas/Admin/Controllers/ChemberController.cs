@@ -34,5 +34,53 @@ namespace DoctorAndPatient.Areas.Admin.Controllers
             var data = model.GetDoctors(dataTableAjaxRequestModel);
             return Json(data);
         }
+
+        public IActionResult Create()
+        {
+            var model = new CreateDoctorModel();
+            return View(model);
+        }
+
+
+        [HttpPost, AutoValidateAntiforgeryToken]
+        public IActionResult Create(CreateDoctorModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    model.CreateDoctor();
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Failed to Add Doctor");
+                    _logger.LogError(ex, "Add Doctor Failed");
+                }
+
+            }
+            return View(model);
+        }
+        public IActionResult Edit(int id)
+        {
+            var model = new EditDoctorModel();
+            model.LoadModelData(id);
+            return View(model);
+        }
+        [HttpPost, AutoValidateAntiforgeryToken]
+        public IActionResult Edit(EditDoctorModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.Update();
+            }
+            return View(model);
+        }
+        public IActionResult Delete(int id)
+        {
+            var model = new DoctorListModel();
+            model.Delete(id);
+            return RedirectToAction(nameof(Index));
+
+        }
     }
 }

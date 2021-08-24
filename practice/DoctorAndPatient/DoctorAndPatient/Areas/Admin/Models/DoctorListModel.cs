@@ -49,6 +49,10 @@ namespace DoctorAndPatient.Areas.Admin.Models
             };
 
         }
-     
+
+        internal void Delete(int id)
+        {
+            _iChemberService.DeleteCustomer(id);
+        }
     }
 }
