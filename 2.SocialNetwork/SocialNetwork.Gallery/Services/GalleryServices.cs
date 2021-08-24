@@ -82,7 +82,7 @@ namespace SocialNetwork.Gallery.Services
       string searchText, string sortText)
         {
             var memberData = _galleryUnitOfWork.Members.GetDynamic(
-                string.IsNullOrWhiteSpace(searchText) ? null : x => x.Name == searchText,
+                string.IsNullOrWhiteSpace(searchText) ? null : x => x.Name.Contains(searchText),
                 sortText, string.Empty, pageIndex, pageSize);
 
             var resultData = (from member in memberData.data

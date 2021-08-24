@@ -86,15 +86,16 @@ namespace AttendanceSystem.Present.Services
         string searchText, string sortText)
         {
             var studentData = _PresentUnitOfWork.Students.GetDynamic(
-                string.IsNullOrWhiteSpace(searchText) ? null : x => x.Name == searchText,
+                string.IsNullOrWhiteSpace(searchText) ? null : x => x.Name.Contains(searchText),
                 sortText, string.Empty, pageIndex, pageSize);
 
             var resultData = (from student in studentData.data
                               select new Student
                               {
                                   Id = student.Id,
-                                  StudentRollNumber = student.StudentRollNumber,
                                   Name = student.Name,
+                                  StudentRollNumber = student.StudentRollNumber,
+                                  
                                   
                                
                               }).ToList();

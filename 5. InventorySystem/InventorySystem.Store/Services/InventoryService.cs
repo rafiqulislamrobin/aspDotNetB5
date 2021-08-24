@@ -83,7 +83,7 @@ namespace InventorySystem.Store.Services
               string searchText, string sortText)
         {
             var productData = _iInventoryUnitOfWork.Products.GetDynamic(
-                string.IsNullOrWhiteSpace(searchText) ? null : x => x.Name == searchText,
+                string.IsNullOrWhiteSpace(searchText) ? null : x => x.Name.Contains(searchText),
                 sortText, string.Empty, pageIndex, pageSize);
 
             var resultData = (from product in productData.data

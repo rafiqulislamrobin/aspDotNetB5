@@ -33,7 +33,7 @@ namespace AttendanceSystem.Areas.Admin.Models
                 dataTableAjaxRequestModel.PageIndex,
                 dataTableAjaxRequestModel.PageSize,
                 dataTableAjaxRequestModel.SearchText,
-                dataTableAjaxRequestModel.GetSortText(new string[] {  "StudentRollNumber", "Name" }));
+                dataTableAjaxRequestModel.GetSortText(new string[] {   "Name", "StudentRollNumber" }));
 
             return new
             {
@@ -42,8 +42,8 @@ namespace AttendanceSystem.Areas.Admin.Models
                 data = (from record in data.records
                         select new string[]
                         {
+                                record.Name,
                                 record.StudentRollNumber.ToString(),
-                                record.Name,  
                                 record.Id.ToString()
                         }
                     ).ToArray()

@@ -57,7 +57,7 @@ namespace ECommerceSystem.ProductInfo.Service
            string searchText, string sortText)
         {
             var productData = _productUnitOfWork.Products.GetDynamic(
-                string.IsNullOrWhiteSpace(searchText) ? null : x => x.Name == searchText,
+                string.IsNullOrWhiteSpace(searchText) ? null : x => x.Name.Contains(searchText),
                 sortText, string.Empty, pageIndex, pageSize);
 
             var resultData = (from product in productData.data
