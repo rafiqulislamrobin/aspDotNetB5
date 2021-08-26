@@ -43,15 +43,7 @@ namespace DoctorAndPatient.Areas.Admin.Models
 
         internal void Update()
         {
-            var doctor = new Doctor
-            {
-                Id = Id.HasValue ? Id.Value : 0,
-                Name = Name,
-                Department = Departement,
-                Degree =Degree
-                
-
-            };
+            var doctor = _mapper.Map<Doctor>(this);
             _iChemberService.UpdateDoctor(doctor);
         }
     }

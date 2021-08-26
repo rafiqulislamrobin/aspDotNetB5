@@ -36,14 +36,8 @@ namespace DoctorAndPatient.Areas.Admin.Models
         }
         internal void CreateDoctor()
         {
-            
-            var doctor = new Doctor()
-            
-            {
-                Name = Name,
-                Department = Department,
-                Degree = Degree
-            };
+
+            var doctor = _mapper.Map<Doctor>(this);
           
 
             _iChemberService.CreateDoctor(doctor);
