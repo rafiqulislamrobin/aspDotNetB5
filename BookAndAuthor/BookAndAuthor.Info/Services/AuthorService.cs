@@ -77,7 +77,7 @@ namespace BookAndAuthor.Info.Services
             {
                 throw new DuplicateException("author name is already used");
             }
-            var authorInfo = _ilibraryUnitOfWork.Book.GetById(author.Id);
+            var authorInfo = _ilibraryUnitOfWork.Author.GetById(author.Id);
             if (authorInfo != null)
             {
                 _mapper.Map(author, authorInfo);
