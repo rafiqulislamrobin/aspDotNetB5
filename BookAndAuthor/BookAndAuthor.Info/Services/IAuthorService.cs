@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace BookAndAuthor.Info.Services
 {
-    public interface IBookService
+    public interface IAuthorService
     {
-        (IList<Book> records, int total, int totalDisplay) GetBooks(int pageIndex, int pageSize,
+        void DeleteAuthor(int id);
+        (IList<Author> records, int total, int totalDisplay) GetAuthors(int pageIndex, int pageSize,
                                                                    string searchText, string sortText);
-        void DeleteBook(int id);
-        void CreateBook(Book book);
-        void UpdateBook(Book book);
-        Book GetBook(int id);
+        void CreateAuthor(Author author);
+        void UpdateAuthor(Author author);
+        Author Getauthor(int id);
     }
 }

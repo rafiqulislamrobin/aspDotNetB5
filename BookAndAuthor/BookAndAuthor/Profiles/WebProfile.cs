@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using BookAndAuthor.Areas.Admin.Models;
+using BookAndAuthor.Info.Business_Object;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +12,10 @@ namespace BookAndAuthor.Profiles
     {
         public WebProfile()
         {
-            //CreateMap<CreateDoctorModel, Doctor>().ReverseMap();
-            //CreateMap<EditDoctorModel, Doctor>().ReverseMap();
+            CreateMap<CreateBookModel, Book>().ReverseMap();
+            CreateMap<EditBookModel, Book>().ReverseMap();
+            CreateMap<CreateAuthorModel, Author>().ReverseMap();
+            CreateMap<EditAuthorModel, Author>().ReverseMap();
 
         }
     }

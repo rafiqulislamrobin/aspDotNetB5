@@ -1,0 +1,67 @@
+﻿@model EditAuthorModel
+@{
+    ViewData["Title"] = "EditAuthor";
+}
+
+
+
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Edit A author</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Edit author</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Edit author</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form method="post" asp-controller="library" asp-action="EditAuthor" asp-antiforgery="true">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label asp-for="Name">Atuhor Name</label>
+                                <input type="text" class="form-control" id="Name" asp-for="Name"
+                                       placeholder="Atuhor Name">
+
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DateOfBirth">Date Of Birth</label>
+                                <input type="datetime-local" class="form-control" id="DateOfBirth" placeholder="Date Of Birth" asp-for="DateOfBirth">
+                            </div>
+                          
+
+                        </div>
+                        <!-- /.card-body -->
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-info">Edit</button>
+                            <a asp-action="EditAuthor" asp-controller="library"
+                               class="btn btn-default float-right">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

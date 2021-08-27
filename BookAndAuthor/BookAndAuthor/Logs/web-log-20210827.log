@@ -1,0 +1,100 @@
+2021-08-27 22:22:40.283 +06:00 [INF] Application Starting up
+2021-08-27 22:37:09.197 +06:00 [INF] Application Starting up
+2021-08-27 22:43:02.194 +06:00 [INF] Application Starting up
+2021-08-27 22:44:25.735 +06:00 [INF] Application Starting up
+2021-08-27 22:53:51.939 +06:00 [INF] Application Starting up
+2021-08-27 22:54:02.946 +06:00 [ERR] The view 'Edit' was not found. Searched locations: ["/Areas/Admin/Views/Library/Edit.cshtml","/Areas/Admin/Views/Shared/Edit.cshtml","/Views/Shared/Edit.cshtml","/Pages/Shared/Edit.cshtml"]
+2021-08-27 22:54:02.957 +06:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'Edit' was not found. The following locations were searched:
+/Areas/Admin/Views/Library/Edit.cshtml
+/Areas/Admin/Views/Shared/Edit.cshtml
+/Views/Shared/Edit.cshtml
+/Pages/Shared/Edit.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|29_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-08-27 22:57:48.783 +06:00 [INF] Application Starting up
+2021-08-27 22:58:49.372 +06:00 [INF] Application Starting up
+2021-08-27 23:10:54.051 +06:00 [INF] Application Starting up
+2021-08-27 23:15:04.100 +06:00 [INF] Application Starting up
+2021-08-27 23:16:13.986 +06:00 [INF] Application Starting up
+2021-08-27 23:16:44.565 +06:00 [INF] Application Starting up
+2021-08-27 23:28:25.306 +06:00 [INF] Application Starting up
+2021-08-27 23:29:29.651 +06:00 [INF] Application Starting up
+2021-08-27 23:29:49.641 +06:00 [ERR] Add Author Failed
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> Author
+System.Object -> BookAndAuthor.Info.Business_Object.Author
+   at lambda_method610(Closure , Object , Author , ResolutionContext )
+   at BookAndAuthor.Areas.Admin.Models.CreateAuthorModel.CreateAuthor() in D:\exam\aspDotNetB5\BookAndAuthor\BookAndAuthor\Areas\Admin\Models\CreateAuthorModel.cs:line 37
+   at BookAndAuthor.Areas.Admin.Controllers.LibraryController.CreateAuthor(CreateAuthorModel model) in D:\exam\aspDotNetB5\BookAndAuthor\BookAndAuthor\Areas\Admin\Controllers\LibraryController.cs:line 118
+2021-08-27 23:30:26.460 +06:00 [INF] Application Starting up
+2021-08-27 23:31:39.679 +06:00 [ERR] Add Author Failed
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> Author
+System.Object -> BookAndAuthor.Info.Business_Object.Author
+   at lambda_method610(Closure , Object , Author , ResolutionContext )
+   at BookAndAuthor.Areas.Admin.Models.CreateAuthorModel.CreateAuthor() in D:\exam\aspDotNetB5\BookAndAuthor\BookAndAuthor\Areas\Admin\Models\CreateAuthorModel.cs:line 37
+   at BookAndAuthor.Areas.Admin.Controllers.LibraryController.CreateAuthor(CreateAuthorModel model) in D:\exam\aspDotNetB5\BookAndAuthor\BookAndAuthor\Areas\Admin\Controllers\LibraryController.cs:line 118
+2021-08-27 23:32:44.377 +06:00 [INF] Application Starting up
+2021-08-27 23:35:01.023 +06:00 [INF] Application Starting up
+2021-08-27 23:35:29.364 +06:00 [INF] Application Starting up
+2021-08-27 23:35:44.459 +06:00 [ERR] Add Author Failed
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> Author
+System.Object -> BookAndAuthor.Info.Business_Object.Author
+   at lambda_method610(Closure , Object , Author , ResolutionContext )
+   at BookAndAuthor.Areas.Admin.Models.CreateAuthorModel.CreateAuthors() in D:\exam\aspDotNetB5\BookAndAuthor\BookAndAuthor\Areas\Admin\Models\CreateAuthorModel.cs:line 37
+   at BookAndAuthor.Areas.Admin.Controllers.LibraryController.CreateAuthor(CreateAuthorModel model) in D:\exam\aspDotNetB5\BookAndAuthor\BookAndAuthor\Areas\Admin\Controllers\LibraryController.cs:line 118
+2021-08-27 23:36:37.998 +06:00 [INF] Application Starting up
+2021-08-27 23:37:01.008 +06:00 [ERR] Add Author Failed
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> Book
+System.Object -> BookAndAuthor.Info.Entities.Book
+   at lambda_method613(Closure , Object , Book , ResolutionContext )
+   at BookAndAuthor.Info.Services.AuthorService.CreateAuthor(Author author) in D:\exam\aspDotNetB5\BookAndAuthor\BookAndAuthor.Info\Services\AuthorService.cs:line 33
+   at BookAndAuthor.Areas.Admin.Models.CreateAuthorModel.CreateAuthors() in D:\exam\aspDotNetB5\BookAndAuthor\BookAndAuthor\Areas\Admin\Models\CreateAuthorModel.cs:line 40
+   at BookAndAuthor.Areas.Admin.Controllers.LibraryController.CreateAuthor(CreateAuthorModel model) in D:\exam\aspDotNetB5\BookAndAuthor\BookAndAuthor\Areas\Admin\Controllers\LibraryController.cs:line 118
+2021-08-27 23:37:09.336 +06:00 [INF] Application Starting up
+2021-08-27 23:37:58.860 +06:00 [ERR] Add Author Failed
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> Book
+System.Object -> BookAndAuthor.Info.Entities.Book
+   at lambda_method613(Closure , Object , Book , ResolutionContext )
+   at BookAndAuthor.Info.Services.AuthorService.CreateAuthor(Author author) in D:\exam\aspDotNetB5\BookAndAuthor\BookAndAuthor.Info\Services\AuthorService.cs:line 33
+   at BookAndAuthor.Areas.Admin.Models.CreateAuthorModel.CreateAuthors() in D:\exam\aspDotNetB5\BookAndAuthor\BookAndAuthor\Areas\Admin\Models\CreateAuthorModel.cs:line 40
+   at BookAndAuthor.Areas.Admin.Controllers.LibraryController.CreateAuthor(CreateAuthorModel model) in D:\exam\aspDotNetB5\BookAndAuthor\BookAndAuthor\Areas\Admin\Controllers\LibraryController.cs:line 118
+2021-08-27 23:38:27.674 +06:00 [INF] Application Starting up
+2021-08-27 23:39:47.012 +06:00 [INF] Application Starting up
+2021-08-27 23:53:54.175 +06:00 [INF] Application Starting up
+2021-08-27 23:55:07.253 +06:00 [INF] Application Starting up
+2021-08-27 23:56:15.792 +06:00 [INF] Application Starting up
+2021-08-27 23:56:51.696 +06:00 [INF] Application Starting up
