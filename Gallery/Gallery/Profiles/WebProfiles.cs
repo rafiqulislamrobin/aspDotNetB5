@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Gallery.Areas.Admin.Models;
+using Gallery.MemberAndImages.Business_Object;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +12,8 @@ namespace Gallery.Profiles
     {
         public WebProfiles()
         {
-            //CreateMap<CreateDoctorModel, Doctor>().ReverseMap();
-            //CreateMap<EditDoctorModel, Doctor>().ReverseMap();
+            CreateMap<CreateMemberModel, Member>().ReverseMap();
+            CreateMap<MemberEditModel, Member>().ReverseMap();
 
         }
     }

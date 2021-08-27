@@ -1,5 +1,8 @@
 ﻿using Autofac;
 using Gallery.MemberAndImages.Context;
+using Gallery.MemberAndImages.Repositories;
+using Gallery.MemberAndImages.Services;
+using Gallery.MemberAndImages.Unit_Of_Work;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,17 +38,17 @@ namespace Gallery.MemberAndImages
                 .WithParameter("migrationAssemblyName", _migrationAssemblyName)
                 .InstancePerLifetimeScope();
 
-            //builder.RegisterType<DoctorRepository>().As<IDoctorRepository>()
-            //  .InstancePerLifetimeScope();
+            builder.RegisterType<MemberRepository>().As<IMemberRepository>()
+              .InstancePerLifetimeScope();
 
-            //builder.RegisterType<PatientRepository>().As<IPatientRepository>()
-            //.InstancePerLifetimeScope();
+            builder.RegisterType<PhotoRepository>().As<IPhotoRepository>()
+            .InstancePerLifetimeScope();
 
-            //builder.RegisterType<ChemberUnitOfWork>().As<IChemberUnitOfWork>()
-            //   .InstancePerLifetimeScope();
+            builder.RegisterType<GalleryService>().As<IGalleryService>()
+               .InstancePerLifetimeScope();
 
-            //builder.RegisterType<ChemberService>().As<IChemberService>()
-            // .InstancePerLifetimeScope();
+            builder.RegisterType<GalleryUnitOfWork>().As<IGalleryUnitOfWork>()
+             .InstancePerLifetimeScope();
 
             base.Load(builder);
 
