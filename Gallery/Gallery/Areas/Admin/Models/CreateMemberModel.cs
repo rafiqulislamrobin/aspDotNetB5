@@ -22,7 +22,7 @@ namespace Gallery.Areas.Admin.Models
         public string Address { get; set; }
 
 
-        private readonly IGalleryService _iGalleryService;
+        public IGalleryService _iGalleryService;
         private readonly IMapper _mapper;
 
         public CreateMemberModel()

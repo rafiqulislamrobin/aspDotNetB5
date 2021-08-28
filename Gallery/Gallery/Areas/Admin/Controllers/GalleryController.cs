@@ -63,7 +63,7 @@ namespace Gallery.Areas.Admin.Controllers
         {
             var model = new MemberListModel();
             model.Delete(id);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(MemberList));
 
         }
         public IActionResult Edit(int id)
@@ -79,7 +79,7 @@ namespace Gallery.Areas.Admin.Controllers
             {
                 model.Update();
             }
-            return View(model);
+            return RedirectToAction(nameof(MemberList));
         }
     }
 
