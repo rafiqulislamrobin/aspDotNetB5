@@ -1,0 +1,11 @@
+2021-08-07 00:28:59.723 +06:00 [INF] Application Starting up
+2021-08-07 00:30:14.381 +06:00 [ERR] Add Member Failed
+TicketBookingSystem.Booking.Exceptions.DuplicateException: Member Name already exist
+   at SocialNetwork.Gallery.Services.GalleryServices.CreateMember(MemberBusinessObject member) in D:\ASPDOTNET\aspDotNetB5\2.SocialNetwork\SocialNetwork.Gallery\Services\GalleryServices.cs:line 48
+   at SocialNetwork.Areas.Admin.Models.CreateMemberModel.CreateMember() in D:\ASPDOTNET\aspDotNetB5\2.SocialNetwork\SocialNetwork\Areas\Admin\Models\CreateMemberModel.cs:line 46
+   at SocialNetwork.Areas.Admin.Controllers.GalleryController.Create(CreateMemberModel model) in D:\ASPDOTNET\aspDotNetB5\2.SocialNetwork\SocialNetwork\Areas\Admin\Controllers\GalleryController.cs:line 60
+2021-08-07 00:44:41.296 +06:00 [INF] Application Starting up
+2021-08-07 00:45:48.833 +06:00 [INF] Application Starting up
+2021-08-07 00:48:26.847 +06:00 [INF] Application Starting up
+2021-08-07 13:40:56.575 +06:00 [INF] Application Starting up
+2021-08-07 13:45:17.778 +06:00 [INF] Application Starting up

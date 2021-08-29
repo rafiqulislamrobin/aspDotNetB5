@@ -24,8 +24,7 @@ namespace SocialNetwork.Gallery.Unit_of_work
 
             : base((DbContext)context)
         {
-            Members = members;
-            Photos = photos;
+           
         }
     }
 }

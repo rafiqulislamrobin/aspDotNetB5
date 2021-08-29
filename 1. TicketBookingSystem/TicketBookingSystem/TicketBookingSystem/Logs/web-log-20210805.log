@@ -1,0 +1,35 @@
+2021-08-05 22:05:11.376 +06:00 [INF] Application Starting up
+2021-08-05 22:10:56.296 +06:00 [INF] Application Starting up
+2021-08-05 22:11:48.722 +06:00 [INF] Application Starting up
+2021-08-05 22:14:18.743 +06:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentNullException: Value cannot be null. (Parameter 's')
+   at System.Int32.Parse(String s)
+   at TicketBookingSystem.Models.DataTablesAjaxRequestModel.get_Length() in D:\ASPDOTNET\aspDotNetB5\1. TicketBookingSystem\TicketBookingSystem\TicketBookingSystem\Models\DataTablesAjaxRequestModel.cs:line 26
+   at TicketBookingSystem.Models.DataTablesAjaxRequestModel.get_PageIndex() in D:\ASPDOTNET\aspDotNetB5\1. TicketBookingSystem\TicketBookingSystem\TicketBookingSystem\Models\DataTablesAjaxRequestModel.cs:line 49
+   at TicketBookingSystem.Areas.Admin.Models.TicketListModel.GetTickets(DataTablesAjaxRequestModel dataTableAjaxRequestModel) in D:\ASPDOTNET\aspDotNetB5\1. TicketBookingSystem\TicketBookingSystem\TicketBookingSystem\Areas\Admin\Models\TicketListModel.cs:line 28
+   at TicketBookingSystem.Areas.Admin.Controllers.BookingController.GetTicketData() in D:\ASPDOTNET\aspDotNetB5\1. TicketBookingSystem\TicketBookingSystem\TicketBookingSystem\Areas\Admin\Controllers\BookingController.cs:line 38
+   at lambda_method633(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-08-05 22:19:59.823 +06:00 [INF] Application Starting up
+2021-08-05 22:24:45.625 +06:00 [INF] Application Starting up
