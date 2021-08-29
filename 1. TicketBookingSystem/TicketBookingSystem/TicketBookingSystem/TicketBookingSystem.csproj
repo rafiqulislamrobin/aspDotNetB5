@@ -24,10 +24,13 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Identity\Pages\Account\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\TicketBooking.Common\TicketBooking.Common.csproj" />
+    <ProjectReference Include="..\TicketBooking.MemberShip]\TicketBooking.MemberShip.csproj" />
     <ProjectReference Include="..\TicketBookingSystem.Booking\TicketBookingSystem.Booking.csproj" />
     <ProjectReference Include="..\TicketBookingSystem.Data\TicketBookingSystem.Data.csproj" />
   </ItemGroup>

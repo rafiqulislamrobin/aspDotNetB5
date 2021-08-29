@@ -10,6 +10,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SocialNetworl.Common;
 using System;
+using TicketBooking.MemberShip_;
+using TicketBooking.MemberShip_.Context;
+using TicketBooking.MemberShip_.Entities;
+using TicketBooking.MemberShip_.Services;
 using TicketBookingSystem.Booking;
 using TicketBookingSystem.Booking.Context;
 using TicketBookingSystem.Data;
@@ -43,6 +47,8 @@ namespace TicketBookingSystem
                 (connectionInfo.connectionString,connectionInfo.migrationAssemblyName));
 
             builder.RegisterModule(new CommonModule());
+            builder.RegisterModule(new MemberShipModule
+                (connectionInfo.connectionString, connectionInfo.migrationAssemblyName));
 
             builder.RegisterModule (new WebModule());
         }
@@ -61,14 +67,43 @@ namespace TicketBookingSystem
             var connectionInfo = GetConnectionStringAndAssemblyName();
 
             services.AddDbContext<ApplicationDbContext>(options =>
-               options.UseSqlServer(connectionInfo.connectionString));
+              options.UseSqlServer(connectionInfo.connectionString,
+                  b => b.MigrationsAssembly(connectionInfo.migrationAssemblyName)));
 
             services.AddDbContext<BookingDbContext>(options =>
                 options.UseSqlServer(connectionInfo.connectionString,
                   b => b.MigrationsAssembly(connectionInfo.migrationAssemblyName)));
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            // Identity customization started here
+            services
+                .AddIdentity<ApplicationUser, Role>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddUserManager<UserManager>()
+                .AddRoleManager<RoleManager>()
+                .AddSignInManager<SignInManager>()
+                .AddDefaultUI()
+                .AddDefaultTokenProviders();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Password settings.
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 1;
+
+                // Lockout settings.
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.MaxFailedAccessAttempts = 5;
+                options.Lockout.AllowedForNewUsers = true;
+
+                // User settings.
+                options.User.AllowedUserNameCharacters =
+                "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+                options.User.RequireUniqueEmail = false;
+            });
 
             services.ConfigureApplicationCookie(options =>
             {

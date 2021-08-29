@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using TicketBooking.MemberShip_.Entities;
 using TicketBookingSystem.Models.Account;
 
 namespace TicketBookingSystem.Controllers
@@ -20,14 +21,14 @@ namespace TicketBookingSystem.Controllers
     public class AccountController : Controller
     {
 
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<AccountController> _logger;
         private readonly IEmailSender _emailSender;
 
         public AccountController(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager,
             ILogger<AccountController> logger,
             IEmailSender emailSender)
         {
@@ -53,7 +54,7 @@ namespace TicketBookingSystem.Controllers
             model.ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
