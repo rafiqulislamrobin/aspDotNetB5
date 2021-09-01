@@ -32,15 +32,15 @@ namespace StockData.info.Context
             base.OnConfiguring(dbContextOptionsBuilder);
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Company>()
-                .HasMany(b => b.StockPrices)
-                .WithOne(t => t.Company);
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Company>()
+        //        .HasMany(b => b.StockPrices)
+        //        .WithOne(t => t.Company);
 
 
-            base.OnModelCreating(modelBuilder);
-        }
+        //    base.OnModelCreating(modelBuilder);
+        //}
 
         public DbSet<Company> Companies { get; set; }
         public DbSet<StockPrice> StockPrices { get; set; }

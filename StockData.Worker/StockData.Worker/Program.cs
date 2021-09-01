@@ -9,6 +9,8 @@ using Serilog;
 using Serilog.Events;
 using StockData.info;
 using StockData.info.Context;
+using StockData.info.Services;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,12 +21,13 @@ namespace StockData.Worker
     public class Program
     {
       
-        public static ILifetimeScope AutofacContainer { get; set; }
+        
 
         private static string _connectionString;
         private static string _migrationAssemblyName;
         private static IConfiguration _configuration;
- 
+
+        public static ILifetimeScope AutofacContainer { get; set; }
         public static void Main(string[] args)
         {
             _configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json", false)
@@ -37,7 +40,7 @@ namespace StockData.Worker
                 .MinimumLevel.Debug()
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
                 .Enrich.FromLogContext()
-                .ReadFrom.Configuration(Program._configuration)
+                .ReadFrom.Configuration(_configuration)
                 .CreateLogger();
             try
             {
@@ -54,8 +57,7 @@ namespace StockData.Worker
             }
         }
 
-
-            public static IHostBuilder CreateHostBuilder(string[] args) =>
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .UseWindowsService()
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
@@ -67,22 +69,29 @@ namespace StockData.Worker
                         (_connectionString, _migrationAssemblyName, _configuration));
                     builder.RegisterModule(new StockModule
                         (_connectionString, _migrationAssemblyName));
+                    
                 })
                 .ConfigureServices((hostContext, services) =>
                 {
-                   _connectionString = hostContext.Configuration["ConnectionStrings:DefaultConnection"];
+                    _connectionString = hostContext.Configuration["ConnectionStrings:DefaultConnection"];
 
-                   _migrationAssemblyName = typeof(Worker).Assembly.FullName;
+                    _migrationAssemblyName = typeof(Worker).Assembly.FullName;
 
                     services.AddHostedService<Worker>();
 
                     services.AddDbContext<StockDataDbContext>(options =>
                        options.UseSqlServer(_connectionString,
                          b => b.MigrationsAssembly(_migrationAssemblyName)));
+                   
+                    // services.AddTransient<IStockService, StockService>();
+                    //services.AddTransient< StockModel>();
+
+
 
                 });
-   
+           
+       
 
 
     }
-}
+ }

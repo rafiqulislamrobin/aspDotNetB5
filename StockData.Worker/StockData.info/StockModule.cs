@@ -1,7 +1,9 @@
 ﻿using Autofac;
 using Microsoft.Extensions.Configuration;
 using StockData.info.Context;
-
+using StockData.info.Repositories;
+using StockData.info.Services;
+using StockData.info.UnitOfWokr;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,15 +39,15 @@ namespace StockData.info
                 .InstancePerLifetimeScope();
 
 
-            //builder.RegisterType<CustomerRepository>().As<ICustomerRepository>()
-            //   .InstancePerLifetimeScope();
-            //builder.RegisterType<TicketRepository>().As<ITicketRepository>()
-            //   .InstancePerLifetimeScope();
-            //builder.RegisterType<BookingUnitOfWork>().As<IBookingUnitOfWork>()
-            //   .InstancePerLifetimeScope();
+            builder.RegisterType<CompanyRepository>().As<ICompanyRepository>()
+               .InstancePerLifetimeScope();
+            builder.RegisterType<StockService>().As<IStockService>()
+               .InstancePerLifetimeScope();
+            builder.RegisterType<StockDataUnitOfWork>().As<IStockDataUnitOfWork>()
+               .InstancePerLifetimeScope();
 
-            //builder.RegisterType<BookingService>().As<IBookingService>()
-            //    .InstancePerLifetimeScope();
+            builder.RegisterType<StockPriceRepositories>().As<IStockPriceRepositories>()
+                .InstancePerLifetimeScope();
 
             base.Load(builder);
         }

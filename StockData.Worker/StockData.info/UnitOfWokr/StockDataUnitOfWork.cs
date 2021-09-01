@@ -13,15 +13,15 @@ namespace StockData.info.UnitOfWokr
     public class StockDataUnitOfWork : UnitOfWork, IStockDataUnitOfWork
     {
         public ICompanyRepository Company { get; private set; }
-        public ICompanyRepository Member { get; private set; }
+        public IStockPriceRepositories StockPrice { get; private set; }
 
         public StockDataUnitOfWork(IStockDataDbContext context,
              ICompanyRepository company,
-             ICompanyRepository member)
+             IStockPriceRepositories stockPrice)
               : base((DbContext)context)
         {
             Company = company;
-            Member = member;
+            StockPrice = stockPrice;
         }
     }
 }

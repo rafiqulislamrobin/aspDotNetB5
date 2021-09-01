@@ -11,6 +11,6 @@ namespace StockData.info.UnitOfWokr
     public interface IStockDataUnitOfWork : IUnitOfWork
     {
         ICompanyRepository Company { get; }
-        ICompanyRepository Member { get; }
+        IStockPriceRepositories StockPrice { get; }
     }
 }
