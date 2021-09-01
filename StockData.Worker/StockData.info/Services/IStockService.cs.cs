@@ -10,5 +10,6 @@ namespace StockData.info.Services
     public interface IStockService
     {
         void addStockPrice();
+        
     }
 }

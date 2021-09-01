@@ -34,9 +34,13 @@ namespace StockData.info.Services
             if (hlw.InnerText != "Closed")
             {
                 List<StockPrice> stocks = new List<StockPrice>();
+
                 StockPrice stock = new();
+                Company company = new();
+
                 var aNodes2 = doc.DocumentNode.SelectSingleNode("//table[@class='table table-bordered background-white shares-table fixedHeader']");
                 HtmlNode[] nodes = aNodes2.SelectNodes(".//tr//td").ToArray();
+
                 for (int i = 0; i < 4180; i++)
                 {
                     var nodes2 = nodes[i].InnerText;
@@ -46,7 +50,7 @@ namespace StockData.info.Services
                     }
                     else if (i % 11 == 1)
                     {
-                        continue;
+                        company.TradeCode = ((nodes2));
                     }
                     else if (i % 11 == 2)
                     {
@@ -96,7 +100,8 @@ namespace StockData.info.Services
                         stock.Volume = Convert.ToDouble((nodes2));
                     }
 
-                    if (i % 10 == 0 && i != 0)
+
+                    if (i % 11 == 10)
                     {
                         stocks.Add(stock);
                        
@@ -120,6 +125,15 @@ namespace StockData.info.Services
                         });
                         _iStockDataUnitOfWork.Save();
                         stock = new();
+                    }
+                    else if(i %11 ==1)
+                    {
+                        _iStockDataUnitOfWork.Company.Add(new Entities.Company
+                        {
+                            TradeCode=company.TradeCode
+                        });
+                        _iStockDataUnitOfWork.Save();
+                        company = new();
                     }
 
                 }
