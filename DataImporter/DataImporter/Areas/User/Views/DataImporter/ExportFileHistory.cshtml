@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "ExportFileHistory";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Exports File History</h1>
+            </div>
+
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header" style="color: white;background-color: #343a40">
+                        <h3 class="card-title">List</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="Contact" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>File Name</th>
+                                    <th>Exports Date</th>
+                                    <th>Group Name</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+
+                        </table>
+
+                        <partial name="_deletePartial" />
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+                <!-- /.card -->
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+<!-- /.content-wrapper -->
