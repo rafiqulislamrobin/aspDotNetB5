@@ -3,6 +3,10 @@
     ViewData["Title"] = "ViewImportFile";
 }
 
+@section Styles
+{
+    <link rel="stylesheet" href="/user/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+}
 
 
 @section Scripts
@@ -23,15 +27,15 @@
                         "targets": 4,
                         "render": function (data, type, row) {
                             return `<button type="submit" class="btn btn-info btn-sm" onclick="window.location.href='/admin/gallery/edit/${data}'" value='${data}'>
-                                                <i class="fas fa-pencil-alt">
-                                                </i>
-                                                Edit
-                                            </button>
-                                            <button type="submit" class="btn btn-danger btn-sm show-bs-modal" href="#" data-id='${data}' value='${data}'>
-                                                <i class="fas fa-trash">
-                                                </i>
-                                                Delete
-                                            </button>`;
+                                                    <i class="fas fa-pencil-alt">
+                                                    </i>
+                                                    Edit
+                                                </button>
+                                                <button type="submit" class="btn btn-danger btn-sm show-bs-modal" href="#" data-id='${data}' value='${data}'>
+                                                    <i class="fas fa-trash">
+                                                    </i>
+                                                    Delete
+                                                </button>`;
                         }
                     }
                 ]
@@ -87,7 +91,7 @@
                                 </tr>
                             </thead>
 
-                         
+
                         </table>
 
                         <partial name="_deletePartial" />

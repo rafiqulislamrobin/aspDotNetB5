@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,12 @@ namespace DataImporter.Areas.User.Controllers
     [Area("User")]
     public class DataImporterController : Controller
     {
+        private readonly ILogger<DataImporterController> _logger;
+
+        public DataImporterController(ILogger<DataImporterController> logger)
+        {
+            _logger = logger;
+        }
         public IActionResult Index()
         {
             return View();
