@@ -26,4 +26,9 @@
     <Folder Include="Areas\User\Models\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DataImporter.Common\DataImporter.Common.csproj" />
+    <ProjectReference Include="..\DataImporter.Data\DataImporter.Data.csproj" />
+  </ItemGroup>
+
 </Project>
