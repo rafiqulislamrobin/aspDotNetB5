@@ -1,11 +1,13 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using DataImporter.Data;
+using DataImporter.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -67,7 +69,11 @@ namespace DataImporter
                   b => b.MigrationsAssembly(connectionInfo.migrationAssemblyName)));
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-              .AddEntityFrameworkStores<ApplicationDbContext>();
+              .AddEntityFrameworkStores<ApplicationDbContext>()
+              .AddDefaultTokenProviders();
+
+            services.AddTransient<IEmailSender, EmailSender>();
+
             //services.AddDbContext<BookingDbContext>(options =>
             //    options.UseSqlServer(connectionInfo.connectionString,
             //      b => b.MigrationsAssembly(connectionInfo.migrationAssemblyName)));

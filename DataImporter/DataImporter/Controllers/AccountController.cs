@@ -1,5 +1,7 @@
 ﻿using DataImporter.Models.AccountModel;
+
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +17,9 @@ using System.Threading.Tasks;
 
 namespace DataImporter.Controllers
 {
+    
     [Area("User")]
+
     public class AccountController : Controller
     {
 
@@ -48,48 +52,73 @@ namespace DataImporter.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterModel model, string returnUrl = null )
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterModel model, string returnUrl)
         {
-            returnUrl ??= Url.Content("~/");
-            model.ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = model.Email, Email = model.Email };
+                var user = new IdentityUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email
+                };
+
                 var result = await _userManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User created a new account with password.");
+                    var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    var callbackUrl = Url.Page(
-                        "/Account/ConfirmEmail",
-                        pageHandler: null,
-                        values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
-                        protocol: Request.Scheme);
+                    var confirmationLink = Url.Action("ConfirmEmail", "Account",
+                        new { userId = user.Id, token = token }, Request.Scheme);
+                       
+
+                    if (_signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    {
+                        return RedirectToAction("ListUsers", "Administration");
+                    }
 
                     await _emailSender.SendEmailAsync(model.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                       $"Please confirm your account by" +
+                       $" <a href='{HtmlEncoder.Default.Encode(confirmationLink)}'>clicking here</a>.");
+                   
+                    return View("RegistrationSuccessView");
 
-                    if (_userManager.Options.SignIn.RequireConfirmedAccount)
-                    {
-                        return RedirectToAction("RegisterConfirmation", "Account");
-                    }
-                    else
-                    {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
-                    }
+               
                 }
+
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
 
-            // If we got this far, something failed, redisplay form
             return View(model);
         }
+        [AllowAnonymous]
+        public async Task<IActionResult> ConfirmEmail(string userId, string token)
+        {
+            if (userId == null || token ==null)
+            {
+                return RedirectToAction("Index", "DataImporter");
+            }
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = $"The User ID {userId} is invalid";
+                return View("NotFound");
+            }
+            var result = await _userManager.ConfirmEmailAsync(user,token);
+            if (result.Succeeded)
+            {
+                return View("ConfirmEmailView");
+            }
+            ViewBag.ErrorTitle = "Email cannot be confirmed";
+            return View("RegistrationSuccessView");
+
+        }
+
         [TempData]
         public string ErrorMessage { get; set; }
 

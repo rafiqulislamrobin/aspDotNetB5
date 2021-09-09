@@ -32,33 +32,37 @@
                         <form class="form-horizontal" method="post" asp-controller="Account" asp-action="Register">
                             @*<div class="form-group ">
 
-                                                                                      <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                        <input type="text" name="register_username" class="form-control" placeholder="Username" required="required" value="">
-                                    </div>
-                                </div>*@
+                                                              <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                <input type="text" name="register_username" class="form-control" placeholder="Username" required="required" value="">
+            </div>
+        </div>*@
                             <div class="form-group ">
                                 <div class="input-group">
 
                                     <label asp-for="Email"></label>
-                                    <input asp-for="Email" class="form-control"  placeholder="Email" required="required"/>
+                                    <input asp-for="Email" class="form-control" placeholder="Email" required="required" />
                                     <span asp-validation-for="Email" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group ">
                                 <div class="input-group">
                                     <label asp-for="Password"></label>
-                                    <input asp-for="Password" class="form-control" placeholder="Password" required="required"/>
+                                    <input asp-for="Password" class="form-control" placeholder="Password" required="required" />
                                     <span asp-validation-for="Password" class="text-danger"></span>
                                 </div>
                             </div>
+
                             <div class="form-group ">
                                 <div class="input-group">
                                     <label asp-for="ConfirmPassword"></label>
-                                    <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password" required="required"/>
+                                    <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password" required="required" />
                                     <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                                 </div>
                             </div>
+
+                            <span style="color:azure; margin-left:5px">@ViewBag.Message</span>
+
                             <input type="submit" value="Register" class="btn btn-success btn-custom">
                         </form>
                     </div>
