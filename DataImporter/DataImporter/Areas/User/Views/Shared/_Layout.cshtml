@@ -28,7 +28,6 @@
     <link rel="stylesheet" href="../wwwroot/user/css/adminlte.css">
     <link rel="stylesheet" href="~/css/User.css">
 
-
     @await RenderSectionAsync("UserStyles", false)
     @await RenderSectionAsync("Styles", false)
 
@@ -54,49 +53,10 @@
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
+                <partial name="_LoginPartial" />
                 <!-- Navbar Search -->
-                <li class="nav-item">
 
 
-                    <form class="form-inline">
-                        <div class="input-group input-group-sm">
-
-                            <div class="input-group-append">
-                                <button class="btn btn-navbar" type="submit" asp-controller="DataImporter" asp-action="Register"
-                                        style="background-color: grey; color:white;margin-right:20px;border-radius:5px">
-                                    REGISTER
-                                </button>
-
-                            </div>
-
-
-                        </div>
-                    </form>
-
-                </li>
-
-                <!-- Messages Dropdown Menu -->
-                <li class="nav-item">
-
-
-                    <form class="form-inline">
-                        <div class="input-group input-group-sm">
-
-                            <div class="input-group-append">
-                                <button class="btn btn-navbar" type="submit" asp-controller="DataImporter" asp-action="Login"
-                                        style="background-color: grey; color:white;margin-left:20px; margin-right:20px;border-radius:5px">
-                                    Log in
-                                </button>
-
-                            </div>
-
-
-                        </div>
-                    </form>
-
-                </li>
-                <!-- Notifications Dropdown Menu -->
-                
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -120,7 +80,7 @@
 
         <!-- Content Wrapper. Contains page content -->
 
-        <div class="content-wrapper" style="background-color:grey;margin-bottom">
+        <div class="content-wrapper" style="background-color:grey;">
             @RenderBody()
         </div>
 
