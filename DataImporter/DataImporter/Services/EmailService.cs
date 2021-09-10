@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNet.Identity;
+﻿
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.IdentityModel.Protocols;
 using SendGrid;

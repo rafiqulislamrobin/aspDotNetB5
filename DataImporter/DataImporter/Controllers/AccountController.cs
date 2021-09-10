@@ -1,5 +1,5 @@
 ﻿using DataImporter.Models.AccountModel;
-
+using DataImporter.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -27,18 +27,24 @@ namespace DataImporter.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<AccountController> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly CaptchaVerificationService verificationService;
+        public string CaptchaClientKey { get; set; }
 
-      
+        [BindProperty(Name = "g-recaptcha-response")]
+        public string CaptchaResponse { get; set; }
+
         public AccountController(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             ILogger<AccountController> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            CaptchaVerificationService verificationService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            this.verificationService = verificationService;
         }
 
 
@@ -64,35 +70,45 @@ namespace DataImporter.Controllers
                     Email = model.Email
                 };
 
-                var result = await _userManager.CreateAsync(user, model.Password);
+                var requestIsValid = await this.verificationService.IsCaptchaValid(CaptchaResponse);
 
-                if (result.Succeeded)
+                if (requestIsValid)
                 {
-                    var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var result = await _userManager.CreateAsync(user, model.Password);
 
-                    var confirmationLink = Url.Action("ConfirmEmail", "Account",
-                        new { userId = user.Id, token = token }, Request.Scheme);
-                       
-
-                    if (_signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    if (result.Succeeded)
                     {
-                        return RedirectToAction("ListUsers", "Administration");
+                        var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+
+                        var confirmationLink = Url.Action("ConfirmEmail", "Account",
+                            new { userId = user.Id, token = token }, Request.Scheme);
+
+
+                        if (_signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                        {
+                            return RedirectToAction("ListUsers", "Administration");
+                        }
+
+                        await _emailSender.SendEmailAsync(model.Email, "Confirm your email",
+                           $"Please confirm your account by" +
+                           $" <a href='{HtmlEncoder.Default.Encode(confirmationLink)}'>clicking here</a>.");
+
+                        return View("RegistrationSuccessView");
+                    }
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
                     }
 
-                    await _emailSender.SendEmailAsync(model.Email, "Confirm your email",
-                       $"Please confirm your account by" +
-                       $" <a href='{HtmlEncoder.Default.Encode(confirmationLink)}'>clicking here</a>.");
-                   
-                    return View("RegistrationSuccessView");
-
-               
                 }
 
-                foreach (var error in result.Errors)
+                else
                 {
-                    ModelState.AddModelError(string.Empty, error.Description);
+                    return RedirectToAction("Error");
                 }
             }
+
+              
 
             return View(model);
         }
@@ -125,12 +141,14 @@ namespace DataImporter.Controllers
 
         public async Task<IActionResult> Login( string returnUrl = null)
         {
+          
             LoginModel model = new();
 
             if (!string.IsNullOrEmpty(ErrorMessage))
             {
                 ModelState.AddModelError(string.Empty, ErrorMessage);
             }
+        
 
             returnUrl ??= Url.Content("~/");
 
@@ -149,42 +167,53 @@ namespace DataImporter.Controllers
             returnUrl ??= Url.Content("~/");
 
             loginModel.ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            // validate input
+            var requestIsValid = await this.verificationService.IsCaptchaValid(CaptchaResponse);
 
-            if (ModelState.IsValid)
+            if (requestIsValid)
             {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(loginModel.Email, loginModel.Password,
-                    loginModel.RememberMe, lockoutOnFailure: false);
-                if (result.Succeeded)
+                if (ModelState.IsValid)
                 {
-                    _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
-                }
-                if (result.RequiresTwoFactor)
-                {
-                    return RedirectToPage("./LoginWith2fa", new
+                    // This doesn't count login failures towards account lockout
+                    // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+                    var result = await _signInManager.PasswordSignInAsync(loginModel.Email, loginModel.Password,
+                        loginModel.RememberMe, lockoutOnFailure: false);
+                    if (result.Succeeded)
                     {
-                        ReturnUrl = returnUrl,
-                        RememberMe = loginModel.RememberMe
-                    });
-                }
-                if (result.IsLockedOut)
-                {
-                    _logger.LogWarning("User account locked out.");
-                    return RedirectToPage("./Lockout");
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    ViewBag.Message = "Invalid login attempt.";
-                    return View(loginModel);
-                    
-                }
-            }
+                        _logger.LogInformation("User logged in.");
+                        return LocalRedirect(returnUrl);
+                    }
+                    if (result.RequiresTwoFactor)
+                    {
+                        return RedirectToPage("./LoginWith2fa", new
+                        {
+                            ReturnUrl = returnUrl,
+                            RememberMe = loginModel.RememberMe
+                        });
+                    }
+                    if (result.IsLockedOut)
+                    {
+                        _logger.LogWarning("User account locked out.");
+                        return RedirectToPage("./Lockout");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                        ViewBag.Message = "Invalid login attempt.";
+                        return View(loginModel);
 
-            // If we got this far, something failed, redisplay form
+                    }
+                }
+
+                // If we got this far, something failed, redisplay form
+                
+            }
+            else
+            {
+                return RedirectToAction("errors");
+            }
             return RedirectToAction("Index", "DataImporter");
+
         }
 
         [HttpPost]

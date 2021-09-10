@@ -3,7 +3,12 @@
 @{
     ViewData["Title"] = "Login";
 }
-
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+    function onSubmit(token) {
+        document.getElementById("email-form").submit();
+    }
+</script>
 
 <head>
 
@@ -22,91 +27,94 @@
 <br />
 
 
-    <body style="overflow-x:hidden">
-        <br>
-        <div class="row">
-            <div class="container">
-                <div class="login-register-form-section">
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li class="active"><a asp-controller="Account" asp-action="Login">Login</a></li>
-                        <li><a asp-controller="Account" asp-action="Register">Register</a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane fade in active" id="login">
-                            <form class="form-horizontal" method="post" asp-controller="Account" asp-action="Login">
-                                <div class="form-group ">
-                                    <div class="input-group">
+<body style="overflow-x:hidden">
+    <br>
+    <div class="row">
+        <div class="container">
+            <div class="login-register-form-section">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="active"><a asp-controller="Account" asp-action="Login">Login</a></li>
+                    <li><a asp-controller="Account" asp-action="Register">Register</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="login">
+                        <form class="form-horizontal" method="post" asp-controller="Account" asp-action="Login">
+                            <div class="form-group ">
+                                <div class="input-group">
 
-                                        <label asp-for="Email"></label>
-                                        <input asp-for="Email" class="form-control" required="required" />
-                                        <span asp-validation-for="Email" class="text-danger"></span>
-                                    </div>
+                                    <label asp-for="Email"></label>
+                                    <input asp-for="Email" class="form-control" required="required" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
                                 </div>
-                                <div class="form-group ">
-                                    <div class="input-group">
-                                        <label asp-for="Password"></label>
-                                        <input asp-for="Password" class="form-control" required="required" />
-                                        <span asp-validation-for="Password" class="text-danger"></span>
-                                        
-                                    </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="input-group">
+                                    <label asp-for="Password"></label>
+                                    <input asp-for="Password" class="form-control" required="required" />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+
                                 </div>
-                                <span style="color:azure; margin-left:5px">@ViewBag.Message</span>
-                                <div class="form-group">
+                            </div>
+                            <span style="color:azure; margin-left:5px">@ViewBag.Message</span>
+                            @*<div class="form-group">
                                     <div class="checkbox">
                                         <label asp-for="RememberMe">
                                             <input asp-for="RememberMe" />
                                             @Html.DisplayNameFor(m => m.RememberMe)
                                         </label>
                                     </div>
-                                </div>
-                                <input type="submit" value="Login" class="btn btn-success btn-custom">
+                                </div>*@
+                            <div class="form-group">
+                                <div class="g-recaptcha" data-sitekey="6LfFeVgcAAAAAPBgtYfYe4Stc7av6Uyj_mYAxhuB"></div>
+                            </div>
+                            <input type="submit" value="Login" class="btn btn-success btn-custom">
 
-                            </form>
-                        </div>
-                        @*<div role="tabpanel" class="tab-pane fade" id="register">
-                                <form class="form-horizontal" method="post" action="">
-                                    <div class="form-group ">
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                            <input type="text" name="register_username" class="form-control" placeholder="Username" required="required" value="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-male"></i></div>
-                                            <input type="text" name="register_fullname" class="form-control" placeholder="Full name" required="required" value="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-                                            <input type="email" name="register_email" class="form-control" placeholder="Email" required="required" value="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-lock"></i></div>
-                                            <input type="password" name="register_password" class="form-control" placeholder="Password" required="required">
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-lock"></i></div>
-                                            <input type="password" name="register_cpassword" class="form-control" placeholder="Confirm Password" required="required">
-                                        </div>
-                                    </div>
-                                    <input type="submit" value="Register" class="btn btn-success btn-custom">
-                                </form>
-                            </div>*@
+                        </form>
                     </div>
+                    @*<div role="tabpanel" class="tab-pane fade" id="register">
+                            <form class="form-horizontal" method="post" action="">
+                                <div class="form-group ">
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                        <input type="text" name="register_username" class="form-control" placeholder="Username" required="required" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-male"></i></div>
+                                        <input type="text" name="register_fullname" class="form-control" placeholder="Full name" required="required" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                        <input type="email" name="register_email" class="form-control" placeholder="Email" required="required" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                        <input type="password" name="register_password" class="form-control" placeholder="Password" required="required">
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                        <input type="password" name="register_cpassword" class="form-control" placeholder="Confirm Password" required="required">
+                                    </div>
+                                </div>
+                                <input type="submit" value="Register" class="btn btn-success btn-custom">
+                            </form>
+                        </div>*@
                 </div>
             </div>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 
-    </body>
+</body>
 
 
 

@@ -88,6 +88,8 @@ namespace DataImporter
             //    .AddDefaultUI()
             //    .AddDefaultTokenProviders();
 
+            services.AddOptions<CaptchaSettings>().BindConfiguration("Captcha");
+            services.AddTransient<CaptchaVerificationService>();
 
 
             services.ConfigureApplicationCookie(options =>
