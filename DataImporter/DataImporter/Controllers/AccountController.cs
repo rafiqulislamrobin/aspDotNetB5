@@ -21,20 +21,20 @@ namespace DataImporter.Controllers
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<AccountController> _logger;
-        private readonly IEmailSender _emailSender;
+        private readonly IEmailService _emailService;
         private readonly IRecaptchaService _recaptchaService;
 
         public AccountController(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             ILogger<AccountController> logger,
-            IEmailSender emailSender,
+            IEmailService emailSender,
             IRecaptchaService recaptchaService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
-            _emailSender = emailSender;
+            _emailService = emailSender;
             _recaptchaService = recaptchaService;
 
 
@@ -84,7 +84,7 @@ namespace DataImporter.Controllers
                             return RedirectToAction("ListUsers", "Administration");
                         }
 
-                        await _emailSender.SendEmailAsync(model.Email, "Confirm your email",
+                         _emailService.SendEmailAsync(model.Email, "Confirm your email",
                            $"Please confirm your account by" +
                            $" <a href='{HtmlEncoder.Default.Encode(confirmationLink)}'>clicking here</a>.");
 

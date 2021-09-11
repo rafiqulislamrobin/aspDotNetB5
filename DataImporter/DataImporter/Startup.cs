@@ -72,7 +72,7 @@ namespace DataImporter
               .AddEntityFrameworkStores<ApplicationDbContext>()
               .AddDefaultTokenProviders();
 
-            services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IEmailService, EmailSender>();
             services.AddTransient<IRecaptchaService, RecaptchaService>();
             
 

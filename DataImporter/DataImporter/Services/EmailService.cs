@@ -1,27 +1,22 @@
 ﻿
 using Microsoft.AspNetCore.Identity.UI.Services;
-using Microsoft.IdentityModel.Protocols;
-using SendGrid;
-using SendGrid.Helpers.Mail;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
 using System.Threading.Tasks;
-using System.Web;
+
 
 namespace DataImporter.Services
 {
-    public class EmailSender : IEmailSender
+    public class EmailSender : IEmailService
     {
         public EmailSender()
         {
 
         }
 
-        public async Task SendEmailAsync(string email, string subject, string htmlMessage)
+        public void SendEmailAsync(string email, string subject, string htmlMessage)
         {
             string fromMail = "kratosrobin467@gmail.com";
             string fromPassword = "letthewarbegin946";
