@@ -5,13 +5,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
@@ -27,24 +22,22 @@ namespace DataImporter.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<AccountController> _logger;
         private readonly IEmailSender _emailSender;
-        private readonly CaptchaVerificationService verificationService;
-        public string CaptchaClientKey { get; set; }
-
-        [BindProperty(Name = "g-recaptcha-response")]
-        public string CaptchaResponse { get; set; }
+        private readonly IRecaptchaService _recaptchaService;
 
         public AccountController(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             ILogger<AccountController> logger,
             IEmailSender emailSender,
-            CaptchaVerificationService verificationService)
+            IRecaptchaService recaptchaService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
-            this.verificationService = verificationService;
+            _recaptchaService = recaptchaService;
+
+
         }
 
 
@@ -56,24 +49,26 @@ namespace DataImporter.Controllers
             
             return View();
         }
-
+        
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterModel model, string returnUrl)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var user = new IdentityUser
+                return RedirectToAction("Register", "DataImporter");
+            }
+            else
+            {
+               var  captcha= _recaptchaService.ReCaptchaPassed(Request.Form["foo"]);
+                if (captcha)
                 {
-                    UserName = model.Email,
-                    Email = model.Email
-                };
-
-                var requestIsValid = await this.verificationService.IsCaptchaValid(CaptchaResponse);
-
-                if (requestIsValid)
-                {
+                       var user = new IdentityUser
+                       {
+                           UserName = model.Email,
+                           Email = model.Email
+                       };           
                     var result = await _userManager.CreateAsync(user, model.Password);
 
                     if (result.Succeeded)
@@ -138,7 +133,6 @@ namespace DataImporter.Controllers
         [TempData]
         public string ErrorMessage { get; set; }
 
-
         public async Task<IActionResult> Login( string returnUrl = null)
         {
           
@@ -167,51 +161,58 @@ namespace DataImporter.Controllers
             returnUrl ??= Url.Content("~/");
 
             loginModel.ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-            // validate input
-            var requestIsValid = await this.verificationService.IsCaptchaValid(CaptchaResponse);
+            
+          
 
-            if (requestIsValid)
-            {
-                if (ModelState.IsValid)
+            
+                if (!ModelState.IsValid)
                 {
-                    // This doesn't count login failures towards account lockout
-                    // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                    var result = await _signInManager.PasswordSignInAsync(loginModel.Email, loginModel.Password,
-                        loginModel.RememberMe, lockoutOnFailure: false);
-                    if (result.Succeeded)
-                    {
-                        _logger.LogInformation("User logged in.");
-                        return LocalRedirect(returnUrl);
-                    }
-                    if (result.RequiresTwoFactor)
-                    {
-                        return RedirectToPage("./LoginWith2fa", new
-                        {
-                            ReturnUrl = returnUrl,
-                            RememberMe = loginModel.RememberMe
-                        });
-                    }
-                    if (result.IsLockedOut)
-                    {
-                        _logger.LogWarning("User account locked out.");
-                        return RedirectToPage("./Lockout");
-                    }
-                    else
-                    {
-                        ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                        ViewBag.Message = "Invalid login attempt.";
-                        return View(loginModel);
+                    return RedirectToAction("error");
+                }
+                else
+                {
+                var captcha = _recaptchaService.ReCaptchaPassed(Request.Form["foo"]);
 
+
+                if (captcha)
+                {
+                        // This doesn't count login failures towards account lockout
+                        // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+                        var result = await _signInManager.PasswordSignInAsync(loginModel.Email, loginModel.Password,
+                            loginModel.RememberMe, lockoutOnFailure: false);
+                        if (result.Succeeded)
+                        {
+                            _logger.LogInformation("User logged in.");
+                            return LocalRedirect(returnUrl);
+                        }
+                        if (result.RequiresTwoFactor)
+                        {
+                            return RedirectToPage("./LoginWith2fa", new
+                            {
+                                ReturnUrl = returnUrl,
+                                RememberMe = loginModel.RememberMe
+                            });
+                        }
+                        if (result.IsLockedOut)
+                        {
+                            _logger.LogWarning("User account locked out.");
+                            return RedirectToPage("./Lockout");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                            ViewBag.Message = "Invalid login attempt.";
+                            return View(loginModel);
+
+                        }
                     }
+                else
+                {
+                    ViewBag.Message2 = "suspicious as a Bot";
                 }
 
-                // If we got this far, something failed, redisplay form
-                
-            }
-            else
-            {
-                return RedirectToAction("errors");
-            }
+                }
+               // If we got this far, something failed, redisplay form
             return RedirectToAction("Index", "DataImporter");
 
         }

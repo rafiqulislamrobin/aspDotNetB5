@@ -3,12 +3,24 @@
 @{
     ViewData["Title"] = "Login";
 }
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<script>
-    function onSubmit(token) {
-        document.getElementById("email-form").submit();
-    }
-</script>
+@*<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("email-form").submit();
+        }
+    </script>*@
+
+@section Scripts
+{
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfA81ocAAAAAInGiexBq-KLtZGpw6mzugcu-bWi"></script>
+    <script>
+        grecaptcha.ready(function () {
+            grecaptcha.execute('6LfA81ocAAAAAInGiexBq-KLtZGpw6mzugcu-bWi', { action: 'Login' }).then(function (token) {
+                document.getElementById("foo").value = token;
+            });
+        });
+    </script>
+}
 
 <head>
 
@@ -64,48 +76,13 @@
                                         </label>
                                     </div>
                                 </div>*@
-                            <div class="form-group">
-                                <div class="g-recaptcha" data-sitekey="6LfFeVgcAAAAAPBgtYfYe4Stc7av6Uyj_mYAxhuB"></div>
-                            </div>
+                            <input type="hidden" id="foo" name="foo" />
+                            <span style="color:azure; margin-left:5px">@ViewBag.Message2</span>
                             <input type="submit" value="Login" class="btn btn-success btn-custom">
 
                         </form>
                     </div>
-                    @*<div role="tabpanel" class="tab-pane fade" id="register">
-                            <form class="form-horizontal" method="post" action="">
-                                <div class="form-group ">
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                        <input type="text" name="register_username" class="form-control" placeholder="Username" required="required" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-male"></i></div>
-                                        <input type="text" name="register_fullname" class="form-control" placeholder="Full name" required="required" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-                                        <input type="email" name="register_email" class="form-control" placeholder="Email" required="required" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-lock"></i></div>
-                                        <input type="password" name="register_password" class="form-control" placeholder="Password" required="required">
-                                    </div>
-                                </div>
-                                <div class="form-group ">
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-lock"></i></div>
-                                        <input type="password" name="register_cpassword" class="form-control" placeholder="Confirm Password" required="required">
-                                    </div>
-                                </div>
-                                <input type="submit" value="Register" class="btn btn-success btn-custom">
-                            </form>
-                        </div>*@
+              
                 </div>
             </div>
         </div>

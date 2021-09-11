@@ -73,6 +73,8 @@ namespace DataImporter
               .AddDefaultTokenProviders();
 
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IRecaptchaService, RecaptchaService>();
+            
 
             //services.AddDbContext<BookingDbContext>(options =>
             //    options.UseSqlServer(connectionInfo.connectionString,
@@ -88,8 +90,7 @@ namespace DataImporter
             //    .AddDefaultUI()
             //    .AddDefaultTokenProviders();
 
-            services.AddOptions<CaptchaSettings>().BindConfiguration("Captcha");
-            services.AddTransient<CaptchaVerificationService>();
+
 
 
             services.ConfigureApplicationCookie(options =>
