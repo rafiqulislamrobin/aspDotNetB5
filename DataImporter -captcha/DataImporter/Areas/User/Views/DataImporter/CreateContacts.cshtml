@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewData["Title"] = "CreateContacts";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Add A Contact</h1>
+            </div>
+       
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                    <div class="card-header" style="color: white;background-color: #343a40">
+                        <h3 class="card-title">Add Contact</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form method="post" asp-controller="DataImporter" asp-action="CreateContacts" asp-antiforgery="true">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="card-body">
+                            <div class="form-Contact row">
+                                <label @*asp-for="Name"*@>Contact Name</label>
+                                <input type="text" class="form-control" id="Name" @*asp-for="Name"*@
+                                       placeholder="Contact Name">
+
+                            </div>
+                            <div class="form-Contact row">
+                                <label @*asp-for="Name"*@>Age</label>
+                                <input type="number" class="form-control" id="Age" @*asp-for="Name"*@
+                                       placeholder="1-150">
+
+                            </div>
+                            <div class="form-Contact row">
+                                <label @*asp-for="Name"*@>Email</label>
+                                <input type="email" class="form-control" id="Email" @*asp-for="Name"*@
+                                       placeholder="Email">
+
+                            </div>
+                            <div class="form-Contact row">
+                                <label @*asp-for="Name"*@>Phone Number</label>
+                                <input type="number" class="form-control" id="PhoneNumber" @*asp-for="Name"*@
+                                       placeholder="Phone Number">
+
+                            </div>
+
+
+                        </div>
+                        <!-- /.card-body -->
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary" style="color: white;background-color: #343a40">Add</button>
+                            <a asp-action="Index" asp-controller="DataImporter"
+                               class="btn btn-default float-right" style="color: white;background-color: #343a40">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

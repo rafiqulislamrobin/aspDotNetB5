@@ -1,0 +1,108 @@
+﻿@model DataImporter.Models.AccountModel.RegisterModel
+
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<head>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    </style>
+</head>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<body style="overflow-x:hidden">
+    <br>
+    <div class="row">
+        <div class="container">
+            <div class="login-register-form-section">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li><a asp-controller="Account" asp-action="Login">Login</a></li>
+                    <li class="active"><a asp-controller="Account" asp-action="Register">Register</a></li>
+                </ul>
+                <div class="tab-content">
+
+                    <div role="tabpanel" class="tab-pane fade in active" id="register">
+                        <form class="form-horizontal" method="post" asp-controller="Account" asp-action="Register">
+                            @*<div class="form-group ">
+
+                                                              <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                <input type="text" name="register_username" class="form-control" placeholder="Username" required="required" value="">
+            </div>
+        </div>*@
+                            <div class="form-group ">
+                                <div class="input-group">
+
+                                    <label asp-for="Email"></label>
+                                    <input asp-for="Email" class="form-control" placeholder="Email" required="required" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <div class="input-group">
+                                    <label asp-for="Password"></label>
+                                    <input asp-for="Password" class="form-control" placeholder="Password" required="required" />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <div class="input-group">
+                                    <label asp-for="ConfirmPassword"></label>
+                                    <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password" required="required" />
+                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <span style="color:azure; margin-left:5px">@ViewBag.Message</span>
+
+
+                            <div class="input-group">
+                                <dnt-captcha asp-captcha-generator-max="999999"
+                                             asp-captcha-generator-min="111111"
+                                             asp-captcha-generator-language="English"
+                                             asp-captcha-generator-display-mode="ShowDigits"
+                                             asp-use-relative-urls="true"
+                                             asp-placeholder="Enter Captcha"
+                                             asp-font-name="Tahoma"
+                                             asp-font-size="30"
+                                             asp-back-color="#ccc"
+                                             asp-fore-color="#333333"
+                                             asp-text-box-class="text-box from-control"
+                                             asp-text-box-template="<br/><span clas='input-group-prepend'></span><span class='form-group-text'></span>'{0}"
+                                             asp-validation-error-message="<br/>PLease enter the security code"
+                                             asp-validation-message-class="text-danger"
+                                             asp-show-refresh-button="false" ; />
+
+                            </div>
+
+                            <br />
+
+                            <input type="submit" value="Register" class="btn btn-success btn-custom">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    @section Scripts {
+        <script src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key"></script>
+       
+        <partial name="_ValidationScriptsPartial" />
+    }
+ 
+
+
+    </body>
