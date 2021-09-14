@@ -10,8 +10,9 @@ namespace DataImporter.Models.AccountModel
     public class LoginModel
     {
         [Required]
-        [EmailAddress]
-        public string Email { get; set; }
+        
+        [Display(Name = "Name")]
+        public string Name { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -21,6 +22,8 @@ namespace DataImporter.Models.AccountModel
         public bool RememberMe { get; set; }
         public string ReturnUrl { get; set; }
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
+
+      
     }
 }
 

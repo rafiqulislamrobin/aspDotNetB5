@@ -151,11 +151,11 @@ namespace DataImporter
                 endpoints.MapAreaControllerRoute(
                 name: "default",
                 areaName: "User",
-                pattern: "{controller=DataImporter}/{action=Index}/{id?}");
+                pattern: "{controller=Account}/{action=Login}/{id?}");
 
                 //endpoints.MapControllerRoute(
                 //    name: "default",
-                //    pattern: "{controller=Home}/{action=Index}/{Id?}");
+                //    pattern: "{controller=Account}/{action=Login}/{Id?}");
                 endpoints.MapRazorPages();
             });
         }

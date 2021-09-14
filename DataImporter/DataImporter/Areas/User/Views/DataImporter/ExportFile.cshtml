@@ -3,6 +3,10 @@
     ViewData["Title"] = "ExportFile";
 }
 
+    <script src="./js/dropzone.js"></script>
+<script src="./js/dropzone.min.js"></script>
+
+
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid" style="align-self: center">
@@ -44,30 +48,31 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="col-sm-6">
-                                    <!-- select -->
-                                    <div class="form-group">
-                                        <label>Select a file</label>
-                                        <select class="custom-select">
-                                            <option>FILE 1</option>
-                                            <option>FILE 2</option>
-                                            <option>FILE 3</option>
-                                            <option>FILE 4</option>
-                                            <option>FILE 5</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                <table id="Contact" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>File Name</th>
+                                            <th>Imports Date</th>
+                                            <th>Group Name</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
 
+
+                                </table>
+
+                                <partial name="_deletePartial" />
                             </div>
                             <!-- /.card-body -->
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary" style="color: white;background-color: #343a40">Download</button>
-                                <a asp-action="Index" asp-controller="DataImporter"
-                                   class="btn btn-default float-right" style="color: white;background-color: #343a40">Cancel</a>
-                            </div>
-</form>
+
+                    </form>
                 </div>
                 <!-- /.card -->
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary" style="color: white;background-color: #343a40;border-color:black">Download</button>
+                <a asp-action="Index" asp-controller="DataImporter"
+                   class="btn btn-default float-right" style="color: white;background-color: #343a40">Send to Email</a>
             </div>
         </div>
     </div>

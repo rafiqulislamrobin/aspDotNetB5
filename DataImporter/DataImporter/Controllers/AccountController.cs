@@ -66,7 +66,7 @@ namespace DataImporter.Controllers
                 {
                        var user = new IdentityUser
                        {
-                           UserName = model.Email,
+                           UserName = model.Name,
                            Email = model.Email
                        };           
                     var result = await _userManager.CreateAsync(user, model.Password);
@@ -138,6 +138,7 @@ namespace DataImporter.Controllers
           
             LoginModel model = new();
 
+            
             if (!string.IsNullOrEmpty(ErrorMessage))
             {
                 ModelState.AddModelError(string.Empty, ErrorMessage);
@@ -161,59 +162,58 @@ namespace DataImporter.Controllers
             returnUrl ??= Url.Content("~/");
 
             loginModel.ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-            
-          
 
-            
-                if (!ModelState.IsValid)
-                {
-                    return RedirectToAction("error");
-                }
-                else
-                {
+
+
+
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("error");
+            }
+            else
+            {
                 var captcha = _recaptchaService.ReCaptchaPassed(Request.Form["foo"]);
 
 
                 if (captcha)
                 {
-                        // This doesn't count login failures towards account lockout
-                        // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                        var result = await _signInManager.PasswordSignInAsync(loginModel.Email, loginModel.Password,
-                            loginModel.RememberMe, lockoutOnFailure: false);
-                        if (result.Succeeded)
-                        {
-                            _logger.LogInformation("User logged in.");
-                            return LocalRedirect(returnUrl);
-                        }
-                        if (result.RequiresTwoFactor)
-                        {
-                            return RedirectToPage("./LoginWith2fa", new
-                            {
-                                ReturnUrl = returnUrl,
-                                RememberMe = loginModel.RememberMe
-                            });
-                        }
-                        if (result.IsLockedOut)
-                        {
-                            _logger.LogWarning("User account locked out.");
-                            return RedirectToPage("./Lockout");
-                        }
-                        else
-                        {
-                            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                            ViewBag.Message = "Invalid login attempt.";
-                            return View(loginModel);
-
-                        }
+                    // This doesn't count login failures towards account lockout
+                    // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+                    var result = await _signInManager.PasswordSignInAsync(loginModel.Name, loginModel.Password,
+                        loginModel.RememberMe, lockoutOnFailure: false);
+                    if (result.Succeeded)
+                    {
+                        _logger.LogInformation("User logged in.");
+                        return RedirectToAction("Index", "DataImporter");
                     }
+                    if (result.RequiresTwoFactor)
+                    {
+                        return RedirectToPage("./LoginWith2fa", new
+                        {
+                            ReturnUrl = returnUrl,
+                            RememberMe = loginModel.RememberMe
+                        });
+                    }
+                    if (result.IsLockedOut)
+                    {
+                        _logger.LogWarning("User account locked out.");
+                        return RedirectToPage("./Lockout");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                        ViewBag.Message = "Invalid login attempt.";
+                        return View(loginModel);
+
+                    }
+                }
                 else
                 {
                     ViewBag.Message2 = "suspicious as a Bot";
                 }
 
-                }
-               // If we got this far, something failed, redisplay form
-            return RedirectToAction("Index", "DataImporter");
+            }
+            return LocalRedirect(returnUrl);
 
         }
 
@@ -228,7 +228,7 @@ namespace DataImporter.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "DataImporter");
+                return RedirectToAction("Login", "Account");
             }
         }
     }

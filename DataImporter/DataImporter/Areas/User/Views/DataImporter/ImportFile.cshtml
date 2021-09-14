@@ -3,8 +3,9 @@
     ViewData["Title"] = "ImportFile";
 }
 
+
 <!-- Content Header (Page header) -->
-<section class="content-header" >
+<section class="content-header">
     <div class="container-fluid" style="align-self: center">
         <div class="row mb-2">
             <div class="col-sm-6">
@@ -28,24 +29,15 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
+                    <form action="/file-upload"
+                          class="dropzone"
+                          id="my-awesome-dropzone">
+                        <input type="file" name="file" />
+                    </form>
                     <form>
                         <div class="card-body">
 
-                            <div class="form-group">
-                                <label for="exampleInputFile">Input a file </label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="exampleInputFile"
-                                        accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" >
-                                        <label class="custom-file-label" for="exampleInputFile" >
-                                            Choose file (.xlx/.xlxs only)
-                                        </label>
-                                    </div>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">Upload</span>
-                                    </div>
-                                </div>
-                            </div>
+
                             <div class="col-sm-6">
                                 <!-- select -->
                                 <div class="form-group">
@@ -62,7 +54,7 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                            <button asp-action="ViewContacts" asp-controller="DataImporter" type="submit" class="btn btn-primary" style="color: white;background-color: #343a40">Upload</button>
+                            <button asp-action="ViewContacts" asp-controller="DataImporter" type="submit" class="btn btn-primary" style="color: white;background-color: #343a40;border-color:black">Upload</button>
                             <a asp-action="Index" asp-controller="DataImporter"
                                class="btn btn-default float-right" style="color: white;background-color: #343a40">Cancel</a>
                         </div>
@@ -72,4 +64,4 @@
             </div>
         </div>
     </div>
- </section>
+</section>
