@@ -1,5 +1,6 @@
 ﻿using DataImporter.Areas.User.Models;
 using DataImporter.Info.Business_Object;
+using DataImporter.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -55,7 +56,7 @@ namespace DataImporter.Areas.User.Controllers
         public async Task<IActionResult> ImportFileAsync(IFormFile file)
         {
 
-            ImportHistoryModel model = new();
+            FilePathModel model = new();
             await model.SaveFilePathAsync(file);
             return View();
 
@@ -68,7 +69,17 @@ namespace DataImporter.Areas.User.Controllers
         }
         public IActionResult ImportHistory()
         {
-            return View();
+            var model = new HistoryListModel();
+
+            return View(model);
+        }
+
+        public JsonResult GetImportHistoryData()
+        {
+            var dataTableAjaxRequestModel = new DataTablesAjaxRequestModel(Request);
+            var model = new HistoryListModel();
+            var data = model.GetHistories(dataTableAjaxRequestModel);
+            return Json(data);
         }
 
         public IActionResult ExportFile()

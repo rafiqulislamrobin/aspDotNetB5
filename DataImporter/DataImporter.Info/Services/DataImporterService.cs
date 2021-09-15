@@ -21,6 +21,24 @@ namespace DataImporter.Info.Services
 
         }
 
+        public (IList<FilePath> records, int total, int totalDisplay) Gethistory(int pageIndex, int pageSize, string searchText, string sortText)
+        {
+            var historyData = _dataUnitOfWork.FilePath.GetDynamic(
+               string.IsNullOrWhiteSpace(searchText) ? null : x => x.FileName.Contains(searchText),
+               sortText, string.Empty, pageIndex, pageSize);
+
+            var resultData = (from history in historyData.data
+                              select new FilePath
+                              {
+                                  DateTime = history.DateTime,
+                                  FileName = history.FileName,
+                                  FilePathName = history.FilePathName,
+                                 
+                              }).ToList();
+
+            return (resultData, historyData.total, historyData.totalDisplay);
+        }
+
         public void SaveFilePath(FilePath member)
         {
 
