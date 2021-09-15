@@ -29,12 +29,13 @@
 
   <ItemGroup>
     <Folder Include="Areas\User\Data\" />
-    <Folder Include="Areas\User\Models\" />
+    <Folder Include="wwwroot\Excel\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DataImporter.Common\DataImporter.Common.csproj" />
     <ProjectReference Include="..\DataImporter.Data\DataImporter.Data.csproj" />
+    <ProjectReference Include="..\DataImporter.Info\DataImporter.Info.csproj" />
   </ItemGroup>
 
 </Project>

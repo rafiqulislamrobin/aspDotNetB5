@@ -1,6 +1,9 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using DataImporter.Common;
 using DataImporter.Data;
+using DataImporter.Info;
+using DataImporter.Info.Context;
 using DataImporter.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -41,10 +44,10 @@ namespace DataImporter
         public void ConfigureContainer(ContainerBuilder builder)
         {
             var connectionInfo = GetConnectionStringAndAssemblyName();
-            //builder.RegisterModule(new BookingModule
-            //    (connectionInfo.connectionString, connectionInfo.migrationAssemblyName));
+            builder.RegisterModule(new DataImporterModule
+                (connectionInfo.connectionString, connectionInfo.migrationAssemblyName));
 
-            //builder.RegisterModule(new CommonModule());
+            builder.RegisterModule(new CommonModule());
             //builder.RegisterModule(new MemberShipModule
             //    (connectionInfo.connectionString, connectionInfo.migrationAssemblyName));
 
@@ -74,11 +77,11 @@ namespace DataImporter
 
             services.AddTransient<IEmailService, EmailSender>();
             services.AddTransient<IRecaptchaService, RecaptchaService>();
-            
 
-            //services.AddDbContext<BookingDbContext>(options =>
-            //    options.UseSqlServer(connectionInfo.connectionString,
-            //      b => b.MigrationsAssembly(connectionInfo.migrationAssemblyName)));
+
+            services.AddDbContext<DataImporterDbContext>(options =>
+                options.UseSqlServer(connectionInfo.connectionString,
+                  b => b.MigrationsAssembly(connectionInfo.migrationAssemblyName)));
 
             //// Identity customization started here
             //services
@@ -110,7 +113,7 @@ namespace DataImporter
             });
 
             //services.Configure<SmtpConfiguration>(Configuration.GetSection("Smtp"));
-
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddControllersWithViews();
             services.AddHttpContextAccessor();
             services.AddRazorPages();
