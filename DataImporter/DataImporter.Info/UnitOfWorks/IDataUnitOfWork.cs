@@ -11,5 +11,7 @@ namespace DataImporter.Info.UnitOfWorks
     public interface IDataUnitOfWork : IUnitOfWork
     {
         IFilePathRepository FilePath { get; }
+        IGroupRepository Group { get; }
+        IContactRepository Contact { get; }
     }
 }

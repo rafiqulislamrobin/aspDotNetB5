@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace DataImporter.Info.Business_Object
 {
-     public class FilePath
-     {
-        
-        public DateTime DateTime { get; set; }
-        public string FileName { get; set; }
-        public string FilePathName { get; set; }
+    public class Contact
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
         public int GroupId { get; set; }
+
     }
 }

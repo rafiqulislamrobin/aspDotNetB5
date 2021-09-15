@@ -13,7 +13,8 @@ namespace DataImporter.Info.Profiles
         public DataImporterProfile()
         {
             CreateMap<EO.FilePath, BO.FilePath>().ReverseMap();
-
+            CreateMap<EO.Group, BO.Group>().ReverseMap();
+            CreateMap<EO.Contact, BO.Contact>().ReverseMap();
         }
     }
 }

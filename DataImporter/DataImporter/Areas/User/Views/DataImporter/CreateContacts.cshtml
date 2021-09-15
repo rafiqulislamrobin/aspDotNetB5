@@ -1,4 +1,4 @@
-﻿
+﻿@model CreateContactModel
 @{
     ViewData["Title"] = "CreateContacts";
 }
@@ -29,29 +29,19 @@
                         <div asp-validation-summary="All" class="text-danger"></div>
                         <div class="card-body">
                             <div class="form-Contact row">
-                                <label @*asp-for="Name"*@>Contact Name</label>
-                                <input type="text" class="form-control" id="Name" @*asp-for="Name"*@
+                                <label asp-for="Name">Contact Name</label>
+                                <input type="text" class="form-control" id="Name" asp-for="Name"
                                        placeholder="Contact Name">
 
                             </div>
                             <div class="form-Contact row">
-                                <label @*asp-for="Name"*@>Age</label>
-                                <input type="number" class="form-control" id="Age" @*asp-for="Name"*@
-                                       placeholder="1-150">
+                                <label asp-for="Address">Age</label>
+                                <input type="text" class="form-control" id="Address" asp-for="Address"
+                                       placeholder="Address">
 
                             </div>
-                            <div class="form-Contact row">
-                                <label @*asp-for="Name"*@>Email</label>
-                                <input type="email" class="form-control" id="Email" @*asp-for="Name"*@
-                                       placeholder="Email">
-
-                            </div>
-                            <div class="form-Contact row">
-                                <label @*asp-for="Name"*@>Phone Number</label>
-                                <input type="number" class="form-control" id="PhoneNumber" @*asp-for="Name"*@
-                                       placeholder="Phone Number">
-
-                            </div>
+                            
+                          
 
 
                         </div>

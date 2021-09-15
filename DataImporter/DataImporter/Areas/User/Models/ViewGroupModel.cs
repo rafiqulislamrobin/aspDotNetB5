@@ -8,29 +8,27 @@ using System.Threading.Tasks;
 
 namespace DataImporter.Areas.User.Models
 {
-
-    public class HistoryListModel
+    public class ViewGroupModel
     {
 
-
         private readonly IDataImporterService _iDataImporterService;
-        public HistoryListModel()
+        public ViewGroupModel()
         {
             _iDataImporterService = Startup.AutofacContainer.Resolve<IDataImporterService>();
         }
-        public HistoryListModel(IDataImporterService iDataImporterService)
+        public ViewGroupModel(IDataImporterService iDataImporterService)
         {
             _iDataImporterService = iDataImporterService;
         }
 
-        internal object GetHistories(DataTablesAjaxRequestModel dataTableAjaxRequestModel)
+        internal object GetGroups(DataTablesAjaxRequestModel dataTableAjaxRequestModel)
         {
 
-            var data = _iDataImporterService.Gethistory(
+            var data = _iDataImporterService.GetGroupsList(
                 dataTableAjaxRequestModel.PageIndex,
                 dataTableAjaxRequestModel.PageSize,
                 dataTableAjaxRequestModel.SearchText,
-                dataTableAjaxRequestModel.GetSortText(new string[] { "FileName", "DateTime", "FilePathName" }));
+                dataTableAjaxRequestModel.GetSortText(new string[] { "Name" }));
             return new
             {
                 recordsTotal = data.total,
@@ -38,10 +36,10 @@ namespace DataImporter.Areas.User.Models
                 data = (from record in data.records
                         select new string[]
                         {
-                                record.FileName.ToString(),
-                                record.DateTime.ToString(),
+                                record.Name.ToString(),
+                                record.Id.ToString()
+
                                 
-                                record.FilePathName.ToString()
                         }
                     ).ToArray()
             };

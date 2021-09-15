@@ -19,9 +19,10 @@ namespace DataImporter.Areas.User.Models
 
         public IWebHostEnvironment _WebHostEnvironment;
         //public DateTime DateTime { get; set; }
+        public int GroupId { get; set; }
 
-
-        public IDataImporterService _iDataImporterService;
+        public List<Group> groups  { get; set; }
+       public IDataImporterService _iDataImporterService;
 
         public IDatetimeUtility _datetimeUtility;
         public FilePathModel()
@@ -37,7 +38,7 @@ namespace DataImporter.Areas.User.Models
             _datetimeUtility = datetimeUtility;
             _iDataImporterService = iDataImporterService;
         }
-        internal async Task SaveFilePathAsync(IFormFile file)
+        internal async Task SaveFilePathAsync(IFormFile file ,int groupId)
         {
             string fileTxt = Path.GetExtension(file.FileName);
             if (fileTxt == ".xls" || fileTxt == ".xlss" || fileTxt == ".application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
@@ -52,7 +53,7 @@ namespace DataImporter.Areas.User.Models
                 filePath.FileName = file.FileName;
                 filePath.FilePathName = savingExcel;
                 filePath.DateTime = _datetimeUtility.Now;
-
+                filePath.GroupId = groupId;
                 _iDataImporterService.SaveFilePath(filePath);
             }
 
@@ -60,6 +61,11 @@ namespace DataImporter.Areas.User.Models
 
 
             
+        }
+
+        internal List<Group> LoadAllGroups()
+        {
+            return _iDataImporterService.LoadAllGroups();
         }
     }
 }

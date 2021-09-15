@@ -4,6 +4,7 @@ using DataImporter.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -30,11 +31,78 @@ namespace DataImporter.Areas.User.Controllers
         }
         public IActionResult ViewGroups()
         {
-            return View();
+            var model = new ViewGroupModel();
+            return View(model);
+        }
+        public JsonResult GetGroupsData()
+        {
+            var dataTableAjaxRequestModel = new DataTablesAjaxRequestModel(Request);
+            var model = new ViewGroupModel();
+            var data = model.GetGroups(dataTableAjaxRequestModel);
+            return Json(data);
         }
         public IActionResult CreateGroups()
         {
-            return View();
+            var model = new CreateGroupModel();
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult CreateGroups(CreateGroupModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    model.CreateGroup();
+                }
+                catch (Exception ex)
+                {
+                    //ModelState.AddModelError("", "Failed to Create Group");
+                    if (ex.Message== "Group name is already used")
+                    {
+                        ViewBag.DuplicationMessage = "Group name already used , try another name";
+                    }
+                    _logger.LogError(ex, "Add Group Failed");
+                }
+
+            }
+            return View(model);
+        }
+        public IActionResult EditGroup(int id)
+        {
+            var model = new EditGroupModel();
+            model.LoadModelData(id);
+            return View(model);
+
+        }
+
+        [HttpPost, AutoValidateAntiforgeryToken]
+        public IActionResult EditGroup(EditGroupModel model)
+        {
+            if (ModelState.IsValid)
+            {    
+                try
+                {
+                    model.Update();
+                }
+                catch (Exception ex)
+                {
+                    //ModelState.AddModelError("", "Failed to Create Group");
+                    if (ex.Message == "Group name is already used")
+                    {
+                        ViewBag.DuplicationMessage = "Group name already used , try another name";
+                    }
+                    _logger.LogError(ex, "Upload Group Failed");
+                    return View(model);
+                }
+            }
+            return View(nameof(ViewGroups));
+        }
+        public IActionResult DeleteGroup(int id)
+        {
+            var model = new CreateGroupModel();
+            model.DeleteGroup(id);
+            return RedirectToAction(nameof(ViewGroups));
         }
         public IActionResult ViewContacts()
         {
@@ -42,23 +110,57 @@ namespace DataImporter.Areas.User.Controllers
         }
         public IActionResult CreateContacts()
         {
-            return View();
+            var model = new CreateContactModel();
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult CreateContacts(CreateContactModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    model.CreateContact();
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Failed to Create Contact");
+                    _logger.LogError(ex, "Add Contact Failed");
+                }
+
+            }
+            return View(model);
         }
 
         public IActionResult ImportFile()
         {
-            
-            return View();
+            var model = new FilePathModel();
+            var list = model.LoadAllGroups();
+            ViewBag.GroupList = new SelectList(list, "Id", "Name");
+            return View(model);
             
         }
 
         [HttpPost]
-        public async Task<IActionResult> ImportFileAsync(IFormFile file)
+        public async Task<IActionResult> ImportFileAsync(FilePathModel filePathModel, IFormFile file)
         {
-
-            FilePathModel model = new();
-            await model.SaveFilePathAsync(file);
-            return View();
+            
+            if (filePathModel.GroupId ==0)
+            {
+                
+                var model = new FilePathModel();
+                var list = model.LoadAllGroups();
+                ViewBag.GroupList = new SelectList(list, "Id", "Name");
+                return View(model);
+            }
+            else
+            {
+                var groupId = filePathModel.GroupId;
+                FilePathModel model = new();
+                await model.SaveFilePathAsync(file, groupId);
+                
+            }
+            return View(nameof(ImportHistory));
 
         }
 
@@ -69,9 +171,8 @@ namespace DataImporter.Areas.User.Controllers
         }
         public IActionResult ImportHistory()
         {
-            var model = new HistoryListModel();
-
-            return View(model);
+            
+            return View();
         }
 
         public JsonResult GetImportHistoryData()

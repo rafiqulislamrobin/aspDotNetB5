@@ -1,16 +1,17 @@
-﻿@model CreateGroupModel
+﻿@model EditGroupModel
 @{
-    ViewData["Title"] = "CreateGroups";
+    ViewData["Title"] = "EditGroup";
 }
-  <section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>Add A Group</h1>
-            </div>
-        
+
+<section class="content-header">
+<div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+            <h1>Edit Group</h1>
         </div>
-    </div><!-- /.container-fluid -->
+
+    </div>
+</div><!-- /.container-fluid -->
 </section>
 <section class="content">
     <div class="container-fluid">
@@ -19,12 +20,12 @@
             <div class="col-md-12">
                 <!-- general form elements -->
                 <div class="card card-primary">
-                    <div class="card-header"style="color: white;background-color: #343a40">
-                        <h3 class="card-title">Add Group</h3>
+                    <div class="card-header" style="color: white;background-color: #343a40">
+                        <h3 class="card-title">Edit</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form method="post" asp-controller="DataImporter" asp-action="CreateGroups" asp-antiforgery="true">
+                    <form method="post" asp-controller="DataImporter" asp-action="EditGroup" asp-antiforgery="true">
                         <div asp-validation-summary="All" class="text-danger"></div>
                         <div class="card-body">
                             <div class="form-group row">
@@ -37,12 +38,11 @@
                             <div class="text-danger">
                                 @ViewBag.DuplicationMessage
                             </div>
-                            
 
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary" style="color: white;background-color: #343a40;border-color:black" >Add</button>
+                            <button type="submit" class="btn btn-primary" style="color: white;background-color: #343a40;border-color:black">Update</button>
                             <a asp-action="ViewGroups" asp-controller="DataImporter"
                                class="btn btn-default float-right" style="color: white;background-color: #343a40">Cancel</a>
                         </div>
@@ -52,3 +52,4 @@
         </div>
     </div>
 </section>
+

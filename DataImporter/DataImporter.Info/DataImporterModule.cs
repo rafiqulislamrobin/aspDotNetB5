@@ -41,14 +41,18 @@ namespace DataImporter.Info
             builder.RegisterType<FilePathRepository>().As<IFilePathRepository>()
               .InstancePerLifetimeScope();
 
-            //builder.RegisterType<PhotoRepository>().As<IPhotoRepository>()
-            //.InstancePerLifetimeScope();
-
+           
             builder.RegisterType<DataImporterService>().As<IDataImporterService>()
                .InstancePerLifetimeScope();
 
             builder.RegisterType<DataUnitOfWork>().As<IDataUnitOfWork>()
              .InstancePerLifetimeScope();
+
+            builder.RegisterType<GroupRepository>().As<IGroupRepository>()
+                   .InstancePerLifetimeScope();
+            builder.RegisterType<ContactRepository>().As<IContactRepository>()
+            .InstancePerLifetimeScope();
+
 
             base.Load(builder);
 

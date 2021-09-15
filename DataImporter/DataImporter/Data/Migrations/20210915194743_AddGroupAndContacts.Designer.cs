@@ -4,14 +4,16 @@ using DataImporter.Info.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataImporter.Data.Migrations
 {
     [DbContext(typeof(DataImporterDbContext))]
-    partial class DataImporterDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210915194743_AddGroupAndContacts")]
+    partial class AddGroupAndContacts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

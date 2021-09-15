@@ -1,8 +1,4 @@
 ﻿
-@{
-    ViewData["Title"] = "ImportFile";
-}
-
 @model FilePathModel
 @{
     ViewData["Title"] = "ImportFile";
@@ -11,16 +7,21 @@
 
 <form method="post" enctype="multipart/form-data">
 
-    <div asp-validation-summary="All" class="text-danger"></div>
+    <div asp-validation-summary="All" class="text-danger">
     <div class="card-body" type="file">
 
-        <input  type="file" id="file" name="file">
-        
-    </div>
-    <!-- /.card-body -->
+        <input type="file" id="file" name="file" required>
 
+    </div>
+    <div class="card-body" type="number">
+
+        @Html.DropDownListFor(m => m.GroupId, ViewBag.GroupList as SelectList, "--Select A Group--")
+        @ViewBag.GroupNullMessage
+
+    </div>
+    </div>
     <div class="card-footer">
-        <button type="submit"  class="btn btn-primary" style="color: white;background-color: #343a40;border-color:black">Upload</button>
+        <button type="submit" class="btn btn-primary" style="color: white;background-color: #343a40;border-color:black">Upload</button>
     </div>
 </form>
 

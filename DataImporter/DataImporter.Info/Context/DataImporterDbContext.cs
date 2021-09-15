@@ -35,10 +35,19 @@ namespace DataImporter.Info.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-           
+            modelBuilder.Entity<Group>()
+                .HasMany(b => b.Contacts)
+                .WithOne(t => t.Group);
+
+
+            modelBuilder.Entity<Group>()
+              .HasMany(b => b.FilePaths)
+              .WithOne(t => t.Group);
         }
 
         public DbSet<FilePath> FilePaths { get; set; }
-       
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+
     }
 }

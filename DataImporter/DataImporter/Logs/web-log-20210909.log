@@ -1,9 +1,0 @@
-2021-09-09 21:52:14.729 +06:00 [INF] Application Starting up
-2021-09-09 21:52:33.899 +06:00 [WRN] https://localhost:44363/Account/ConfirmEmail?userId=ce1ef455-3b00-43bd-9532-dc843773429a&token=CfDJ8GnJgqO9ZAZFnQQtWPnjCOSwusFmHYyfmKaiIqK3uCmYsVOF1X8weHeXJRZrHVtvd%2FVg0YEIr2iurcPSZMkyCuMVOHFw%2FaMhQcDDN8mrrbfQdD%2FLgFbWVWxxcNY6UJ6kowodb%2Ba8BgJSk6%2Fhrwhfl79KVrhnEtBz4rpZssK3gz5pB74UiY2yV5jSY7rtk5J5FEMELHGRky5nbvJnXCDCxJHq0cNoPDtuHPl%2BJpL7x5yFBEea5G7irLNTnJ%2B5SYk1sQ%3D%3D
-2021-09-09 22:03:34.695 +06:00 [INF] Application Starting up
-2021-09-09 22:04:36.279 +06:00 [INF] Application Starting up
-2021-09-09 22:04:58.712 +06:00 [WRN] https://localhost:44363/Account/ConfirmEmail?userId=08ee62d4-5856-4742-a245-f630b9cc6c8a&token=CfDJ8GnJgqO9ZAZFnQQtWPnjCOQLl%2Fag%2FmI%2FsoUXod8jc5s0cJdsfRECPr7ofr4Pu38czazj673EkIe4NO3T0zMuCqhTB0VrLCyehEiArsJNXMsEGSJj3Fu8iAFww8jDSPeQtI0F%2F4IpLOps2o9HaYa6gXH31ao%2FsU3DBJ%2BBZ8zteXPBX4T0E%2Bx7zE6jYe0mEfLzev7F0wpubGAzCGgLYleKBuMehQjhtZLGAOaiR1YMfM%2F4zE%2FN3KMSEbrjE0mwsSHmUw%3D%3D
-2021-09-09 22:05:26.428 +06:00 [INF] User logged in.
-2021-09-09 22:05:29.064 +06:00 [INF] User logged out.
-2021-09-09 22:05:36.219 +06:00 [WRN] User cannot sign in without a confirmed account.
-2021-09-09 23:54:45.900 +06:00 [INF] Application Starting up
