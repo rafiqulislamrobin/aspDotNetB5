@@ -16,12 +16,13 @@ namespace DataImporter.Areas.User.Models
         public int Id { get; set; }
         [Required, MaxLength(100, ErrorMessage = "Nameshould be less than 100 characters")]
 
-
+        public int GroupId = 1;
         public string Name { get; set; }
         public string Address { get; set; }
        
 
-      
+
+
         private readonly IDataImporterService _iDataImporterService;
         public CreateContactModel()
         {
@@ -38,7 +39,7 @@ namespace DataImporter.Areas.User.Models
             {
                 Id = Id,
                 Name = Name,
-               
+               GroupId =GroupId,
                 Address = Address
 
             };

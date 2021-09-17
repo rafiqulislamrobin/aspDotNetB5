@@ -34,10 +34,8 @@ namespace DataImporter.Info.Services
                     {
                         Id = contact.Id,
                         Name = contact.Name,
-                        Address =contact.Address,
-                    
-
-
+                        Address = contact.Address,
+                        GroupId=contact.GroupId
 
                     }
                    );
@@ -63,7 +61,7 @@ namespace DataImporter.Info.Services
 
 
                     }
-                   ); 
+                   );
             _dataUnitOfWork.Save();
 
 
@@ -73,6 +71,25 @@ namespace DataImporter.Info.Services
         {
             _dataUnitOfWork.Group.Remove(id);
             _dataUnitOfWork.Save();
+        }
+
+        public List<Contact> GetContactList()
+        {
+            var contactEntities = _dataUnitOfWork.Contact.GetAll();
+            var contacts = new List<Contact>();
+            foreach (var item in contactEntities)
+            {
+                var contact = new Contact()
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                    Address=item.Address,
+                    GroupId =item.GroupId
+                    
+                };
+                contacts.Add(contact);
+            }
+            return contacts;
         }
 
         public (IList<Group> records, int total, int totalDisplay) GetGroupsList(int pageIndex, int pageSize, string searchText, string sortText)
@@ -86,8 +103,8 @@ namespace DataImporter.Info.Services
                               {
                                   Id = groups.Id,
                                   Name = groups.Name
-                                 
-                                  
+
+
 
                               }).ToList();
 
@@ -101,20 +118,15 @@ namespace DataImporter.Info.Services
                sortText, string.Empty, pageIndex, pageSize);
 
             var resultData = (from history in historyData.data
-                              select new FilePath
-                              {
-                                  DateTime = history.DateTime,
-                                  FileName = history.FileName,
-                                  FilePathName = history.FilePathName,
-                                 
-                              }).ToList();
+                              select _mapper.Map<FilePath>(history)).ToList();
+
 
             return (resultData, historyData.total, historyData.totalDisplay);
         }
 
         public List<Group> LoadAllGroups()
         {
-            
+
             var groupEntities = _dataUnitOfWork.Group.GetAll();
             var groups = new List<Group>();
             foreach (var item in groupEntities)
@@ -143,12 +155,21 @@ namespace DataImporter.Info.Services
             };
         }
 
-        public void SaveFilePath(FilePath member)
+        public void SaveFilePath(FilePath filepath)
         {
 
+
             _dataUnitOfWork.FilePath.Add(
-         _mapper.Map<Entities.FilePath>(member)
-        );
+        new Entities.FilePath
+        {
+            FileName = filepath.FileName,
+            FilePathName = filepath.FilePathName,
+            DateTime = filepath.DateTime,
+            GroupId = filepath.GroupId,
+            GroupName = filepath.GroupName
+           
+
+        }); ;
             _dataUnitOfWork.Save();
         }
 
@@ -179,7 +200,7 @@ namespace DataImporter.Info.Services
         private bool IsNameAlreadyUsed(string name) =>
           _dataUnitOfWork.Group.GetCount(n => n.Name == name) > 0;
 
-     
+
 
     }
 }

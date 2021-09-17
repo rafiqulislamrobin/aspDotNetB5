@@ -13,6 +13,7 @@ namespace DataImporter.Info.Entities
         public DateTime DateTime { get; set; }
         public string FileName { get; set; }
         public string FilePathName { get; set; }
+        public string GroupName { get; set; }
         public int GroupId { get; set; }
         public Group Group { get; set; }
     }

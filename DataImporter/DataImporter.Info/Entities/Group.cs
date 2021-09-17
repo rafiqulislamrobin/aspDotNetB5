@@ -11,7 +11,9 @@ namespace DataImporter.Info.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
+       
         public List<Contact> Contacts { get; set; }
         public List<FilePath> FilePaths { get; set; }
+        
     }
 }

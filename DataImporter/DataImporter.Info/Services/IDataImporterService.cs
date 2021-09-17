@@ -16,6 +16,7 @@ namespace DataImporter.Info.Services
         void CreateContact(Contact contact);
         (IList<Group> records, int total, int totalDisplay) GetGroupsList(int pageIndex, int pageSize,
                                                   string searchText, string sortText);
+        List<Contact> GetContactList();
         void DeleteGroup(int id);
         Group LoadGroup(int id);
         void UpdateGropu(Group group);

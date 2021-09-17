@@ -1,7 +1,6 @@
 ﻿
-@model FilePathModel
 @{
-    ViewData["Title"] = "ImportFile";
+    ViewData["Title"] = "UploadFile";
 }
 
 <form method="post" enctype="multipart/form-data">
@@ -28,31 +27,17 @@
 
         </div>
 
-        <div class="card-body" type="number">
-            <label for="select group">Choice group:  </label>
-            @Html.DropDownListFor(m => m.GroupId, ViewBag.GroupList as SelectList, "--Select A Group--" , new { required = "required" })
-           
 
-        </div>
         <!-- /.card-body -->
 
-        <div class="card-footer">
-            <button type="submit" class="btn btn-primary" asp-action="ViewContacts" asp-controller="DataImporter" method="post" enctype="multipart/form-data"
-                    style="color: white;background-color: #343a40;border-color:black">Next</button>
+        <div class="col-md-6">
+            <a asp-action="UploadFile" asp-controller="DataImporter" class="btn btn-primary">
+                Import To Database
+            </a>
         </div>
 
     </div>
 
 </form>
 
-@section Scripts
-{
-    <script>
-        $('#file').on('change', function () {
-            //get the file name
-            var fileName = $(this).val();
-            //replace the "Choose a file" label
-            $(this).next('.custom-file-label').html(fileName);
-        })
-    </script>
-}
+

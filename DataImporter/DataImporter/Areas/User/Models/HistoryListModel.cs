@@ -30,7 +30,7 @@ namespace DataImporter.Areas.User.Models
                 dataTableAjaxRequestModel.PageIndex,
                 dataTableAjaxRequestModel.PageSize,
                 dataTableAjaxRequestModel.SearchText,
-                dataTableAjaxRequestModel.GetSortText(new string[] { "FileName", "DateTime", "FilePathName" }));
+                dataTableAjaxRequestModel.GetSortText(new string[] { "FileName", "DateTime", "GroupName" }));
             return new
             {
                 recordsTotal = data.total,
@@ -40,8 +40,7 @@ namespace DataImporter.Areas.User.Models
                         {
                                 record.FileName.ToString(),
                                 record.DateTime.ToString(),
-                                
-                                record.FilePathName.ToString()
+                                record.GroupName.ToString()
                         }
                     ).ToArray()
             };

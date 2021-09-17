@@ -13,5 +13,7 @@ namespace DataImporter.Info.Business_Object
         public string FileName { get; set; }
         public string FilePathName { get; set; }
         public int GroupId { get; set; }
+        public string GroupName { get; set; }
+
     }
 }

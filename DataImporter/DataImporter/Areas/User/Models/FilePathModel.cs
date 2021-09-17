@@ -20,6 +20,7 @@ namespace DataImporter.Areas.User.Models
         public IWebHostEnvironment _WebHostEnvironment;
         //public DateTime DateTime { get; set; }
         public int GroupId { get; set; }
+        public int GroupName { get; set; }
 
         public List<Group> groups  { get; set; }
        public IDataImporterService _iDataImporterService;
@@ -38,29 +39,23 @@ namespace DataImporter.Areas.User.Models
             _datetimeUtility = datetimeUtility;
             _iDataImporterService = iDataImporterService;
         }
-        internal async Task SaveFilePathAsync(IFormFile file ,int groupId)
+        internal /*async Task*/void SaveFilePathAsync(string filename ,int groupId,List<Group> list)
         {
-            string fileTxt = Path.GetExtension(file.FileName);
-            if (fileTxt == ".xls" || fileTxt == ".xlss" || fileTxt == ".application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-            {
-                var savingExcel = Path.Combine(_WebHostEnvironment.WebRootPath, "Excel", file.FileName);
-                var stream = new FileStream(savingExcel, FileMode.Create);
-                await file.CopyToAsync(stream);
 
-
-                //filePath.FilePathName = savingExcel;
                 FilePath filePath = new FilePath();
-                filePath.FileName = file.FileName;
-                filePath.FilePathName = savingExcel;
+               var path = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\Excel"}" + "\\" + filename;
+                filePath.FilePathName = path;
+               filePath.FileName = Path.GetFileName(path);
                 filePath.DateTime = _datetimeUtility.Now;
-                filePath.GroupId = groupId;
-                _iDataImporterService.SaveFilePath(filePath);
-            }
-
-
-
-
-            
+                filePath.GroupId = groupId;               
+                foreach (var item in list)
+                {
+                    if (item.Id==groupId)
+                    {
+                        filePath.GroupName = item.Name;
+                    }
+                }     
+               _iDataImporterService.SaveFilePath(filePath);  
         }
 
         internal List<Group> LoadAllGroups()

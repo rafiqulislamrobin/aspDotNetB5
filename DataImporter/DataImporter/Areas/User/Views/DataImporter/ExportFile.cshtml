@@ -70,7 +70,13 @@
                 <!-- /.card -->
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary" style="color: white;background-color: #343a40;border-color:black">Download</button>
+                <div class="col-md-6">
+                    <a asp-action="DownloadFile" asp-controller="DataImporter" class="btn btn-primary"
+                        style="color: white;background-color: #343a40;border-color:black">
+                        Export To Excel
+                    </a>
+                </div>
+               
                 <a asp-action="Index" asp-controller="DataImporter"
                    class="btn btn-default float-right" style="color: white;background-color: #343a40">Send to Email</a>
             </div>
