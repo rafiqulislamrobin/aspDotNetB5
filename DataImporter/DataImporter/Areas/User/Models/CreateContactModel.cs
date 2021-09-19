@@ -38,9 +38,9 @@ namespace DataImporter.Areas.User.Models
             var contact = new Contact()
             {
                 Id = Id,
-                Name = Name,
-               GroupId =GroupId,
-                Address = Address
+                //Name = Name,
+                //GroupId = GroupId,
+                //Address = Address
 
             };
             _iDataImporterService.CreateContact(contact);

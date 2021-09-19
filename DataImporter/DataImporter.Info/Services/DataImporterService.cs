@@ -2,8 +2,10 @@
 using DataImporter.Info.Business_Object;
 using DataImporter.Info.Exceptions;
 using DataImporter.Info.UnitOfWorks;
+using ExcelDataReader;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,13 +15,72 @@ namespace DataImporter.Info.Services
     public class DataImporterService : IDataImporterService
     {
         private readonly IDataUnitOfWork _dataUnitOfWork;
-        private readonly IMapper _mapper;
+        //private readonly IMapper _mapper;
 
-        public DataImporterService(IDataUnitOfWork dataUnitOfWork, IMapper mapper)
+        public DataImporterService(IDataUnitOfWork dataUnitOfWork/*, IMapper mapper*/)
         {
             _dataUnitOfWork = dataUnitOfWork;
-            _mapper = mapper;
+            //_mapper = mapper;
 
+        }
+
+        //Importer Worker Service Get Status method
+        public (string, string, int, int) CheckImportStatus()
+        {
+            var fileEntities = _dataUnitOfWork.FilePath.GetAll();
+            string fileroot = "";
+            string fileStatus = "";
+            int fileId = 0;
+            int GroupId = 0;
+            foreach (var file in fileEntities)
+            {
+                if (file.FileStatus.ToLower() == "pending")
+                {
+                    fileroot = file.FilePathName;
+                    fileId = file.Id;
+                    GroupId = file.GroupId;
+                    fileStatus = file.FileStatus = "processing";
+                    _dataUnitOfWork.Save();
+                    break;
+                }
+            }
+            return (fileroot, fileStatus, fileId, GroupId);
+        }
+
+        public (List<string>, List<List<string>>) ContactList()
+        {
+            List<string> headers = new();
+            List<List<string>> items = new();
+            List<string> i = new();
+            var contactEntities = _dataUnitOfWork.Contact.GetAll();
+            var h = 0;
+            foreach (var contactRow in contactEntities)
+            {
+                
+                if (headers.Contains(contactRow.Key))
+                {
+                    break;
+                }
+                else
+                {
+                    headers.Add(contactRow.Key);
+                }
+
+            }
+            foreach (var contactRow in contactEntities)
+            {
+                i.Add(contactRow.Value);
+                h++;
+                if (h == headers.Count)
+                {
+                    items.Add(i);
+                    i = new List<string>();
+                    h = 0;
+                  
+                }
+            }
+
+            return (headers, items);
         }
 
         public void CreateContact(Contact contact)
@@ -32,10 +93,10 @@ namespace DataImporter.Info.Services
             _dataUnitOfWork.Contact.Add(
                     new Entities.Contact
                     {
-                        Id = contact.Id,
-                        Name = contact.Name,
-                        Address = contact.Address,
-                        GroupId=contact.GroupId
+                        //Id = contact.Id,
+                        //Name = contact.Name,
+                        //Address = contact.Address,
+                        //GroupId=contact.GroupId
 
                     }
                    );
@@ -81,11 +142,11 @@ namespace DataImporter.Info.Services
             {
                 var contact = new Contact()
                 {
-                    Id = item.Id,
-                    Name = item.Name,
-                    Address=item.Address,
-                    GroupId =item.GroupId
-                    
+                    //Id = item.Id,
+                    //Name = item.Name,
+                    //Address=item.Address,
+                    //GroupId =item.GroupId
+
                 };
                 contacts.Add(contact);
             }
@@ -104,8 +165,6 @@ namespace DataImporter.Info.Services
                                   Id = groups.Id,
                                   Name = groups.Name
 
-
-
                               }).ToList();
 
             return (resultData, groupData.total, groupData.totalDisplay);
@@ -117,11 +176,22 @@ namespace DataImporter.Info.Services
                string.IsNullOrWhiteSpace(searchText) ? null : x => x.FileName.Contains(searchText),
                sortText, string.Empty, pageIndex, pageSize);
 
-            var resultData = (from history in historyData.data
-                              select _mapper.Map<FilePath>(history)).ToList();
+            //var resultHistory = (from history in historyData.data
+            //                  select _mapper.Map<FilePath>(history)).ToList();
+            var resultHistory = (from history in historyData.data
+                                 select new FilePath
+                                 {
+                                     GroupId = history.GroupId,
+                                     GroupName = history.GroupName,
+                                     FileStatus = history.FileStatus,
+                                     FileName = history.FileName,
+                                     FilePathName = history.FilePathName,
+                                     DateTime =history.DateTime
+                                 }).ToList();
 
 
-            return (resultData, historyData.total, historyData.totalDisplay);
+
+            return (resultHistory, historyData.total, historyData.totalDisplay);
         }
 
         public List<Group> LoadAllGroups()
@@ -155,6 +225,95 @@ namespace DataImporter.Info.Services
             };
         }
 
+        //import worker Service save database method
+        public string SaveExcelDatatoDb(string fileroot, string fileStatus, int fileId, int GroupId)
+        {
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+            using (var stream = System.IO.File.Open(fileroot, FileMode.Open, FileAccess.Read))
+            {
+
+                using (var reader = ExcelReaderFactory.CreateReader(stream))
+                {
+                    Contact contact = new();
+                    Dictionary<int, Dictionary<string, string>> cont = new();
+                    List<string> headers = new();
+
+                    var conf = new ExcelDataSetConfiguration
+                    {
+                        ConfigureDataTable = _ => new ExcelDataTableConfiguration
+                        {
+                            UseHeaderRow = false
+                        }
+                    };
+                    var dataSet = reader.AsDataSet(conf);
+
+                    var dataTable = dataSet.Tables[0];
+
+                    for (var i = 0; i < 1; i++)
+                    {
+                        for (var j = 0; j < dataTable.Columns.Count; j++)
+                        {
+                            headers.Add(dataTable.Rows[i][j].ToString());
+
+                        }
+
+                    }
+                    for (var i = 1; i < dataTable.Rows.Count; i++)
+                    {
+                        Contact contacts = new();
+                        for (var j = 0; j < dataTable.Columns.Count; j++)
+                        {
+                            var z = dataTable.Rows[i][j].ToString();
+                            if (z != null && z != "")
+                            {
+                                contacts.Properties.Add(headers[j], dataTable.Rows[i][j].ToString());
+                            }
+                            else
+                            {
+                                contacts.Properties.Add(headers[j], "(no value)");
+                            }
+                        }
+                        cont.Add(i+1, contacts.Properties);
+
+                    }
+                    foreach (var item in cont)
+                    {
+                        var value = item.Value;
+
+                        foreach (var v in value)
+                        {
+                            _dataUnitOfWork.Contact.Add(new Entities.Contact
+                            {
+                                ExcelRow = item.Key,
+                                Key = v.Key,
+                                Value = v.Value,
+                                GroupId = GroupId
+                            });
+
+                            _dataUnitOfWork.Save();
+
+                        }
+
+                    }
+
+                }
+            }
+
+            var file = _dataUnitOfWork.FilePath.GetById(fileId);
+            file.FileStatus = "Completed";
+            _dataUnitOfWork.Save();
+            try
+            {
+                File.Delete(fileroot);
+            }
+            catch (Exception ex)
+            {
+
+                return ex.Message;
+            }
+            return "Deleted ";
+        }
+
         public void SaveFilePath(FilePath filepath)
         {
 
@@ -166,10 +325,12 @@ namespace DataImporter.Info.Services
             FilePathName = filepath.FilePathName,
             DateTime = filepath.DateTime,
             GroupId = filepath.GroupId,
-            GroupName = filepath.GroupName
-           
+            GroupName = filepath.GroupName,
+            FileStatus = filepath.FileStatus
 
-        }); ;
+
+
+        });
             _dataUnitOfWork.Save();
         }
 
@@ -196,6 +357,7 @@ namespace DataImporter.Info.Services
                 throw new InvalidOperationException("product is not available");
 
         }
+
 
         private bool IsNameAlreadyUsed(string name) =>
           _dataUnitOfWork.Group.GetCount(n => n.Name == name) > 0;

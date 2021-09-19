@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace DataImporter.Areas.User.Controllers
         private readonly ILogger<DataImporterController> _logger;
 
         public IWebHostEnvironment _WebHostEnvironment;
-         public  int temp { get; set; }
+        public int temp { get; set; }
         public DataImporterController(ILogger<DataImporterController> logger)
         {
             _logger = logger;
@@ -61,7 +62,7 @@ namespace DataImporter.Areas.User.Controllers
                 catch (Exception ex)
                 {
                     //ModelState.AddModelError("", "Failed to Create Group");
-                    if (ex.Message== "Group name is already used")
+                    if (ex.Message == "Group name is already used")
                     {
                         ViewBag.DuplicationMessage = "Group name already used , try another name";
                     }
@@ -83,7 +84,7 @@ namespace DataImporter.Areas.User.Controllers
         public IActionResult EditGroup(EditGroupModel model)
         {
             if (ModelState.IsValid)
-            {    
+            {
                 try
                 {
                     model.Update();
@@ -111,7 +112,7 @@ namespace DataImporter.Areas.User.Controllers
         public IActionResult ViewContacts()
         {
             var model = new ViewContactModel();
-            var z= model.GetContactList();
+            var z = model.GetContactList();
             return View(z);
         }
         [HttpPost]
@@ -121,40 +122,21 @@ namespace DataImporter.Areas.User.Controllers
             //var model = new ViewContactModel();
             //var z = model.GetContactList();
             //convert to a stream
-          
-               
-                var filename = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\Excel"}" + "\\" + file.FileName;
-                using (FileStream fileStream = System.IO.File.Create(filename))
-                {
-                    file.CopyTo(fileStream);
-                    fileStream.Flush();
-                }
-                List<Contact> contacts = new();
-               
-                System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-                using (var stream = System.IO.File.Open(filename, FileMode.Open, FileAccess.Read))
-                {
-                    using (var reader = ExcelReaderFactory.CreateReader(stream))
-                    {
-                        while (reader.Read())
-                        {
-                            contacts.Add(new Contact()
-                            {
-                                Name = reader.GetValue(0).ToString(),
-                                Address = reader.GetValue(1).ToString(),
-                                GroupId = int.Parse(reader.GetValue(2).ToString())
-                            });
-                        }
-                    }
-                }
 
-                TempData["file"] = Path.GetFileName(filename);
-                TempData["temp"] = models.GroupId;
-                return View(contacts);
-            
-          
-          
-           
+            var filepath = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\Excel"}" + "\\" + file.FileName;
+            using (FileStream fileStream = System.IO.File.Create(filepath))
+            {
+                file.CopyTo(fileStream);
+                fileStream.Flush();
+            }
+
+            ConfirmFile model = new ConfirmFile();
+             model.ConfirmFileUpload(filepath);
+
+            TempData["file"] = Path.GetFileName(filepath);
+            TempData["temp"] = models.GroupId;
+            return View(model);
+
         }
         public IActionResult CreateContacts()
         {
@@ -186,7 +168,7 @@ namespace DataImporter.Areas.User.Controllers
             var list = model.LoadAllGroups();
             ViewBag.GroupList = new SelectList(list, "Id", "Name");
             return View(model);
-            
+
         }
 
         //[HttpPost]
@@ -197,10 +179,11 @@ namespace DataImporter.Areas.User.Controllers
             var groupId = Convert.ToInt32(TempData["temp"]);
             var model = new FilePathModel();
             var list = model.LoadAllGroups();
-          
 
-            /* await*/ model.SaveFilePathAsync(filename, groupId, list);
-             return View(nameof(ImportHistory));
+
+            /* await*/
+            model.SaveFilePathAsync(filename, groupId, list);
+            return View(nameof(ImportHistory));
 
         }
 
@@ -212,7 +195,7 @@ namespace DataImporter.Areas.User.Controllers
         }
         public IActionResult ImportHistory()
         {
-            
+
             return View();
         }
 
@@ -224,14 +207,17 @@ namespace DataImporter.Areas.User.Controllers
             return Json(data);
         }
 
-     
+
         public IActionResult ExportFileHistory()
         {
             return View();
         }
         public IActionResult ExportFile()
         {
-            return View();
+
+            var model = new ExportFileModel();
+            model.GetContactsList();
+            return View(model);
         }
         public IActionResult DownloadFile()
         {
@@ -241,9 +227,6 @@ namespace DataImporter.Areas.User.Controllers
             string fileFormat = "User.xlsx";
             return File(contacts, fileType, fileFormat);
         }
-
-
-
 
     }
 }

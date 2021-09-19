@@ -19,7 +19,11 @@ namespace DataImporter.Info.Services
         List<Contact> GetContactList();
         void DeleteGroup(int id);
         Group LoadGroup(int id);
+        (string,string , int, int) CheckImportStatus();
+      
+        string SaveExcelDatatoDb(string fileRoot, string fileName, int fileId, int GroupId);
         void UpdateGropu(Group group);
         List <Group> LoadAllGroups();
+        (List<string>, List<List<string>>) ContactList();
     }
 }

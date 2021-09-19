@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataImporter.Data", "DataIm
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataImporter.Common", "DataImporter.Common\DataImporter.Common.csproj", "{8F6157C1-B5D6-4A8A-894C-9820850BCC74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataImporter.Info", "DataImporter.Info\DataImporter.Info.csproj", "{3E6FE24E-CBAD-4635-9035-EF458D4E5FF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataImporter.Info", "DataImporter.Info\DataImporter.Info.csproj", "{3E6FE24E-CBAD-4635-9035-EF458D4E5FF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataImporter.ImportWorker", "DataImporter.ImportWorker\DataImporter.ImportWorker.csproj", "{C51227C9-FEC7-434E-8A4B-ECE74F947738}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{3E6FE24E-CBAD-4635-9035-EF458D4E5FF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E6FE24E-CBAD-4635-9035-EF458D4E5FF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E6FE24E-CBAD-4635-9035-EF458D4E5FF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C51227C9-FEC7-434E-8A4B-ECE74F947738}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C51227C9-FEC7-434E-8A4B-ECE74F947738}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C51227C9-FEC7-434E-8A4B-ECE74F947738}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C51227C9-FEC7-434E-8A4B-ECE74F947738}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

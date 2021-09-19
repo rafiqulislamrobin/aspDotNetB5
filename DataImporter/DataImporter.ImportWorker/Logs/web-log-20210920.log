@@ -1,0 +1,22 @@
+2021-09-20 00:50:13.979 +06:00 [INF] Application Starting up
+2021-09-20 00:50:15.572 +06:00 [INF] Deleted 
+2021-09-20 00:50:15.574 +06:00 [INF] Worker running at: "2021-09-20T00:50:15.5738159+06:00"
+2021-09-20 00:50:33.447 +06:00 [INF] Application Starting up
+2021-09-20 00:50:34.825 +06:00 [FTL] Application start-up failed
+System.ArgumentException: Empty path name is not legal. (Parameter 'path')
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.IO.File.Open(String path, FileMode mode, FileAccess access)
+   at DataImporter.Info.Services.DataImporterService.SaveExcelDatatoDb(String fileroot, String fileStatus, Int32 fileId, Int32 GroupId) in D:\#FinalProject\3\DataImporter.Info\Services\DataImporterService.cs:line 203
+   at DataImporter.ImportWorker.Worker.ExecuteAsync(CancellationToken stoppingToken) in D:\#FinalProject\3\DataImporter.ImportWorker\Worker.cs:line 27
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at DataImporter.ImportWorker.Program.Main(String[] args) in D:\#FinalProject\3\DataImporter.ImportWorker\Program.cs:line 47
+2021-09-20 01:06:07.549 +06:00 [INF] Application Starting up
+2021-09-20 01:06:09.157 +06:00 [INF] Deleted 
+2021-09-20 01:06:09.159 +06:00 [INF] Worker running at: "2021-09-20T01:06:09.1587500+06:00"
+2021-09-20 03:10:55.141 +06:00 [INF] Application Starting up
+2021-09-20 03:10:56.963 +06:00 [INF] Deleted 
+2021-09-20 03:10:56.964 +06:00 [INF] Worker running at: "2021-09-20T03:10:56.9643385+06:00"

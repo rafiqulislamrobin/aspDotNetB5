@@ -15,8 +15,10 @@ namespace DataImporter.Areas.User.Models
     {
         private readonly IDataImporterService _iDataImporterService;
         public List<Contact> Contacts { get; set; }
+        public List<string> Headers { get; set; }
+        public List<List<string>> Items { get; set; }
         public ExportFileModel()
-        {
+        { 
             _iDataImporterService = Startup.AutofacContainer.Resolve<IDataImporterService>();
         }
         public ExportFileModel(IDataImporterService iDataImporterService)
@@ -36,29 +38,20 @@ namespace DataImporter.Areas.User.Models
                 //define a worksheet
                 var worksheet = excelPackage.Workbook.Worksheets.Add("Users");
 
-                var StartRow = 5;
-                var row = StartRow;
 
-                worksheet.Cells["A1"].Value = "User Export File";
-                using (var r = worksheet.Cells["A1:C1"])
-                {
-                    r.Merge = true;
-                    r.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
-                    r.Style.Fill.BackgroundColor.SetColor(Color.FromArgb(78, 194, 109));
-                }
-                worksheet.Cells["A4"].Value = "Name";
-                worksheet.Cells["B4"].Value = "Address";
-                worksheet.Cells["C4"].Value = "Group Id";
-                worksheet.Cells["A4:C4"].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
-                worksheet.Cells["A4:C4"].Style.Fill.BackgroundColor.SetColor(Color.Yellow);
+                worksheet.Cells["A1"].Value = "Name";
+                worksheet.Cells["B1"].Value = "Address";
+                worksheet.Cells["C1"].Value = "Group Id";
+                worksheet.Cells["A1:C1"].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                worksheet.Cells["A1:C1"].Style.Fill.BackgroundColor.SetColor(Color.Yellow);
 
                 //filling information
-                row = 5;
+                var row = 2;
                 foreach (var contact in Contacts)
                 {
-                    worksheet.Cells[row, 1].Value = contact.Name;
-                    worksheet.Cells[row, 2].Value = contact.Address;
-                    worksheet.Cells[row, 3].Value = contact.GroupId;
+                    //worksheet.Cells[row, 1].Value = contact.Name;
+                    //worksheet.Cells[row, 2].Value = contact.Address;
+                    //worksheet.Cells[row, 3].Value = contact.GroupId;
                     row++;
                 }
                 excelPackage.Workbook.Properties.Title = "User list";
@@ -68,6 +61,13 @@ namespace DataImporter.Areas.User.Models
             }
             stream.Position = 0;
             return(stream);
+        }
+
+        internal void GetContactsList()
+        {
+           var z = _iDataImporterService.ContactList();
+            Headers = z.Item1;
+            Items = z.Item2;
         }
     }
 }

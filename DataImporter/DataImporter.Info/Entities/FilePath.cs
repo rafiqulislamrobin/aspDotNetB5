@@ -14,6 +14,7 @@ namespace DataImporter.Info.Entities
         public string FileName { get; set; }
         public string FilePathName { get; set; }
         public string GroupName { get; set; }
+        public string FileStatus { get; set; }
         public int GroupId { get; set; }
         public Group Group { get; set; }
     }
