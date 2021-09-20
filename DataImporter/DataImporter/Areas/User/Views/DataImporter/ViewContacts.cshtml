@@ -6,32 +6,34 @@
 
 
 
-
-<div class="row">
-    <div class="col-md-12">
-        <table class="table">
-            <thead>
-                <tr>
-                    @{
-                        foreach (var item in Model.headers)
-                        {
-                            <th>@item</th>
+<form asp-action="ViewContacts" asp-controller="DataImporter" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="file" />
+    <input type="hidden" asp-for="GroupId" />
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        @{
+                            foreach (var item in Model.headers)
+                            {
+                                <th>@item</th>
+                            }
                         }
-                    }
-                </tr>
-            </thead>
-            <tbody>
-               
+                    </tr>
+                </thead>
+                <tbody>
+
                     @foreach (var item in Model.cont)
                     {
                         <tr>
 
-                           @foreach (var v in item.Value)
+                            @foreach (var v in item.Value)
                             {
-                            <td>@v.Value</td>
+                                <td>@v.Value</td>
                             }
 
-                            
+
                         </tr>
                     }
                 </tbody>
@@ -39,21 +41,22 @@
         </div>
     </div>
     <div class="col-md-6">
-        <form asp-action="UploadHistory" asp-controller="DataImporter" method="post" enctype="multipart/form-data">
-            <div class="form-group">
 
-                <button type="submit" class="btn btn-success" style="color: white;background-color: #343a40;border-color:black">Upload</button>
+        <div class="form-group">
 
-            </div>
-        </form>
+            <button type="submit" class="btn btn-success" style="color: white;background-color: #343a40;border-color:black">Upload</button>
 
+        </div>
     </div>
-    @*@if (ViewBag != null)
-        {
-            <script type="text/javascript">
-                window.onload = function () {
-                    alert("@ViewBag.ValueMatch")
-                }
-            </script>
-        }*@
+</form>
+
+    
+@*@if (ViewBag != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.ValueMatch")
+            }
+        </script>
+    }*@
 

@@ -1,5 +1,6 @@
 ﻿using DataImporter.Info.Business_Object;
 using ExcelDataReader;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +11,10 @@ namespace DataImporter.Areas.User.Models
 {
     public class ConfirmFile
     {
-       public Dictionary<int, Dictionary<string, string>> cont { get; set; }
+        public string file { get; set; }
+      
+        public int GroupId { get; set; }
+        public Dictionary<int, Dictionary<string, string>> cont { get; set; }
        public List<string> headers { get; set; }
         internal object ConfirmFileUpload(string filepath)
         {

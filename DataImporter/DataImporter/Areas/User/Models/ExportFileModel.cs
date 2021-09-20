@@ -15,9 +15,10 @@ namespace DataImporter.Areas.User.Models
     {
         private readonly IDataImporterService _iDataImporterService;
         public List<Contact> Contacts { get; set; }
-        public List<string> Headers { get; set; }
         public int GroupId { get; set; }
+        public List<string> Headers { get; set; }      
         public List<List<string>> Items { get; set; }
+
         public ExportFileModel()
         { 
             _iDataImporterService = Startup.AutofacContainer.Resolve<IDataImporterService>();
@@ -40,20 +41,27 @@ namespace DataImporter.Areas.User.Models
                 var worksheet = excelPackage.Workbook.Worksheets.Add("Users");
 
 
-                worksheet.Cells["A1"].Value = "Name";
-                worksheet.Cells["B1"].Value = "Address";
-                worksheet.Cells["C1"].Value = "Group Id";
-                worksheet.Cells["A1:C1"].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
-                worksheet.Cells["A1:C1"].Style.Fill.BackgroundColor.SetColor(Color.Yellow);
+       
+
+
+                for (int i = 1; i <= Headers.Count; i++)
+                {
+                    var r = 1;
+                    worksheet.Cells[r, i].Value = Headers[i-1];
+                    worksheet.Cells[r, i].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                    worksheet.Cells[r, i].Style.Fill.BackgroundColor.SetColor(Color.Yellow);
+
+                }
 
                 //filling information
-                var row = 2;
-                foreach (var contact in Contacts)
+                
+                for (int row = 0; row < Items.Count ; row++)
                 {
-                    //worksheet.Cells[row, 1].Value = contact.Name;
-                    //worksheet.Cells[row, 2].Value = contact.Address;
-                    //worksheet.Cells[row, 3].Value = contact.GroupId;
-                    row++;
+                    List<string> values = new();
+                    for (int col = 0; col < Headers.Count; col++)
+                    {
+                        worksheet.Cells[row+2, col+1].Value =Items[row][col];
+                    }
                 }
                 excelPackage.Workbook.Properties.Title = "User list";
                 excelPackage.Workbook.Properties.Author = "Robin";

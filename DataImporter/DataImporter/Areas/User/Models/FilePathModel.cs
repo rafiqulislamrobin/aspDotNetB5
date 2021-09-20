@@ -16,7 +16,7 @@ namespace DataImporter.Areas.User.Models
 {
     public class FilePathModel
     {
-
+        public string file { get; set; }
         public IWebHostEnvironment _WebHostEnvironment;
         //public DateTime DateTime { get; set; }
         public int GroupId { get; set; }

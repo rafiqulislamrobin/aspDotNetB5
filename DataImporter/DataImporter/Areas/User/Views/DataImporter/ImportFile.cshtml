@@ -4,10 +4,10 @@
     ViewData["Title"] = "ImportFile";
 }
 
-<form method="post" enctype="multipart/form-data" asp-controller="DataImporter" asp-action="ViewContacts">
+<form method="post" enctype="multipart/form-data" asp-controller="DataImporter" asp-action="ImportFile">
 
 
-    
+   
     <div asp-validation-summary="All" class="container-fluid">
         <div class="card-header">
             <h3 class="card-title">Upload File</h3>
@@ -33,15 +33,16 @@
             <label for="select group">Choice group:  </label>
             @Html.DropDownListFor(m => m.GroupId, ViewBag.GroupList as SelectList, "--Select A Group--", new { required = "required" })
 
-            <input type="hidden" asp-for="GroupId" />
+
         </div>
         <!-- /.card-body -->
-
+        <input type="hidden" asp-for="GroupId" />
         <div class="card-footer">
             <button type="submit" class="btn btn-primary"
                     style="color: white;background-color: #343a40;border-color:black">
                 Next
             </button>
+
         </div>
 
     </div>

@@ -23,11 +23,11 @@ namespace DataImporter.ImportWorker
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                var fileinfo = _iDataImporterService.CheckImportStatus();
-               var message = _iDataImporterService.SaveExcelDatatoDb(fileinfo.Item1, fileinfo.Item2, fileinfo.Item3, fileinfo.Item4);
+                
+               var message = _iDataImporterService.SaveExcelDatatoDb();
                 _logger.LogInformation(message);
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-                await Task.Delay(60000, stoppingToken);
+                await Task.Delay(20000, stoppingToken);
             }
 
         }

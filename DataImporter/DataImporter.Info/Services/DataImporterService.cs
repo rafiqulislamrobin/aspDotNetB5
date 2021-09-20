@@ -24,28 +24,6 @@ namespace DataImporter.Info.Services
 
         }
 
-        //Importer Worker Service Get Status method
-        public (string, string, int, int) CheckImportStatus()
-        {
-            var fileEntities = _dataUnitOfWork.FilePath.GetAll();
-            string fileroot = "";
-            string fileStatus = "";
-            int fileId = 0;
-            int GroupId = 0;
-            foreach (var file in fileEntities)
-            {
-                if (file.FileStatus.ToLower() == "pending")
-                {
-                    fileroot = file.FilePathName;
-                    fileId = file.Id;
-                    GroupId = file.GroupId;
-                    fileStatus = file.FileStatus = "processing";
-                    _dataUnitOfWork.Save();
-                    break;
-                }
-            }
-            return (fileroot, fileStatus, fileId, GroupId);
-        }
 
         public (List<string>, List<List<string>>) ContactList(int groupId)
         {
@@ -68,7 +46,6 @@ namespace DataImporter.Info.Services
                     {
                         headers.Add(contactRow.Key);
                     }
-
                 }
 
             }
@@ -234,92 +211,112 @@ namespace DataImporter.Info.Services
         }
 
         //import worker Service save database method
-        public string SaveExcelDatatoDb(string fileroot, string fileStatus, int fileId, int GroupId)
+        public string SaveExcelDatatoDb()
         {
-            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-            using (var stream = System.IO.File.Open(fileroot, FileMode.Open, FileAccess.Read))
+
+            var fileEntities = _dataUnitOfWork.FilePath.GetAll();
+            string fileroot = "";
+            string fileStatus = "";
+            int fileId = 0;
+            int GroupId = 0;
+            foreach (var f in fileEntities)
             {
-
-                using (var reader = ExcelReaderFactory.CreateReader(stream))
+                if (f.FileStatus.ToLower() == "pending")
                 {
-                    Contact contact = new();
-                    Dictionary<int, Dictionary<string, string>> cont = new();
-                    List<string> headers = new();
-
-                    var conf = new ExcelDataSetConfiguration
+                    fileroot = f.FilePathName;
+                    fileId = f.Id;
+                    GroupId = f.GroupId;
+                    fileStatus = f.FileStatus = "processing";
+                    _dataUnitOfWork.Save();
+                    System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+                    using (var stream = System.IO.File.Open(fileroot, FileMode.Open, FileAccess.Read))
                     {
-                        ConfigureDataTable = _ => new ExcelDataTableConfiguration
+
+
+                        using (var reader = ExcelReaderFactory.CreateReader(stream))
                         {
-                            UseHeaderRow = false
-                        }
-                    };
-                    var dataSet = reader.AsDataSet(conf);
+                            Contact contact = new();
+                            Dictionary<int, Dictionary<string, string>> cont = new();
+                            List<string> headers = new();
 
-                    var dataTable = dataSet.Tables[0];
-
-                    for (var i = 0; i < 1; i++)
-                    {
-                        for (var j = 0; j < dataTable.Columns.Count; j++)
-                        {
-                            headers.Add(dataTable.Rows[i][j].ToString());
-
-                        }
-
-                    }
-                    for (var i = 1; i < dataTable.Rows.Count; i++)
-                    {
-                        Contact contacts = new();
-                        for (var j = 0; j < dataTable.Columns.Count; j++)
-                        {
-                            var z = dataTable.Rows[i][j].ToString();
-                            if (z != null && z != "")
+                            var conf = new ExcelDataSetConfiguration
                             {
-                                contacts.Properties.Add(headers[j], dataTable.Rows[i][j].ToString());
+                                ConfigureDataTable = _ => new ExcelDataTableConfiguration
+                                {
+                                    UseHeaderRow = false
+                                }
+                            };
+                            var dataSet = reader.AsDataSet(conf);
+
+                            var dataTable = dataSet.Tables[0];
+
+                            for (var i = 0; i < 1; i++)
+                            {
+                                for (var j = 0; j < dataTable.Columns.Count; j++)
+                                {
+                                    headers.Add(dataTable.Rows[i][j].ToString());
+
+                                }
+
                             }
-                            else
+                            for (var i = 1; i < dataTable.Rows.Count; i++)
                             {
-                                contacts.Properties.Add(headers[j], "(no value)");
+                                Contact contacts = new();
+                                for (var j = 0; j < dataTable.Columns.Count; j++)
+                                {
+                                    var z = dataTable.Rows[i][j].ToString();
+                                    if (z != null && z != "")
+                                    {
+                                        contacts.Properties.Add(headers[j], dataTable.Rows[i][j].ToString());
+                                    }
+                                    else
+                                    {
+                                        contacts.Properties.Add(headers[j], "(no value)");
+                                    }
+                                }
+                                cont.Add(i + 1, contacts.Properties);
+
                             }
-                        }
-                        cont.Add(i+1, contacts.Properties);
-
-                    }
-                    foreach (var item in cont)
-                    {
-                        var value = item.Value;
-
-                        foreach (var v in value)
-                        {
-                            _dataUnitOfWork.Contact.Add(new Entities.Contact
+                            foreach (var item in cont)
                             {
-                                ExcelRow = item.Key,
-                                Key = v.Key,
-                                Value = v.Value,
-                                GroupId = GroupId
-                            });
+                                var value = item.Value;
 
-                            _dataUnitOfWork.Save();
+                                foreach (var v in value)
+                                {
+                                    _dataUnitOfWork.Contact.Add(new Entities.Contact
+                                    {
+                                        ExcelRow = item.Key,
+                                        Key = v.Key,
+                                        Value = v.Value,
+                                        GroupId = GroupId
+                                    });
+
+                                    _dataUnitOfWork.Save();
+
+                                }
+                            }
 
                         }
-
                     }
+
+
+                    var file = _dataUnitOfWork.FilePath.GetById(fileId);
+                    file.FileStatus = "Completed";
+                    _dataUnitOfWork.Save();
+                    try
+                    {
+                        File.Delete(fileroot);
+                    }
+                    catch (Exception ex)
+                    {
+
+                        return ex.Message;
+                    }
+                    return "Deleted ";
 
                 }
             }
-
-            var file = _dataUnitOfWork.FilePath.GetById(fileId);
-            file.FileStatus = "Completed";
-            _dataUnitOfWork.Save();
-            try
-            {
-                File.Delete(fileroot);
-            }
-            catch (Exception ex)
-            {
-
-                return ex.Message;
-            }
-            return "Deleted ";
+            return "no file to delete";
         }
 
         public void SaveFilePath(FilePath filepath)

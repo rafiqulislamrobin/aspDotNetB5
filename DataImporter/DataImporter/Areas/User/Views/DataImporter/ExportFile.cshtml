@@ -29,13 +29,13 @@
             <!-- form start -->
 
             <div class="card-body" type="select">
-                <label for="select group">Choice group:  </label>
+                <label for="select group" id="groupid">Choice group:  </label>
                 @Html.DropDownListFor(m => m.GroupId, ViewBag.GroupList as SelectList, "--Select A Group--", new { required = "required" })
 
-                <input type="hidden" asp-for="GroupId" />
+
             </div>
             <!-- /.card-body -->
-
+            <input type="hidden" asp-for="GroupId" value="@Model.GroupId " id="groupid" />
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary"
                         style="color: white;background-color: #343a40;border-color:black">
@@ -46,79 +46,80 @@
         </div>
 
     </form>
-</section>
-<!-- Main content -->
-<h1 style="text-align:center; color:white">@ViewBag.ContactListNullMassage</h1>
-@if (ViewBag.ContactListNullMassage == null)
-{
-    @if (Model.GroupId != 0)
-    {
-        <form method="post" enctype="multipart/form-data" asp-controller="DataImporter" asp-action="ExportFile">
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header" style="color: white;background-color: #343a40">
-                                    <h3 class="card-title">List</h3>
-                                </div>
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    <table id="Contact" class="table table-bordered table-hover" method="post">
-                                        <thead>
-                                            <tr>
-                                                @{
-                                                    foreach (var item in Model.Headers)
-                                                    {
-                                                        <th>@item</th>
-                                                    }
-                                                }
-                                            </tr>
-                                        </thead>
-                                        <tbody>
 
-                                            @foreach (var item in Model.Items)
-                                            {
+    <!-- Main content -->
+    <h1 style="text-align:center; color:white">@ViewBag.ContactListNullMassage</h1>
+    @if (ViewBag.ContactListNullMassage == null)
+    {
+        @if (Model.GroupId != 0)
+        {
+
+            <form method="post" enctype="multipart/form-data" asp-controller="DataImporter" asp-action="ExportFile">
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header" style="color: white;background-color: #343a40">
+                                        <h3 class="card-title">List</h3>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body">
+                                        <table id="Contact" class="table table-bordered table-hover" method="post">
+                                            <thead>
                                                 <tr>
-                                                    @foreach (var i in item)
-                                                    {
-                                                        <td>@i</td>
+                                                    @{
+                                                        foreach (var item in Model.Headers)
+                                                        {
+                                                            <th>@item</th>
+                                                        }
                                                     }
                                                 </tr>
-                                            }
-                                        </tbody>
+                                            </thead>
+                                            <tbody>
 
-                                    </table>
+                                                @foreach (var item in Model.Items)
+                                                {
+                                                    <tr>
+                                                        @foreach (var i in item)
+                                                        {
+                                                            <td>@i</td>
+                                                        }
+                                                    </tr>
+                                                }
+                                            </tbody>
 
-                                    <partial name="_deletePartial" />
+                                        </table>
+
+                                        <partial name="_deletePartial" />
+                                    </div>
+                                    <!-- /.card-body -->
                                 </div>
-                                <!-- /.card-body -->
+
                             </div>
-
+                            <!-- /.row -->
                         </div>
-                        <!-- /.row -->
                     </div>
+                    <!-- /.container-fluid -->
+                </section>
+                <!-- /.content -->
+                <!-- /.content-wrapper -->
+                <div class="card-footer">
+                    <div class="col-md-6">
+                        <a asp-action="Download" asp-controller="DataImporter" class="btn btn-primary"
+                           style="color: white;background-color: #343a40;border-color:black">
+                            Download
+                        </a>
+                    </div>
+                    <input type="hidden" asp-for="GroupId" value="@Model.GroupId " id="groupid" />
+                    <a asp-action="Index" asp-controller="DataImporter"
+                       class="btn btn-default float-right" style="color: white;background-color: #343a40">Send to Email</a>
                 </div>
-                <!-- /.container-fluid -->
-            </section>
-            <!-- /.content -->
-            <!-- /.content-wrapper -->
-            <div class="card-footer">
-                <div class="col-md-6">
-                    <a asp-action="ExportFile" asp-controller="DataImporter" class="btn btn-primary"
-                       style="color: white;background-color: #343a40;border-color:black">
-                        Download
-                    </a>
-                </div>
-
-                <a asp-action="Index" asp-controller="DataImporter"
-                   class="btn btn-default float-right" style="color: white;background-color: #343a40">Send to Email</a>
-            </div>
-        </form>
+            </form>
+        }
     }
-}
 
-
+</section>
 
 
 

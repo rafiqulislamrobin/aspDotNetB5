@@ -108,36 +108,14 @@ namespace DataImporter.Areas.User.Controllers
             model.DeleteGroup(id);
             return RedirectToAction(nameof(ViewGroups));
         }
-        [HttpGet]
-        public IActionResult ViewContacts()
-        {
-            var model = new ViewContactModel();
-            var z = model.GetContactList();
-            return View(z);
-        }
-        [HttpPost]
-
-        public IActionResult ViewContacts(IFormFile file, FilePathModel models)
-        {
-            //var model = new ViewContactModel();
-            //var z = model.GetContactList();
-            //convert to a stream
-
-            var filepath = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\Excel"}" + "\\" + file.FileName;
-            using (FileStream fileStream = System.IO.File.Create(filepath))
-            {
-                file.CopyTo(fileStream);
-                fileStream.Flush();
-            }
-
-            ConfirmFile model = new ConfirmFile();
-             model.ConfirmFileUpload(filepath);
-
-            TempData["file"] = Path.GetFileName(filepath);
-            TempData["temp"] = models.GroupId;
-            return View(model);
-
-        }
+        //[HttpGet]
+        //public IActionResult ViewContacts()
+        //{
+        //    var model = new ViewContactModel();
+        //    var z = model.GetContactList();
+        //    return View(z);
+        //}
+        //[HttpPost]
         public IActionResult CreateContacts()
         {
             var model = new CreateContactModel();
@@ -161,6 +139,29 @@ namespace DataImporter.Areas.User.Controllers
             }
             return View(model);
         }
+        public IActionResult ViewContacts(FilePathModel filemodels)
+        {
+            ConfirmFile model = new ConfirmFile();
+            model.GroupId = filemodels.GroupId;
+            model.file = filemodels.file;
+            var file = filemodels.file;
+            var filepath = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\Excel"}" + "\\" + file;
+
+            model.ConfirmFileUpload(filepath);
+            return View(model);
+
+        }
+        [HttpPost]
+        public IActionResult ViewContacts(ConfirmFile model)
+        {
+    
+            var models = new FilePathModel();
+            var list = models.LoadAllGroups();
+
+            models.SaveFilePath(model.file, model.GroupId, list);
+            return RedirectToAction(nameof(ImportHistory));
+           
+        }
 
         public IActionResult ImportFile()
         {
@@ -170,20 +171,24 @@ namespace DataImporter.Areas.User.Controllers
             return View(model);
 
         }
-
-        //[HttpPost]
-
-        public IActionResult UploadHistory()//it will be http post and get method only get the history
+        [HttpPost]
+        public IActionResult ImportFile(IFormFile file, FilePathModel models)
         {
-            var filename = TempData["file"].ToString();
-            var groupId = Convert.ToInt32(TempData["temp"]);
             var model = new FilePathModel();
-            var list = model.LoadAllGroups();
+            model.GroupId = models.GroupId;
+            
+            //convert to a stream
+           
 
-
-            /* await*/
-            model.SaveFilePath(filename, groupId, list);
-            return View(nameof(ImportHistory));
+            var filepath = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\Excel"}" + "\\" + file.FileName;
+            using (FileStream fileStream = System.IO.File.Create(filepath))
+            {
+                file.CopyTo(fileStream);
+                fileStream.Flush();
+            }
+            var path = Path.GetFileName(filepath);
+            model.file = path;
+            return RedirectToAction("ViewContacts",model);
 
         }
 
@@ -220,6 +225,7 @@ namespace DataImporter.Areas.User.Controllers
           
             var list = model.LoadAllGroups();
             ViewBag.GroupList = new SelectList(list, "Id", "Name");
+        
             return View(model);
             
         }
@@ -228,6 +234,7 @@ namespace DataImporter.Areas.User.Controllers
         {
             var model = new ExportFileModel();
             model.GetContactsList(filePathmodel.GroupId);
+            
             var list = model.LoadAllGroups();
             if (model.Headers.Count == 0)
             {
@@ -238,13 +245,29 @@ namespace DataImporter.Areas.User.Controllers
             { 
                 ViewBag.GroupList = new SelectList(list, "Id", "Name");
             }
-            return View(model);
-            //var model = new ExportFileModel();
-            //var contacts = model.GetExportFiles();
-            //string fileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-            //string fileFormat = "User.xlsx";
-            //return File(contacts, fileType, fileFormat);
-        }
 
+            List<string> headers = new();
+            foreach (var item in model.Headers)
+            {
+                headers.Add(item);
+            }
+
+            TempData["id"] = filePathmodel.GroupId;
+
+            return View(model);
+
+        }
+      
+        public IActionResult Download(int ids, ExportFileModel ex)
+        {
+            var id = Convert.ToInt32(TempData.Peek("id"));
+            
+            var model = new ExportFileModel();
+            model.GetContactsList(id);
+            var contacts = model.GetExportFiles();
+            string fileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            string fileFormat = "User.xlsx";
+            return File(contacts, fileType, fileFormat);
+        }
     }
 }
