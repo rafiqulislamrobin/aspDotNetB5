@@ -39,7 +39,7 @@ namespace DataImporter.Areas.User.Models
             _datetimeUtility = datetimeUtility;
             _iDataImporterService = iDataImporterService;
         }
-        internal /*async Task*/void SaveFilePathAsync(string filename, int groupId, List<Group> list)
+        internal /*async Task*/void SaveFilePath(string filename, int groupId, List<Group> list)
         {
 
             FilePath filePath = new FilePath();

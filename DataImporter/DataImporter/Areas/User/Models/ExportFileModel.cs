@@ -16,6 +16,7 @@ namespace DataImporter.Areas.User.Models
         private readonly IDataImporterService _iDataImporterService;
         public List<Contact> Contacts { get; set; }
         public List<string> Headers { get; set; }
+        public int GroupId { get; set; }
         public List<List<string>> Items { get; set; }
         public ExportFileModel()
         { 
@@ -63,12 +64,19 @@ namespace DataImporter.Areas.User.Models
             return(stream);
         }
 
-        internal void GetContactsList()
+        internal void GetContactsList(int groupId)
         {
-           var z = _iDataImporterService.ContactList();
-            Headers = z.Item1;
-            Items = z.Item2;
+           var contacts = _iDataImporterService.ContactList(groupId);
+            Headers = contacts.Item1;
+            Items = contacts.Item2;
+            GroupId = groupId;
         }
+
+        internal List<Group> LoadAllGroups()
+        {
+            return _iDataImporterService.LoadAllGroups();
+        }
+  
     }
 }
 

@@ -17,6 +17,3 @@ System.ArgumentException: Empty path name is not legal. (Parameter 'path')
 2021-09-20 01:06:07.549 +06:00 [INF] Application Starting up
 2021-09-20 01:06:09.157 +06:00 [INF] Deleted 
 2021-09-20 01:06:09.159 +06:00 [INF] Worker running at: "2021-09-20T01:06:09.1587500+06:00"
-2021-09-20 03:10:55.141 +06:00 [INF] Application Starting up
-2021-09-20 03:10:56.963 +06:00 [INF] Deleted 
-2021-09-20 03:10:56.964 +06:00 [INF] Worker running at: "2021-09-20T03:10:56.9643385+06:00"

@@ -173,7 +173,7 @@ namespace DataImporter.Areas.User.Controllers
 
         //[HttpPost]
 
-        public IActionResult UploadHistory()
+        public IActionResult UploadHistory()//it will be http post and get method only get the history
         {
             var filename = TempData["file"].ToString();
             var groupId = Convert.ToInt32(TempData["temp"]);
@@ -182,7 +182,7 @@ namespace DataImporter.Areas.User.Controllers
 
 
             /* await*/
-            model.SaveFilePathAsync(filename, groupId, list);
+            model.SaveFilePath(filename, groupId, list);
             return View(nameof(ImportHistory));
 
         }
@@ -212,20 +212,38 @@ namespace DataImporter.Areas.User.Controllers
         {
             return View();
         }
+        [HttpGet]
         public IActionResult ExportFile()
         {
 
             var model = new ExportFileModel();
-            model.GetContactsList();
+          
+            var list = model.LoadAllGroups();
+            ViewBag.GroupList = new SelectList(list, "Id", "Name");
             return View(model);
+            
         }
-        public IActionResult DownloadFile()
+        [HttpPost]
+        public IActionResult ExportFile(FilePathModel filePathmodel)
         {
             var model = new ExportFileModel();
-            var contacts = model.GetExportFiles();
-            string fileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-            string fileFormat = "User.xlsx";
-            return File(contacts, fileType, fileFormat);
+            model.GetContactsList(filePathmodel.GroupId);
+            var list = model.LoadAllGroups();
+            if (model.Headers.Count == 0)
+            {
+                ViewBag.ContactListNullMassage = "(No Contact Available)";
+                ViewBag.GroupList = new SelectList(list, "Id", "Name");
+            }
+            else
+            { 
+                ViewBag.GroupList = new SelectList(list, "Id", "Name");
+            }
+            return View(model);
+            //var model = new ExportFileModel();
+            //var contacts = model.GetExportFiles();
+            //string fileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            //string fileFormat = "User.xlsx";
+            //return File(contacts, fileType, fileFormat);
         }
 
     }

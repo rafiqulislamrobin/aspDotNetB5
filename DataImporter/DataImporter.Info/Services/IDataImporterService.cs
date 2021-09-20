@@ -24,6 +24,6 @@ namespace DataImporter.Info.Services
         string SaveExcelDatatoDb(string fileRoot, string fileName, int fileId, int GroupId);
         void UpdateGropu(Group group);
         List <Group> LoadAllGroups();
-        (List<string>, List<List<string>>) ContactList();
+        (List<string>, List<List<string>>) ContactList(int groupId);
     }
 }

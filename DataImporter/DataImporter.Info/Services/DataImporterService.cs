@@ -47,8 +47,10 @@ namespace DataImporter.Info.Services
             return (fileroot, fileStatus, fileId, GroupId);
         }
 
-        public (List<string>, List<List<string>>) ContactList()
+        public (List<string>, List<List<string>>) ContactList(int groupId)
         {
+            var group = _dataUnitOfWork.Group.GetById(groupId);
+           
             List<string> headers = new();
             List<List<string>> items = new();
             List<string> i = new();
@@ -56,27 +58,33 @@ namespace DataImporter.Info.Services
             var h = 0;
             foreach (var contactRow in contactEntities)
             {
-                
-                if (headers.Contains(contactRow.Key))
+                if (contactRow.GroupId == group.Id)
                 {
-                    break;
-                }
-                else
-                {
-                    headers.Add(contactRow.Key);
+                    if (headers.Contains(contactRow.Key))
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        headers.Add(contactRow.Key);
+                    }
+
                 }
 
             }
             foreach (var contactRow in contactEntities)
             {
-                i.Add(contactRow.Value);
-                h++;
-                if (h == headers.Count)
+                if (contactRow.GroupId == group.Id)
                 {
-                    items.Add(i);
-                    i = new List<string>();
-                    h = 0;
-                  
+                    i.Add(contactRow.Value);
+                    h++;
+                    if (h == headers.Count)
+                    {
+                        items.Add(i);
+                        i = new List<string>();
+                        h = 0;
+
+                    }
                 }
             }
 
