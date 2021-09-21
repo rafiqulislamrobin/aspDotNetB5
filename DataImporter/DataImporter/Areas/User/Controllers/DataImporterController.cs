@@ -168,7 +168,7 @@ namespace DataImporter.Areas.User.Controllers
             var file = filemodels.file;
             var filepath = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\ExcelFiles"}" + "\\" + file;
 
-           var z = model.ConfirmFileUpload(filepath);
+           var z = model.ConfirmFileUpload(filepath,file);
             if (z.Item2==null)
             {
                 ViewBag.HeaderMissMatch = "FIles Columns dosent match to this group." +
@@ -176,6 +176,8 @@ namespace DataImporter.Areas.User.Controllers
                 
                 var list = filemodels.LoadAllGroups();
                 ViewBag.GroupList = new SelectList(list, "Id", "Name");
+
+               
                 return View(nameof(ImportFile));
             }
             return View(model);
