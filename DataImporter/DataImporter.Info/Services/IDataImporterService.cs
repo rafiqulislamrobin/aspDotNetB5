@@ -22,8 +22,11 @@ namespace DataImporter.Info.Services
         
       
         string SaveExcelDatatoDb();
+        (IList<ExportStatus> records, int total, int totalDisplay) GetExportHistory(int pageIndex, int pageSize,
+                                                       string searchText, string sortText);
         void UpdateGropu(Group group);
         List <Group> LoadAllGroups();
         (List<string>, List<List<string>>) ContactList(int groupId);
+        void SaveExportHistory(ExportStatus exportStatus);
     }
 }

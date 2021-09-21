@@ -17,7 +17,7 @@ namespace DataImporter.Areas.User.Models
     public class FilePathModel
     {
         public string file { get; set; }
-        public IWebHostEnvironment _WebHostEnvironment;
+
         //public DateTime DateTime { get; set; }
         public int GroupId { get; set; }
         public int GroupName { get; set; }
@@ -29,13 +29,13 @@ namespace DataImporter.Areas.User.Models
         public FilePathModel()
         {
             _datetimeUtility = Startup.AutofacContainer.Resolve<IDatetimeUtility>();
-            _WebHostEnvironment = Startup.AutofacContainer.Resolve<IWebHostEnvironment>();
+           
             _iDataImporterService = Startup.AutofacContainer.Resolve<IDataImporterService>();
 
         }
-        public FilePathModel(IDataImporterService iDataImporterService, IWebHostEnvironment WebHostEnvironment, IDatetimeUtility datetimeUtility)
+        public FilePathModel(IDataImporterService iDataImporterService, IDatetimeUtility datetimeUtility)
         {
-            _WebHostEnvironment = WebHostEnvironment;
+            
             _datetimeUtility = datetimeUtility;
             _iDataImporterService = iDataImporterService;
         }
@@ -43,7 +43,7 @@ namespace DataImporter.Areas.User.Models
         {
 
             FilePath filePath = new FilePath();
-            var path = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\Excel"}" + "\\" + filename;
+            var path = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\ExcelFiles"}" + "\\" + filename;
             filePath.FilePathName = path;
             filePath.FileName = Path.GetFileName(path);
             filePath.DateTime = _datetimeUtility.Now;

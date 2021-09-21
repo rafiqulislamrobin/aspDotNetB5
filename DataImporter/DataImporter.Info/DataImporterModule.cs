@@ -52,7 +52,8 @@ namespace DataImporter.Info
                    .InstancePerLifetimeScope();
             builder.RegisterType<ContactRepository>().As<IContactRepository>()
             .InstancePerLifetimeScope();
-
+            builder.RegisterType<ExportStatusRepository> ().As<IExportStatusRepository>()
+        .InstancePerLifetimeScope();
 
             base.Load(builder);
 

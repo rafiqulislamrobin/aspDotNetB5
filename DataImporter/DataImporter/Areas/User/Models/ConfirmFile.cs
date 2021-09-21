@@ -1,4 +1,6 @@
-﻿using DataImporter.Info.Business_Object;
+﻿using Autofac;
+using DataImporter.Info.Business_Object;
+using DataImporter.Info.Services;
 using ExcelDataReader;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -16,7 +18,18 @@ namespace DataImporter.Areas.User.Models
         public int GroupId { get; set; }
         public Dictionary<int, Dictionary<string, string>> cont { get; set; }
        public List<string> headers { get; set; }
-        internal object ConfirmFileUpload(string filepath)
+
+        private readonly IDataImporterService _iDataImporterService;
+        public ConfirmFile()
+        {
+            _iDataImporterService = Startup.AutofacContainer.Resolve<IDataImporterService>();
+        }
+        public ConfirmFile(IDataImporterService iDataImporterService)
+        {
+            _iDataImporterService = iDataImporterService;
+        }
+
+        internal (Dictionary<int, Dictionary<string, string>>, List<string>) ConfirmFileUpload(string filepath)
         {
             cont = new();
             headers = new();
@@ -73,7 +86,27 @@ namespace DataImporter.Areas.User.Models
                 }
 
             }
+            if (headers!=null)
+            {
+                var contactlist = _iDataImporterService.ContactList(GroupId);
+                var checkheaders = contactlist.Item1;
+                var i = 0;
+                foreach (var item in checkheaders)
+                {
+                    if (item==headers[i])
+                    {
+                        i++;
+                    }
+                    else
+                    {
+                        headers = null;
+                        break;
+                    }
+                }
+            }
             return (cont, headers);
         }
+
+        
     }
 }

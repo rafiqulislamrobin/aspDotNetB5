@@ -108,14 +108,7 @@ namespace DataImporter.Areas.User.Controllers
             model.DeleteGroup(id);
             return RedirectToAction(nameof(ViewGroups));
         }
-        //[HttpGet]
-        //public IActionResult ViewContacts()
-        //{
-        //    var model = new ViewContactModel();
-        //    var z = model.GetContactList();
-        //    return View(z);
-        //}
-        //[HttpPost]
+
         public IActionResult CreateContacts()
         {
             var model = new CreateContactModel();
@@ -139,29 +132,7 @@ namespace DataImporter.Areas.User.Controllers
             }
             return View(model);
         }
-        public IActionResult ViewContacts(FilePathModel filemodels)
-        {
-            ConfirmFile model = new ConfirmFile();
-            model.GroupId = filemodels.GroupId;
-            model.file = filemodels.file;
-            var file = filemodels.file;
-            var filepath = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\Excel"}" + "\\" + file;
 
-            model.ConfirmFileUpload(filepath);
-            return View(model);
-
-        }
-        [HttpPost]
-        public IActionResult ViewContacts(ConfirmFile model)
-        {
-    
-            var models = new FilePathModel();
-            var list = models.LoadAllGroups();
-
-            models.SaveFilePath(model.file, model.GroupId, list);
-            return RedirectToAction(nameof(ImportHistory));
-           
-        }
 
         public IActionResult ImportFile()
         {
@@ -172,15 +143,13 @@ namespace DataImporter.Areas.User.Controllers
 
         }
         [HttpPost]
-        public IActionResult ImportFile(IFormFile file, FilePathModel models)
+        public IActionResult ImportFile(IFormFile file, FilePathModel filepathmodel)
         {
             var model = new FilePathModel();
-            model.GroupId = models.GroupId;
+            model.GroupId = filepathmodel.GroupId;
             
             //convert to a stream
-           
-
-            var filepath = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\Excel"}" + "\\" + file.FileName;
+            var filepath = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\ExcelFiles"}" + "\\" + file.FileName;
             using (FileStream fileStream = System.IO.File.Create(filepath))
             {
                 file.CopyTo(fileStream);
@@ -191,13 +160,40 @@ namespace DataImporter.Areas.User.Controllers
             return RedirectToAction("ViewContacts",model);
 
         }
-
-
-        public IActionResult ViewImportFile()
+        public IActionResult ViewContacts(FilePathModel filemodels)
         {
-            return View();
+            ConfirmFile model = new ConfirmFile();
+            model.GroupId = filemodels.GroupId;
+            model.file = filemodels.file;
+            var file = filemodels.file;
+            var filepath = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\ExcelFiles"}" + "\\" + file;
+
+           var z = model.ConfirmFileUpload(filepath);
+            if (z.Item2==null)
+            {
+                ViewBag.HeaderMissMatch = "FIles Columns dosent match to this group." +
+                                          " Please select another group or create a group";
+                
+                var list = filemodels.LoadAllGroups();
+                ViewBag.GroupList = new SelectList(list, "Id", "Name");
+                return View(nameof(ImportFile));
+            }
+            return View(model);
 
         }
+        [HttpPost]
+        public IActionResult ViewContacts(ConfirmFile model)
+        {
+
+            var models = new FilePathModel();
+            var list = models.LoadAllGroups();
+
+            models.SaveFilePath(model.file, model.GroupId, list);
+            return RedirectToAction(nameof(ImportHistory));
+
+        }
+
+
         public IActionResult ImportHistory()
         {
 
@@ -213,10 +209,7 @@ namespace DataImporter.Areas.User.Controllers
         }
 
 
-        public IActionResult ExportFileHistory()
-        {
-            return View();
-        }
+
         [HttpGet]
         public IActionResult ExportFile()
         {
@@ -278,12 +271,28 @@ namespace DataImporter.Areas.User.Controllers
         [HttpPost]
         public IActionResult EmailSender(EmailSenderModel emailSenderModel)
         {
+            var groupId = emailSenderModel.GroupId;
+            var email = (emailSenderModel.Email);
 
-            emailSenderModel.GetData( emailSenderModel.GroupId);
-            emailSenderModel.SendEmail(emailSenderModel.Email);
-            //emailSenderModel.DeleteFile();
-            return View();
+
+            emailSenderModel.GetData(groupId);
+            emailSenderModel.SendEmail(email);
+
+            ExportStatusModel model = new ExportStatusModel();
+            model.MakeStatus(groupId);
+            return RedirectToAction(nameof(ExportFileHistory));
         }
 
+        public IActionResult ExportFileHistory()
+        {
+            return View();
+        }
+        public JsonResult GetExporttHistoryData()
+        {
+            var dataTableAjaxRequestModel = new DataTablesAjaxRequestModel(Request);
+            var model = new ExportHistoryModel();
+            var data = model.GetHistories(dataTableAjaxRequestModel);
+            return Json(data);
+        }
     }
 }

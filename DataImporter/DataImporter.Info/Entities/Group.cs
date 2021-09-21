@@ -14,6 +14,7 @@ namespace DataImporter.Info.Entities
        
         public List<Contact> Contacts { get; set; }
         public List<FilePath> FilePaths { get; set; }
-        
+        public List<ExportStatus> ExportStatusEntities { get; set; }
+
     }
 }

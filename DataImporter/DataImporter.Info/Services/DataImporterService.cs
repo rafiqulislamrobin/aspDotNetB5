@@ -28,7 +28,7 @@ namespace DataImporter.Info.Services
         public (List<string>, List<List<string>>) ContactList(int groupId)
         {
             var group = _dataUnitOfWork.Group.GetById(groupId);
-           
+
             List<string> headers = new();
             List<List<string>> items = new();
             List<string> i = new();
@@ -138,6 +138,27 @@ namespace DataImporter.Info.Services
             return contacts;
         }
 
+        public (IList<ExportStatus> records, int total, int totalDisplay) GetExportHistory(int pageIndex, int pageSize, string searchText, string sortText)
+        {
+            var historyData = _dataUnitOfWork.ExportStatus.GetDynamic(
+           string.IsNullOrWhiteSpace(searchText) ? null : x => x.DownloadStatus.Contains(searchText),
+          sortText, "Group", pageIndex, pageSize, true);
+           
+            //var resultHistory = (from history in historyData.data
+            //                  select _mapper.Map<FilePath>(history)).ToList();
+            var resultHistory = (from history in historyData.data
+                                 select new ExportStatus
+                                 {
+
+                                  DateTime =history.DateTime,
+                                  GroupName =history.Group.Name,
+                                  EmailStatus=history.EmailStatus,
+                                  DownloadStatus =history.DownloadStatus
+                                 }).ToList();
+
+            return (resultHistory, historyData.total, historyData.totalDisplay);
+        }
+
         public (IList<Group> records, int total, int totalDisplay) GetGroupsList(int pageIndex, int pageSize, string searchText, string sortText)
         {
             var groupData = _dataUnitOfWork.Group.GetDynamic(
@@ -168,12 +189,12 @@ namespace DataImporter.Info.Services
             var resultHistory = (from history in historyData.data
                                  select new FilePath
                                  {
-                                     
+
                                      GroupName = history.Group.Name,
                                      FileStatus = history.FileStatus,
                                      FileName = history.FileName,
                                      FilePathName = history.FilePathName,
-                                     DateTime =history.DateTime
+                                     DateTime = history.DateTime
                                  }).ToList();
 
             return (resultHistory, historyData.total, historyData.totalDisplay);
@@ -198,15 +219,15 @@ namespace DataImporter.Info.Services
 
         public Group LoadGroup(int id)
         {
-            var student = _dataUnitOfWork.Group.GetById(id);
-            if (student == null)
+            var group = _dataUnitOfWork.Group.GetById(id);
+            if (group == null)
             {
                 return null;
             }
             return new Group
             {
-                Id = student.Id,
-                Name = student.Name,
+                Id = group.Id,
+                Name = group.Name,
             };
         }
 
@@ -317,6 +338,19 @@ namespace DataImporter.Info.Services
                 }
             }
             return "no file to delete";
+        }
+
+        public void SaveExportHistory(ExportStatus exportStatus)
+        {
+                        _dataUnitOfWork.ExportStatus.Add(
+                             new Entities.ExportStatus
+                             {
+                                 DownloadStatus = exportStatus.DownloadStatus,
+                                 EmailStatus = exportStatus.EmailStatus,
+                                 DateTime = exportStatus.DateTime,
+                                 GroupId =exportStatus.GroupId
+                             });
+                        _dataUnitOfWork.Save();
         }
 
         public void SaveFilePath(FilePath filepath)

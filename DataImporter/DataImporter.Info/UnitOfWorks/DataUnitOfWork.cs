@@ -15,21 +15,23 @@ namespace DataImporter.Info.UnitOfWorks
 
 
         public IFilePathRepository FilePath{ get; private set; }
-
+        public IExportStatusRepository ExportStatus { get; private set; }
         public IGroupRepository Group { get; private set; }
         public IContactRepository Contact { get; private set; }
 
-        //IFilePathRepository IDataUnitOfWork.Group => throw new NotImplementedException();
+      
 
         public DataUnitOfWork(IDataImporterDbContext context,
              IFilePathRepository filePathRepository,
              IGroupRepository group,
-             IContactRepository contact)
+             IContactRepository contact,
+             IExportStatusRepository exportStatus)
               : base((DbContext)context)
         {
             FilePath = filePathRepository;
             Group = group;
             Contact = contact;
+            ExportStatus = exportStatus;
 
 
         }

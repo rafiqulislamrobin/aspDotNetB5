@@ -7,7 +7,7 @@
 <form method="post" enctype="multipart/form-data" asp-controller="DataImporter" asp-action="ImportFile">
 
 
-   
+
     <div asp-validation-summary="All" class="container-fluid">
         <div class="card-header">
             <h3 class="card-title">Upload File</h3>
@@ -48,7 +48,7 @@
     </div>
 
 </form>
-
+<h2 style="color:white;text-align:center"> @ViewBag.HeaderMissMatch</h2>
 @section Scripts
 {
     <script>

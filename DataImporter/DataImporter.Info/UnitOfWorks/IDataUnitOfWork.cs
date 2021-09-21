@@ -10,6 +10,7 @@ namespace DataImporter.Info.UnitOfWorks
 { 
     public interface IDataUnitOfWork : IUnitOfWork
     {
+        public IExportStatusRepository ExportStatus { get; }
         IFilePathRepository FilePath { get; }
         IGroupRepository Group { get; }
         IContactRepository Contact { get; }
