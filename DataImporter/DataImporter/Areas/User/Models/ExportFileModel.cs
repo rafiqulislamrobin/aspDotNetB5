@@ -28,7 +28,13 @@ namespace DataImporter.Areas.User.Models
             _iDataImporterService = iDataImporterService;
         }
 
-
+        internal void GetContactsList(int groupId)
+        {
+            var contacts = _iDataImporterService.ContactList(groupId);
+            Headers = contacts.Item1;
+            Items = contacts.Item2;
+            GroupId = groupId;
+        }
         internal MemoryStream GetExportFiles()
         {
             Contacts = _iDataImporterService.GetContactList();
@@ -39,10 +45,6 @@ namespace DataImporter.Areas.User.Models
             {
                 //define a worksheet
                 var worksheet = excelPackage.Workbook.Worksheets.Add("Users");
-
-
-       
-
 
                 for (int i = 1; i <= Headers.Count; i++)
                 {
@@ -72,13 +74,7 @@ namespace DataImporter.Areas.User.Models
             return(stream);
         }
 
-        internal void GetContactsList(int groupId)
-        {
-           var contacts = _iDataImporterService.ContactList(groupId);
-            Headers = contacts.Item1;
-            Items = contacts.Item2;
-            GroupId = groupId;
-        }
+
 
         internal List<Group> LoadAllGroups()
         {

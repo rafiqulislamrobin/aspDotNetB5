@@ -157,24 +157,24 @@ namespace DataImporter.Info.Services
 
         public (IList<FilePath> records, int total, int totalDisplay) Gethistory(int pageIndex, int pageSize, string searchText, string sortText)
         {
-            var historyData = _dataUnitOfWork.FilePath.GetDynamic(
-               string.IsNullOrWhiteSpace(searchText) ? null : x => x.FileName.Contains(searchText),
-               sortText, string.Empty, pageIndex, pageSize);
 
+
+            var historyData = _dataUnitOfWork.FilePath.GetDynamic(
+            string.IsNullOrWhiteSpace(searchText) ? null : x => x.FileName.Contains(searchText),
+               sortText, "Group", pageIndex, pageSize, true);
+            var datas = historyData.data;
             //var resultHistory = (from history in historyData.data
             //                  select _mapper.Map<FilePath>(history)).ToList();
             var resultHistory = (from history in historyData.data
                                  select new FilePath
                                  {
-                                     GroupId = history.GroupId,
-                                     GroupName = history.GroupName,
+                                     
+                                     GroupName = history.Group.Name,
                                      FileStatus = history.FileStatus,
                                      FileName = history.FileName,
                                      FilePathName = history.FilePathName,
                                      DateTime =history.DateTime
                                  }).ToList();
-
-
 
             return (resultHistory, historyData.total, historyData.totalDisplay);
         }

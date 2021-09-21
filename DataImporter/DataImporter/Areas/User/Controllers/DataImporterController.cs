@@ -258,7 +258,7 @@ namespace DataImporter.Areas.User.Controllers
 
         }
       
-        public IActionResult Download(int ids, ExportFileModel ex)
+        public IActionResult Download(ExportFileModel ex)
         {
             var id = Convert.ToInt32(TempData.Peek("id"));
             
@@ -269,5 +269,21 @@ namespace DataImporter.Areas.User.Controllers
             string fileFormat = "User.xlsx";
             return File(contacts, fileType, fileFormat);
         }
+        public IActionResult EmailSender()
+        {
+            EmailSenderModel model = new();
+            model.GroupId = Convert.ToInt32(TempData.Peek("id"));
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult EmailSender(EmailSenderModel emailSenderModel)
+        {
+
+            emailSenderModel.GetData( emailSenderModel.GroupId);
+            emailSenderModel.SendEmail(emailSenderModel.Email);
+            //emailSenderModel.DeleteFile();
+            return View();
+        }
+
     }
 }
