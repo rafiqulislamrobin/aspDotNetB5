@@ -66,7 +66,7 @@ namespace TicketBookingSystem
         {
             var connectionInfo = GetConnectionStringAndAssemblyName();
 
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<TicketBooking.MemberShip_.Context.ApplicationDbContext>(options =>
               options.UseSqlServer(connectionInfo.connectionString,
                   b => b.MigrationsAssembly(connectionInfo.migrationAssemblyName)));
 
@@ -77,7 +77,7 @@ namespace TicketBookingSystem
             // Identity customization started here
             services
                 .AddIdentity<ApplicationUser, Role>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddEntityFrameworkStores<TicketBooking.MemberShip_.Context.ApplicationDbContext>()
                 .AddUserManager<UserManager>()
                 .AddRoleManager<RoleManager>()
                 .AddSignInManager<SignInManager>()
@@ -119,6 +119,8 @@ namespace TicketBookingSystem
                 options.IdleTimeout = TimeSpan.FromSeconds(100);
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
+
+
             });
 
             services.Configure<SmtpConfiguration>(Configuration.GetSection("Smtp"));
