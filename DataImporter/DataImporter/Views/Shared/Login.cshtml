@@ -51,6 +51,7 @@
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane fade in active" id="login">
                         <form class="form-horizontal" method="post" asp-controller="Account" asp-action="Login">
+                            <input type="hidden" asp-for="ReturnUrl" />
                             <div class="form-group ">
                                 <div class="input-group">
 

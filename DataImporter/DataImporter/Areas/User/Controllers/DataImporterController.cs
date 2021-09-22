@@ -2,6 +2,7 @@
 using DataImporter.Info.Business_Object;
 using DataImporter.Models;
 using ExcelDataReader;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,7 +18,7 @@ using System.Threading.Tasks;
 
 namespace DataImporter.Areas.User.Controllers
 {
-    [Area("User")]
+    [Area("User"), Authorize(Policy = "RestrictedArea")]
     public class DataImporterController : Controller
     {
         private readonly ILogger<DataImporterController> _logger;
@@ -28,11 +29,12 @@ namespace DataImporter.Areas.User.Controllers
         {
             _logger = logger;
         }
+       
         public IActionResult Index()
         {
             return View();
         }
-
+        
         public IActionResult ViewGroups()
         {
             var model = new ViewGroupModel();
@@ -168,7 +170,7 @@ namespace DataImporter.Areas.User.Controllers
             var file = filemodels.file;
             var filepath = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\ExcelFiles"}" + "\\" + file;
 
-           var z = model.ConfirmFileUpload(filepath,file);
+           var z = model.ConfirmFileUpload(filepath);
             if (z.Item2==null)
             {
                 ViewBag.HeaderMissMatch = "FIles Columns dosent match to this group." +
@@ -176,8 +178,6 @@ namespace DataImporter.Areas.User.Controllers
                 
                 var list = filemodels.LoadAllGroups();
                 ViewBag.GroupList = new SelectList(list, "Id", "Name");
-
-               
                 return View(nameof(ImportFile));
             }
             return View(model);

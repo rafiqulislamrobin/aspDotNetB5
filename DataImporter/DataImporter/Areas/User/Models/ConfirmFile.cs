@@ -29,7 +29,7 @@ namespace DataImporter.Areas.User.Models
             _iDataImporterService = iDataImporterService;
         }
 
-        internal (Dictionary<int, Dictionary<string, string>>, List<string>) ConfirmFileUpload(string filepath, string file)
+        internal (Dictionary<int, Dictionary<string, string>>, List<string>) ConfirmFileUpload(string filepath)
         {
             cont = new();
             headers = new();
@@ -100,7 +100,6 @@ namespace DataImporter.Areas.User.Models
                     else
                     {
                         headers = null;
-                        File.Delete($"{Directory.GetCurrentDirectory()}{@"\wwwroot\ExcelFiles"}" + "\\" + file);
                         break;
                     }
                 }

@@ -1,4 +1,5 @@
-﻿using DataImporter.Models.AccountModel;
+﻿using DataImporter.MemberShip.Entities;
+using DataImporter.Models.AccountModel;
 using DataImporter.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -6,27 +7,31 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Linq;
+using System.Security.Claims;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
 namespace DataImporter.Controllers
 {
-    
+
     [Area("User")]
 
     public class AccountController : Controller
     {
 
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<AccountController> _logger;
         private readonly IEmailService _emailService;
         private readonly IRecaptchaService _recaptchaService;
+        private readonly RoleManager<Role> _roleManager;
 
         public AccountController(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager,
+             RoleManager<Role> roleManager,
             ILogger<AccountController> logger,
             IEmailService emailSender,
             IRecaptchaService recaptchaService)
@@ -36,6 +41,7 @@ namespace DataImporter.Controllers
             _logger = logger;
             _emailService = emailSender;
             _recaptchaService = recaptchaService;
+            _roleManager = roleManager;
 
 
         }
@@ -46,31 +52,32 @@ namespace DataImporter.Controllers
             RegisterModel model = new();
             model.ReturnUrl = returnUrl;
             model.ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-            
+
             return View();
         }
-        
+
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterModel model, string returnUrl)
+        public async Task<IActionResult> Register(RegisterModel model)
         {
+            model.ReturnUrl ??= Url.Content("~/");
             if (!ModelState.IsValid)
             {
                 return RedirectToAction("Register", "DataImporter");
             }
             else
             {
-               var  captcha= _recaptchaService.ReCaptchaPassed(Request.Form["foo"]);
+                var captcha = _recaptchaService.ReCaptchaPassed(Request.Form["foo"]);
                 if (captcha)
                 {
-                       var user = new IdentityUser
-                       {
-                           UserName = model.Name,
-                           Email = model.Email
-                       };           
+                    var user = new ApplicationUser
+                    {
+                        UserName = model.Name,
+                        Email = model.Email
+                    };
                     var result = await _userManager.CreateAsync(user, model.Password);
-
+                    //await _userManager.AddToRoleAsync(user, "User");
+                    await _userManager.AddClaimAsync(user, new Claim("AccessPermission", "true"));
                     if (result.Succeeded)
                     {
                         var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -84,9 +91,9 @@ namespace DataImporter.Controllers
                             return RedirectToAction("ListUsers", "Administration");
                         }
 
-                         _emailService.SendEmailAsync(model.Email, "Confirm your email",
-                           $"Please confirm your account by" +
-                           $" <a href='{HtmlEncoder.Default.Encode(confirmationLink)}'>clicking here</a>.");
+                        _emailService.SendEmailAsync(model.Email, "Confirm your email",
+                      $" <a href='{HtmlEncoder.Default.Encode(confirmationLink)}'>clicking here</a>.");
+
 
                         return View("RegistrationSuccessView");
                     }
@@ -103,24 +110,26 @@ namespace DataImporter.Controllers
                 }
             }
 
-              
+
 
             return View(model);
         }
-        [AllowAnonymous]
+
         public async Task<IActionResult> ConfirmEmail(string userId, string token)
         {
-            if (userId == null || token ==null)
+
+            if (userId == null || token == null)
             {
                 return RedirectToAction("Index", "DataImporter");
             }
             var user = await _userManager.FindByIdAsync(userId);
+
             if (user == null)
             {
                 ViewBag.ErrorMessage = $"The User ID {userId} is invalid";
                 return View("NotFound");
             }
-            var result = await _userManager.ConfirmEmailAsync(user,token);
+            var result = await _userManager.ConfirmEmailAsync(user, token);
             if (result.Succeeded)
             {
                 return View("ConfirmEmailView");
@@ -133,17 +142,17 @@ namespace DataImporter.Controllers
         [TempData]
         public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> Login( string returnUrl = null)
+        public async Task<IActionResult> Login(string returnUrl = null)
         {
-          
+
             LoginModel model = new();
 
-            
+
             if (!string.IsNullOrEmpty(ErrorMessage))
             {
                 ModelState.AddModelError(string.Empty, ErrorMessage);
             }
-        
+
 
             returnUrl ??= Url.Content("~/");
 
@@ -157,9 +166,10 @@ namespace DataImporter.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginModel loginModel, string returnUrl = null)
+       
+        public async Task<IActionResult> Login(LoginModel loginModel)
         {
-            returnUrl ??= Url.Content("~/");
+            loginModel.ReturnUrl ??= Url.Content("~/");
 
             loginModel.ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
@@ -183,6 +193,15 @@ namespace DataImporter.Controllers
                         loginModel.RememberMe, lockoutOnFailure: false);
                     if (result.Succeeded)
                     {
+                        if (loginModel.ReturnUrl != null && loginModel.ReturnUrl != "/")
+                        {
+                            return LocalRedirect(loginModel.ReturnUrl);
+                            //return RedirectToPage("./LoginWith2fa", new
+                            //{
+                            //    ReturnUrl = loginModel.ReturnUrl,
+                            //    RememberMe = loginModel.RememberMe
+                            //});
+                        }
                         _logger.LogInformation("User logged in.");
                         return RedirectToAction("Index", "DataImporter");
                     }
@@ -190,7 +209,7 @@ namespace DataImporter.Controllers
                     {
                         return RedirectToPage("./LoginWith2fa", new
                         {
-                            ReturnUrl = returnUrl,
+                            ReturnUrl = loginModel.ReturnUrl,
                             RememberMe = loginModel.RememberMe
                         });
                     }
@@ -213,11 +232,12 @@ namespace DataImporter.Controllers
                 }
 
             }
-            return LocalRedirect(returnUrl);
+            return LocalRedirect(loginModel.ReturnUrl);
 
         }
 
         [HttpPost]
+        [Area("User"), Authorize(Policy = "AccessPermission")]
         public async Task<IActionResult> LogOut(string returnUrl = null)
         {
             await _signInManager.SignOutAsync();

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataImporter.Data.Migrations
 {
     [DbContext(typeof(DataImporterDbContext))]
-    [Migration("20210921180238_addAllEntities")]
-    partial class addAllEntities
+    [Migration("20210922175609_DataImporterEntities")]
+    partial class DataImporterEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
