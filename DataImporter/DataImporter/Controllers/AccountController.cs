@@ -237,7 +237,7 @@ namespace DataImporter.Controllers
         }
 
         [HttpPost]
-        [Area("User"), Authorize(Policy = "AccessPermission")]
+       
         public async Task<IActionResult> LogOut(string returnUrl = null)
         {
             await _signInManager.SignOutAsync();

@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace DataImporter.Areas.User.Models
@@ -26,22 +27,25 @@ namespace DataImporter.Areas.User.Models
         public IDataImporterService _iDataImporterService;
 
         public IDatetimeUtility _datetimeUtility;
+        public IHttpContextAccessor _httpContextAccessor;
         public FilePathModel()
         {
             _datetimeUtility = Startup.AutofacContainer.Resolve<IDatetimeUtility>();
-           
+            _httpContextAccessor = Startup.AutofacContainer.Resolve<IHttpContextAccessor>();
             _iDataImporterService = Startup.AutofacContainer.Resolve<IDataImporterService>();
 
+
         }
-        public FilePathModel(IDataImporterService iDataImporterService, IDatetimeUtility datetimeUtility)
+        public FilePathModel(IDataImporterService iDataImporterService, IDatetimeUtility datetimeUtility , IHttpContextAccessor httpContextAccessor)
         {
             
             _datetimeUtility = datetimeUtility;
             _iDataImporterService = iDataImporterService;
+            _httpContextAccessor = httpContextAccessor;
         }
         internal /*async Task*/void SaveFilePath(string filename, int groupId, List<Group> list)
         {
-
+            
             FilePath filePath = new FilePath();
             var path = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\ExcelFiles"}" + "\\" + filename;
             filePath.FilePathName = path;
@@ -61,7 +65,8 @@ namespace DataImporter.Areas.User.Models
 
         internal List<Group> LoadAllGroups()
         {
-            return _iDataImporterService.LoadAllGroups();
+            var id = Guid.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            return _iDataImporterService.LoadAllGroups(id);
         }
     }
 }

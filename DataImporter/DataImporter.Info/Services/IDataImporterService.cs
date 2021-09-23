@@ -11,11 +11,11 @@ namespace DataImporter.Info.Services
     {
         void SaveFilePath(FilePath member);
         (IList<FilePath>records, int total, int totalDisplay) Gethistory(int pageIndex, int pageSize,
-                                                          string searchText, string sortText);
+                                                          string searchText, string sortText, Guid id);
         void CreateGroup(Group group);
         void CreateContact(Contact contact);
         (IList<Group> records, int total, int totalDisplay) GetGroupsList(int pageIndex, int pageSize,
-                                                  string searchText, string sortText);
+                                                  string searchText, Guid id,  string sortText  );
         List<Contact> GetContactList();
         void DeleteGroup(int id);
         Group LoadGroup(int id);
@@ -23,9 +23,9 @@ namespace DataImporter.Info.Services
       
         string SaveExcelDatatoDb();
         (IList<ExportStatus> records, int total, int totalDisplay) GetExportHistory(int pageIndex, int pageSize,
-                                                       string searchText, string sortText);
+                                                       string searchText, string sortText, Guid id);
         void UpdateGropu(Group group);
-        List <Group> LoadAllGroups();
+        List <Group> LoadAllGroups(Guid id);
         (List<string>, List<List<string>>) ContactList(int groupId);
         void SaveExportHistory(ExportStatus exportStatus);
     }

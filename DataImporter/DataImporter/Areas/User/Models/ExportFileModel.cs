@@ -1,12 +1,14 @@
 ﻿using Autofac;
 using DataImporter.Info.Business_Object;
 using DataImporter.Info.Services;
+using Microsoft.AspNetCore.Http;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace DataImporter.Areas.User.Models
@@ -14,6 +16,7 @@ namespace DataImporter.Areas.User.Models
     public class ExportFileModel
     {
         private readonly IDataImporterService _iDataImporterService;
+        public IHttpContextAccessor _httpContextAccessor;
         public List<Contact> Contacts { get; set; }
         public int GroupId { get; set; }
         public List<string> Headers { get; set; }      
@@ -22,10 +25,12 @@ namespace DataImporter.Areas.User.Models
         public ExportFileModel()
         { 
             _iDataImporterService = Startup.AutofacContainer.Resolve<IDataImporterService>();
+            _httpContextAccessor = Startup.AutofacContainer.Resolve<IHttpContextAccessor>();
         }
-        public ExportFileModel(IDataImporterService iDataImporterService)
+        public ExportFileModel(IDataImporterService iDataImporterService , IHttpContextAccessor httpContextAccessor)
         {
             _iDataImporterService = iDataImporterService;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         internal void GetContactsList(int groupId)
@@ -78,7 +83,8 @@ namespace DataImporter.Areas.User.Models
 
         internal List<Group> LoadAllGroups()
         {
-            return _iDataImporterService.LoadAllGroups();
+            var id = Guid.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            return _iDataImporterService.LoadAllGroups(id);
         }
   
     }

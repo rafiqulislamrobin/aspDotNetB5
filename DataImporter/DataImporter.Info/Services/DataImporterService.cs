@@ -2,7 +2,9 @@
 using DataImporter.Info.Business_Object;
 using DataImporter.Info.Exceptions;
 using DataImporter.Info.UnitOfWorks;
+
 using ExcelDataReader;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -103,8 +105,8 @@ namespace DataImporter.Info.Services
                     new Entities.Group
                     {
                         Id = group.Id,
-                        Name = group.Name
-
+                        Name = group.Name,
+                        ApplicationUserId = group.ApplicationUserId
 
                     }
                    );
@@ -138,37 +140,44 @@ namespace DataImporter.Info.Services
             return contacts;
         }
 
-        public (IList<ExportStatus> records, int total, int totalDisplay) GetExportHistory(int pageIndex, int pageSize, string searchText, string sortText)
+        public (IList<ExportStatus> records, int total, int totalDisplay) GetExportHistory(int pageIndex, int pageSize, string searchText, string sortText , Guid id)
         {
             var historyData = _dataUnitOfWork.ExportStatus.GetDynamic(
            string.IsNullOrWhiteSpace(searchText) ? null : x => x.DownloadStatus.Contains(searchText),
           sortText, "Group", pageIndex, pageSize, true);
-           
+
             //var resultHistory = (from history in historyData.data
             //                  select _mapper.Map<FilePath>(history)).ToList();
             var resultHistory = (from history in historyData.data
+                                 where history.Group.ApplicationUserId == id
                                  select new ExportStatus
                                  {
 
-                                  DateTime =history.DateTime,
-                                  GroupName =history.Group.Name,
-                                  EmailStatus=history.EmailStatus,
-                                  DownloadStatus =history.DownloadStatus
+                                     DateTime = history.DateTime,
+                                     GroupName = history.Group.Name,
+                                     EmailStatus = history.EmailStatus,
+                                     DownloadStatus = history.DownloadStatus
                                  }).ToList();
 
             return (resultHistory, historyData.total, historyData.totalDisplay);
         }
 
-        public (IList<Group> records, int total, int totalDisplay) GetGroupsList(int pageIndex, int pageSize, string searchText, string sortText)
+        public (IList<Group> records, int total, int totalDisplay) GetGroupsList(int pageIndex, int pageSize, string searchText, Guid id, string sortText )
         {
             var groupData = _dataUnitOfWork.Group.GetDynamic(
                string.IsNullOrWhiteSpace(searchText) ? null : x => x.Name.Contains(searchText),
-               sortText, string.Empty, pageIndex, pageSize);
+               sortText, "ApplicationUser", pageIndex, pageSize);
+
+
+                      
 
             var resultData = (from groups in groupData.data
+                              where groups.ApplicationUserId == id
                               select new Group
                               {
+                                  ApplicationUserId = groups.ApplicationUserId,
                                   Id = groups.Id,
+                                  
                                   Name = groups.Name
 
                               }).ToList();
@@ -176,7 +185,7 @@ namespace DataImporter.Info.Services
             return (resultData, groupData.total, groupData.totalDisplay);
         }
 
-        public (IList<FilePath> records, int total, int totalDisplay) Gethistory(int pageIndex, int pageSize, string searchText, string sortText)
+        public (IList<FilePath> records, int total, int totalDisplay) Gethistory(int pageIndex, int pageSize, string searchText, string sortText , Guid id)
         {
 
 
@@ -187,6 +196,7 @@ namespace DataImporter.Info.Services
             //var resultHistory = (from history in historyData.data
             //                  select _mapper.Map<FilePath>(history)).ToList();
             var resultHistory = (from history in historyData.data
+                                 where history.Group.ApplicationUserId == id
                                  select new FilePath
                                  {
 
@@ -200,21 +210,28 @@ namespace DataImporter.Info.Services
             return (resultHistory, historyData.total, historyData.totalDisplay);
         }
 
-        public List<Group> LoadAllGroups()
+        public List<Group> LoadAllGroups(Guid id)
         {
 
             var groupEntities = _dataUnitOfWork.Group.GetAll();
             var groups = new List<Group>();
-            foreach (var item in groupEntities)
-            {
-                var group = new Group()
-                {
-                    Id = item.Id,
-                    Name = item.Name
-                };
-                groups.Add(group);
-            }
-            return groups;
+            var result = (from g in groupEntities
+                          where g.ApplicationUserId == id
+                          select new Group
+                          {
+                              Id = g.Id,
+                              Name = g.Name
+                          }).ToList();
+            //foreach (var item in groupEntities)
+            //{
+            //    var group = new Group()
+            //    {
+            //        Id = item.Id,
+            //        Name = item.Name
+            //    };
+            //    groups.Add(group);
+            //}
+            return result;
         }
 
         public Group LoadGroup(int id)

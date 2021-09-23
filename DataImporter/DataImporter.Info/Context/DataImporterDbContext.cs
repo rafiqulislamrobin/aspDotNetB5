@@ -1,5 +1,6 @@
 ﻿
 using DataImporter.Info.Entities;
+using DataImporter.MemberShip.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,11 @@ namespace DataImporter.Info.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ApplicationUser>()
+                .ToTable("AspNetUsers", a => a.ExcludeFromMigrations())
+                .HasMany<Group>()
+                .WithOne(a => a.ApplicationUser);
+                
             modelBuilder.Entity<Group>()
                 .HasMany(c => c.Contacts)
                 .WithOne(g => g.Group);

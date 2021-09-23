@@ -205,7 +205,7 @@ namespace DataImporter.Areas.User.Controllers
         public JsonResult GetImportHistoryData()
         {
             var dataTableAjaxRequestModel = new DataTablesAjaxRequestModel(Request);
-            var model = new HistoryListModel();
+            var model = new ImportHistoryModel();
             var data = model.GetHistories(dataTableAjaxRequestModel);
             return Json(data);
         }

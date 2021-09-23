@@ -1,36 +1,42 @@
 ﻿using Autofac;
 using DataImporter.Info.Services;
 using DataImporter.Models;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace DataImporter.Areas.User.Models
 {
 
-    public class HistoryListModel
+    public class ImportHistoryModel
     {
 
 
         private readonly IDataImporterService _iDataImporterService;
-        public HistoryListModel()
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public ImportHistoryModel()
         {
             _iDataImporterService = Startup.AutofacContainer.Resolve<IDataImporterService>();
+            _httpContextAccessor = Startup.AutofacContainer.Resolve<IHttpContextAccessor>();
         }
-        public HistoryListModel(IDataImporterService iDataImporterService)
+        public ImportHistoryModel(IDataImporterService iDataImporterService, IHttpContextAccessor httpContextAccessor)
         {
             _iDataImporterService = iDataImporterService;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         internal object GetHistories(DataTablesAjaxRequestModel dataTableAjaxRequestModel)
         {
-
+            var id = Guid.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
             var data = _iDataImporterService.Gethistory(
                 dataTableAjaxRequestModel.PageIndex,
                 dataTableAjaxRequestModel.PageSize,
                 dataTableAjaxRequestModel.SearchText,
-                dataTableAjaxRequestModel.GetSortText(new string[] { "FileName", "DateTime", "GroupName" ,"FileStatus" }));
+                dataTableAjaxRequestModel.GetSortText(new string[] { "FileName", "DateTime", "GroupName" ,"FileStatus" }),
+                id);
             return new
             {
                 recordsTotal = data.total,

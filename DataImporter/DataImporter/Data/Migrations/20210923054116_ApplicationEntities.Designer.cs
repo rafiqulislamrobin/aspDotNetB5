@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataImporter.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210922175638_AppilicationDbContext")]
-    partial class AppilicationDbContext
+    [Migration("20210923054116_ApplicationEntities")]
+    partial class ApplicationEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -120,8 +120,8 @@ namespace DataImporter.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("810ea2bb-a07f-4ed2-885c-9ddadaa64a10"),
-                            ConcurrencyStamp = "585a54d3-f29f-4fcc-91b2-2e95c69f7d58",
+                            Id = new Guid("de6898ae-139f-440d-9983-fde737868661"),
+                            ConcurrencyStamp = "c1ea8773-dfe1-47b0-b1a1-0def08915d4b",
                             Name = "User",
                             NormalizedName = "USER"
                         });
