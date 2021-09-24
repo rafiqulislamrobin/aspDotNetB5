@@ -34,15 +34,16 @@ namespace DataImporter.Areas.User.Models
 
         internal void CreateGroup()
         {
+            var id = Guid.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
             var group = new Group()
             {
                 Id = Id,
                 Name = Name,
-                ApplicationUserId = Guid.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier))
+                ApplicationUserId = id
 
 
-        };
-            _iDataImporterService.CreateGroup(group);
+            };
+            _iDataImporterService.CreateGroup(group , id);
         }
 
         internal void DeleteGroup(int id)

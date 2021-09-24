@@ -19,27 +19,26 @@ namespace DataImporter.Info.Services
         private readonly IDataUnitOfWork _dataUnitOfWork;
         //private readonly IMapper _mapper;
 
-        public DataImporterService(IDataUnitOfWork dataUnitOfWork/*, IMapper mapper*/)
+        public DataImporterService(IDataUnitOfWork dataUnitOfWork)
         {
             _dataUnitOfWork = dataUnitOfWork;
-            //_mapper = mapper;
+          
 
         }
 
 
         public (List<string>, List<List<string>>) ContactList(int groupId)
         {
-            var group = _dataUnitOfWork.Group.GetById(groupId);
+            //var group = _dataUnitOfWork.Group.GetById(groupId);
 
             List<string> headers = new();
-            List<List<string>> items = new();
-            List<string> i = new();
-            var contactEntities = _dataUnitOfWork.Contact.GetAll();
+            List<string> items = new();
+            List<List<string>> itemsRow = new();
+
+            var contactEntities = _dataUnitOfWork.Contact.GetAll().Where(x => x.GroupId ==groupId);
             var h = 0;
             foreach (var contactRow in contactEntities)
             {
-                if (contactRow.GroupId == group.Id)
-                {
                     if (headers.Contains(contactRow.Key))
                     {
                         break;
@@ -48,26 +47,21 @@ namespace DataImporter.Info.Services
                     {
                         headers.Add(contactRow.Key);
                     }
-                }
 
             }
             foreach (var contactRow in contactEntities)
             {
-                if (contactRow.GroupId == group.Id)
-                {
-                    i.Add(contactRow.Value);
+                    items.Add(contactRow.Value);
                     h++;
                     if (h == headers.Count)
                     {
-                        items.Add(i);
-                        i = new List<string>();
+                      itemsRow.Add(items);
+                        items = new List<string>();
                         h = 0;
-
                     }
-                }
             }
 
-            return (headers, items);
+            return (headers, itemsRow);
         }
 
         public void CreateContact(Contact contact)
@@ -90,12 +84,12 @@ namespace DataImporter.Info.Services
             _dataUnitOfWork.Save();
         }
 
-        public void CreateGroup(Group group)
+        public void CreateGroup(Group group , Guid id)
         {
             if (group == null)
-                throw new InvalidParameterException("Customer was not found");
+                throw new InvalidParameterException("Group was not found");
 
-            if (IsNameAlreadyUsed(group.Name))
+            if (IsNameAlreadyUsed(group.Name , id))
             {
                 throw new DuplicateException("Group name is already used");
 
@@ -107,11 +101,8 @@ namespace DataImporter.Info.Services
                         Id = group.Id,
                         Name = group.Name,
                         ApplicationUserId = group.ApplicationUserId
-
-                    }
-                   );
+                    });
             _dataUnitOfWork.Save();
-
 
         }
 
@@ -119,6 +110,21 @@ namespace DataImporter.Info.Services
         {
             _dataUnitOfWork.Group.Remove(id);
             _dataUnitOfWork.Save();
+        }
+
+        public void ExportStatus(ExportStatus exportStatus)
+        {
+            var exportEntity = _dataUnitOfWork.ExportStatus.GetById(exportStatus.Id);
+            if (exportEntity != null)
+            {
+                exportEntity.Id = exportStatus.Id;
+                exportEntity.DownloadStatus = exportStatus.DownloadStatus;
+                exportEntity.EmailStatus = exportStatus.EmailStatus;
+                exportEntity.DateTime = exportStatus.DateTime;
+                _dataUnitOfWork.Save();
+            }
+            else
+                throw new InvalidOperationException("History is not available");
         }
 
         public List<Contact> GetContactList()
@@ -143,16 +149,12 @@ namespace DataImporter.Info.Services
         public (IList<ExportStatus> records, int total, int totalDisplay) GetExportHistory(int pageIndex, int pageSize, string searchText, string sortText , Guid id)
         {
             var historyData = _dataUnitOfWork.ExportStatus.GetDynamic(
-           string.IsNullOrWhiteSpace(searchText) ? null : x => x.DownloadStatus.Contains(searchText),
+           string.IsNullOrWhiteSpace(searchText) ? x=> x.Group.ApplicationUserId == id : x => x.EmailStatus.Contains(searchText) && x.Group.ApplicationUserId == id,
           sortText, "Group", pageIndex, pageSize, true);
 
-            //var resultHistory = (from history in historyData.data
-            //                  select _mapper.Map<FilePath>(history)).ToList();
             var resultHistory = (from history in historyData.data
-                                 where history.Group.ApplicationUserId == id
                                  select new ExportStatus
                                  {
-
                                      DateTime = history.DateTime,
                                      GroupName = history.Group.Name,
                                      EmailStatus = history.EmailStatus,
@@ -162,22 +164,40 @@ namespace DataImporter.Info.Services
             return (resultHistory, historyData.total, historyData.totalDisplay);
         }
 
+        public ExportStatus GetExportHistory(int groupId)
+        {
+            var history = _dataUnitOfWork.ExportStatus.Get(g => g.Group.Id == groupId, "");
+       
+
+            if (history.Count == 0)
+            {
+                return null;
+            }
+            return new ExportStatus
+            {
+                Id = history.First().Id,
+                DownloadStatus = history.First().DownloadStatus,
+                EmailStatus = history.First().EmailStatus,
+                DateTime =history.First().DateTime,
+                GroupName = history.First().Group.Name
+            };
+
+
+
+        }
+
         public (IList<Group> records, int total, int totalDisplay) GetGroupsList(int pageIndex, int pageSize, string searchText, Guid id, string sortText )
         {
             var groupData = _dataUnitOfWork.Group.GetDynamic(
-               string.IsNullOrWhiteSpace(searchText) ? null : x => x.Name.Contains(searchText),
+               string.IsNullOrWhiteSpace(searchText) ? x => x.ApplicationUserId == id : x => x.Name.Contains(searchText) && x.ApplicationUserId==id,
                sortText, "ApplicationUser", pageIndex, pageSize);
-
-
-                      
+        
 
             var resultData = (from groups in groupData.data
-                              where groups.ApplicationUserId == id
                               select new Group
                               {
                                   ApplicationUserId = groups.ApplicationUserId,
                                   Id = groups.Id,
-                                  
                                   Name = groups.Name
 
                               }).ToList();
@@ -188,18 +208,14 @@ namespace DataImporter.Info.Services
         public (IList<FilePath> records, int total, int totalDisplay) Gethistory(int pageIndex, int pageSize, string searchText, string sortText , Guid id)
         {
 
-
             var historyData = _dataUnitOfWork.FilePath.GetDynamic(
-            string.IsNullOrWhiteSpace(searchText) ? null : x => x.FileName.Contains(searchText),
+            string.IsNullOrWhiteSpace(searchText) ? x => x.Group.ApplicationUserId == id : x => x.FileName.Contains(searchText) && x.Group.ApplicationUserId == id,
                sortText, "Group", pageIndex, pageSize, true);
             var datas = historyData.data;
-            //var resultHistory = (from history in historyData.data
-            //                  select _mapper.Map<FilePath>(history)).ToList();
+
             var resultHistory = (from history in historyData.data
-                                 where history.Group.ApplicationUserId == id
                                  select new FilePath
                                  {
-
                                      GroupName = history.Group.Name,
                                      FileStatus = history.FileStatus,
                                      FileName = history.FileName,
@@ -212,25 +228,15 @@ namespace DataImporter.Info.Services
 
         public List<Group> LoadAllGroups(Guid id)
         {
-
-            var groupEntities = _dataUnitOfWork.Group.GetAll();
+            var groupEntities = _dataUnitOfWork.Group.GetAll().Where(g =>g.ApplicationUserId == id);
             var groups = new List<Group>();
             var result = (from g in groupEntities
-                          where g.ApplicationUserId == id
+                         
                           select new Group
                           {
                               Id = g.Id,
                               Name = g.Name
                           }).ToList();
-            //foreach (var item in groupEntities)
-            //{
-            //    var group = new Group()
-            //    {
-            //        Id = item.Id,
-            //        Name = item.Name
-            //    };
-            //    groups.Add(group);
-            //}
             return result;
         }
 
@@ -248,7 +254,7 @@ namespace DataImporter.Info.Services
             };
         }
 
-        //import worker Service save database method
+
         public string SaveExcelDatatoDb()
         {
 
@@ -365,7 +371,7 @@ namespace DataImporter.Info.Services
                                  DownloadStatus = exportStatus.DownloadStatus,
                                  EmailStatus = exportStatus.EmailStatus,
                                  DateTime = exportStatus.DateTime,
-                                 GroupId =exportStatus.GroupId
+                                 GroupId = exportStatus.GroupId
                              });
                         _dataUnitOfWork.Save();
         }
@@ -390,13 +396,13 @@ namespace DataImporter.Info.Services
             _dataUnitOfWork.Save();
         }
 
-        public void UpdateGropu(Group group)
+        public void UpdateGroup(Group group , Guid id)
         {
             if (group == null)
             {
                 throw new InvalidOperationException("Group is missing");
             }
-            if (IsNameAlreadyUsed(group.Name))
+            if (IsNameAlreadyUsed(group.Name ,id))
             {
                 throw new DuplicateException("Group name is already used");
             }
@@ -405,18 +411,16 @@ namespace DataImporter.Info.Services
             {
                 groupEntity.Id = group.Id;
                 groupEntity.Name = group.Name;
-
-
                 _dataUnitOfWork.Save();
             }
             else
-                throw new InvalidOperationException("product is not available");
+                throw new InvalidOperationException("Group is not available");
 
         }
 
 
-        private bool IsNameAlreadyUsed(string name) =>
-          _dataUnitOfWork.Group.GetCount(n => n.Name == name) > 0;
+        private bool IsNameAlreadyUsed(string name , Guid id) =>
+          _dataUnitOfWork.Group.GetCount(n => n.Name == name && n.ApplicationUserId == id) > 0;
 
 
 

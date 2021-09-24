@@ -76,8 +76,19 @@ namespace DataImporter.Controllers
                         Email = model.Email
                     };
                     var result = await _userManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
+                        await _userManager.AddClaimAsync(user, new Claim("AccessPermission", "true"));
+                    }
+
+                    else
+                    {
+                        ViewBag.UserExistMessage = "Username  is already taken";
+                    }
+
+                   
                     //await _userManager.AddToRoleAsync(user, "User");
-                    await _userManager.AddClaimAsync(user, new Claim("AccessPermission", "true"));
+                   
                     if (result.Succeeded)
                     {
                         var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -92,7 +103,7 @@ namespace DataImporter.Controllers
                         }
 
                         _emailService.SendEmailAsync(model.Email, "Confirm your email",
-                      $" <a href='{HtmlEncoder.Default.Encode(confirmationLink)}'>clicking here</a>.");
+                      $" Please confirm your id by <a href='{HtmlEncoder.Default.Encode(confirmationLink)}'>clicking here</a>.");
 
 
                         return View("RegistrationSuccessView");

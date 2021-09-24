@@ -24,7 +24,7 @@ namespace DataImporter.Services
             string JSONres = res.Content.ReadAsStringAsync().Result;
             dynamic JSONdata = JObject.Parse(JSONres);
 
-            if (JSONdata.success != "true" || JSONdata.score <= 0.4m)
+            if (JSONdata.success != "true" || JSONdata.score <= 0.5m)
             {
                 return false;
             }

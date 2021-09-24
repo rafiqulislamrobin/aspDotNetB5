@@ -95,6 +95,7 @@ namespace DataImporter.Areas.User.Models
                 //define a worksheet
                 var worksheet = excelPackage.Workbook.Worksheets.Add("Users");
 
+                //putting headers
                 for (int i = 1; i <= Headers.Count; i++)
                 {
                     var r = 1;
@@ -104,6 +105,7 @@ namespace DataImporter.Areas.User.Models
 
                 }
 
+                //putting item in a rows
                 for (int row = 0; row < Items.Count; row++)
                 {
                     List<string> values = new();
@@ -114,11 +116,11 @@ namespace DataImporter.Areas.User.Models
                 }
                  excelPackage.Workbook.Properties.Title = "User list";
                  excelPackage.Workbook.Properties.Author = "Robin";
-                 var filepath = ($"{Directory.GetCurrentDirectory()}{@"\wwwroot\ExcelFiles"}" + "\\"+"User.xlsx" );
 
+                //saving excel
+                var filepath = ($"{Directory.GetCurrentDirectory()}{@"\wwwroot\ExcelFiles"}" + "\\" + "User.xlsx");
                  excelPackage.SaveAs(new FileInfo (filepath));
-                 FileInfo fi = new FileInfo(filepath);
-                 excelPackage.SaveAs(fi);
+
             }
             
             return (stream);

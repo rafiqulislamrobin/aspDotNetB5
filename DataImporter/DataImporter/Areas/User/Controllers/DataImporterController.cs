@@ -130,7 +130,6 @@ namespace DataImporter.Areas.User.Controllers
                     ModelState.AddModelError("", "Failed to Create Contact");
                     _logger.LogError(ex, "Add Contact Failed");
                 }
-
             }
             return View(model);
         }
@@ -253,7 +252,7 @@ namespace DataImporter.Areas.User.Controllers
 
         }
       
-        public IActionResult Download(ExportFileModel ex)
+        public IActionResult Download()
         {
             var id = Convert.ToInt32(TempData.Peek("id"));
             
@@ -262,6 +261,10 @@ namespace DataImporter.Areas.User.Controllers
             var contacts = model.GetExportFiles();
             string fileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
             string fileFormat = "User.xlsx";
+           
+
+            ExportStatusModel statusModel= new ExportStatusModel();
+            statusModel.MakeStatus(id ,"download");
             return File(contacts, fileType, fileFormat);
         }
         public IActionResult EmailSender()
@@ -281,7 +284,7 @@ namespace DataImporter.Areas.User.Controllers
             emailSenderModel.SendEmail(email);
 
             ExportStatusModel model = new ExportStatusModel();
-            model.MakeStatus(groupId);
+            model.MakeStatus(groupId,"email");
             return RedirectToAction(nameof(ExportFileHistory));
         }
 

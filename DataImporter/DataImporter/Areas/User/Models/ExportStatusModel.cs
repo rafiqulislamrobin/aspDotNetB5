@@ -16,6 +16,7 @@ namespace DataImporter.Areas.User.Models
         public string EmailStatus { get; set; }
         public DateTime Date { get; set; }
         public int GroupId { get; set; }
+        public int Id { get; set; }
 
         public IDataImporterService _Importservice;
         public IDatetimeUtility _dateTimeUtility;
@@ -29,18 +30,53 @@ namespace DataImporter.Areas.User.Models
             _Importservice = iDataImporterService;
             _dateTimeUtility = dateTimeUtility;
         }
-        internal void MakeStatus(int groupId)
+        internal void MakeStatus(int groupId , string statusUpdate)
         {
-            ExportStatus exportStatus = new();
+            var exportHistory = _Importservice.GetExportHistory(groupId);
+            
+            if (exportHistory == null)
+            {
+                Id = 0;
+                if (statusUpdate =="download")
+                {
+                    ExportStatus exportStatus = new();
 
-            exportStatus.EmailStatus = "sent";
-            exportStatus.DownloadStatus = "no";
-            exportStatus.DateTime = _dateTimeUtility.Now;
-            exportStatus.GroupId = groupId;
+                    exportStatus.EmailStatus = "no";
+                    exportStatus.DownloadStatus = "downloaded";
+                    exportStatus.DateTime = _dateTimeUtility.Now;
+                    exportStatus.GroupId = groupId;
 
+                    _Importservice.SaveExportHistory(exportStatus);
+                }
+                else
+                {
+                    ExportStatus exportStatus = new();
 
-            _Importservice.SaveExportHistory(exportStatus);
+                    
+                    exportStatus.EmailStatus = "sent";
+                    exportStatus.DownloadStatus = "no";
+                    exportStatus.DateTime = _dateTimeUtility.Now;
+                    exportStatus.GroupId = groupId;
 
+                    _Importservice.SaveExportHistory(exportStatus);
+                }
+
+            }
+            else
+            {
+                Id = exportHistory.Id;
+                var exportStatus = new ExportStatus
+                    {
+                        Id =Id,
+                        EmailStatus ="sent",
+                        DownloadStatus = "downloaded",
+                        DateTime =_dateTimeUtility.Now
+
+                    };
+                    _Importservice.ExportStatus(exportStatus);
+                
+               
+            }
         }
     }
 }

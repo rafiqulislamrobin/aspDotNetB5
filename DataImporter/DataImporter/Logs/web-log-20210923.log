@@ -145,5 +145,53 @@ System.InvalidOperationException: The AuthorizationPolicy named: 'AccessPermissi
 2021-09-23 13:45:08.109 +06:00 [INF] User logged out.
 2021-09-23 13:45:12.649 +06:00 [INF] User logged in.
 2021-09-23 13:45:29.782 +06:00 [INF] User logged out.
-2021-09-23 13:47:21.769 +06:00 [INF] Application Starting up
-2021-09-23 13:47:34.850 +06:00 [INF] User logged in.
+2021-09-23 14:44:57.142 +06:00 [INF] Application Starting up
+2021-09-23 14:45:13.261 +06:00 [INF] User logged in.
+2021-09-23 22:59:14.022 +06:00 [INF] Application Starting up
+2021-09-23 22:59:24.816 +06:00 [INF] User logged in.
+2021-09-23 22:59:51.074 +06:00 [ERR] Add Group Failed
+DataImporter.Info.Exceptions.DuplicateException: Group name is already used
+   at DataImporter.Info.Services.DataImporterService.CreateGroup(Group group, Guid id) in D:\#FinalProject\3\DataImporter.Info\Services\DataImporterService.cs:line 100
+   at DataImporter.Areas.User.Models.CreateGroupModel.CreateGroup() in D:\#FinalProject\3\DataImporter\Areas\User\Models\CreateGroupModel.cs:line 46
+   at DataImporter.Areas.User.Controllers.DataImporterController.CreateGroups(CreateGroupModel model) in D:\#FinalProject\3\DataImporter\Areas\User\Controllers\DataImporterController.cs:line 62
+2021-09-23 23:00:05.899 +06:00 [INF] User logged out.
+2021-09-23 23:00:18.959 +06:00 [WRN] Invalid password for user.
+2021-09-23 23:00:18.959 +06:00 [WRN] User failed to provide the correct password.
+2021-09-23 23:00:29.001 +06:00 [WRN] Invalid password for user.
+2021-09-23 23:00:29.001 +06:00 [WRN] User failed to provide the correct password.
+2021-09-23 23:00:36.860 +06:00 [INF] User logged in.
+2021-09-23 23:00:44.535 +06:00 [ERR] Add Group Failed
+DataImporter.Info.Exceptions.DuplicateException: Group name is already used
+   at DataImporter.Info.Services.DataImporterService.CreateGroup(Group group, Guid id) in D:\#FinalProject\3\DataImporter.Info\Services\DataImporterService.cs:line 100
+   at DataImporter.Areas.User.Models.CreateGroupModel.CreateGroup() in D:\#FinalProject\3\DataImporter\Areas\User\Models\CreateGroupModel.cs:line 46
+   at DataImporter.Areas.User.Controllers.DataImporterController.CreateGroups(CreateGroupModel model) in D:\#FinalProject\3\DataImporter\Areas\User\Controllers\DataImporterController.cs:line 62
+2021-09-23 23:11:00.950 +06:00 [INF] Application Starting up
+2021-09-23 23:13:21.848 +06:00 [INF] Application Starting up
+2021-09-23 23:14:57.230 +06:00 [INF] Application Starting up
+2021-09-23 23:16:16.442 +06:00 [INF] Application Starting up
+2021-09-23 23:16:27.423 +06:00 [WRN] User validation failed: DuplicateUserName.
+2021-09-23 23:16:27.462 +06:00 [WRN] User validation failed: DuplicateUserName.
+2021-09-23 23:18:08.119 +06:00 [INF] Application Starting up
+2021-09-23 23:21:43.894 +06:00 [WRN] User validation failed: DuplicateUserName.
+2021-09-23 23:21:43.933 +06:00 [WRN] User validation failed: DuplicateUserName.
+2021-09-23 23:22:04.919 +06:00 [WRN] User validation failed: DuplicateUserName.
+2021-09-23 23:23:44.298 +06:00 [INF] Application Starting up
+2021-09-23 23:26:45.035 +06:00 [WRN] User validation failed: DuplicateUserName.
+2021-09-23 23:30:13.702 +06:00 [INF] Application Starting up
+2021-09-23 23:30:35.985 +06:00 [WRN] User validation failed: DuplicateUserName.
+2021-09-23 23:31:50.628 +06:00 [INF] Application Starting up
+2021-09-23 23:32:16.170 +06:00 [WRN] User validation failed: DuplicateUserName.
+2021-09-23 23:32:16.209 +06:00 [WRN] User validation failed: DuplicateUserName.
+2021-09-23 23:32:32.674 +06:00 [WRN] User validation failed: DuplicateUserName.
+2021-09-23 23:32:32.676 +06:00 [WRN] User validation failed: DuplicateUserName.
+2021-09-23 23:32:47.214 +06:00 [WRN] User validation failed: DuplicateUserName.
+2021-09-23 23:32:51.130 +06:00 [WRN] User validation failed: DuplicateUserName.
+2021-09-23 23:37:53.265 +06:00 [INF] Application Starting up
+2021-09-23 23:38:16.009 +06:00 [WRN] User validation failed: DuplicateUserName.
+2021-09-23 23:38:16.052 +06:00 [WRN] User validation failed: DuplicateUserName.
+2021-09-23 23:39:01.260 +06:00 [INF] Application Starting up
+2021-09-23 23:39:23.957 +06:00 [WRN] User validation failed: DuplicateUserName.
+2021-09-23 23:39:23.999 +06:00 [WRN] User validation failed: DuplicateUserName.
+2021-09-23 23:39:48.676 +06:00 [INF] Application Starting up
+2021-09-23 23:40:07.178 +06:00 [WRN] User validation failed: DuplicateUserName.
+2021-09-23 23:40:48.506 +06:00 [WRN] User validation failed: DuplicateUserName.

@@ -63,8 +63,10 @@
                                     <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                                 </div>
                             </div>
-
+                            <span style="color:azure; margin-left:5px">@ViewBag.UserExistMessage </span>
                             <span style="color:azure; margin-left:5px">@ViewBag.Message</span>
+                            <br />
+                            <br />
                             <input type="hidden" id="foo" name="foo" />
                             <input type="submit" value="Register" class="btn btn-success btn-custom">
 
