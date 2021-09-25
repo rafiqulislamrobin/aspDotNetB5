@@ -4,23 +4,23 @@
     ViewData["Title"] = "ImportFile";
 }
 
+<link href="~/css/chosen.min.css" rel="stylesheet" />
+
+
 <form method="post" enctype="multipart/form-data" asp-controller="DataImporter" asp-action="ImportFile">
-
-
 
     <div asp-validation-summary="All" class="container-fluid">
         <div class="card-header">
             <h3 class="card-title">Upload File</h3>
         </div>
-        <!-- /.card-header -->
-        <!-- form start -->
 
         <div class="card-body">
             <div class="form-group">
                 <label for="file">File input</label>
-                <div class="input-group">
-                    <div class="custom-file" type="file">
-                        <input class="custom-file-label" type="file" id="file" name="file" required accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+                <div class="input-group" style="width:30%">
+                    <div class="custom-file " type="file">
+                        <input class="custom-file-label" type="file" id="file" name="file" required
+                               accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
                         <label class="custom-file-label" id="file" for="file">Choose file</label>
                     </div>
 
@@ -29,10 +29,11 @@
 
         </div>
 
-        <div class="card-body" type="number">
-            <label for="select group">Choice group:  </label>
-            @Html.DropDownListFor(m => m.GroupId, ViewBag.GroupList as SelectList, "--Select A Group--", new { required = "required" })
 
+        <div class="card-body" type="number">
+            <label>Minimal (.select2-danger)</label>
+
+            @Html.DropDownListFor(m => m.GroupId, ViewBag.GroupList as SelectList, "--Select A Group--", new { id = "selectTwo", required = "required" })
 
         </div>
         <!-- /.card-body -->
@@ -44,13 +45,13 @@
             </button>
 
         </div>
-
     </div>
 
 </form>
 <h2 style="color:white;text-align:center"> @ViewBag.HeaderMissMatch</h2>
 @section Scripts
 {
+
     <script>
         $('#file').on('change', function () {
             //get the file name
@@ -58,5 +59,11 @@
             //replace the "Choose a file" label
             $(this).next('.custom-file-label').html(fileName);
         })
+        $(function () {
+            $('#selectTwo').chosen();
+        });
     </script>
+
+    <script src="~/js/chosen.jquery.min.js"></script>
+
 }

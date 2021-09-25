@@ -1,16 +1,12 @@
-﻿using AutoMapper;
-using DataImporter.Info.Business_Object;
+﻿using DataImporter.Info.Business_Object;
 using DataImporter.Info.Exceptions;
 using DataImporter.Info.UnitOfWorks;
-
 using ExcelDataReader;
-using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace DataImporter.Info.Services
 {

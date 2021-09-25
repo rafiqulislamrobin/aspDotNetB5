@@ -20,6 +20,7 @@ namespace DataImporter.Areas.User.Models
         public string file { get; set; }
 
         //public DateTime DateTime { get; set; }
+      
         public int GroupId { get; set; }
         public int GroupName { get; set; }
 
@@ -65,7 +66,9 @@ namespace DataImporter.Areas.User.Models
 
         internal List<Group> LoadAllGroups()
         {
+            
             var id = Guid.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+         
             return _iDataImporterService.LoadAllGroups(id);
         }
     }
