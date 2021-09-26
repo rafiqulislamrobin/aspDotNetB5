@@ -1,4 +1,5 @@
-﻿using DataImporter.Info.Business_Object;
+﻿using DataImporter.Common.Utility;
+using DataImporter.Info.Business_Object;
 using DataImporter.Info.Exceptions;
 using DataImporter.Info.UnitOfWorks;
 using ExcelDataReader;
@@ -14,12 +15,11 @@ namespace DataImporter.Info.Services
     {
         private readonly IDataUnitOfWork _dataUnitOfWork;
         //private readonly IMapper _mapper;
-
-        public DataImporterService(IDataUnitOfWork dataUnitOfWork)
+        //private readonly IDatetimeUtility _iDatetimeUtility;
+        public DataImporterService(IDataUnitOfWork dataUnitOfWork )
         {
             _dataUnitOfWork = dataUnitOfWork;
-
-
+           
         }
 
 
@@ -44,6 +44,41 @@ namespace DataImporter.Info.Services
                     headers.Add(contactRow.Key);
                 }
 
+            }
+            foreach (var contactRow in contactEntities)
+            {
+                items.Add(contactRow.Value);
+                h++;
+                if (h == headers.Count)
+                {
+                    itemsRow.Add(items);
+                    items = new List<string>();
+                    h = 0;
+                }
+            }
+
+            return (headers, itemsRow);
+        }
+        public (List<string>, List<List<string>>) ContactListByDate(int groupId, DateTime dateTime)
+        {
+            //var group = _dataUnitOfWork.Group.GetById(groupId);
+
+            List<string> headers = new();
+            List<string> items = new();
+            List<List<string>> itemsRow = new();
+
+            var contactEntities = _dataUnitOfWork.Contact.GetAll().Where(x => x.GroupId == groupId && x.ContactDate <= dateTime);
+            var h = 0;
+            foreach (var contactRow in contactEntities)
+            {
+                if (headers.Contains(contactRow.Key))
+                {
+                    break;
+                }
+                else
+                {
+                    headers.Add(contactRow.Key);
+                }
             }
             foreach (var contactRow in contactEntities)
             {
@@ -114,7 +149,7 @@ namespace DataImporter.Info.Services
             if (exportEntity != null)
             {
                 exportEntity.Id = exportStatus.Id;
-                exportEntity.DownloadStatus = exportStatus.DownloadStatus;
+           
                 exportEntity.EmailStatus = exportStatus.EmailStatus;
                 exportEntity.DateTime = exportStatus.DateTime;
                 _dataUnitOfWork.Save();
@@ -155,10 +190,11 @@ namespace DataImporter.Info.Services
                                      where history.DateTime >= DateFrom && history.DateTime <= dateTo
                                      select new ExportStatus
                                      {
+                                         Id = history.Id,
                                          DateTime = history.DateTime,
                                          GroupName = history.Group.Name,
                                          EmailStatus = history.EmailStatus,
-                                         DownloadStatus = history.DownloadStatus
+                                         
                                      }).ToList();
 
                 return (resultHistory, historyData.total, historyData.totalDisplay);
@@ -172,10 +208,11 @@ namespace DataImporter.Info.Services
                 var resultHistory = (from history in historyData.data
                                      select new ExportStatus
                                      {
+                                         Id = history.Id,
                                          DateTime = history.DateTime,
                                          GroupName = history.Group.Name,
                                          EmailStatus = history.EmailStatus,
-                                         DownloadStatus = history.DownloadStatus
+                                        
                                      }).ToList();
 
                 return (resultHistory, historyData.total, historyData.totalDisplay);
@@ -194,7 +231,6 @@ namespace DataImporter.Info.Services
             return new ExportStatus
             {
                 Id = history.First().Id,
-                DownloadStatus = history.First().DownloadStatus,
                 EmailStatus = history.First().EmailStatus,
                 DateTime = history.First().DateTime,
                 GroupName = history.First().Group.Name
@@ -202,6 +238,14 @@ namespace DataImporter.Info.Services
 
 
 
+        }
+
+        public (int,DateTime) GetExportHistoryForDownload(int id)
+        {
+            var exportStatus = _dataUnitOfWork.ExportStatus.GetById(id);
+            var groupId = exportStatus.GroupId;
+            var dateTime = exportStatus.DateTime;
+            return (groupId,dateTime);
         }
 
         public (IList<Group> records, int total, int totalDisplay) GetGroupsList(int pageIndex, int pageSize, string searchText, Guid id, string sortText)
@@ -375,7 +419,8 @@ namespace DataImporter.Info.Services
                                         ExcelRow = item.Key,
                                         Key = v.Key,
                                         Value = v.Value,
-                                        GroupId = GroupId
+                                        GroupId = GroupId,
+                                        ContactDate = DateTime.Now
                                     });
 
                                     _dataUnitOfWork.Save();
@@ -411,7 +456,7 @@ namespace DataImporter.Info.Services
             _dataUnitOfWork.ExportStatus.Add(
                  new Entities.ExportStatus
                  {
-                     DownloadStatus = exportStatus.DownloadStatus,
+                     Id = exportStatus.Id,
                      EmailStatus = exportStatus.EmailStatus,
                      DateTime = exportStatus.DateTime,
                      GroupId = exportStatus.GroupId

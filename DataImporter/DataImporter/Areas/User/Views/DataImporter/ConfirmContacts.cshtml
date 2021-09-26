@@ -1,6 +1,6 @@
 ﻿@model ConfirmFile
 @{
-    ViewData["Title"] = "ViewContacts";
+    ViewData["Title"] = "ConfirmContacts";
 }
 
 @section Styles
@@ -19,7 +19,7 @@
     <h2 style="text-align:center; color:white"> Confirm your File</h2>
 </div>
 <div>
-    <form method="post" enctype="multipart/form-data" asp-controller="DataImporter" asp-action="ViewContacts">
+    <form method="post" enctype="multipart/form-data" asp-controller="DataImporter" asp-action="ConfirmContacts">
         <input type="hidden" asp-for="file" />
         <input type="hidden" asp-for="GroupId" />
         <section class="content">

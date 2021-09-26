@@ -12,6 +12,7 @@ namespace DataImporter.Info.Entities
         public int Id { get; set; }
         public string Key { get; set; }
         public string Value { get; set; }
+        public DateTime ContactDate { get; set; }
         public int ExcelRow { get; set; }
         public int GroupId { get; set; }
         public Group Group { get; set; }

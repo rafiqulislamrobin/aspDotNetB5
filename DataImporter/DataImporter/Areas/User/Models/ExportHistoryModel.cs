@@ -37,7 +37,7 @@ namespace DataImporter.Areas.User.Models
                     dataTableAjaxRequestModel.PageIndex,
                     dataTableAjaxRequestModel.PageSize,
                     dataTableAjaxRequestModel.SearchText,
-                    dataTableAjaxRequestModel.GetSortText(new string[] { "GroupName", "EmailStatus", "DownloadStatus", "DateTime" }),
+                    dataTableAjaxRequestModel.GetSortText(new string[] { "GroupName", "EmailStatus", "Id", "DateTime" }),
                       id, DateTo,DateFrom);
             return new
             {
@@ -48,7 +48,7 @@ namespace DataImporter.Areas.User.Models
                         {
                                 record.GroupName.ToString(),
                                record.EmailStatus.ToString(),
-                                record.DownloadStatus,
+                                record.Id.ToString(),
                                 record.DateTime.ToString()
 
                         }

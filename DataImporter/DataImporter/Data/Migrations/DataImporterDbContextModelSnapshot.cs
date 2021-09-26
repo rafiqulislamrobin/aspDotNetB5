@@ -26,6 +26,9 @@ namespace DataImporter.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("ContactDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("ExcelRow")
                         .HasColumnType("int");
 
@@ -54,9 +57,6 @@ namespace DataImporter.Data.Migrations
 
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("DownloadStatus")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EmailStatus")
                         .HasColumnType("nvarchar(max)");

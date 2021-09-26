@@ -1,3 +1,4 @@
+using DataImporter.Common.Utility;
 using DataImporter.Info.Services;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -13,10 +14,12 @@ namespace DataImporter.ImportWorker
     {
         private readonly ILogger<Worker> _logger;
         private readonly IDataImporterService _iDataImporterService;
+      
         public Worker(ILogger<Worker> logger, IDataImporterService iDataImporterService)
         {
             _iDataImporterService = iDataImporterService;
             _logger = logger;
+           
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)

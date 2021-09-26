@@ -34,49 +34,17 @@ namespace DataImporter.Areas.User.Models
         {
             var exportHistory = _Importservice.GetExportHistory(groupId);
             
-            if (exportHistory == null)
-            {
-                Id = 0;
-                if (statusUpdate =="download")
-                {
-                    ExportStatus exportStatus = new();
 
-                    exportStatus.EmailStatus = "no";
-                    exportStatus.DownloadStatus = "downloaded";
-                    exportStatus.DateTime = _dateTimeUtility.Now;
-                    exportStatus.GroupId = groupId;
 
-                    _Importservice.SaveExportHistory(exportStatus);
-                }
-                else
-                {
-                    ExportStatus exportStatus = new();
-
-                    
-                    exportStatus.EmailStatus = "sent";
-                    exportStatus.DownloadStatus = "no";
-                    exportStatus.DateTime = _dateTimeUtility.Now;
-                    exportStatus.GroupId = groupId;
-
-                    _Importservice.SaveExportHistory(exportStatus);
-                }
-
-            }
-            else
-            {
-                Id = exportHistory.Id;
-                var exportStatus = new ExportStatus
-                    {
-                        Id =Id,
-                        EmailStatus ="sent",
-                        DownloadStatus = "downloaded",
-                        DateTime =_dateTimeUtility.Now
-
-                    };
-                    _Importservice.ExportStatus(exportStatus);
                 
-               
-            }
+                    ExportStatus exportStatus = new();
+                    exportStatus.EmailStatus = "sent";                  
+                    exportStatus.DateTime = _dateTimeUtility.Now;
+                    exportStatus.GroupId = groupId;
+                    _Importservice.SaveExportHistory(exportStatus);
+                
+
+           
         }
     }
 }

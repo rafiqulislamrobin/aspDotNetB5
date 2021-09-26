@@ -158,10 +158,10 @@ namespace DataImporter.Areas.User.Controllers
             }
             var path = Path.GetFileName(filepath);
             model.file = path;
-            return RedirectToAction("ViewContacts",model);
+            return RedirectToAction("ConfirmContacts", model);
 
         }
-        public IActionResult ViewContacts(FilePathModel filemodels)
+        public IActionResult ConfirmContacts(FilePathModel filemodels)
         {
             ConfirmFile model = new ConfirmFile();
             model.GroupId = filemodels.GroupId;
@@ -183,7 +183,7 @@ namespace DataImporter.Areas.User.Controllers
 
         }
         [HttpPost]
-        public IActionResult ViewContacts(ConfirmFile model)
+        public IActionResult ConfirmContacts(ConfirmFile model)
         {
 
             var models = new FilePathModel();
@@ -273,16 +273,22 @@ namespace DataImporter.Areas.User.Controllers
         public IActionResult Download()
         {
             var id = Convert.ToInt32(TempData.Peek("id"));
-            
+
             var model = new ExportFileModel();
             model.GetContactsList(id);
             var contacts = model.GetExportFiles();
             string fileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
             string fileFormat = "User.xlsx";
-           
-
-            ExportStatusModel statusModel= new ExportStatusModel();
-            statusModel.MakeStatus(id ,"download");
+            return File(contacts, fileType, fileFormat);
+        }
+        public IActionResult DownloadFromExportHistory(int id)
+        {
+            var model = new ExportFileModel();
+            model.GetExportFileHistory(id);
+            model.GetContactsListByDate(model.GroupId) ;
+            var contacts = model.GetExportFiles();
+            string fileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            string fileFormat = "User.xlsx";
             return File(contacts, fileType, fileFormat);
         }
         public IActionResult EmailSender()

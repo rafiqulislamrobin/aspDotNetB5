@@ -19,6 +19,7 @@ namespace DataImporter.Areas.User.Models
         public IHttpContextAccessor _httpContextAccessor;
         public List<Contact> Contacts { get; set; }
         public int GroupId { get; set; }
+        public DateTime ExportDate{ get; set; }
         public List<string> Headers { get; set; }      
         public List<List<string>> Items { get; set; }
 
@@ -35,10 +36,24 @@ namespace DataImporter.Areas.User.Models
 
         internal void GetContactsList(int groupId)
         {
-            var contacts = _iDataImporterService.ContactList(groupId);
-            Headers = contacts.Item1;
-            Items = contacts.Item2;
-            GroupId = groupId;
+            if (groupId>0)
+            {
+                var contacts = _iDataImporterService.ContactList(groupId);
+                Headers = contacts.Item1;
+                Items = contacts.Item2;
+                GroupId = groupId;
+            }
+
+         
+        }
+        internal void GetContactsListByDate(int groupId)
+        {
+          
+                var contacts = _iDataImporterService.ContactListByDate(groupId , ExportDate);
+                Headers = contacts.Item1;
+                Items = contacts.Item2;
+                GroupId = groupId;
+            
         }
         internal MemoryStream GetExportFiles()
         {
@@ -86,7 +101,13 @@ namespace DataImporter.Areas.User.Models
             var id = Guid.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
             return _iDataImporterService.LoadAllGroups(id);
         }
-  
+
+        internal void GetExportFileHistory(int id)
+        {
+            var items = _iDataImporterService.GetExportHistoryForDownload(id);
+            GroupId = items.Item1;
+            ExportDate = items.Item2;
+        }
     }
 }
 

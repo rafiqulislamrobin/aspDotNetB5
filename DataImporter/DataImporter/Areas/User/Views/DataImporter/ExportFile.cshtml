@@ -130,14 +130,20 @@
                 <!-- /.content-wrapper -->
                 <div class="card-footer">
                     <div class="col-md-6">
-                        <a asp-action="Download" asp-controller="DataImporter" class="btn btn-primary"
+                        <a type="submit" asp-action="Download" asp-controller="DataImporter" class="btn btn-primary"
                            style="color: white;background-color: #343a40;border-color:black">
                             Download
                         </a>
+                        <a type="submit" asp-action="EmailSender" asp-controller="DataImporter" class="btn btn-primary"
+                           style="color: white;background-color: #343a40;border-color:black">
+                            Send to Email
+                        </a>
+                        <input type="hidden" asp-for="GroupId" value="@Model.GroupId " id="groupid" />
                     </div>
-                    <input type="hidden" asp-for="GroupId" value="@Model.GroupId " id="groupid" />
-                    <a asp-action="EmailSender" asp-controller="DataImporter"
-                       class="btn btn-default float-right" style="color: white;background-color: #343a40">Send to Email</a>
+                    
+                    <a asp-action="Index" asp-controller="DataImporter"
+                       class="btn btn-default float-right" style="color: white;background-color: #343a40; border-color:black ">
+                    Cancel</a>
                 </div>
             </form>
         }

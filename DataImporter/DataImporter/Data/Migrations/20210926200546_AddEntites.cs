@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataImporter.Data.Migrations
 {
-    public partial class AddEntities : Migration
+    public partial class AddEntites : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -35,6 +35,7 @@ namespace DataImporter.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Key = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Value = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ContactDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ExcelRow = table.Column<int>(type: "int", nullable: false),
                     GroupId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -56,7 +57,6 @@ namespace DataImporter.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FileName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DownloadStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EmailStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     GroupName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateTime = table.Column<DateTime>(type: "datetime2", nullable: false),

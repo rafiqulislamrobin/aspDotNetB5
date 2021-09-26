@@ -1,0 +1,577 @@
+2021-09-27 00:05:29.481 +06:00 [INF] Application Starting up
+2021-09-27 00:05:31.394 +06:00 [INF] no file to delete
+2021-09-27 00:05:31.397 +06:00 [INF] Worker running at: "2021-09-27T00:05:31.3962555+06:00"
+2021-09-27 00:05:51.423 +06:00 [INF] no file to delete
+2021-09-27 00:05:51.423 +06:00 [INF] Worker running at: "2021-09-27T00:05:51.4234628+06:00"
+2021-09-27 00:06:11.446 +06:00 [INF] no file to delete
+2021-09-27 00:06:11.446 +06:00 [INF] Worker running at: "2021-09-27T00:06:11.4468914+06:00"
+2021-09-27 00:06:31.463 +06:00 [INF] no file to delete
+2021-09-27 00:06:31.464 +06:00 [INF] Worker running at: "2021-09-27T00:06:31.4639988+06:00"
+2021-09-27 00:06:51.477 +06:00 [INF] no file to delete
+2021-09-27 00:06:51.478 +06:00 [INF] Worker running at: "2021-09-27T00:06:51.4783097+06:00"
+2021-09-27 00:08:46.962 +06:00 [INF] Application Starting up
+2021-09-27 00:08:48.471 +06:00 [INF] no file to delete
+2021-09-27 00:08:48.472 +06:00 [INF] Worker running at: "2021-09-27T00:08:48.4721649+06:00"
+2021-09-27 00:11:56.412 +06:00 [INF] Application Starting up
+2021-09-27 00:11:58.036 +06:00 [INF] no file to delete
+2021-09-27 00:11:58.038 +06:00 [INF] Worker running at: "2021-09-27T00:11:58.0376745+06:00"
+2021-09-27 00:14:37.360 +06:00 [INF] Application Starting up
+2021-09-27 00:14:38.847 +06:00 [INF] no file to delete
+2021-09-27 00:14:38.848 +06:00 [INF] Worker running at: "2021-09-27T00:14:38.8482848+06:00"
+2021-09-27 00:18:32.840 +06:00 [INF] Application Starting up
+2021-09-27 00:18:34.335 +06:00 [INF] no file to delete
+2021-09-27 00:18:34.337 +06:00 [INF] Worker running at: "2021-09-27T00:18:34.3367354+06:00"
+2021-09-27 00:19:21.395 +06:00 [INF] Application Starting up
+2021-09-27 00:19:22.963 +06:00 [INF] no file to delete
+2021-09-27 00:19:22.964 +06:00 [INF] Worker running at: "2021-09-27T00:19:22.9640482+06:00"
+2021-09-27 00:28:38.716 +06:00 [INF] Application Starting up
+2021-09-27 00:28:40.279 +06:00 [INF] no file to delete
+2021-09-27 00:28:40.281 +06:00 [INF] Worker running at: "2021-09-27T00:28:40.2807795+06:00"
+2021-09-27 00:29:02.946 +06:00 [INF] no file to delete
+2021-09-27 00:29:02.946 +06:00 [INF] Worker running at: "2021-09-27T00:29:02.9468164+06:00"
+2021-09-27 00:33:25.256 +06:00 [INF] Application Starting up
+2021-09-27 00:33:27.270 +06:00 [INF] no file to delete
+2021-09-27 00:33:27.271 +06:00 [INF] Worker running at: "2021-09-27T00:33:27.2712557+06:00"
+2021-09-27 00:51:35.007 +06:00 [INF] Application Starting up
+2021-09-27 00:51:36.683 +06:00 [INF] no file to delete
+2021-09-27 00:51:36.684 +06:00 [INF] Worker running at: "2021-09-27T00:51:36.6841372+06:00"
+2021-09-27 00:51:56.700 +06:00 [INF] no file to delete
+2021-09-27 00:51:56.700 +06:00 [INF] Worker running at: "2021-09-27T00:51:56.7004313+06:00"
+2021-09-27 00:56:24.759 +06:00 [INF] no file to delete
+2021-09-27 00:56:24.760 +06:00 [INF] Worker running at: "2021-09-27T00:56:24.7600485+06:00"
+2021-09-27 01:03:35.178 +06:00 [INF] Application Starting up
+2021-09-27 01:03:36.923 +06:00 [INF] no file to delete
+2021-09-27 01:03:36.924 +06:00 [INF] Worker running at: "2021-09-27T01:03:36.9242576+06:00"
+2021-09-27 01:04:04.127 +06:00 [INF] no file to delete
+2021-09-27 01:04:04.127 +06:00 [INF] Worker running at: "2021-09-27T01:04:04.1273244+06:00"
+2021-09-27 01:04:24.143 +06:00 [INF] no file to delete
+2021-09-27 01:04:24.143 +06:00 [INF] Worker running at: "2021-09-27T01:04:24.1435919+06:00"
+2021-09-27 01:04:44.220 +06:00 [INF] no file to delete
+2021-09-27 01:04:44.220 +06:00 [INF] Worker running at: "2021-09-27T01:04:44.2201392+06:00"
+2021-09-27 01:05:04.238 +06:00 [INF] no file to delete
+2021-09-27 01:05:04.238 +06:00 [INF] Worker running at: "2021-09-27T01:05:04.2387887+06:00"
+2021-09-27 01:05:24.282 +06:00 [INF] no file to delete
+2021-09-27 01:05:24.282 +06:00 [INF] Worker running at: "2021-09-27T01:05:24.2826852+06:00"
+2021-09-27 01:05:44.308 +06:00 [INF] no file to delete
+2021-09-27 01:05:44.309 +06:00 [INF] Worker running at: "2021-09-27T01:05:44.3089954+06:00"
+2021-09-27 01:06:04.321 +06:00 [INF] no file to delete
+2021-09-27 01:06:04.321 +06:00 [INF] Worker running at: "2021-09-27T01:06:04.3216500+06:00"
+2021-09-27 01:06:24.339 +06:00 [INF] no file to delete
+2021-09-27 01:06:24.339 +06:00 [INF] Worker running at: "2021-09-27T01:06:24.3398497+06:00"
+2021-09-27 01:06:44.352 +06:00 [INF] no file to delete
+2021-09-27 01:06:44.354 +06:00 [INF] Worker running at: "2021-09-27T01:06:44.3535901+06:00"
+2021-09-27 01:07:04.363 +06:00 [INF] no file to delete
+2021-09-27 01:07:04.363 +06:00 [INF] Worker running at: "2021-09-27T01:07:04.3637389+06:00"
+2021-09-27 01:07:52.465 +06:00 [INF] Application Starting up
+2021-09-27 01:07:54.096 +06:00 [INF] no file to delete
+2021-09-27 01:07:54.098 +06:00 [INF] Worker running at: "2021-09-27T01:07:54.0977936+06:00"
+2021-09-27 01:12:48.553 +06:00 [INF] Application Starting up
+2021-09-27 01:12:50.122 +06:00 [INF] no file to delete
+2021-09-27 01:12:50.123 +06:00 [INF] Worker running at: "2021-09-27T01:12:50.1232536+06:00"
+2021-09-27 01:13:15.214 +06:00 [INF] no file to delete
+2021-09-27 01:13:15.214 +06:00 [INF] Worker running at: "2021-09-27T01:13:15.2149112+06:00"
+2021-09-27 01:13:35.229 +06:00 [INF] no file to delete
+2021-09-27 01:13:35.229 +06:00 [INF] Worker running at: "2021-09-27T01:13:35.2298273+06:00"
+2021-09-27 01:13:55.232 +06:00 [INF] no file to delete
+2021-09-27 01:13:55.233 +06:00 [INF] Worker running at: "2021-09-27T01:13:55.2330515+06:00"
+2021-09-27 01:14:15.242 +06:00 [INF] no file to delete
+2021-09-27 01:14:15.242 +06:00 [INF] Worker running at: "2021-09-27T01:14:15.2421554+06:00"
+2021-09-27 01:14:35.245 +06:00 [INF] no file to delete
+2021-09-27 01:14:35.245 +06:00 [INF] Worker running at: "2021-09-27T01:14:35.2451164+06:00"
+2021-09-27 01:14:55.260 +06:00 [INF] no file to delete
+2021-09-27 01:14:55.260 +06:00 [INF] Worker running at: "2021-09-27T01:14:55.2606408+06:00"
+2021-09-27 01:15:15.268 +06:00 [INF] no file to delete
+2021-09-27 01:15:15.268 +06:00 [INF] Worker running at: "2021-09-27T01:15:15.2683387+06:00"
+2021-09-27 01:15:35.292 +06:00 [INF] no file to delete
+2021-09-27 01:15:35.292 +06:00 [INF] Worker running at: "2021-09-27T01:15:35.2922954+06:00"
+2021-09-27 01:15:55.308 +06:00 [INF] no file to delete
+2021-09-27 01:15:55.338 +06:00 [INF] Worker running at: "2021-09-27T01:15:55.3086976+06:00"
+2021-09-27 01:16:15.348 +06:00 [INF] no file to delete
+2021-09-27 01:16:15.348 +06:00 [INF] Worker running at: "2021-09-27T01:16:15.3484793+06:00"
+2021-09-27 01:16:35.355 +06:00 [INF] no file to delete
+2021-09-27 01:16:35.355 +06:00 [INF] Worker running at: "2021-09-27T01:16:35.3551547+06:00"
+2021-09-27 01:16:42.826 +06:00 [INF] Application Starting up
+2021-09-27 01:16:44.784 +06:00 [INF] no file to delete
+2021-09-27 01:16:44.785 +06:00 [INF] Worker running at: "2021-09-27T01:16:44.7851035+06:00"
+2021-09-27 01:17:04.808 +06:00 [INF] no file to delete
+2021-09-27 01:17:04.808 +06:00 [INF] Worker running at: "2021-09-27T01:17:04.8082799+06:00"
+2021-09-27 01:17:24.813 +06:00 [INF] no file to delete
+2021-09-27 01:17:24.813 +06:00 [INF] Worker running at: "2021-09-27T01:17:24.8131281+06:00"
+2021-09-27 01:17:44.826 +06:00 [INF] no file to delete
+2021-09-27 01:17:44.826 +06:00 [INF] Worker running at: "2021-09-27T01:17:44.8265534+06:00"
+2021-09-27 01:18:04.873 +06:00 [INF] no file to delete
+2021-09-27 01:18:04.873 +06:00 [INF] Worker running at: "2021-09-27T01:18:04.8731604+06:00"
+2021-09-27 01:18:24.878 +06:00 [INF] no file to delete
+2021-09-27 01:18:24.878 +06:00 [INF] Worker running at: "2021-09-27T01:18:24.8786150+06:00"
+2021-09-27 01:19:31.307 +06:00 [INF] Application Starting up
+2021-09-27 01:19:32.833 +06:00 [INF] no file to delete
+2021-09-27 01:19:32.835 +06:00 [INF] Worker running at: "2021-09-27T01:19:32.8348812+06:00"
+2021-09-27 01:19:52.853 +06:00 [INF] no file to delete
+2021-09-27 01:19:52.853 +06:00 [INF] Worker running at: "2021-09-27T01:19:52.8531906+06:00"
+2021-09-27 01:20:12.865 +06:00 [INF] no file to delete
+2021-09-27 01:20:12.866 +06:00 [INF] Worker running at: "2021-09-27T01:20:12.8660490+06:00"
+2021-09-27 01:20:32.875 +06:00 [INF] no file to delete
+2021-09-27 01:20:32.875 +06:00 [INF] Worker running at: "2021-09-27T01:20:32.8754362+06:00"
+2021-09-27 01:20:52.899 +06:00 [INF] no file to delete
+2021-09-27 01:20:52.899 +06:00 [INF] Worker running at: "2021-09-27T01:20:52.8997592+06:00"
+2021-09-27 01:21:12.915 +06:00 [INF] no file to delete
+2021-09-27 01:21:12.915 +06:00 [INF] Worker running at: "2021-09-27T01:21:12.9152557+06:00"
+2021-09-27 01:21:32.930 +06:00 [INF] no file to delete
+2021-09-27 01:21:32.930 +06:00 [INF] Worker running at: "2021-09-27T01:21:32.9309066+06:00"
+2021-09-27 01:21:52.972 +06:00 [INF] no file to delete
+2021-09-27 01:21:52.972 +06:00 [INF] Worker running at: "2021-09-27T01:21:52.9729467+06:00"
+2021-09-27 01:22:12.981 +06:00 [INF] no file to delete
+2021-09-27 01:22:12.981 +06:00 [INF] Worker running at: "2021-09-27T01:22:12.9819676+06:00"
+2021-09-27 01:22:32.997 +06:00 [INF] no file to delete
+2021-09-27 01:22:32.999 +06:00 [INF] Worker running at: "2021-09-27T01:22:32.9979269+06:00"
+2021-09-27 01:22:53.006 +06:00 [INF] no file to delete
+2021-09-27 01:22:53.006 +06:00 [INF] Worker running at: "2021-09-27T01:22:53.0062929+06:00"
+2021-09-27 01:23:13.012 +06:00 [INF] no file to delete
+2021-09-27 01:23:13.013 +06:00 [INF] Worker running at: "2021-09-27T01:23:13.0130386+06:00"
+2021-09-27 01:23:33.021 +06:00 [INF] no file to delete
+2021-09-27 01:23:33.021 +06:00 [INF] Worker running at: "2021-09-27T01:23:33.0211744+06:00"
+2021-09-27 01:23:53.030 +06:00 [INF] no file to delete
+2021-09-27 01:23:53.030 +06:00 [INF] Worker running at: "2021-09-27T01:23:53.0303993+06:00"
+2021-09-27 01:24:04.110 +06:00 [INF] Application Starting up
+2021-09-27 01:24:05.797 +06:00 [INF] no file to delete
+2021-09-27 01:24:05.799 +06:00 [INF] Worker running at: "2021-09-27T01:24:05.7984983+06:00"
+2021-09-27 01:24:25.815 +06:00 [INF] no file to delete
+2021-09-27 01:24:25.815 +06:00 [INF] Worker running at: "2021-09-27T01:24:25.8154396+06:00"
+2021-09-27 01:24:45.840 +06:00 [INF] no file to delete
+2021-09-27 01:24:45.840 +06:00 [INF] Worker running at: "2021-09-27T01:24:45.8407197+06:00"
+2021-09-27 01:25:05.853 +06:00 [INF] no file to delete
+2021-09-27 01:25:05.853 +06:00 [INF] Worker running at: "2021-09-27T01:25:05.8539390+06:00"
+2021-09-27 01:25:25.860 +06:00 [INF] no file to delete
+2021-09-27 01:25:25.860 +06:00 [INF] Worker running at: "2021-09-27T01:25:25.8608475+06:00"
+2021-09-27 01:25:45.880 +06:00 [INF] no file to delete
+2021-09-27 01:25:45.880 +06:00 [INF] Worker running at: "2021-09-27T01:25:45.8801989+06:00"
+2021-09-27 01:26:05.888 +06:00 [INF] no file to delete
+2021-09-27 01:26:05.888 +06:00 [INF] Worker running at: "2021-09-27T01:26:05.8881232+06:00"
+2021-09-27 01:26:25.904 +06:00 [INF] no file to delete
+2021-09-27 01:26:25.904 +06:00 [INF] Worker running at: "2021-09-27T01:26:25.9043401+06:00"
+2021-09-27 01:26:45.920 +06:00 [INF] no file to delete
+2021-09-27 01:26:45.920 +06:00 [INF] Worker running at: "2021-09-27T01:26:45.9204905+06:00"
+2021-09-27 01:27:05.922 +06:00 [INF] no file to delete
+2021-09-27 01:27:05.923 +06:00 [INF] Worker running at: "2021-09-27T01:27:05.9234636+06:00"
+2021-09-27 01:27:25.947 +06:00 [INF] no file to delete
+2021-09-27 01:27:25.948 +06:00 [INF] Worker running at: "2021-09-27T01:27:25.9480295+06:00"
+2021-09-27 01:27:45.958 +06:00 [INF] no file to delete
+2021-09-27 01:27:45.958 +06:00 [INF] Worker running at: "2021-09-27T01:27:45.9588338+06:00"
+2021-09-27 01:28:05.974 +06:00 [INF] no file to delete
+2021-09-27 01:28:05.974 +06:00 [INF] Worker running at: "2021-09-27T01:28:05.9744891+06:00"
+2021-09-27 01:28:25.988 +06:00 [INF] no file to delete
+2021-09-27 01:28:25.989 +06:00 [INF] Worker running at: "2021-09-27T01:28:25.9890307+06:00"
+2021-09-27 01:28:45.999 +06:00 [INF] no file to delete
+2021-09-27 01:28:45.999 +06:00 [INF] Worker running at: "2021-09-27T01:28:45.9996727+06:00"
+2021-09-27 01:29:06.009 +06:00 [INF] no file to delete
+2021-09-27 01:29:06.009 +06:00 [INF] Worker running at: "2021-09-27T01:29:06.0099291+06:00"
+2021-09-27 01:29:26.023 +06:00 [INF] no file to delete
+2021-09-27 01:29:26.023 +06:00 [INF] Worker running at: "2021-09-27T01:29:26.0231178+06:00"
+2021-09-27 01:29:46.028 +06:00 [INF] no file to delete
+2021-09-27 01:29:46.028 +06:00 [INF] Worker running at: "2021-09-27T01:29:46.0281107+06:00"
+2021-09-27 01:30:06.031 +06:00 [INF] no file to delete
+2021-09-27 01:30:06.031 +06:00 [INF] Worker running at: "2021-09-27T01:30:06.0315230+06:00"
+2021-09-27 01:30:26.046 +06:00 [INF] no file to delete
+2021-09-27 01:30:26.046 +06:00 [INF] Worker running at: "2021-09-27T01:30:26.0463343+06:00"
+2021-09-27 01:30:46.081 +06:00 [INF] no file to delete
+2021-09-27 01:30:46.081 +06:00 [INF] Worker running at: "2021-09-27T01:30:46.0811285+06:00"
+2021-09-27 01:31:06.090 +06:00 [INF] no file to delete
+2021-09-27 01:31:06.090 +06:00 [INF] Worker running at: "2021-09-27T01:31:06.0903089+06:00"
+2021-09-27 01:31:26.096 +06:00 [INF] no file to delete
+2021-09-27 01:31:26.096 +06:00 [INF] Worker running at: "2021-09-27T01:31:26.0961048+06:00"
+2021-09-27 01:31:46.100 +06:00 [INF] no file to delete
+2021-09-27 01:31:46.100 +06:00 [INF] Worker running at: "2021-09-27T01:31:46.1002746+06:00"
+2021-09-27 01:32:06.123 +06:00 [INF] no file to delete
+2021-09-27 01:32:06.124 +06:00 [INF] Worker running at: "2021-09-27T01:32:06.1248765+06:00"
+2021-09-27 01:32:26.141 +06:00 [INF] no file to delete
+2021-09-27 01:32:26.141 +06:00 [INF] Worker running at: "2021-09-27T01:32:26.1415077+06:00"
+2021-09-27 01:32:46.144 +06:00 [INF] no file to delete
+2021-09-27 01:32:46.144 +06:00 [INF] Worker running at: "2021-09-27T01:32:46.1440723+06:00"
+2021-09-27 01:33:06.168 +06:00 [INF] no file to delete
+2021-09-27 01:33:06.170 +06:00 [INF] Worker running at: "2021-09-27T01:33:06.1701405+06:00"
+2021-09-27 01:33:26.189 +06:00 [INF] no file to delete
+2021-09-27 01:33:26.189 +06:00 [INF] Worker running at: "2021-09-27T01:33:26.1899245+06:00"
+2021-09-27 01:33:46.206 +06:00 [INF] no file to delete
+2021-09-27 01:33:46.206 +06:00 [INF] Worker running at: "2021-09-27T01:33:46.2062200+06:00"
+2021-09-27 01:45:35.459 +06:00 [INF] Application Starting up
+2021-09-27 01:45:37.187 +06:00 [INF] no file to delete
+2021-09-27 01:45:37.188 +06:00 [INF] Worker running at: "2021-09-27T01:45:37.1880657+06:00"
+2021-09-27 01:45:57.206 +06:00 [INF] no file to delete
+2021-09-27 01:45:57.206 +06:00 [INF] Worker running at: "2021-09-27T01:45:57.2063745+06:00"
+2021-09-27 01:46:42.586 +06:00 [INF] Application Starting up
+2021-09-27 01:46:44.245 +06:00 [INF] no file to delete
+2021-09-27 01:46:44.247 +06:00 [INF] Worker running at: "2021-09-27T01:46:44.2467359+06:00"
+2021-09-27 01:47:04.479 +06:00 [INF] no file to delete
+2021-09-27 01:47:04.479 +06:00 [INF] Worker running at: "2021-09-27T01:47:04.4791706+06:00"
+2021-09-27 01:47:48.696 +06:00 [INF] Application Starting up
+2021-09-27 01:47:50.232 +06:00 [INF] no file to delete
+2021-09-27 01:47:50.233 +06:00 [INF] Worker running at: "2021-09-27T01:47:50.2331199+06:00"
+2021-09-27 01:48:23.386 +06:00 [INF] no file to delete
+2021-09-27 01:48:23.386 +06:00 [INF] Worker running at: "2021-09-27T01:48:23.3865133+06:00"
+2021-09-27 01:48:50.989 +06:00 [INF] no file to delete
+2021-09-27 01:48:50.989 +06:00 [INF] Worker running at: "2021-09-27T01:48:50.9893168+06:00"
+2021-09-27 02:08:04.794 +06:00 [INF] Application Starting up
+2021-09-27 02:08:05.428 +06:00 [FTL] Application start-up failed
+Autofac.Core.DependencyResolutionException: An exception was thrown while activating λ:Microsoft.Extensions.Hosting.IHostedService[] -> DataImporter.ImportWorker.Worker.
+ ---> Autofac.Core.DependencyResolutionException: None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'DataImporter.ImportWorker.Worker' can be invoked with the available services and parameters:
+Cannot resolve parameter 'DataImporter.Common.Utility.IDatetimeUtility iDatetimeUtility' of constructor 'Void .ctor(Microsoft.Extensions.Logging.ILogger`1[DataImporter.ImportWorker.Worker], DataImporter.Info.Services.IDataImporterService, DataImporter.Common.Utility.IDatetimeUtility)'.
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.GetAllBindings(ConstructorBinder[] availableConstructors, IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.<ConfigurePipeline>b__11_0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.RegistrationPipelineInvokeMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(ResolveRequest request)
+   at Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveOptionalService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.ResolveOptional(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.ResolveOptional(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetService[T](IServiceProvider provider)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at DataImporter.ImportWorker.Program.Main(String[] args) in D:\#FinalProject\3\DataImporter.ImportWorker\Program.cs:line 47
+2021-09-27 02:10:18.886 +06:00 [INF] Application Starting up
+2021-09-27 02:10:19.244 +06:00 [FTL] Application start-up failed
+Autofac.Core.DependencyResolutionException: An exception was thrown while activating λ:Microsoft.Extensions.Hosting.IHostedService[] -> DataImporter.ImportWorker.Worker.
+ ---> Autofac.Core.DependencyResolutionException: None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'DataImporter.ImportWorker.Worker' can be invoked with the available services and parameters:
+Cannot resolve parameter 'DataImporter.Common.Utility.IDatetimeUtility iDatetimeUtility' of constructor 'Void .ctor(Microsoft.Extensions.Logging.ILogger`1[DataImporter.ImportWorker.Worker], DataImporter.Info.Services.IDataImporterService, DataImporter.Common.Utility.IDatetimeUtility)'.
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.GetAllBindings(ConstructorBinder[] availableConstructors, IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.<ConfigurePipeline>b__11_0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.RegistrationPipelineInvokeMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(ResolveRequest request)
+   at Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveOptionalService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.ResolveOptional(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.ResolveOptional(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetService[T](IServiceProvider provider)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at DataImporter.ImportWorker.Program.Main(String[] args) in D:\#FinalProject\3\DataImporter.ImportWorker\Program.cs:line 47
+2021-09-27 02:14:49.000 +06:00 [INF] Application Starting up
+2021-09-27 02:14:49.371 +06:00 [FTL] Application start-up failed
+Autofac.Core.DependencyResolutionException: An exception was thrown while activating λ:Microsoft.Extensions.Hosting.IHostedService[] -> DataImporter.ImportWorker.Worker.
+ ---> Autofac.Core.DependencyResolutionException: None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'DataImporter.ImportWorker.Worker' can be invoked with the available services and parameters:
+Cannot resolve parameter 'DataImporter.Common.Utility.IDatetimeUtility iDatetimeUtility' of constructor 'Void .ctor(Microsoft.Extensions.Logging.ILogger`1[DataImporter.ImportWorker.Worker], DataImporter.Info.Services.IDataImporterService, DataImporter.Common.Utility.IDatetimeUtility)'.
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.GetAllBindings(ConstructorBinder[] availableConstructors, IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.<ConfigurePipeline>b__11_0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.RegistrationPipelineInvokeMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(ResolveRequest request)
+   at Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveOptionalService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.ResolveOptional(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.ResolveOptional(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetService[T](IServiceProvider provider)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at DataImporter.ImportWorker.Program.Main(String[] args) in D:\#FinalProject\3\DataImporter.ImportWorker\Program.cs:line 47
+2021-09-27 02:15:31.936 +06:00 [INF] Application Starting up
+2021-09-27 02:15:32.329 +06:00 [FTL] Application start-up failed
+Autofac.Core.DependencyResolutionException: An exception was thrown while activating λ:Microsoft.Extensions.Hosting.IHostedService[] -> DataImporter.ImportWorker.Worker.
+ ---> Autofac.Core.DependencyResolutionException: None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'DataImporter.ImportWorker.Worker' can be invoked with the available services and parameters:
+Cannot resolve parameter 'DataImporter.Common.Utility.IDatetimeUtility iDatetimeUtility' of constructor 'Void .ctor(Microsoft.Extensions.Logging.ILogger`1[DataImporter.ImportWorker.Worker], DataImporter.Info.Services.IDataImporterService, DataImporter.Common.Utility.IDatetimeUtility)'.
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.GetAllBindings(ConstructorBinder[] availableConstructors, IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.<ConfigurePipeline>b__11_0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.RegistrationPipelineInvokeMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(ResolveRequest request)
+   at Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveOptionalService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.ResolveOptional(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.ResolveOptional(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetService[T](IServiceProvider provider)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at DataImporter.ImportWorker.Program.Main(String[] args) in D:\#FinalProject\3\DataImporter.ImportWorker\Program.cs:line 47
+2021-09-27 02:20:09.691 +06:00 [INF] Application Starting up
+2021-09-27 02:20:10.064 +06:00 [FTL] Application start-up failed
+Autofac.Core.DependencyResolutionException: An exception was thrown while activating λ:Microsoft.Extensions.Hosting.IHostedService[] -> DataImporter.ImportWorker.Worker.
+ ---> Autofac.Core.DependencyResolutionException: None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'DataImporter.ImportWorker.Worker' can be invoked with the available services and parameters:
+Cannot resolve parameter 'DataImporter.Common.Utility.IDatetimeUtility iDatetimeUtility' of constructor 'Void .ctor(Microsoft.Extensions.Logging.ILogger`1[DataImporter.ImportWorker.Worker], DataImporter.Info.Services.IDataImporterService, DataImporter.Common.Utility.IDatetimeUtility)'.
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.GetAllBindings(ConstructorBinder[] availableConstructors, IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.<ConfigurePipeline>b__11_0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.RegistrationPipelineInvokeMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(ResolveRequest request)
+   at Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveOptionalService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.ResolveOptional(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.ResolveOptional(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetService[T](IServiceProvider provider)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at DataImporter.ImportWorker.Program.Main(String[] args) in D:\#FinalProject\3\DataImporter.ImportWorker\Program.cs:line 47
+2021-09-27 02:22:14.922 +06:00 [INF] Application Starting up
+2021-09-27 02:22:19.619 +06:00 [INF] Deleted 
+2021-09-27 02:22:19.621 +06:00 [INF] Worker running at: "2021-09-27T02:22:19.6210253+06:00"
+2021-09-27 02:23:26.611 +06:00 [INF] Application Starting up
+2021-09-27 02:23:28.237 +06:00 [INF] no file to delete
+2021-09-27 02:23:28.239 +06:00 [INF] Worker running at: "2021-09-27T02:23:28.2388389+06:00"
+2021-09-27 02:23:48.263 +06:00 [INF] no file to delete
+2021-09-27 02:23:48.263 +06:00 [INF] Worker running at: "2021-09-27T02:23:48.2636313+06:00"
+2021-09-27 02:24:08.264 +06:00 [INF] no file to delete
+2021-09-27 02:24:08.264 +06:00 [INF] Worker running at: "2021-09-27T02:24:08.2648213+06:00"
+2021-09-27 02:24:28.314 +06:00 [INF] no file to delete
+2021-09-27 02:24:28.314 +06:00 [INF] Worker running at: "2021-09-27T02:24:28.3142056+06:00"
+2021-09-27 02:24:48.334 +06:00 [INF] no file to delete
+2021-09-27 02:24:48.334 +06:00 [INF] Worker running at: "2021-09-27T02:24:48.3346369+06:00"
+2021-09-27 02:25:08.348 +06:00 [INF] no file to delete
+2021-09-27 02:25:08.348 +06:00 [INF] Worker running at: "2021-09-27T02:25:08.3484607+06:00"
+2021-09-27 02:25:28.353 +06:00 [INF] no file to delete
+2021-09-27 02:25:28.353 +06:00 [INF] Worker running at: "2021-09-27T02:25:28.3535638+06:00"
+2021-09-27 02:25:48.368 +06:00 [INF] no file to delete
+2021-09-27 02:25:48.368 +06:00 [INF] Worker running at: "2021-09-27T02:25:48.3681716+06:00"
+2021-09-27 02:26:08.372 +06:00 [INF] no file to delete
+2021-09-27 02:26:08.372 +06:00 [INF] Worker running at: "2021-09-27T02:26:08.3729431+06:00"
+2021-09-27 02:26:28.384 +06:00 [INF] no file to delete
+2021-09-27 02:26:28.385 +06:00 [INF] Worker running at: "2021-09-27T02:26:28.3847471+06:00"
+2021-09-27 02:26:48.402 +06:00 [INF] no file to delete
+2021-09-27 02:26:48.402 +06:00 [INF] Worker running at: "2021-09-27T02:26:48.4026617+06:00"
+2021-09-27 02:27:08.408 +06:00 [INF] no file to delete
+2021-09-27 02:27:08.408 +06:00 [INF] Worker running at: "2021-09-27T02:27:08.4082982+06:00"
+2021-09-27 02:27:28.425 +06:00 [INF] no file to delete
+2021-09-27 02:27:28.427 +06:00 [INF] Worker running at: "2021-09-27T02:27:28.4271745+06:00"
+2021-09-27 02:27:48.446 +06:00 [INF] no file to delete
+2021-09-27 02:27:48.446 +06:00 [INF] Worker running at: "2021-09-27T02:27:48.4465253+06:00"
+2021-09-27 02:28:11.470 +06:00 [INF] no file to delete
+2021-09-27 02:28:11.470 +06:00 [INF] Worker running at: "2021-09-27T02:28:11.4706098+06:00"
+2021-09-27 02:28:31.500 +06:00 [INF] no file to delete
+2021-09-27 02:28:31.501 +06:00 [INF] Worker running at: "2021-09-27T02:28:31.5009912+06:00"
+2021-09-27 02:28:51.737 +06:00 [INF] Deleted 
+2021-09-27 02:28:51.737 +06:00 [INF] Worker running at: "2021-09-27T02:28:51.7372163+06:00"
+2021-09-27 02:29:11.751 +06:00 [INF] no file to delete
+2021-09-27 02:29:11.751 +06:00 [INF] Worker running at: "2021-09-27T02:29:11.7512195+06:00"
+2021-09-27 02:29:31.776 +06:00 [INF] no file to delete
+2021-09-27 02:29:31.776 +06:00 [INF] Worker running at: "2021-09-27T02:29:31.7761772+06:00"
+2021-09-27 02:29:51.780 +06:00 [INF] no file to delete
+2021-09-27 02:29:51.780 +06:00 [INF] Worker running at: "2021-09-27T02:29:51.7802475+06:00"
+2021-09-27 02:30:11.782 +06:00 [INF] no file to delete
+2021-09-27 02:30:11.782 +06:00 [INF] Worker running at: "2021-09-27T02:30:11.7827067+06:00"
+2021-09-27 02:30:31.807 +06:00 [INF] no file to delete
+2021-09-27 02:30:31.808 +06:00 [INF] Worker running at: "2021-09-27T02:30:31.8086319+06:00"
+2021-09-27 02:30:51.826 +06:00 [INF] no file to delete
+2021-09-27 02:30:51.826 +06:00 [INF] Worker running at: "2021-09-27T02:30:51.8268485+06:00"
+2021-09-27 02:31:11.842 +06:00 [INF] no file to delete
+2021-09-27 02:31:11.842 +06:00 [INF] Worker running at: "2021-09-27T02:31:11.8426988+06:00"
+2021-09-27 02:31:31.883 +06:00 [INF] no file to delete
+2021-09-27 02:31:31.884 +06:00 [INF] Worker running at: "2021-09-27T02:31:31.8840662+06:00"
+2021-09-27 02:31:51.892 +06:00 [INF] no file to delete
+2021-09-27 02:31:51.892 +06:00 [INF] Worker running at: "2021-09-27T02:31:51.8922127+06:00"
+2021-09-27 02:32:11.909 +06:00 [INF] no file to delete
+2021-09-27 02:32:11.909 +06:00 [INF] Worker running at: "2021-09-27T02:32:11.9094611+06:00"
+2021-09-27 02:32:31.928 +06:00 [INF] no file to delete
+2021-09-27 02:32:31.928 +06:00 [INF] Worker running at: "2021-09-27T02:32:31.9285398+06:00"
+2021-09-27 02:32:51.935 +06:00 [INF] no file to delete
+2021-09-27 02:32:51.935 +06:00 [INF] Worker running at: "2021-09-27T02:32:51.9356793+06:00"
+2021-09-27 02:33:11.948 +06:00 [INF] no file to delete
+2021-09-27 02:33:11.948 +06:00 [INF] Worker running at: "2021-09-27T02:33:11.9485595+06:00"
+2021-09-27 02:33:31.966 +06:00 [INF] no file to delete
+2021-09-27 02:33:31.966 +06:00 [INF] Worker running at: "2021-09-27T02:33:31.9668795+06:00"
+2021-09-27 02:33:51.984 +06:00 [INF] no file to delete
+2021-09-27 02:33:51.984 +06:00 [INF] Worker running at: "2021-09-27T02:33:51.9845288+06:00"
+2021-09-27 02:34:11.993 +06:00 [INF] no file to delete
+2021-09-27 02:34:11.993 +06:00 [INF] Worker running at: "2021-09-27T02:34:11.9938038+06:00"
+2021-09-27 02:34:32.005 +06:00 [INF] no file to delete
+2021-09-27 02:34:32.005 +06:00 [INF] Worker running at: "2021-09-27T02:34:32.0056091+06:00"
+2021-09-27 02:34:52.010 +06:00 [INF] no file to delete
+2021-09-27 02:34:52.010 +06:00 [INF] Worker running at: "2021-09-27T02:34:52.0104641+06:00"
+2021-09-27 02:35:12.018 +06:00 [INF] no file to delete
+2021-09-27 02:35:12.018 +06:00 [INF] Worker running at: "2021-09-27T02:35:12.0184477+06:00"
+2021-09-27 02:35:39.511 +06:00 [INF] no file to delete
+2021-09-27 02:35:39.511 +06:00 [INF] Worker running at: "2021-09-27T02:35:39.5116988+06:00"
+2021-09-27 02:36:24.237 +06:00 [INF] Application Starting up
+2021-09-27 02:36:26.054 +06:00 [INF] no file to delete
+2021-09-27 02:36:26.055 +06:00 [INF] Worker running at: "2021-09-27T02:36:26.0554744+06:00"
+2021-09-27 02:36:46.072 +06:00 [INF] no file to delete
+2021-09-27 02:36:46.072 +06:00 [INF] Worker running at: "2021-09-27T02:36:46.0723710+06:00"
+2021-09-27 02:37:06.074 +06:00 [INF] no file to delete
+2021-09-27 02:37:06.074 +06:00 [INF] Worker running at: "2021-09-27T02:37:06.0743114+06:00"
+2021-09-27 02:37:26.081 +06:00 [INF] no file to delete
+2021-09-27 02:37:26.081 +06:00 [INF] Worker running at: "2021-09-27T02:37:26.0815485+06:00"
+2021-09-27 02:37:46.126 +06:00 [INF] no file to delete
+2021-09-27 02:37:46.126 +06:00 [INF] Worker running at: "2021-09-27T02:37:46.1263699+06:00"
+2021-09-27 02:38:06.150 +06:00 [INF] no file to delete
+2021-09-27 02:38:06.150 +06:00 [INF] Worker running at: "2021-09-27T02:38:06.1503302+06:00"
+2021-09-27 02:38:26.364 +06:00 [INF] Deleted 
+2021-09-27 02:38:26.365 +06:00 [INF] Worker running at: "2021-09-27T02:38:26.3650084+06:00"
+2021-09-27 02:38:46.371 +06:00 [INF] no file to delete
+2021-09-27 02:38:46.371 +06:00 [INF] Worker running at: "2021-09-27T02:38:46.3717957+06:00"
+2021-09-27 02:39:06.408 +06:00 [INF] Deleted 
+2021-09-27 02:39:06.409 +06:00 [INF] Worker running at: "2021-09-27T02:39:06.4089885+06:00"
+2021-09-27 02:39:26.425 +06:00 [INF] no file to delete
+2021-09-27 02:39:26.425 +06:00 [INF] Worker running at: "2021-09-27T02:39:26.4255875+06:00"
+2021-09-27 02:39:46.447 +06:00 [INF] no file to delete
+2021-09-27 02:39:46.447 +06:00 [INF] Worker running at: "2021-09-27T02:39:46.4475404+06:00"
+2021-09-27 02:40:06.459 +06:00 [INF] no file to delete
+2021-09-27 02:40:06.459 +06:00 [INF] Worker running at: "2021-09-27T02:40:06.4591076+06:00"
+2021-09-27 02:40:26.482 +06:00 [INF] no file to delete
+2021-09-27 02:40:26.482 +06:00 [INF] Worker running at: "2021-09-27T02:40:26.4824975+06:00"
+2021-09-27 02:40:46.494 +06:00 [INF] no file to delete
+2021-09-27 02:40:46.494 +06:00 [INF] Worker running at: "2021-09-27T02:40:46.4947392+06:00"
+2021-09-27 02:41:06.498 +06:00 [INF] no file to delete
+2021-09-27 02:41:06.498 +06:00 [INF] Worker running at: "2021-09-27T02:41:06.4986426+06:00"
+2021-09-27 02:41:26.509 +06:00 [INF] no file to delete
+2021-09-27 02:41:26.509 +06:00 [INF] Worker running at: "2021-09-27T02:41:26.5095948+06:00"
+2021-09-27 02:41:46.522 +06:00 [INF] no file to delete
+2021-09-27 02:41:46.522 +06:00 [INF] Worker running at: "2021-09-27T02:41:46.5224346+06:00"
+2021-09-27 02:42:06.535 +06:00 [INF] no file to delete
+2021-09-27 02:42:06.535 +06:00 [INF] Worker running at: "2021-09-27T02:42:06.5355585+06:00"
+2021-09-27 02:42:26.547 +06:00 [INF] no file to delete
+2021-09-27 02:42:26.547 +06:00 [INF] Worker running at: "2021-09-27T02:42:26.5476893+06:00"
+2021-09-27 02:42:46.551 +06:00 [INF] no file to delete
+2021-09-27 02:42:46.552 +06:00 [INF] Worker running at: "2021-09-27T02:42:46.5520007+06:00"
+2021-09-27 02:43:06.561 +06:00 [INF] no file to delete
+2021-09-27 02:43:06.561 +06:00 [INF] Worker running at: "2021-09-27T02:43:06.5617170+06:00"
+2021-09-27 02:43:26.561 +06:00 [INF] no file to delete
+2021-09-27 02:43:26.592 +06:00 [INF] Worker running at: "2021-09-27T02:43:26.5919746+06:00"
+2021-09-27 02:43:46.599 +06:00 [INF] no file to delete
+2021-09-27 02:43:46.599 +06:00 [INF] Worker running at: "2021-09-27T02:43:46.5998975+06:00"
+2021-09-27 02:44:06.607 +06:00 [INF] no file to delete
+2021-09-27 02:44:06.608 +06:00 [INF] Worker running at: "2021-09-27T02:44:06.6080324+06:00"
+2021-09-27 02:44:26.654 +06:00 [INF] no file to delete
+2021-09-27 02:44:26.654 +06:00 [INF] Worker running at: "2021-09-27T02:44:26.6545189+06:00"
+2021-09-27 02:44:46.695 +06:00 [INF] no file to delete
+2021-09-27 02:44:46.695 +06:00 [INF] Worker running at: "2021-09-27T02:44:46.6954154+06:00"
+2021-09-27 02:45:06.708 +06:00 [INF] no file to delete
+2021-09-27 02:45:06.708 +06:00 [INF] Worker running at: "2021-09-27T02:45:06.7084807+06:00"
+2021-09-27 02:45:26.725 +06:00 [INF] no file to delete
+2021-09-27 02:45:26.726 +06:00 [INF] Worker running at: "2021-09-27T02:45:26.7265855+06:00"
+2021-09-27 02:45:46.734 +06:00 [INF] no file to delete
+2021-09-27 02:45:46.734 +06:00 [INF] Worker running at: "2021-09-27T02:45:46.7342847+06:00"
+2021-09-27 02:46:06.741 +06:00 [INF] no file to delete
+2021-09-27 02:46:06.742 +06:00 [INF] Worker running at: "2021-09-27T02:46:06.7420181+06:00"
+2021-09-27 02:46:26.760 +06:00 [INF] no file to delete
+2021-09-27 02:46:26.760 +06:00 [INF] Worker running at: "2021-09-27T02:46:26.7603813+06:00"
+2021-09-27 02:46:46.773 +06:00 [INF] no file to delete
+2021-09-27 02:46:46.773 +06:00 [INF] Worker running at: "2021-09-27T02:46:46.7735193+06:00"
+2021-09-27 02:47:06.784 +06:00 [INF] no file to delete
+2021-09-27 02:47:06.784 +06:00 [INF] Worker running at: "2021-09-27T02:47:06.7848428+06:00"
+2021-09-27 02:50:45.555 +06:00 [INF] Application Starting up
+2021-09-27 02:50:47.001 +06:00 [INF] no file to delete
+2021-09-27 02:50:47.002 +06:00 [INF] Worker running at: "2021-09-27T02:50:47.0024645+06:00"
+2021-09-27 02:51:07.024 +06:00 [INF] no file to delete
+2021-09-27 02:51:07.024 +06:00 [INF] Worker running at: "2021-09-27T02:51:07.0249467+06:00"
+2021-09-27 02:51:27.027 +06:00 [INF] no file to delete
+2021-09-27 02:51:27.027 +06:00 [INF] Worker running at: "2021-09-27T02:51:27.0279446+06:00"
+2021-09-27 02:51:47.047 +06:00 [INF] no file to delete
+2021-09-27 02:51:47.047 +06:00 [INF] Worker running at: "2021-09-27T02:51:47.0471583+06:00"
+2021-09-27 02:52:39.809 +06:00 [INF] Application Starting up
+2021-09-27 02:52:41.189 +06:00 [INF] no file to delete
+2021-09-27 02:52:41.191 +06:00 [INF] Worker running at: "2021-09-27T02:52:41.1908411+06:00"
+2021-09-27 02:53:01.206 +06:00 [INF] no file to delete
+2021-09-27 02:53:01.207 +06:00 [INF] Worker running at: "2021-09-27T02:53:01.2069850+06:00"
+2021-09-27 02:53:21.225 +06:00 [INF] no file to delete
+2021-09-27 02:53:21.225 +06:00 [INF] Worker running at: "2021-09-27T02:53:21.2252493+06:00"
+2021-09-27 02:53:41.242 +06:00 [INF] no file to delete
+2021-09-27 02:53:41.242 +06:00 [INF] Worker running at: "2021-09-27T02:53:41.2424848+06:00"
+2021-09-27 02:54:01.250 +06:00 [INF] no file to delete
+2021-09-27 02:54:01.250 +06:00 [INF] Worker running at: "2021-09-27T02:54:01.2509042+06:00"

@@ -30,5 +30,7 @@ namespace DataImporter.Info.Services
         (List<string>, List<List<string>>) ContactList(int groupId);
         void SaveExportHistory(ExportStatus exportStatus);
         void ExportStatus(ExportStatus exportStatus);
+        (int, DateTime) GetExportHistoryForDownload(int id);
+        (List<string>, List<List<string>>) ContactListByDate(int groupId, DateTime exportDate);
     }
 }

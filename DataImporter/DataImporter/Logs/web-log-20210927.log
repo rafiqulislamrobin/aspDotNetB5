@@ -1,0 +1,95 @@
+2021-09-27 00:05:29.834 +06:00 [INF] Application Starting up
+2021-09-27 00:05:38.975 +06:00 [INF] User logged in.
+2021-09-27 00:08:47.310 +06:00 [INF] Application Starting up
+2021-09-27 00:08:56.837 +06:00 [INF] User logged in.
+2021-09-27 00:11:56.785 +06:00 [INF] Application Starting up
+2021-09-27 00:12:07.541 +06:00 [INF] User logged in.
+2021-09-27 00:14:37.678 +06:00 [INF] Application Starting up
+2021-09-27 00:14:48.321 +06:00 [INF] User logged in.
+2021-09-27 00:18:33.119 +06:00 [INF] Application Starting up
+2021-09-27 00:18:43.781 +06:00 [INF] User logged in.
+2021-09-27 00:19:21.704 +06:00 [INF] Application Starting up
+2021-09-27 00:19:31.573 +06:00 [INF] User logged in.
+2021-09-27 00:28:39.012 +06:00 [INF] Application Starting up
+2021-09-27 00:28:52.781 +06:00 [INF] User logged in.
+2021-09-27 00:33:25.536 +06:00 [INF] Application Starting up
+2021-09-27 00:33:34.725 +06:00 [INF] User logged in.
+2021-09-27 00:51:35.491 +06:00 [INF] Application Starting up
+2021-09-27 01:03:35.558 +06:00 [INF] Application Starting up
+2021-09-27 01:03:46.244 +06:00 [INF] User logged in.
+2021-09-27 01:07:52.860 +06:00 [INF] Application Starting up
+2021-09-27 01:08:03.455 +06:00 [INF] User logged in.
+2021-09-27 01:12:48.897 +06:00 [INF] Application Starting up
+2021-09-27 01:12:59.906 +06:00 [INF] User logged in.
+2021-09-27 01:16:43.281 +06:00 [INF] Application Starting up
+2021-09-27 01:17:00.289 +06:00 [INF] User logged in.
+2021-09-27 01:19:31.550 +06:00 [INF] Application Starting up
+2021-09-27 01:19:41.626 +06:00 [INF] User logged in.
+2021-09-27 01:24:04.748 +06:00 [INF] Application Starting up
+2021-09-27 01:24:14.567 +06:00 [INF] User logged in.
+2021-09-27 01:45:35.675 +06:00 [INF] Application Starting up
+2021-09-27 01:45:50.986 +06:00 [INF] User logged in.
+2021-09-27 01:46:42.822 +06:00 [INF] Application Starting up
+2021-09-27 01:46:51.168 +06:00 [INF] User logged in.
+2021-09-27 01:47:48.695 +06:00 [INF] Application Starting up
+2021-09-27 01:47:56.834 +06:00 [INF] User logged in.
+2021-09-27 01:48:23.388 +06:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'ContactDate'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(DbContext _, Boolean result)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at DataImporter.Data.Repository`2.GetAll() in D:\#FinalProject\3\DataImporter.Data\Repository.cs:line 93
+   at DataImporter.Info.Services.DataImporterService.ContactList(Int32 groupId) in D:\#FinalProject\3\DataImporter.Info\Services\DataImporterService.cs:line 34
+   at DataImporter.Areas.User.Models.ExportFileModel.GetContactsList(Int32 groupId) in D:\#FinalProject\3\DataImporter\Areas\User\Models\ExportFileModel.cs:line 41
+   at DataImporter.Areas.User.Controllers.DataImporterController.ExportFile(FilePathModel filePathmodel) in D:\#FinalProject\3\DataImporter\Areas\User\Controllers\DataImporterController.cs:line 248
+   at lambda_method841(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+ClientConnectionId:eef341e8-2c6c-4bb8-ad81-f05aa89f372b
+Error Number:207,State:1,Class:16
+2021-09-27 02:08:05.054 +06:00 [INF] Application Starting up
+2021-09-27 02:08:38.776 +06:00 [INF] User logged in.
+2021-09-27 02:23:26.823 +06:00 [INF] Application Starting up
+2021-09-27 02:24:02.453 +06:00 [INF] User logged in.
+2021-09-27 02:36:24.809 +06:00 [INF] Application Starting up
+2021-09-27 02:36:43.659 +06:00 [INF] User logged in.
+2021-09-27 02:50:45.554 +06:00 [INF] Application Starting up
+2021-09-27 02:51:10.904 +06:00 [INF] User logged in.
+2021-09-27 02:52:39.833 +06:00 [INF] Application Starting up

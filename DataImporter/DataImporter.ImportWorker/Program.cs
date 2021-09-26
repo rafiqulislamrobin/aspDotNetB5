@@ -67,7 +67,7 @@ namespace DataImporter.ImportWorker
                     builder.RegisterModule(new DataImporterModule
                         (_connectionString, _migrationAssemblyName));
                     builder.RegisterModule(new WorkerModule
-                        (_connectionString, _migrationAssemblyName,_configuration));
+                        (_connectionString, _migrationAssemblyName,_configuration ));
 
                 })
                 .ConfigureServices((hostContext, services) =>

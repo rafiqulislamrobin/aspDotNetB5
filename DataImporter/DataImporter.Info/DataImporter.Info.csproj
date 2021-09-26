@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DataImporter.Common\DataImporter.Common.csproj" />
     <ProjectReference Include="..\DataImporter.Data\DataImporter.Data.csproj" />
     <ProjectReference Include="..\DataImporter.MemberShip\DataImporter.MemberShip.csproj" />
   </ItemGroup>

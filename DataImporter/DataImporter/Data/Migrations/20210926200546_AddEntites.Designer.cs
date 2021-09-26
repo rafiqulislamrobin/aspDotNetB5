@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataImporter.Data.Migrations
 {
     [DbContext(typeof(DataImporterDbContext))]
-    [Migration("20210923054021_AddEntities")]
-    partial class AddEntities
+    [Migration("20210926200546_AddEntites")]
+    partial class AddEntites
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,6 +27,9 @@ namespace DataImporter.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("ContactDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("ExcelRow")
                         .HasColumnType("int");
@@ -56,9 +59,6 @@ namespace DataImporter.Data.Migrations
 
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("DownloadStatus")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EmailStatus")
                         .HasColumnType("nvarchar(max)");
