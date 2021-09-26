@@ -68,7 +68,6 @@ namespace DataImporter.Areas.User.Models
         {
             
             var id = Guid.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
-         
             return _iDataImporterService.LoadAllGroups(id);
         }
     }

@@ -10,8 +10,8 @@ namespace DataImporter.Info.Services
     public interface IDataImporterService
     {
         void SaveFilePath(FilePath member);
-        (IList<FilePath>records, int total, int totalDisplay) Gethistory(int pageIndex, int pageSize,
-                                                          string searchText, string sortText, Guid id);
+        (IList<FilePath>records, int total, int totalDisplay) GetImporthistory(int pageIndex, int pageSize,
+                                    string searchText, string sortText, Guid id , DateTime DateFrom, DateTime DateTo);
         void CreateGroup(Group group , Guid id);
         void CreateContact(Contact contact);
         (IList<Group> records, int total, int totalDisplay) GetGroupsList(int pageIndex, int pageSize,
@@ -23,7 +23,7 @@ namespace DataImporter.Info.Services
       
         string SaveExcelDatatoDb();
         (IList<ExportStatus> records, int total, int totalDisplay) GetExportHistory(int pageIndex, int pageSize,
-                                                       string searchText, string sortText, Guid id);
+                                      string searchText, string sortText, Guid id, DateTime DateTo, DateTime DateFrom);
         ExportStatus GetExportHistory(int groupId);
         void UpdateGroup(Group group , Guid id);
         List <Group> LoadAllGroups(Guid id);

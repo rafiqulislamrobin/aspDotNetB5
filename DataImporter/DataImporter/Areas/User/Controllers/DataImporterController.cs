@@ -193,21 +193,39 @@ namespace DataImporter.Areas.User.Controllers
             return RedirectToAction(nameof(ImportHistory));
 
         }
-
-
-        public IActionResult ImportHistory()
+        public IActionResult CancelImportFile()
         {
-
             return View();
         }
 
+
+        public IActionResult ImportHistory(ImportHistoryModel importHistoryModel)
+        {
+            TempData["DateTo"] = importHistoryModel.DateTo;
+            TempData["DateFrom"] = importHistoryModel.DateFrom;
+            return View();
+           
+
+        }
         public JsonResult GetImportHistoryData()
         {
+            
             var dataTableAjaxRequestModel = new DataTablesAjaxRequestModel(Request);
             var model = new ImportHistoryModel();
+            model.DateTo = Convert.ToDateTime(TempData["DateTo"]);
+            model.DateFrom = Convert.ToDateTime(TempData["DateFrom"]);
             var data = model.GetHistories(dataTableAjaxRequestModel);
             return Json(data);
         }
+       
+        //[HttpPost]
+        //public IActionResult ImportHistory(ImportHistoryModel importHistoryModel)
+        //{
+        //    return View();
+            
+        //}
+
+
 
 
 
@@ -288,14 +306,18 @@ namespace DataImporter.Areas.User.Controllers
             return RedirectToAction(nameof(ExportFileHistory));
         }
 
-        public IActionResult ExportFileHistory()
+        public IActionResult ExportFileHistory(ExportHistoryModel model)
         {
+            TempData["DateTo"] = model.DateTo;
+            TempData["DateFrom"] = model.DateFrom;
             return View();
         }
         public JsonResult GetExporttHistoryData()
         {
             var dataTableAjaxRequestModel = new DataTablesAjaxRequestModel(Request);
             var model = new ExportHistoryModel();
+            model.DateTo = Convert.ToDateTime(TempData["DateTo"]);
+            model.DateFrom = Convert.ToDateTime(TempData["DateFrom"]);
             var data = model.GetHistories(dataTableAjaxRequestModel);
             return Json(data);
         }

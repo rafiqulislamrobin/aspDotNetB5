@@ -14,6 +14,8 @@ namespace DataImporter.Areas.User.Models
 {
     public class ExportHistoryModel
     {
+        public DateTime DateTo { get; set; }
+        public DateTime DateFrom { get; set; }
 
         private readonly IDataImporterService _iDataImporterService;
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -36,7 +38,7 @@ namespace DataImporter.Areas.User.Models
                     dataTableAjaxRequestModel.PageSize,
                     dataTableAjaxRequestModel.SearchText,
                     dataTableAjaxRequestModel.GetSortText(new string[] { "GroupName", "EmailStatus", "DownloadStatus", "DateTime" }),
-                      id);
+                      id, DateTo,DateFrom);
             return new
             {
                 recordsTotal = data.total,

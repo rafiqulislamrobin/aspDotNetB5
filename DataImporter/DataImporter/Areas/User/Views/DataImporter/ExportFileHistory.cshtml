@@ -1,4 +1,4 @@
-﻿
+﻿@model ExportHistoryModel
 @{
     ViewData["Title"] = "ExportFileHistory";
 }
@@ -34,7 +34,40 @@
             </div>
         </div>
     </div><!-- /.container-fluid -->
-    
+    <form method="get" asp-controller="DataImporter" asp-action="Importdate" asp-antiforgery="true">
+
+
+        <div class="card w-75" style="background-color:grey; margin-bottom:0">
+            <div class="card-body">
+                <div style="display: flex;justify-content:center;">
+                    <div class="mt-4" style="display: flex; ">
+
+                        <div class="form-group">
+                            <label asp-for="DateFrom" style="margin-left:-20px">Date From </label>
+                            <input asp-for="DateFrom" class="form-control" id="datefrom"
+                                   type="date" style="margin-left:-20px" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DateTo" style="margin-left:-10px">Date To</label>
+                            <input asp-for="DateTo" class="form-control" id="dateTo"
+                                   type="date" style="margin-left:-10px" />
+                        </div>
+
+
+                        <div>
+
+                            <button type="submit" asp-action="ImportHistory" class="btn btn-primary "
+                                    style="color: white;background-color: #343a40;
+                             border-radius:15px; border-color:black; margin-top:30px; ">
+                                search
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 </section>
 <!-- Main content -->
 <section class="content">
