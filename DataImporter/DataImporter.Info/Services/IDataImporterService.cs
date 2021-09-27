@@ -17,6 +17,7 @@ namespace DataImporter.Info.Services
         (IList<Group> records, int total, int totalDisplay) GetGroupsList(int pageIndex, int pageSize,
                                                   string searchText, Guid id,  string sortText  );
         List<Contact> GetContactList();
+
         void DeleteGroup(int id);
         Group LoadGroup(int id);
         
@@ -27,7 +28,9 @@ namespace DataImporter.Info.Services
         ExportStatus GetExportHistory(int groupId);
         void UpdateGroup(Group group , Guid id);
         List <Group> LoadAllGroups(Guid id);
+        List<ExportStatus> LoadAllExportHistory(Guid id);
         (List<string>, List<List<string>>) ContactList(int groupId);
+        List<FilePath> LoadAllImportHistory(Guid id);
         void SaveExportHistory(ExportStatus exportStatus);
         void ExportStatus(ExportStatus exportStatus);
         (int, DateTime) GetExportHistoryForDownload(int id);

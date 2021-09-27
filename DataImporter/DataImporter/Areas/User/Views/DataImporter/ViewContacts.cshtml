@@ -41,13 +41,13 @@
 
 
         <div asp-validation-summary="All" class="container-fluid">
-            <div class="card-header" style="color: white;">
+            <div class="card-header" style="color: black;">
                 <h3 class="card-title">Group Contacts</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
 
-            <div class="card-body" type="select" style="color: white;">
+            <div class="card-body" type="select" style="color: black;">
                 <label for="select group" id="groupid">Choice group:  </label>
                 @Html.DropDownListFor(m => m.GroupId, ViewBag.GroupList as SelectList, "--Select A Group--", new { required = "required", id = "selectTwo" })
 
@@ -67,7 +67,7 @@
     </form>
 
     <!-- Main content -->
-    <h1 style="text-align:center; color:white">@ViewBag.ContactListNullMassage</h1>
+    <h1 style="text-align:center; color:black">@ViewBag.ContactListNullMassage</h1>
     @if (ViewBag.ContactListNullMassage == null)
     {
         @if (Model.GroupId != 0)

@@ -313,6 +313,23 @@ namespace DataImporter.Info.Services
     
         }
 
+        public List<ExportStatus> LoadAllExportHistory(Guid id)
+        {
+            var ExportStatusEntities = _dataUnitOfWork.ExportStatus.GetAll().Where(g => g.Group.ApplicationUserId == id);
+            
+            var result = (from e in ExportStatusEntities
+
+                          select new ExportStatus
+                          {
+                              Id = e.Id,
+                              EmailStatus = e.EmailStatus,
+                              GroupName = e.GroupName,
+                              DateTime =e.DateTime,
+
+                          }).ToList();
+            return result;
+        }
+
         public List<Group> LoadAllGroups(Guid id)
         {
             var groupEntities = _dataUnitOfWork.Group.GetAll().Where(g => g.ApplicationUserId == id);
@@ -323,6 +340,24 @@ namespace DataImporter.Info.Services
                           {
                               Id = g.Id,
                               Name = g.Name
+                          }).ToList();
+            return result;
+        }
+
+        public List<FilePath> LoadAllImportHistory(Guid id)
+        {
+            var ExportStatusEntities = _dataUnitOfWork.FilePath.GetAll().Where(g => g.Group.ApplicationUserId == id);
+
+            var result = (from e in ExportStatusEntities
+
+                          select new FilePath
+                          {
+                              Id = e.Id,
+                              FilePathName = e.FilePathName,
+                              GroupName = e.GroupName,
+                              DateTime = e.DateTime,
+                              FileStatus =e.FileStatus
+
                           }).ToList();
             return result;
         }

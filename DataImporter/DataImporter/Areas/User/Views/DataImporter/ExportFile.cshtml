@@ -31,8 +31,6 @@
                 "responsive": true
 
             });
-
-
         });
     </script>
 
@@ -46,15 +44,16 @@
 
 
         <div asp-validation-summary="All" class="container-fluid">
-            <div class="card-header" style="color: white;">
+            <div class="card-header" style="color: black;">
                 <h3 class="card-title">Export File</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
 
-            <div class="card-body" type="select" style="color: white;">
+            <div class="card-body" type="select" style="color: black;">
                 <label for="select group" id="groupid">Choice group:  </label>
-                @Html.DropDownListFor(m => m.GroupId, ViewBag.GroupList as SelectList, "--Select A Group--", new { required = "required", id = "selectTwo" })
+                @Html.DropDownListFor(m => m.GroupId, ViewBag.GroupList as SelectList, "--Select A Group--",
+                new { required = "required", id = "selectTwo" })
 
 
             </div>
@@ -78,7 +77,8 @@
         @if (Model.GroupId != 0)
         {
 
-            <form method="post" enctype="multipart/form-data" asp-controller="DataImporter" asp-action="ExportFile">
+            <form method="post" enctype="multipart/form-data" asp-controller="DataImporter" 
+                  asp-action="ExportFile">
                 <section class="content">
                     <div class="container-fluid">
                         <div class="row">
@@ -89,7 +89,8 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body">
-                                        <table id="Contact" class="table table-bordered table-hover" method="post">
+                                        <table id="Contact" class="table table-bordered table-hover" 
+                                               method="post">
                                             <thead>
                                                 <tr>
                                                     @{

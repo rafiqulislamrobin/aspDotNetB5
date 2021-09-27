@@ -1,4 +1,5 @@
-﻿using DataImporter.Areas.User.Models;
+﻿using Autofac;
+using DataImporter.Areas.User.Models;
 using DataImporter.Info.Business_Object;
 using DataImporter.Models;
 using ExcelDataReader;
@@ -22,17 +23,20 @@ namespace DataImporter.Areas.User.Controllers
     public class DataImporterController : Controller
     {
         private readonly ILogger<DataImporterController> _logger;
-
+        private readonly ILifetimeScope _scope;
         public IWebHostEnvironment _WebHostEnvironment;
         public int temp { get; set; }
-        public DataImporterController(ILogger<DataImporterController> logger)
+        public DataImporterController(ILogger<DataImporterController> logger , ILifetimeScope scope)
         {
             _logger = logger;
+            _scope = scope;
         }
        
         public IActionResult Index()
         {
-            return View();
+            IndexModel model = new IndexModel();
+            model.GetTotal();
+            return View(model);
         }
         
         public IActionResult ViewGroups()

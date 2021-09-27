@@ -42,7 +42,7 @@
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
-            <div class="col-sm-6" style="color:white">
+            <div class="col-sm-6" style="color:black">
                 <h1>Exports File History</h1>
             </div>
         </div>
@@ -50,17 +50,17 @@
     <form method="get" asp-controller="DataImporter" asp-action="Importdate" asp-antiforgery="true">
 
 
-        <div class="card w-75" style="background-image: -webkit-linear-gradient(-135deg, #c850c0, #4158d0); margin-bottom: 0">
+        <div class="card w-75" style="background-image: -webkit-linear-gradient(-135deg, #abbaab,#ffffff); margin-bottom: 0">
             <div class="card-body">
                 <div style="display: flex;justify-content:center;">
                     <div class="mt-4" style="display: flex; ">
 
-                        <div class="form-group" style="color:white">
+                        <div class="form-group" style="color:black">
                             <label asp-for="DateFrom" style="margin-left:-20px">Date From </label>
                             <input asp-for="DateFrom" class="form-control" id="datefrom"
                                    type="date" style="margin-left:-20px" />
                         </div>
-                        <div class="form-group" style="color:white">
+                        <div class="form-group" style="color:black">
                             <label asp-for="DateTo" style="margin-left:-10px">Date To</label>
                             <input asp-for="DateTo" class="form-control" id="dateTo"
                                    type="date" style="margin-left:-10px" />
@@ -70,7 +70,7 @@
                         <div>
 
                             <button type="submit" asp-action="ExportFileHistory" class="btn btn-primary "
-                                    style="color: black;background-color: #9c94d6;
+                                    style="color: black;background-color: white;
                              border-radius:15px; border-color:#9c94d6; margin-top:30px; ">
                                 search
                             </button>

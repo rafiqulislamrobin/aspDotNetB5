@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using DataImporter.Areas.User.Models;
+using DataImporter.Models.AccountModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +12,23 @@ namespace DataImporter
     {
         protected override void Load(ContainerBuilder builder)
         {
-  
 
+            builder.RegisterType<ConfirmFile>().AsSelf();
+            builder.RegisterType<CreateContactModel>().AsSelf();
+            builder.RegisterType<CreateGroupModel>().AsSelf();
+            builder.RegisterType<EditGroupModel>().AsSelf();
+            builder.RegisterType<EmailSenderModel>().AsSelf();
+            builder.RegisterType<ExportFileModel>().AsSelf();
+            builder.RegisterType<ExportHistoryModel>().AsSelf();
+            builder.RegisterType<ExportStatusModel>().AsSelf();
+            builder.RegisterType<FilePathModel>().AsSelf();
+            builder.RegisterType<ImportHistoryModel>().AsSelf();
+            builder.RegisterType<IndexModel>().AsSelf();
+            builder.RegisterType<ViewContactModel>().AsSelf();
+            builder.RegisterType<ViewGroupModel>().AsSelf();
+
+            builder.RegisterType<LoginModel>().AsSelf();
+            builder.RegisterType<RegisterModel>().AsSelf();
             base.Load(builder);
         }
     }

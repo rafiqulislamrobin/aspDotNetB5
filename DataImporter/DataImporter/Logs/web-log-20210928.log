@@ -1,0 +1,80 @@
+2021-09-28 00:14:12.352 +06:00 [INF] Application Starting up
+2021-09-28 00:14:50.414 +06:00 [INF] User logged in.
+2021-09-28 00:15:35.231 +06:00 [INF] User logged out.
+2021-09-28 00:16:56.523 +06:00 [INF] User logged in.
+2021-09-28 00:17:53.743 +06:00 [ERR] Add Group Failed
+DataImporter.Info.Exceptions.DuplicateException: Group name is already used
+   at DataImporter.Info.Services.DataImporterService.CreateGroup(Group group, Guid id) in D:\#FinalProject\3\DataImporter.Info\Services\DataImporterService.cs:line 125
+   at DataImporter.Areas.User.Models.CreateGroupModel.CreateGroup() in D:\#FinalProject\3\DataImporter\Areas\User\Models\CreateGroupModel.cs:line 46
+   at DataImporter.Areas.User.Controllers.DataImporterController.CreateGroups(CreateGroupModel model) in D:\#FinalProject\3\DataImporter\Areas\User\Controllers\DataImporterController.cs:line 66
+2021-09-28 00:22:57.838 +06:00 [ERR] An unhandled exception has occurred while executing the request.
+System.IndexOutOfRangeException: There is no row at position 9.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at DataImporter.Areas.User.Models.ConfirmFile.ConfirmFileUpload(String filepath) in D:\#FinalProject\3\DataImporter\Areas\User\Models\ConfirmFile.cs:line 74
+   at DataImporter.Areas.User.Controllers.DataImporterController.ConfirmContacts(FilePathModel filemodels) in D:\#FinalProject\3\DataImporter\Areas\User\Controllers\DataImporterController.cs:line 176
+   at lambda_method1259(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-09-28 00:24:10.827 +06:00 [INF] Application Starting up
+2021-09-28 00:24:18.354 +06:00 [INF] User logged in.
+2021-09-28 00:24:40.750 +06:00 [ERR] An unhandled exception has occurred while executing the request.
+System.IndexOutOfRangeException: There is no row at position 9.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at DataImporter.Areas.User.Models.ConfirmFile.ConfirmFileUpload(String filepath) in D:\#FinalProject\3\DataImporter\Areas\User\Models\ConfirmFile.cs:line 74
+   at DataImporter.Areas.User.Controllers.DataImporterController.ConfirmContacts(FilePathModel filemodels) in D:\#FinalProject\3\DataImporter\Areas\User\Controllers\DataImporterController.cs:line 176
+   at lambda_method915(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.MigrationsEndPointMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-09-28 00:34:23.148 +06:00 [INF] Application Starting up
+2021-09-28 00:34:31.253 +06:00 [INF] User logged in.
+2021-09-28 00:45:20.149 +06:00 [INF] User logged out.
+2021-09-28 00:53:47.128 +06:00 [INF] Application Starting up
+2021-09-28 00:54:26.570 +06:00 [INF] User logged in.
+2021-09-28 00:55:39.006 +06:00 [INF] User logged out.
+2021-09-28 00:56:01.623 +06:00 [INF] User logged in.
+2021-09-28 01:11:39.901 +06:00 [INF] Application Starting up
+2021-09-28 01:11:48.751 +06:00 [INF] User logged in.

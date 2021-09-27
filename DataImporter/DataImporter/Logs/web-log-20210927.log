@@ -421,3 +421,22 @@ System.InvalidOperationException: The view 'NotFound' was not found. The followi
 2021-09-27 20:18:45.138 +06:00 [INF] User logged in.
 2021-09-27 20:20:12.948 +06:00 [INF] Application Starting up
 2021-09-27 20:21:13.657 +06:00 [INF] Application Starting up
+2021-09-27 20:43:47.976 +06:00 [INF] Application Starting up
+2021-09-27 20:44:33.049 +06:00 [WRN] Invalid password for user.
+2021-09-27 20:44:33.052 +06:00 [WRN] User failed to provide the correct password.
+2021-09-27 20:44:39.598 +06:00 [INF] User logged in.
+2021-09-27 22:31:51.388 +06:00 [INF] Application Starting up
+2021-09-27 22:32:00.099 +06:00 [INF] User logged in.
+2021-09-27 22:33:26.865 +06:00 [INF] Application Starting up
+2021-09-27 22:33:36.645 +06:00 [INF] User logged in.
+2021-09-27 22:45:38.139 +06:00 [ERR] Add Group Failed
+DataImporter.Info.Exceptions.DuplicateException: Group name is already used
+   at DataImporter.Info.Services.DataImporterService.CreateGroup(Group group, Guid id) in D:\#FinalProject\3\DataImporter.Info\Services\DataImporterService.cs:line 125
+   at DataImporter.Areas.User.Models.CreateGroupModel.CreateGroup() in D:\#FinalProject\3\DataImporter\Areas\User\Models\CreateGroupModel.cs:line 46
+   at DataImporter.Areas.User.Controllers.DataImporterController.CreateGroups(CreateGroupModel model) in D:\#FinalProject\3\DataImporter\Areas\User\Controllers\DataImporterController.cs:line 64
+2021-09-27 22:50:36.997 +06:00 [INF] User logged out.
+2021-09-27 22:51:33.543 +06:00 [INF] User logged in.
+2021-09-27 22:53:06.687 +06:00 [INF] Application Starting up
+2021-09-27 22:53:18.350 +06:00 [INF] User logged in.
+2021-09-27 22:58:52.266 +06:00 [INF] Application Starting up
+2021-09-27 22:59:25.435 +06:00 [INF] User logged in.
