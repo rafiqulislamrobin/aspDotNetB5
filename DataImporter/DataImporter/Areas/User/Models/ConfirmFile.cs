@@ -66,7 +66,7 @@ namespace DataImporter.Areas.User.Models
                     }
 
                 }
-                for (var i = 1; i < dataTable.Rows.Count; i++)
+                for (var i = 1; i < 11; i++)
                 {
                     Contact contacts = new();
                     for (var j = 0; j < dataTable.Columns.Count; j++)
@@ -78,7 +78,7 @@ namespace DataImporter.Areas.User.Models
                         }
                         else
                         {
-                            contacts.Properties.Add(headers[j], "no value");
+                            contacts.Properties.Add(headers[j], "(no value)");
                         }
                     }
                     cont.Add(i, contacts.Properties);

@@ -174,7 +174,7 @@ namespace DataImporter.Areas.User.Controllers
             {
                 ViewBag.HeaderMissMatch = "FIles Columns dosent match to this group." +
                                           " Please select another group or create a group";
-                
+                System.IO.File.Delete(filepath);
                 var list = filemodels.LoadAllGroups();
                 ViewBag.GroupList = new SelectList(list, "Id", "Name");
                 return View(nameof(ImportFile));
@@ -186,16 +186,20 @@ namespace DataImporter.Areas.User.Controllers
         public IActionResult ConfirmContacts(ConfirmFile model)
         {
 
-            var models = new FilePathModel();
-            var list = models.LoadAllGroups();
+            var FilePathModels = new FilePathModel();
+            var list = FilePathModels.LoadAllGroups();
 
-            models.SaveFilePath(model.file, model.GroupId, list);
+            FilePathModels.SaveFilePath(model.file, model.GroupId, list);
             return RedirectToAction(nameof(ImportHistory));
 
         }
-        public IActionResult CancelImportFile()
+        public IActionResult CancelImportFile(ConfirmFile ConfirmModel)
         {
-            return View();
+            var model = new FilePathModel();
+            var list = model.LoadAllGroups();
+            ViewBag.GroupList = new SelectList(list, "Id", "Name");
+            model.CancelImport(ConfirmModel.file);
+            return View(nameof(ImportFile));
         }
 
 
@@ -218,17 +222,42 @@ namespace DataImporter.Areas.User.Controllers
             return Json(data);
         }
        
-        //[HttpPost]
-        //public IActionResult ImportHistory(ImportHistoryModel importHistoryModel)
-        //{
-        //    return View();
-            
-        //}
+        public IActionResult ViewContacts()
+        {
+            var model = new ExportFileModel();
 
+            var list = model.LoadAllGroups();
+            ViewBag.GroupList = new SelectList(list, "Id", "Name");
 
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult ViewContacts(FilePathModel filePathmodel)
+        {
+            var model = new ExportFileModel();
+            model.GetContactsList(filePathmodel.GroupId);
 
+            var list = model.LoadAllGroups();
+            if (model.Headers.Count == 0)
+            {
+                ViewBag.ContactListNullMassage = "(No Contact Available)";
+                ViewBag.GroupList = new SelectList(list, "Id", "Name");
+            }
+            else
+            {
+                ViewBag.GroupList = new SelectList(list, "Id", "Name");
+            }
 
+            List<string> headers = new();
+            foreach (var item in model.Headers)
+            {
+                headers.Add(item);
+            }
 
+            TempData["id"] = filePathmodel.GroupId;
+
+            return View(model);
+        }
         [HttpGet]
         public IActionResult ExportFile()
         {

@@ -44,11 +44,11 @@ namespace DataImporter.Areas.User.Models
             _iDataImporterService = iDataImporterService;
             _httpContextAccessor = httpContextAccessor;
         }
-        internal /*async Task*/void SaveFilePath(string filename, int groupId, List<Group> list)
+        internal /*async Task*/void SaveFilePath(string fileName, int groupId, List<Group> list)
         {
-            
+           
             FilePath filePath = new FilePath();
-            var path = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\ExcelFiles"}" + "\\" + filename;
+            var path = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\ExcelFiles"}" + "\\" + fileName;
             filePath.FilePathName = path;
             filePath.FileName = Path.GetFileName(path);
             filePath.DateTime = _datetimeUtility.Now;
@@ -69,6 +69,11 @@ namespace DataImporter.Areas.User.Models
             
             var id = Guid.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
             return _iDataImporterService.LoadAllGroups(id);
+        }
+
+        internal void CancelImport(string fileName)
+        {
+            File.Delete($"{Directory.GetCurrentDirectory()}{@"\wwwroot\ExcelFiles"}" + "\\" + fileName);
         }
     }
 }
