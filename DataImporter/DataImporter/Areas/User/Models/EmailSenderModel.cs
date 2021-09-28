@@ -21,21 +21,29 @@ namespace DataImporter.Areas.User.Models
         [Required]
         public string Email { get; set; }
         public int GroupId { get; set; }
-        private readonly IDataImporterService _iDataImporterService;
-        private readonly ILogger<EmailSenderModel> _logger;
+
         public List<string> Headers { get; set; }
         public List<List<string>> Items { get; set; }
-
+        private IDataImporterService _iDataImporterService;
+        private ILogger<EmailSenderModel> _logger;
+        private ILifetimeScope _scope;
         public EmailSenderModel()
         {
-            _iDataImporterService = Startup.AutofacContainer.Resolve<IDataImporterService>();
-            _logger = Startup.AutofacContainer.Resolve<ILogger<EmailSenderModel>>();
+        }
+
+        public void Resolve(ILifetimeScope scope)
+        {
+            _scope = scope;
+            _iDataImporterService = _scope.Resolve<IDataImporterService>();
+            _logger = _scope.Resolve<ILogger<EmailSenderModel>>();
         }
         public EmailSenderModel(IDataImporterService iDataImporterService, ILogger<EmailSenderModel> logger)
         {
             _iDataImporterService = iDataImporterService;
             _logger = logger;
         }
+
+
         public void SendEmail(string Email)
         {
             string filepath = ($"{Directory.GetCurrentDirectory()}{@"\wwwroot\ExcelFiles"}" + "\\" + "User.xlsx");

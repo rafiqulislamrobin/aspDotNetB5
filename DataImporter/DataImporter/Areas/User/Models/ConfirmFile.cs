@@ -17,12 +17,18 @@ namespace DataImporter.Areas.User.Models
       
         public int GroupId { get; set; }
         public Dictionary<int, Dictionary<string, string>> cont { get; set; }
-       public List<string> headers { get; set; }
+        public List<string> headers { get; set; }
 
-        private readonly IDataImporterService _iDataImporterService;
+        private  IDataImporterService _iDataImporterService;
+        private ILifetimeScope _scope;
         public ConfirmFile()
         {
-            _iDataImporterService = Startup.AutofacContainer.Resolve<IDataImporterService>();
+            
+        }
+        public void Resolve(ILifetimeScope scope)
+        {
+            _scope = scope;
+            _iDataImporterService = _scope.Resolve<IDataImporterService>();
         }
         public ConfirmFile(IDataImporterService iDataImporterService)
         {

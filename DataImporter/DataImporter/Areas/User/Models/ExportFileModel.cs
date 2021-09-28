@@ -15,22 +15,30 @@ namespace DataImporter.Areas.User.Models
 {
     public class ExportFileModel
     {
-        private readonly IDataImporterService _iDataImporterService;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly IGroupServices _groupServices;
-        private readonly IExportServices _exportServices;
+        private  IDataImporterService _iDataImporterService;
+        private  IHttpContextAccessor _httpContextAccessor;
+        private  IGroupServices _groupServices;
+        private  IExportServices _exportServices;
+        private ILifetimeScope _scope;
         public int GroupId { get; set; }
         public DateTime ExportDate{ get; set; }
         public List<string> Headers { get; set; }      
         public List<List<string>> Items { get; set; }
 
+      
         public ExportFileModel()
         { 
-            _iDataImporterService = Startup.AutofacContainer.Resolve<IDataImporterService>();
-            _httpContextAccessor = Startup.AutofacContainer.Resolve<IHttpContextAccessor>();
-            _groupServices = Startup.AutofacContainer.Resolve<IGroupServices>();
-            _exportServices = Startup.AutofacContainer.Resolve<IExportServices>();
+
         }
+        public void Resolve(ILifetimeScope scope)
+        {
+            _iDataImporterService =_scope.Resolve<IDataImporterService>();
+            _httpContextAccessor = _scope.Resolve<IHttpContextAccessor>();
+            _groupServices = _scope.Resolve<IGroupServices>();
+            _exportServices = _scope.Resolve<IExportServices>();
+            _scope = scope;
+        }
+
         public ExportFileModel(IDataImporterService iDataImporterService , 
             IHttpContextAccessor httpContextAccessor, IGroupServices groupServices, IExportServices exportServices)
         {

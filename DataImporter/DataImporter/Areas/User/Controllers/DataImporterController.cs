@@ -34,26 +34,27 @@ namespace DataImporter.Areas.User.Controllers
        
         public IActionResult Index()
         {
-            IndexModel model = new IndexModel();
+            var model = _scope.Resolve<IndexModel>();
+            //var model = new IndexModel();
             model.GetTotal();
             return View(model);
         }
         
         public IActionResult ViewGroups()
         {
-            var model = new ViewGroupModel();
+            var model = _scope.Resolve<ViewGroupModel>();
             return View(model);
         }
         public JsonResult GetGroupsData()
         {
             var dataTableAjaxRequestModel = new DataTablesAjaxRequestModel(Request);
-            var model = new ViewGroupModel();
+            var model = _scope.Resolve<ViewGroupModel>();
             var data = model.GetGroups(dataTableAjaxRequestModel);
             return Json(data);
         }
         public IActionResult CreateGroups()
         {
-            var model = new CreateGroupModel();
+            var model = _scope.Resolve<CreateGroupModel>(); ;
             return View(model);
         }
         [HttpPost]
@@ -63,6 +64,7 @@ namespace DataImporter.Areas.User.Controllers
             {
                 try
                 {
+                    model.Resolve(_scope);
                     model.CreateGroup();
                 }
                 catch (Exception ex)
@@ -80,7 +82,7 @@ namespace DataImporter.Areas.User.Controllers
         }
         public IActionResult EditGroup(int id)
         {
-            var model = new EditGroupModel();
+            var model = _scope.Resolve<EditGroupModel>();
             model.LoadModelData(id);
             return View(model);
 
@@ -93,6 +95,7 @@ namespace DataImporter.Areas.User.Controllers
             {
                 try
                 {
+                    model.Resolve(_scope);
                     model.Update();
                 }
                 catch (Exception ex)
@@ -110,7 +113,7 @@ namespace DataImporter.Areas.User.Controllers
         }
         public IActionResult DeleteGroup(int id)
         {
-            var model = new CreateGroupModel();
+            var model = _scope.Resolve <CreateGroupModel>();
             model.DeleteGroup(id);
             return RedirectToAction(nameof(ViewGroups));
         }
@@ -120,7 +123,7 @@ namespace DataImporter.Areas.User.Controllers
 
         public IActionResult ImportFile()
         {
-            var model = new FilePathModel();
+            var model = _scope.Resolve <FilePathModel>();
             var list = model.LoadAllGroups();
             ViewBag.GroupList = new SelectList(list, "Id", "Name");
             return View(model);
@@ -129,7 +132,8 @@ namespace DataImporter.Areas.User.Controllers
         [HttpPost]
         public IActionResult ImportFile(IFormFile file, FilePathModel filepathmodel)
         {
-            var model = new FilePathModel();
+            var model = _scope.Resolve<FilePathModel>();
+            model.Resolve(_scope);
             model.GroupId = filepathmodel.GroupId;
             
             //convert to a stream
@@ -146,7 +150,9 @@ namespace DataImporter.Areas.User.Controllers
         }
         public IActionResult ConfirmContacts(FilePathModel filemodels)
         {
-            ConfirmFile model = new ConfirmFile();
+            ConfirmFile model = _scope.Resolve<ConfirmFile>();
+            model.Resolve(_scope);
+            filemodels.Resolve(_scope);
             model.GroupId = filemodels.GroupId;
             model.file = filemodels.file;
             var file = filemodels.file;
@@ -169,7 +175,9 @@ namespace DataImporter.Areas.User.Controllers
         public IActionResult ConfirmContacts(ConfirmFile model)
         {
 
-            var FilePathModels = new FilePathModel();
+            var FilePathModels = _scope.Resolve<FilePathModel>();
+           
+            model.Resolve(_scope);
             var list = FilePathModels.LoadAllGroups();
 
             FilePathModels.SaveFilePath(model.file, model.GroupId, list);
@@ -178,7 +186,8 @@ namespace DataImporter.Areas.User.Controllers
         }
         public IActionResult CancelImportFile(ConfirmFile ConfirmModel)
         {
-            var model = new FilePathModel();
+            var model = _scope.Resolve<FilePathModel>();
+            ConfirmModel.Resolve(_scope);
             var list = model.LoadAllGroups();
             ViewBag.GroupList = new SelectList(list, "Id", "Name");
             model.CancelImport(ConfirmModel.file);
@@ -188,6 +197,7 @@ namespace DataImporter.Areas.User.Controllers
 
         public IActionResult ImportHistory(ImportHistoryModel importHistoryModel)
         {
+            importHistoryModel.Resolve(_scope);
             TempData["DateTo"] = importHistoryModel.DateTo;
             TempData["DateFrom"] = importHistoryModel.DateFrom;
             return View();
@@ -198,7 +208,7 @@ namespace DataImporter.Areas.User.Controllers
         {
             
             var dataTableAjaxRequestModel = new DataTablesAjaxRequestModel(Request);
-            var model = new ImportHistoryModel();
+            var model =_scope.Resolve<ImportHistoryModel>();
             model.DateTo = Convert.ToDateTime(TempData["DateTo"]);
             model.DateFrom = Convert.ToDateTime(TempData["DateFrom"]);
             var data = model.GetHistories(dataTableAjaxRequestModel);
@@ -207,8 +217,7 @@ namespace DataImporter.Areas.User.Controllers
        
         public IActionResult ViewContacts()
         {
-            var model = new ExportFileModel();
-
+            var model = _scope.Resolve<ExportFileModel>();
             var list = model.LoadAllGroups();
             ViewBag.GroupList = new SelectList(list, "Id", "Name");
 
@@ -217,7 +226,8 @@ namespace DataImporter.Areas.User.Controllers
         [HttpPost]
         public IActionResult ViewContacts(FilePathModel filePathmodel)
         {
-            var model = new ExportFileModel();
+            filePathmodel.Resolve(_scope);
+            var model = _scope.Resolve<ExportFileModel>();
             model.GetContactsList(filePathmodel.GroupId);
 
             var list = model.LoadAllGroups();
@@ -245,8 +255,8 @@ namespace DataImporter.Areas.User.Controllers
         public IActionResult ExportFile()
         {
 
-            var model = new ExportFileModel();
-          
+
+            var model = _scope.Resolve<ExportFileModel>();
             var list = model.LoadAllGroups();
             ViewBag.GroupList = new SelectList(list, "Id", "Name");
         
@@ -256,7 +266,8 @@ namespace DataImporter.Areas.User.Controllers
         [HttpPost]
         public IActionResult ExportFile(FilePathModel filePathmodel)
         {
-            var model = new ExportFileModel();
+            filePathmodel.Resolve(_scope);
+            var model = _scope.Resolve<ExportFileModel>();
             model.GetContactsList(filePathmodel.GroupId);
             
             var list = model.LoadAllGroups();
@@ -286,7 +297,7 @@ namespace DataImporter.Areas.User.Controllers
         {
             var id = Convert.ToInt32(TempData.Peek("id"));
 
-            var model = new ExportFileModel();
+            var model = _scope.Resolve<ExportFileModel>();
             model.GetContactsList(id);
             var contacts = model.GetExportFiles();
             string fileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
@@ -295,7 +306,8 @@ namespace DataImporter.Areas.User.Controllers
         }
         public IActionResult DownloadFromExportHistory(int id)
         {
-            var model = new ExportFileModel();
+
+            var model = _scope.Resolve<ExportFileModel>();
             model.GetExportFileHistory(id);
             model.GetContactsListByDate(model.GroupId) ;
             var contacts = model.GetExportFiles();
@@ -305,13 +317,14 @@ namespace DataImporter.Areas.User.Controllers
         }
         public IActionResult EmailSender()
         {
-            EmailSenderModel model = new();
+            var model = _scope.Resolve<EmailSenderModel>();
             model.GroupId = Convert.ToInt32(TempData.Peek("id"));
             return View(model);
         }
         [HttpPost]
         public IActionResult EmailSender(EmailSenderModel emailSenderModel)
         {
+            emailSenderModel.Resolve(_scope);
             var groupId = emailSenderModel.GroupId;
             var email = (emailSenderModel.Email);
 
@@ -319,13 +332,16 @@ namespace DataImporter.Areas.User.Controllers
             emailSenderModel.GetData(groupId);
             emailSenderModel.SendEmail(email);
 
-            ExportStatusModel model = new ExportStatusModel();
+
+
+            var model = _scope.Resolve<ExportStatusModel>();
             model.MakeStatus(groupId, email);
             return RedirectToAction(nameof(ExportFileHistory));
         }
 
-        public IActionResult ExportFileHistory(ExportHistoryModel model , EmailSenderModel emailSenderModel)
+        public IActionResult ExportFileHistory(ExportHistoryModel model )
         {
+            model.Resolve(_scope);
             TempData["DateTo"] = model.DateTo;
             TempData["DateFrom"] = model.DateFrom;
             return View();
@@ -333,7 +349,7 @@ namespace DataImporter.Areas.User.Controllers
         public JsonResult GetExporttHistoryData()
         {
             var dataTableAjaxRequestModel = new DataTablesAjaxRequestModel(Request);
-            var model = new ExportHistoryModel();
+            var model = _scope.Resolve<ExportHistoryModel>();
             model.DateTo = Convert.ToDateTime(TempData["DateTo"]);
             model.DateFrom = Convert.ToDateTime(TempData["DateFrom"]);
             var data = model.GetHistories(dataTableAjaxRequestModel);

@@ -15,21 +15,27 @@ namespace DataImporter.Areas.User.Models
         public int TotalExports { get; set; }
         public int TotalImports { get; set; }
         public IDataImporterService _iDataImporterService { get; set; }
-        private readonly IHttpContextAccessor _httpContextAccessor;
+        public IHttpContextAccessor _httpContextAccessor;
         public IGroupServices _groupServices;
+        private ILifetimeScope _scope;
 
         public IndexModel()
         {
-            _iDataImporterService = Startup.AutofacContainer.Resolve<IDataImporterService>();
-            _httpContextAccessor = Startup.AutofacContainer.Resolve<IHttpContextAccessor>();
-            _groupServices = Startup.AutofacContainer.Resolve<IGroupServices>();
+        }
 
+        public void Resolve(ILifetimeScope scope)
+        {
+            _scope = scope;
+            _iDataImporterService = _scope.Resolve<IDataImporterService>();
+            _httpContextAccessor = _scope.Resolve<IHttpContextAccessor>();
+            _groupServices = _scope.Resolve<IGroupServices>();
         }
         public IndexModel(IDataImporterService iDataImporterService,
             IHttpContextAccessor httpContextAccessor, IGroupServices groupServices)
         {
             _iDataImporterService = iDataImporterService;
             _httpContextAccessor = httpContextAccessor;
+            _groupServices = groupServices;
         }
         public void GetTotal()
         {
@@ -37,8 +43,6 @@ namespace DataImporter.Areas.User.Models
             TotalGroups = _groupServices.LoadAllGroups(id).Count;
             TotalExports = _iDataImporterService.LoadAllExportHistory(id).Count;
             TotalImports= _iDataImporterService.LoadAllImportHistory(id).Count;
-
-
 
         }
     }

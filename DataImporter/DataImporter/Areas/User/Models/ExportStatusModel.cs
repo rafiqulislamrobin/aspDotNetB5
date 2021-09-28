@@ -19,11 +19,17 @@ namespace DataImporter.Areas.User.Models
         public int Id { get; set; }
 
         public IDatetimeUtility _dateTimeUtility;
-        private readonly IExportServices _exportServices;
+        private IExportServices _exportServices;
+        private ILifetimeScope _scope;
+        public void Resolve(ILifetimeScope scope)
+        {
+            _scope = scope;
+            _dateTimeUtility = _scope.Resolve<IDatetimeUtility>();
+            _exportServices = _scope.Resolve<IExportServices>();
+        }
         public ExportStatusModel()
         {
-            _dateTimeUtility = Startup.AutofacContainer.Resolve<IDatetimeUtility>();
-            _exportServices = Startup.AutofacContainer.Resolve<IExportServices>();
+
         }
         public ExportStatusModel( IDatetimeUtility dateTimeUtility, IExportServices exportServices)
         {

@@ -19,13 +19,21 @@ namespace DataImporter.Areas.User.Models
         [Required, MaxLength(100, ErrorMessage = "Nameshould be less than 100 characters")]
         public string Name { get; set; }
 
-        private readonly IHttpContextAccessor _httpContextAccessor;
+        private IHttpContextAccessor _httpContextAccessor;
         public IGroupServices _groupServices;
+        private ILifetimeScope _scope;
+
         public EditGroupModel()
         {
         
-            _httpContextAccessor = Startup.AutofacContainer.Resolve<IHttpContextAccessor>();
-            _groupServices = Startup.AutofacContainer.Resolve<IGroupServices>();
+
+        }
+
+        public void Resolve(ILifetimeScope scope)
+        {
+            _scope = scope;
+            _httpContextAccessor = _scope.Resolve<IHttpContextAccessor>();
+            _groupServices = _scope.Resolve<IGroupServices>();
         }
         public EditGroupModel(IHttpContextAccessor httpContextAccessor , IGroupServices groupServices)
         {

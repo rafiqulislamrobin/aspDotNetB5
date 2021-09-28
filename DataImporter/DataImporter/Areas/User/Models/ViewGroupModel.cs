@@ -13,19 +13,24 @@ namespace DataImporter.Areas.User.Models
     public class ViewGroupModel
     {
 
-        private readonly IDataImporterService _iDataImporterService;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly IGroupServices _groupServices;
+
+        private  IHttpContextAccessor _httpContextAccessor;
+        private  IGroupServices _groupServices;
+        private ILifetimeScope _scope;
+        public void Resolve(ILifetimeScope scope)
+        {
+            _scope = scope;
+
+            _httpContextAccessor = _scope.Resolve<IHttpContextAccessor>();
+            _groupServices = _scope.Resolve<IGroupServices>();
+        }
         public ViewGroupModel()
         {
-            _iDataImporterService = Startup.AutofacContainer.Resolve<IDataImporterService>();
-            _httpContextAccessor = Startup.AutofacContainer.Resolve<IHttpContextAccessor>();
-            _groupServices = Startup.AutofacContainer.Resolve<IGroupServices>();
+
         }
-        public ViewGroupModel(IDataImporterService iDataImporterService , 
-            IHttpContextAccessor httpContextAccessor, IGroupServices groupServices)
+        public ViewGroupModel(IHttpContextAccessor httpContextAccessor, IGroupServices groupServices)
         {
-            _iDataImporterService = iDataImporterService;
+
             _httpContextAccessor = httpContextAccessor;
             _groupServices = groupServices;
         }

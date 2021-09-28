@@ -29,14 +29,17 @@ namespace DataImporter.Areas.User.Models
         public  IGroupServices _groupServices;
         public IDatetimeUtility _datetimeUtility;
         public IHttpContextAccessor _httpContextAccessor;
+        private ILifetimeScope _scope;
+        public void Resolve(ILifetimeScope scope)
+        {
+            _scope = scope;
+            _datetimeUtility = _scope.Resolve<IDatetimeUtility>();
+            _httpContextAccessor = _scope.Resolve<IHttpContextAccessor>();
+            _iDataImporterService = _scope.Resolve<IDataImporterService>();
+            _groupServices = _scope.Resolve<IGroupServices>();
+        }
         public FilePathModel()
         {
-            _datetimeUtility = Startup.AutofacContainer.Resolve<IDatetimeUtility>();
-            _httpContextAccessor = Startup.AutofacContainer.Resolve<IHttpContextAccessor>();
-            _iDataImporterService = Startup.AutofacContainer.Resolve<IDataImporterService>();
-            _groupServices = Startup.AutofacContainer.Resolve<IGroupServices>();
-
-
         }
         public FilePathModel(IDataImporterService iDataImporterService, IDatetimeUtility datetimeUtility ,
             IHttpContextAccessor httpContextAccessor ,IGroupServices groupServices)

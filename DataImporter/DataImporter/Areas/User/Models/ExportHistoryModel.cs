@@ -17,12 +17,18 @@ namespace DataImporter.Areas.User.Models
         public DateTime DateTo { get; set; }
         public DateTime DateFrom { get; set; }
 
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly IExportServices _exportServices;
+        private  IHttpContextAccessor _httpContextAccessor;
+        private  IExportServices _exportServices;
+        private ILifetimeScope _scope;
+        public void Resolve(ILifetimeScope scope)
+        {
+            _scope = scope;
+            _httpContextAccessor = _scope.Resolve<IHttpContextAccessor>();
+            _exportServices = _scope.Resolve<IExportServices>();
+        }
         public ExportHistoryModel()
         {
-            _httpContextAccessor = Startup.AutofacContainer.Resolve<IHttpContextAccessor>();
-            _exportServices = Startup.AutofacContainer.Resolve<IExportServices>();
+
         }
         public ExportHistoryModel(IHttpContextAccessor httpContextAccessor, IExportServices exportServices)
         {
