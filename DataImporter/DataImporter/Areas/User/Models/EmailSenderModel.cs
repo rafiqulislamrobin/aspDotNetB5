@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using ClosedXML.Excel;
 using DataImporter.Info.Services;
+using Microsoft.Extensions.Logging;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
@@ -21,17 +22,19 @@ namespace DataImporter.Areas.User.Models
         public string Email { get; set; }
         public int GroupId { get; set; }
         private readonly IDataImporterService _iDataImporterService;
-
+        private readonly ILogger<EmailSenderModel> _logger;
         public List<string> Headers { get; set; }
         public List<List<string>> Items { get; set; }
 
         public EmailSenderModel()
         {
             _iDataImporterService = Startup.AutofacContainer.Resolve<IDataImporterService>();
+            _logger = Startup.AutofacContainer.Resolve<ILogger<EmailSenderModel>>();
         }
-        public EmailSenderModel(IDataImporterService iDataImporterService)
+        public EmailSenderModel(IDataImporterService iDataImporterService, ILogger<EmailSenderModel> logger)
         {
             _iDataImporterService = iDataImporterService;
+            _logger = logger;
         }
         public void SendEmail(string Email)
         {
@@ -70,7 +73,7 @@ namespace DataImporter.Areas.User.Models
             }
             catch (Exception ex)
             {
-                throw ex;
+                _logger.LogError(ex, "Fail to sent email");
             }
             
         }

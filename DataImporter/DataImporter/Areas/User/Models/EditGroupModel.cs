@@ -19,22 +19,23 @@ namespace DataImporter.Areas.User.Models
         [Required, MaxLength(100, ErrorMessage = "Nameshould be less than 100 characters")]
         public string Name { get; set; }
 
-        private readonly IDataImporterService _iDataImporterService;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        public IGroupServices _groupServices;
         public EditGroupModel()
         {
-            _iDataImporterService = Startup.AutofacContainer.Resolve<IDataImporterService>();
+        
             _httpContextAccessor = Startup.AutofacContainer.Resolve<IHttpContextAccessor>();
+            _groupServices = Startup.AutofacContainer.Resolve<IGroupServices>();
         }
-        public EditGroupModel(IDataImporterService dataImporterService , IHttpContextAccessor httpContextAccessor)
+        public EditGroupModel(IHttpContextAccessor httpContextAccessor , IGroupServices groupServices)
         {
-            _iDataImporterService = dataImporterService;
-            _httpContextAccessor = httpContextAccessor;
+            _groupServices = groupServices;
+             _httpContextAccessor = httpContextAccessor;
         }
 
         public void LoadModelData(int id)
         {
-            var group = _iDataImporterService.LoadGroup(id);
+            var group = _groupServices.LoadGroup(id);
 
             Id = group.Id;
             Name = group.Name;
@@ -51,7 +52,7 @@ namespace DataImporter.Areas.User.Models
                 Name = Name 
 
             };
-            _iDataImporterService.UpdateGroup(group , id);
+            _groupServices.UpdateGroup(group , id);
         }
     }
 }

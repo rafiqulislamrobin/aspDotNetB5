@@ -44,16 +44,20 @@ namespace DataImporter.Info
            
             builder.RegisterType<DataImporterService>().As<IDataImporterService>()
                .InstancePerLifetimeScope();
+            builder.RegisterType<GroupServices>().As<IGroupServices>()
+               .InstancePerLifetimeScope();
+            builder.RegisterType<ExportServices>().As<IExportServices>()
+                .InstancePerLifetimeScope();
 
             builder.RegisterType<DataUnitOfWork>().As<IDataUnitOfWork>()
-             .InstancePerLifetimeScope();
+               .InstancePerLifetimeScope();
 
             builder.RegisterType<GroupRepository>().As<IGroupRepository>()
                    .InstancePerLifetimeScope();
             builder.RegisterType<ContactRepository>().As<IContactRepository>()
-            .InstancePerLifetimeScope();
+              .InstancePerLifetimeScope();
             builder.RegisterType<ExportStatusRepository> ().As<IExportStatusRepository>()
-        .InstancePerLifetimeScope();
+              .InstancePerLifetimeScope();
 
             base.Load(builder);
 

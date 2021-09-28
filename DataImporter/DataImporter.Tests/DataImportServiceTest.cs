@@ -2,6 +2,7 @@ using Autofac.Extras.Moq;
 using DataImporter.Areas.User.Models;
 using DataImporter.Info.Business_Object;
 using DataImporter.Info.Services;
+using DataImporter.Info.UnitOfWorks;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -13,7 +14,8 @@ namespace DataImporter.Tests
     public class DataImportServiceTest
     {
         private AutoMock _mock;
-        private Mock<IDataImporterService> _importerServiceMock;
+        private Mock<IDataUnitOfWork> _dataUnitOfWork;
+        
         private DataImporterService _service;
           
 
@@ -33,7 +35,7 @@ namespace DataImporter.Tests
         [SetUp]
         public void Setup()
         {
-            _importerServiceMock = _mock.Mock<IDataImporterService>();
+            _dataUnitOfWork = _mock.Mock<IDataUnitOfWork>();
             _service = _mock.Create<DataImporterService>();
         }
 
@@ -48,15 +50,15 @@ namespace DataImporter.Tests
             };
             Guid id = Guid.NewGuid();
 
-            _importerServiceMock.Setup(x => x.CreateGroup(group,id)).Verifiable();
+            //_dataUnitOfWork.Setup(x => x.Group(group,id)).Verifiable();
 
             //arrange
 
             //act
-            _service.CreateGroup(group , id);
+            //_service.CreateGroup(group , id);
 
             //assert
-            _importerServiceMock.Verify();
+            _dataUnitOfWork.Verify();
         }
     }
 }

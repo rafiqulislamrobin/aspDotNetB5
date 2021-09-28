@@ -14,7 +14,6 @@ namespace DataImporter
         {
 
             builder.RegisterType<ConfirmFile>().AsSelf();
-            builder.RegisterType<CreateContactModel>().AsSelf();
             builder.RegisterType<CreateGroupModel>().AsSelf();
             builder.RegisterType<EditGroupModel>().AsSelf();
             builder.RegisterType<EmailSenderModel>().AsSelf();
@@ -24,7 +23,6 @@ namespace DataImporter
             builder.RegisterType<FilePathModel>().AsSelf();
             builder.RegisterType<ImportHistoryModel>().AsSelf();
             builder.RegisterType<IndexModel>().AsSelf();
-            builder.RegisterType<ViewContactModel>().AsSelf();
             builder.RegisterType<ViewGroupModel>().AsSelf();
 
             builder.RegisterType<LoginModel>().AsSelf();

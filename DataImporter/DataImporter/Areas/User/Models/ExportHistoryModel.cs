@@ -17,27 +17,28 @@ namespace DataImporter.Areas.User.Models
         public DateTime DateTo { get; set; }
         public DateTime DateFrom { get; set; }
 
-        private readonly IDataImporterService _iDataImporterService;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IExportServices _exportServices;
         public ExportHistoryModel()
         {
-            _iDataImporterService = Startup.AutofacContainer.Resolve<IDataImporterService>();
             _httpContextAccessor = Startup.AutofacContainer.Resolve<IHttpContextAccessor>();
+            _exportServices = Startup.AutofacContainer.Resolve<IExportServices>();
         }
-        public ExportHistoryModel(IDataImporterService iDataImporterService, IHttpContextAccessor httpContextAccessor)
+        public ExportHistoryModel(IHttpContextAccessor httpContextAccessor, IExportServices exportServices)
         {
-            _iDataImporterService = iDataImporterService;
+
             _httpContextAccessor = httpContextAccessor;
+            _exportServices = exportServices;
         }
 
         internal object GetHistories(DataTablesAjaxRequestModel dataTableAjaxRequestModel)
         {
             var id = Guid.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var data = _iDataImporterService.GetExportHistory(
+            var data = _exportServices.GetExportHistory(
                     dataTableAjaxRequestModel.PageIndex,
                     dataTableAjaxRequestModel.PageSize,
                     dataTableAjaxRequestModel.SearchText,
-                    dataTableAjaxRequestModel.GetSortText(new string[] { "GroupName", "EmailStatus", "Id", "DateTime" }),
+                    dataTableAjaxRequestModel.GetSortText(new string[] { "GroupName", "Email", "Id", "DateTime" }),
                       id, DateTo,DateFrom);
             return new
             {
@@ -47,10 +48,9 @@ namespace DataImporter.Areas.User.Models
                         select new string[]
                         {
                                 record.GroupName.ToString(),
-                               record.EmailStatus.ToString(),
+                               record.Email.ToString(),
                                 record.Id.ToString(),
                                 record.DateTime.ToString()
-
                         }
                     ).ToArray()
             };

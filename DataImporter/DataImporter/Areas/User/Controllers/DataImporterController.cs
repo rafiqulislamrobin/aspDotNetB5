@@ -115,28 +115,7 @@ namespace DataImporter.Areas.User.Controllers
             return RedirectToAction(nameof(ViewGroups));
         }
 
-        public IActionResult CreateContacts()
-        {
-            var model = new CreateContactModel();
-            return View(model);
-        }
-        [HttpPost]
-        public IActionResult CreateContacts(CreateContactModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    model.CreateContact();
-                }
-                catch (Exception ex)
-                {
-                    ModelState.AddModelError("", "Failed to Create Contact");
-                    _logger.LogError(ex, "Add Contact Failed");
-                }
-            }
-            return View(model);
-        }
+
 
 
         public IActionResult ImportFile()
@@ -341,11 +320,11 @@ namespace DataImporter.Areas.User.Controllers
             emailSenderModel.SendEmail(email);
 
             ExportStatusModel model = new ExportStatusModel();
-            model.MakeStatus(groupId,"email");
+            model.MakeStatus(groupId, email);
             return RedirectToAction(nameof(ExportFileHistory));
         }
 
-        public IActionResult ExportFileHistory(ExportHistoryModel model)
+        public IActionResult ExportFileHistory(ExportHistoryModel model , EmailSenderModel emailSenderModel)
         {
             TempData["DateTo"] = model.DateTo;
             TempData["DateFrom"] = model.DateFrom;

@@ -10,8 +10,7 @@ namespace DataImporter.Info.Entities
    public class ExportStatus : IEntity<int>
     {
         public int Id { get; set; }
-        public string FileName { get; set; }
-        public string EmailStatus { get; set; }
+        public string Email { get; set; }
         public string GroupName { get; set; }
         public DateTime DateTime { get; set; }
         public int GroupId { get; set; }

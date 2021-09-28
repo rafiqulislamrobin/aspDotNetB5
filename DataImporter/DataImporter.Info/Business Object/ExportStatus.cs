@@ -9,8 +9,8 @@ namespace DataImporter.Info.Business_Object
    public class ExportStatus
     {
         public int Id { get; set; }
-        public string FileName { get; set; }
-        public string EmailStatus { get; set; }
+
+        public string Email { get; set; }
         public string GroupName { get; set; }
         public DateTime DateTime { get; set; }
         public int GroupId { get; set; }

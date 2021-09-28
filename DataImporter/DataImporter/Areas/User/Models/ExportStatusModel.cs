@@ -18,33 +18,29 @@ namespace DataImporter.Areas.User.Models
         public int GroupId { get; set; }
         public int Id { get; set; }
 
-        public IDataImporterService _Importservice;
         public IDatetimeUtility _dateTimeUtility;
+        private readonly IExportServices _exportServices;
         public ExportStatusModel()
         {
             _dateTimeUtility = Startup.AutofacContainer.Resolve<IDatetimeUtility>();
-            _Importservice = Startup.AutofacContainer.Resolve<IDataImporterService>();
+            _exportServices = Startup.AutofacContainer.Resolve<IExportServices>();
         }
-        public ExportStatusModel(IDataImporterService iDataImporterService, IDatetimeUtility dateTimeUtility)
+        public ExportStatusModel( IDatetimeUtility dateTimeUtility, IExportServices exportServices)
         {
-            _Importservice = iDataImporterService;
+
             _dateTimeUtility = dateTimeUtility;
+            _exportServices = exportServices;
         }
-        internal void MakeStatus(int groupId , string statusUpdate)
+        internal void MakeStatus(int groupId , string email)
         {
-            var exportHistory = _Importservice.GetExportHistory(groupId);
+            var exportHistory = _exportServices.GetExportHistory(groupId);
             
-
-
-                
                     ExportStatus exportStatus = new();
-                    exportStatus.EmailStatus = "sent";                  
+                    exportStatus.Email = email;                  
                     exportStatus.DateTime = _dateTimeUtility.Now;
                     exportStatus.GroupId = groupId;
-                    _Importservice.SaveExportHistory(exportStatus);
-                
+                    _exportServices.SaveExportHistory(exportStatus);
 
-           
         }
     }
 }

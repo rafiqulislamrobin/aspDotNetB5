@@ -58,10 +58,7 @@ namespace DataImporter.Data.Migrations
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("EmailStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FileName")
+                    b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("GroupId")

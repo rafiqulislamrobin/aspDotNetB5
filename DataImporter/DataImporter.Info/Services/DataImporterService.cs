@@ -14,14 +14,12 @@ namespace DataImporter.Info.Services
     public class DataImporterService : IDataImporterService
     {
         private readonly IDataUnitOfWork _dataUnitOfWork;
-        //private readonly IMapper _mapper;
-        //private readonly IDatetimeUtility _iDatetimeUtility;
-        public DataImporterService(IDataUnitOfWork dataUnitOfWork )
+    
+        public DataImporterService(IDataUnitOfWork dataUnitOfWork)
         {
             _dataUnitOfWork = dataUnitOfWork;
-           
+         
         }
-
 
         public (List<string>, List<List<string>>) ContactList(int groupId)
         {
@@ -95,177 +93,13 @@ namespace DataImporter.Info.Services
             return (headers, itemsRow);
         }
 
-        public void CreateContact(Contact contact)
-        {
-            if (contact == null)
-                throw new InvalidParameterException("Customer was not found");
 
 
 
-            _dataUnitOfWork.Contact.Add(
-                    new Entities.Contact
-                    {
-                        //Id = contact.Id,
-                        //Name = contact.Name,
-                        //Address = contact.Address,
-                        //GroupId=contact.GroupId
-
-                    }
-                   );
-            _dataUnitOfWork.Save();
-        }
-
-        public void CreateGroup(Group group, Guid id)
-        {
-            if (group == null)
-                throw new InvalidParameterException("Group was not found");
-
-            if (IsNameAlreadyUsed(group.Name, id))
-            {
-                throw new DuplicateException("Group name is already used");
-
-            }
-
-            _dataUnitOfWork.Group.Add(
-                    new Entities.Group
-                    {
-                        Id = group.Id,
-                        Name = group.Name,
-                        ApplicationUserId = group.ApplicationUserId
-                    });
-            _dataUnitOfWork.Save();
-
-        }
-
-        public void DeleteGroup(int id)
-        {
-            _dataUnitOfWork.Group.Remove(id);
-            _dataUnitOfWork.Save();
-        }
-
-        public void ExportStatus(ExportStatus exportStatus)
-        {
-            var exportEntity = _dataUnitOfWork.ExportStatus.GetById(exportStatus.Id);
-            if (exportEntity != null)
-            {
-                exportEntity.Id = exportStatus.Id;
-           
-                exportEntity.EmailStatus = exportStatus.EmailStatus;
-                exportEntity.DateTime = exportStatus.DateTime;
-                _dataUnitOfWork.Save();
-            }
-            else
-                throw new InvalidOperationException("History is not available");
-        }
-
-        public List<Contact> GetContactList()
-        {
-            var contactEntities = _dataUnitOfWork.Contact.GetAll();
-            var contacts = new List<Contact>();
-            foreach (var item in contactEntities)
-            {
-                var contact = new Contact()
-                {
-                    //Id = item.Id,
-                    //Name = item.Name,
-                    //Address=item.Address,
-                    //GroupId =item.GroupId
-
-                };
-                contacts.Add(contact);
-            }
-            return contacts;
-        }
-
-        public (IList<ExportStatus> records, int total, int totalDisplay) GetExportHistory(int pageIndex, int pageSize,
-            string searchText, string sortText, Guid id , DateTime dateTo, DateTime DateFrom)
-        {
-            if(DateFrom != DateTime.MinValue && dateTo != DateTime.MinValue)
-            {
-                var historyData = _dataUnitOfWork.ExportStatus.GetDynamic(
-           string.IsNullOrWhiteSpace(searchText) ? x => x.Group.ApplicationUserId == id : x => x.EmailStatus.Contains(searchText) && x.Group.ApplicationUserId == id,
-          sortText, "Group", pageIndex, pageSize, true);
-
-                var resultHistory = (from history in historyData.data
-                                     where history.DateTime >= DateFrom && history.DateTime <= dateTo
-                                     select new ExportStatus
-                                     {
-                                         Id = history.Id,
-                                         DateTime = history.DateTime,
-                                         GroupName = history.Group.Name,
-                                         EmailStatus = history.EmailStatus,
-                                         
-                                     }).ToList();
-
-                return (resultHistory, historyData.total, historyData.totalDisplay);
-            }
-            else
-            {
-                var historyData = _dataUnitOfWork.ExportStatus.GetDynamic(
-           string.IsNullOrWhiteSpace(searchText) ? x => x.Group.ApplicationUserId == id : x => x.EmailStatus.Contains(searchText) && x.Group.ApplicationUserId == id,
-          sortText, "Group", pageIndex, pageSize, true);
-
-                var resultHistory = (from history in historyData.data
-                                     select new ExportStatus
-                                     {
-                                         Id = history.Id,
-                                         DateTime = history.DateTime,
-                                         GroupName = history.Group.Name,
-                                         EmailStatus = history.EmailStatus,
-                                        
-                                     }).ToList();
-
-                return (resultHistory, historyData.total, historyData.totalDisplay);
-            }
-        }
-
-        public ExportStatus GetExportHistory(int groupId)
-        {
-            var history = _dataUnitOfWork.ExportStatus.Get(g => g.Group.Id == groupId, "");
+  
+      
 
 
-            if (history.Count == 0)
-            {
-                return null;
-            }
-            return new ExportStatus
-            {
-                Id = history.First().Id,
-                EmailStatus = history.First().EmailStatus,
-                DateTime = history.First().DateTime,
-                GroupName = history.First().Group.Name
-            };
-
-
-
-        }
-
-        public (int,DateTime) GetExportHistoryForDownload(int id)
-        {
-            var exportStatus = _dataUnitOfWork.ExportStatus.GetById(id);
-            var groupId = exportStatus.GroupId;
-            var dateTime = exportStatus.DateTime;
-            return (groupId,dateTime);
-        }
-
-        public (IList<Group> records, int total, int totalDisplay) GetGroupsList(int pageIndex, int pageSize, string searchText, Guid id, string sortText)
-        {
-            var groupData = _dataUnitOfWork.Group.GetDynamic(
-               string.IsNullOrWhiteSpace(searchText) ? x => x.ApplicationUserId == id : x => x.Name.Contains(searchText) && x.ApplicationUserId == id,
-               sortText, "ApplicationUser", pageIndex, pageSize);
-
-
-            var resultData = (from groups in groupData.data
-                              select new Group
-                              {
-                                  ApplicationUserId = groups.ApplicationUserId,
-                                  Id = groups.Id,
-                                  Name = groups.Name
-
-                              }).ToList();
-
-            return (resultData, groupData.total, groupData.totalDisplay);
-        }
 
         public (IList<FilePath> records, int total, int totalDisplay) GetImporthistory(int pageIndex, int pageSize, string searchText, string sortText,
                                  Guid id, DateTime DateFrom, DateTime DateTo)
@@ -322,28 +156,15 @@ namespace DataImporter.Info.Services
                           select new ExportStatus
                           {
                               Id = e.Id,
-                              EmailStatus = e.EmailStatus,
-                              GroupName = e.GroupName,
+                              Email = e.Email,
+                              GroupName = e.Group.Name,
                               DateTime =e.DateTime,
 
                           }).ToList();
             return result;
         }
 
-        public List<Group> LoadAllGroups(Guid id)
-        {
-            var groupEntities = _dataUnitOfWork.Group.GetAll().Where(g => g.ApplicationUserId == id);
-            var groups = new List<Group>();
-            var result = (from g in groupEntities
-
-                          select new Group
-                          {
-                              Id = g.Id,
-                              Name = g.Name
-                          }).ToList();
-            return result;
-        }
-
+      
         public List<FilePath> LoadAllImportHistory(Guid id)
         {
             var ExportStatusEntities = _dataUnitOfWork.FilePath.GetAll().Where(g => g.Group.ApplicationUserId == id);
@@ -361,21 +182,6 @@ namespace DataImporter.Info.Services
                           }).ToList();
             return result;
         }
-
-        public Group LoadGroup(int id)
-        {
-            var group = _dataUnitOfWork.Group.GetById(id);
-            if (group == null)
-            {
-                return null;
-            }
-            return new Group
-            {
-                Id = group.Id,
-                Name = group.Name,
-            };
-        }
-
 
         public string SaveExcelDatatoDb()
         {
@@ -486,18 +292,6 @@ namespace DataImporter.Info.Services
             return "no file to delete";
         }
 
-        public void SaveExportHistory(ExportStatus exportStatus)
-        {
-            _dataUnitOfWork.ExportStatus.Add(
-                 new Entities.ExportStatus
-                 {
-                     Id = exportStatus.Id,
-                     EmailStatus = exportStatus.EmailStatus,
-                     DateTime = exportStatus.DateTime,
-                     GroupId = exportStatus.GroupId
-                 });
-            _dataUnitOfWork.Save();
-        }
 
         public void SaveFilePath(FilePath filepath)
         {
@@ -519,31 +313,6 @@ namespace DataImporter.Info.Services
             _dataUnitOfWork.Save();
         }
 
-        public void UpdateGroup(Group group, Guid id)
-        {
-            if (group == null)
-            {
-                throw new InvalidOperationException("Group is missing");
-            }
-            if (IsNameAlreadyUsed(group.Name, id))
-            {
-                throw new DuplicateException("Group name is already used");
-            }
-            var groupEntity = _dataUnitOfWork.Group.GetById(group.Id);
-            if (groupEntity != null)
-            {
-                groupEntity.Id = group.Id;
-                groupEntity.Name = group.Name;
-                _dataUnitOfWork.Save();
-            }
-            else
-                throw new InvalidOperationException("Group is not available");
-
-        }
-
-
-        private bool IsNameAlreadyUsed(string name, Guid id) =>
-          _dataUnitOfWork.Group.GetCount(n => n.Name == name && n.ApplicationUserId == id) > 0;
 
 
 

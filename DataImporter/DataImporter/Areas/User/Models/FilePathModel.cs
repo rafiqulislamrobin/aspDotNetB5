@@ -26,7 +26,7 @@ namespace DataImporter.Areas.User.Models
 
         public List<Group> groups { get; set; }
         public IDataImporterService _iDataImporterService;
-
+        public  IGroupServices _groupServices;
         public IDatetimeUtility _datetimeUtility;
         public IHttpContextAccessor _httpContextAccessor;
         public FilePathModel()
@@ -34,15 +34,18 @@ namespace DataImporter.Areas.User.Models
             _datetimeUtility = Startup.AutofacContainer.Resolve<IDatetimeUtility>();
             _httpContextAccessor = Startup.AutofacContainer.Resolve<IHttpContextAccessor>();
             _iDataImporterService = Startup.AutofacContainer.Resolve<IDataImporterService>();
+            _groupServices = Startup.AutofacContainer.Resolve<IGroupServices>();
 
 
         }
-        public FilePathModel(IDataImporterService iDataImporterService, IDatetimeUtility datetimeUtility , IHttpContextAccessor httpContextAccessor)
+        public FilePathModel(IDataImporterService iDataImporterService, IDatetimeUtility datetimeUtility ,
+            IHttpContextAccessor httpContextAccessor ,IGroupServices groupServices)
         {
             
             _datetimeUtility = datetimeUtility;
             _iDataImporterService = iDataImporterService;
             _httpContextAccessor = httpContextAccessor;
+            _groupServices = groupServices;
         }
         internal /*async Task*/void SaveFilePath(string fileName, int groupId, List<Group> list)
         {
@@ -68,7 +71,7 @@ namespace DataImporter.Areas.User.Models
         {
             
             var id = Guid.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
-            return _iDataImporterService.LoadAllGroups(id);
+            return _groupServices.LoadAllGroups(id);
         }
 
         internal void CancelImport(string fileName)

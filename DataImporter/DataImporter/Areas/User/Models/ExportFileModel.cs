@@ -16,8 +16,9 @@ namespace DataImporter.Areas.User.Models
     public class ExportFileModel
     {
         private readonly IDataImporterService _iDataImporterService;
-        public IHttpContextAccessor _httpContextAccessor;
-        public List<Contact> Contacts { get; set; }
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IGroupServices _groupServices;
+        private readonly IExportServices _exportServices;
         public int GroupId { get; set; }
         public DateTime ExportDate{ get; set; }
         public List<string> Headers { get; set; }      
@@ -27,11 +28,17 @@ namespace DataImporter.Areas.User.Models
         { 
             _iDataImporterService = Startup.AutofacContainer.Resolve<IDataImporterService>();
             _httpContextAccessor = Startup.AutofacContainer.Resolve<IHttpContextAccessor>();
+            _groupServices = Startup.AutofacContainer.Resolve<IGroupServices>();
+            _exportServices = Startup.AutofacContainer.Resolve<IExportServices>();
         }
-        public ExportFileModel(IDataImporterService iDataImporterService , IHttpContextAccessor httpContextAccessor)
+        public ExportFileModel(IDataImporterService iDataImporterService , 
+            IHttpContextAccessor httpContextAccessor, IGroupServices groupServices, IExportServices exportServices)
         {
             _iDataImporterService = iDataImporterService;
             _httpContextAccessor = httpContextAccessor;
+            _groupServices = groupServices;
+            _exportServices = exportServices;
+
         }
 
         internal void GetContactsList(int groupId)
@@ -57,7 +64,7 @@ namespace DataImporter.Areas.User.Models
         }
         internal MemoryStream GetExportFiles()
         {
-            Contacts = _iDataImporterService.GetContactList();
+
             //start exporting to excel
             var stream = new MemoryStream();
             
@@ -99,12 +106,12 @@ namespace DataImporter.Areas.User.Models
         internal List<Group> LoadAllGroups()
         {
             var id = Guid.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
-            return _iDataImporterService.LoadAllGroups(id);
+            return _groupServices.LoadAllGroups(id);
         }
 
         internal void GetExportFileHistory(int id)
         {
-            var items = _iDataImporterService.GetExportHistoryForDownload(id);
+            var items = _exportServices.GetExportHistoryForDownload(id);
             GroupId = items.Item1;
             ExportDate = items.Item2;
         }

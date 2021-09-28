@@ -26,12 +26,13 @@
                     <!-- /.card-header -->
                     <!-- form start -->
                     <form method="post" asp-controller="DataImporter" asp-action="EmailSender" asp-antiforgery="true">
-                        <div asp-validation-summary="All" class="text-danger"></div>
+                     
+                        
                         <div class="card-body">
                             <div class="form-group row">
 
-                                <label asp-for="Email">Group Name</label>
-                                <input type="email" class="form-control" id="Email" asp-for="Email" required 
+                                <label asp-for="Email">Email</label>
+                                <input type="email" class="form-control" id="Email" asp-for="Email" required
                                        placeholder="Email">
 
                             </div>

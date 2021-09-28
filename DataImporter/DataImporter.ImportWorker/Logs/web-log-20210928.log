@@ -525,3 +525,598 @@
 2021-09-28 01:56:22.983 +06:00 [INF] Worker running at: "2021-09-28T01:56:22.9838278+06:00"
 2021-09-28 01:56:42.985 +06:00 [INF] no file to delete
 2021-09-28 01:56:42.986 +06:00 [INF] Worker running at: "2021-09-28T01:56:42.9868777+06:00"
+2021-09-28 11:30:11.426 +06:00 [INF] Application Starting up
+2021-09-28 11:30:13.555 +06:00 [INF] no file to delete
+2021-09-28 11:30:13.558 +06:00 [INF] Worker running at: "2021-09-28T11:30:13.5578998+06:00"
+2021-09-28 11:30:33.587 +06:00 [INF] no file to delete
+2021-09-28 11:30:33.587 +06:00 [INF] Worker running at: "2021-09-28T11:30:33.5873513+06:00"
+2021-09-28 11:30:47.787 +06:00 [INF] Application Starting up
+2021-09-28 11:30:49.101 +06:00 [INF] no file to delete
+2021-09-28 11:30:49.102 +06:00 [INF] Worker running at: "2021-09-28T11:30:49.1021315+06:00"
+2021-09-28 11:31:09.116 +06:00 [INF] no file to delete
+2021-09-28 11:31:09.116 +06:00 [INF] Worker running at: "2021-09-28T11:31:09.1161896+06:00"
+2021-09-28 11:31:29.119 +06:00 [INF] no file to delete
+2021-09-28 11:31:29.119 +06:00 [INF] Worker running at: "2021-09-28T11:31:29.1195168+06:00"
+2021-09-28 11:31:49.137 +06:00 [INF] no file to delete
+2021-09-28 11:31:49.137 +06:00 [INF] Worker running at: "2021-09-28T11:31:49.1378278+06:00"
+2021-09-28 11:32:37.272 +06:00 [INF] Application Starting up
+2021-09-28 11:32:38.722 +06:00 [INF] no file to delete
+2021-09-28 11:32:38.723 +06:00 [INF] Worker running at: "2021-09-28T11:32:38.7230903+06:00"
+2021-09-28 11:32:58.745 +06:00 [INF] no file to delete
+2021-09-28 11:32:58.745 +06:00 [INF] Worker running at: "2021-09-28T11:32:58.7451416+06:00"
+2021-09-28 11:33:18.758 +06:00 [INF] no file to delete
+2021-09-28 11:33:18.758 +06:00 [INF] Worker running at: "2021-09-28T11:33:18.7586822+06:00"
+2021-09-28 11:33:38.782 +06:00 [INF] no file to delete
+2021-09-28 11:33:38.782 +06:00 [INF] Worker running at: "2021-09-28T11:33:38.7824567+06:00"
+2021-09-28 11:33:58.801 +06:00 [INF] no file to delete
+2021-09-28 11:33:58.801 +06:00 [INF] Worker running at: "2021-09-28T11:33:58.8015460+06:00"
+2021-09-28 11:34:18.814 +06:00 [INF] no file to delete
+2021-09-28 11:34:18.814 +06:00 [INF] Worker running at: "2021-09-28T11:34:18.8142141+06:00"
+2021-09-28 11:34:38.843 +06:00 [INF] no file to delete
+2021-09-28 11:34:38.843 +06:00 [INF] Worker running at: "2021-09-28T11:34:38.8439481+06:00"
+2021-09-28 11:34:58.856 +06:00 [INF] no file to delete
+2021-09-28 11:34:58.856 +06:00 [INF] Worker running at: "2021-09-28T11:34:58.8565551+06:00"
+2021-09-28 11:35:18.861 +06:00 [INF] no file to delete
+2021-09-28 11:35:18.861 +06:00 [INF] Worker running at: "2021-09-28T11:35:18.8619344+06:00"
+2021-09-28 11:35:38.887 +06:00 [INF] no file to delete
+2021-09-28 11:35:38.888 +06:00 [INF] Worker running at: "2021-09-28T11:35:38.8875493+06:00"
+2021-09-28 11:35:58.899 +06:00 [INF] no file to delete
+2021-09-28 11:35:58.899 +06:00 [INF] Worker running at: "2021-09-28T11:35:58.8993449+06:00"
+2021-09-28 11:36:18.903 +06:00 [INF] no file to delete
+2021-09-28 11:36:18.903 +06:00 [INF] Worker running at: "2021-09-28T11:36:18.9031828+06:00"
+2021-09-28 11:36:38.920 +06:00 [INF] no file to delete
+2021-09-28 11:36:38.920 +06:00 [INF] Worker running at: "2021-09-28T11:36:38.9201067+06:00"
+2021-09-28 11:36:58.931 +06:00 [INF] no file to delete
+2021-09-28 11:36:58.931 +06:00 [INF] Worker running at: "2021-09-28T11:36:58.9318590+06:00"
+2021-09-28 11:37:18.936 +06:00 [INF] no file to delete
+2021-09-28 11:37:18.936 +06:00 [INF] Worker running at: "2021-09-28T11:37:18.9368672+06:00"
+2021-09-28 11:37:38.948 +06:00 [INF] no file to delete
+2021-09-28 11:37:38.948 +06:00 [INF] Worker running at: "2021-09-28T11:37:38.9489263+06:00"
+2021-09-28 11:37:58.964 +06:00 [INF] no file to delete
+2021-09-28 11:37:58.964 +06:00 [INF] Worker running at: "2021-09-28T11:37:58.9643570+06:00"
+2021-09-28 11:38:18.980 +06:00 [INF] no file to delete
+2021-09-28 11:38:18.980 +06:00 [INF] Worker running at: "2021-09-28T11:38:18.9804466+06:00"
+2021-09-28 11:38:38.997 +06:00 [INF] no file to delete
+2021-09-28 11:38:38.999 +06:00 [INF] Worker running at: "2021-09-28T11:38:38.9990927+06:00"
+2021-09-28 11:38:59.041 +06:00 [INF] no file to delete
+2021-09-28 11:38:59.041 +06:00 [INF] Worker running at: "2021-09-28T11:38:59.0419371+06:00"
+2021-09-28 11:39:19.050 +06:00 [INF] no file to delete
+2021-09-28 11:39:19.050 +06:00 [INF] Worker running at: "2021-09-28T11:39:19.0505122+06:00"
+2021-09-28 11:39:39.069 +06:00 [INF] no file to delete
+2021-09-28 11:39:39.070 +06:00 [INF] Worker running at: "2021-09-28T11:39:39.0700125+06:00"
+2021-09-28 12:00:33.704 +06:00 [INF] Application Starting up
+2021-09-28 12:00:35.155 +06:00 [INF] no file to delete
+2021-09-28 12:00:35.157 +06:00 [INF] Worker running at: "2021-09-28T12:00:35.1566169+06:00"
+2021-09-28 12:00:55.180 +06:00 [INF] no file to delete
+2021-09-28 12:00:55.180 +06:00 [INF] Worker running at: "2021-09-28T12:00:55.1808739+06:00"
+2021-09-28 12:01:15.195 +06:00 [INF] no file to delete
+2021-09-28 12:01:15.195 +06:00 [INF] Worker running at: "2021-09-28T12:01:15.1957372+06:00"
+2021-09-28 12:01:35.208 +06:00 [INF] no file to delete
+2021-09-28 12:01:35.208 +06:00 [INF] Worker running at: "2021-09-28T12:01:35.2088947+06:00"
+2021-09-28 12:01:55.213 +06:00 [INF] no file to delete
+2021-09-28 12:01:55.213 +06:00 [INF] Worker running at: "2021-09-28T12:01:55.2136371+06:00"
+2021-09-28 12:02:15.224 +06:00 [INF] no file to delete
+2021-09-28 12:02:15.224 +06:00 [INF] Worker running at: "2021-09-28T12:02:15.2246607+06:00"
+2021-09-28 12:02:35.238 +06:00 [INF] no file to delete
+2021-09-28 12:02:35.239 +06:00 [INF] Worker running at: "2021-09-28T12:02:35.2390603+06:00"
+2021-09-28 12:02:55.256 +06:00 [INF] no file to delete
+2021-09-28 12:02:55.256 +06:00 [INF] Worker running at: "2021-09-28T12:02:55.2568403+06:00"
+2021-09-28 12:03:15.266 +06:00 [INF] no file to delete
+2021-09-28 12:03:15.267 +06:00 [INF] Worker running at: "2021-09-28T12:03:15.2670152+06:00"
+2021-09-28 12:03:35.289 +06:00 [INF] no file to delete
+2021-09-28 12:03:35.289 +06:00 [INF] Worker running at: "2021-09-28T12:03:35.2895960+06:00"
+2021-09-28 12:03:55.291 +06:00 [INF] no file to delete
+2021-09-28 12:03:55.291 +06:00 [INF] Worker running at: "2021-09-28T12:03:55.2910976+06:00"
+2021-09-28 12:04:15.301 +06:00 [INF] no file to delete
+2021-09-28 12:04:15.301 +06:00 [INF] Worker running at: "2021-09-28T12:04:15.3018039+06:00"
+2021-09-28 12:04:35.318 +06:00 [INF] no file to delete
+2021-09-28 12:04:35.318 +06:00 [INF] Worker running at: "2021-09-28T12:04:35.3183891+06:00"
+2021-09-28 12:04:55.330 +06:00 [INF] no file to delete
+2021-09-28 12:04:55.331 +06:00 [INF] Worker running at: "2021-09-28T12:04:55.3309398+06:00"
+2021-09-28 12:05:15.376 +06:00 [INF] no file to delete
+2021-09-28 12:05:15.376 +06:00 [INF] Worker running at: "2021-09-28T12:05:15.3766377+06:00"
+2021-09-28 12:05:35.401 +06:00 [INF] no file to delete
+2021-09-28 12:05:35.401 +06:00 [INF] Worker running at: "2021-09-28T12:05:35.4011262+06:00"
+2021-09-28 12:05:55.419 +06:00 [INF] no file to delete
+2021-09-28 12:05:55.419 +06:00 [INF] Worker running at: "2021-09-28T12:05:55.4196717+06:00"
+2021-09-28 12:06:15.425 +06:00 [INF] no file to delete
+2021-09-28 12:06:15.425 +06:00 [INF] Worker running at: "2021-09-28T12:06:15.4256513+06:00"
+2021-09-28 12:06:35.440 +06:00 [INF] no file to delete
+2021-09-28 12:06:35.440 +06:00 [INF] Worker running at: "2021-09-28T12:06:35.4406684+06:00"
+2021-09-28 12:06:55.462 +06:00 [INF] no file to delete
+2021-09-28 12:06:55.462 +06:00 [INF] Worker running at: "2021-09-28T12:06:55.4622314+06:00"
+2021-09-28 12:07:15.479 +06:00 [INF] no file to delete
+2021-09-28 12:07:15.479 +06:00 [INF] Worker running at: "2021-09-28T12:07:15.4799503+06:00"
+2021-09-28 12:07:35.490 +06:00 [INF] no file to delete
+2021-09-28 12:07:35.490 +06:00 [INF] Worker running at: "2021-09-28T12:07:35.4901309+06:00"
+2021-09-28 12:07:55.503 +06:00 [INF] no file to delete
+2021-09-28 12:07:55.503 +06:00 [INF] Worker running at: "2021-09-28T12:07:55.5038982+06:00"
+2021-09-28 12:08:15.515 +06:00 [INF] no file to delete
+2021-09-28 12:08:15.515 +06:00 [INF] Worker running at: "2021-09-28T12:08:15.5157868+06:00"
+2021-09-28 12:08:35.529 +06:00 [INF] no file to delete
+2021-09-28 12:08:35.529 +06:00 [INF] Worker running at: "2021-09-28T12:08:35.5294829+06:00"
+2021-09-28 12:08:55.544 +06:00 [INF] no file to delete
+2021-09-28 12:08:55.544 +06:00 [INF] Worker running at: "2021-09-28T12:08:55.5441717+06:00"
+2021-09-28 12:09:15.551 +06:00 [INF] no file to delete
+2021-09-28 12:09:15.551 +06:00 [INF] Worker running at: "2021-09-28T12:09:15.5513535+06:00"
+2021-09-28 12:09:35.553 +06:00 [INF] no file to delete
+2021-09-28 12:09:35.555 +06:00 [INF] Worker running at: "2021-09-28T12:09:35.5550808+06:00"
+2021-09-28 12:09:55.569 +06:00 [INF] no file to delete
+2021-09-28 12:09:55.570 +06:00 [INF] Worker running at: "2021-09-28T12:09:55.5700294+06:00"
+2021-09-28 12:10:15.579 +06:00 [INF] no file to delete
+2021-09-28 12:10:15.579 +06:00 [INF] Worker running at: "2021-09-28T12:10:15.5793356+06:00"
+2021-09-28 12:10:35.599 +06:00 [INF] no file to delete
+2021-09-28 12:10:35.599 +06:00 [INF] Worker running at: "2021-09-28T12:10:35.5993311+06:00"
+2021-09-28 12:10:55.604 +06:00 [INF] no file to delete
+2021-09-28 12:10:55.604 +06:00 [INF] Worker running at: "2021-09-28T12:10:55.6044473+06:00"
+2021-09-28 12:11:15.613 +06:00 [INF] no file to delete
+2021-09-28 12:11:15.613 +06:00 [INF] Worker running at: "2021-09-28T12:11:15.6132026+06:00"
+2021-09-28 12:11:35.626 +06:00 [INF] no file to delete
+2021-09-28 12:11:35.627 +06:00 [INF] Worker running at: "2021-09-28T12:11:35.6279069+06:00"
+2021-09-28 12:11:55.634 +06:00 [INF] no file to delete
+2021-09-28 12:11:55.634 +06:00 [INF] Worker running at: "2021-09-28T12:11:55.6347268+06:00"
+2021-09-28 12:12:15.644 +06:00 [INF] no file to delete
+2021-09-28 12:12:15.644 +06:00 [INF] Worker running at: "2021-09-28T12:12:15.6444899+06:00"
+2021-09-28 12:12:35.660 +06:00 [INF] no file to delete
+2021-09-28 12:12:35.660 +06:00 [INF] Worker running at: "2021-09-28T12:12:35.6602961+06:00"
+2021-09-28 16:14:30.138 +06:00 [INF] Application Starting up
+2021-09-28 16:14:30.813 +06:00 [FTL] Application start-up failed
+Autofac.Core.DependencyResolutionException: An exception was thrown while activating λ:Microsoft.Extensions.Hosting.IHostedService[] -> DataImporter.ImportWorker.Worker -> DataImporter.Info.Services.DataImporterService.
+ ---> Autofac.Core.DependencyResolutionException: None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'DataImporter.Info.Services.DataImporterService' can be invoked with the available services and parameters:
+Cannot resolve parameter 'DataImporter.Common.Utility.IDatetimeUtility iDatetimeUtility' of constructor 'Void .ctor(DataImporter.Info.UnitOfWorks.IDataUnitOfWork, DataImporter.Common.Utility.IDatetimeUtility)'.
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.GetAllBindings(ConstructorBinder[] availableConstructors, IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.ActivateInstance(IComponentContext context, IEnumerable`1 parameters)
+   at Autofac.Core.Activators.Reflection.ReflectionActivator.<ConfigurePipeline>b__11_0(ResolveRequestContext ctxt, Action`1 next)
+   at Autofac.Core.Resolving.Middleware.DelegateMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.DisposalTrackingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   --- End of inner exception stack trace ---
+   at Autofac.Core.Resolving.Middleware.ActivatorErrorHandlingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.RegistrationPipelineInvokeMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.SharingMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.Middleware.CircularDependencyDetectorMiddleware.Execute(ResolveRequestContext context, Action`1 next)
+   at Autofac.Core.Resolving.Pipeline.ResolvePipelineBuilder.<>c__DisplayClass14_0.<BuildPipeline>b__1(ResolveRequestContext ctxt)
+   at Autofac.Core.Pipeline.ResolvePipeline.Invoke(ResolveRequestContext ctxt)
+   at Autofac.Core.Resolving.ResolveOperation.GetOrCreateInstance(ISharingLifetimeScope currentOperationScope, ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.ExecuteOperation(ResolveRequest request)
+   at Autofac.Core.Resolving.ResolveOperation.Execute(ResolveRequest request)
+   at Autofac.Core.Lifetime.LifetimeScope.ResolveComponent(ResolveRequest request)
+   at Autofac.ResolutionExtensions.TryResolveService(IComponentContext context, Service service, IEnumerable`1 parameters, Object& instance)
+   at Autofac.ResolutionExtensions.ResolveOptionalService(IComponentContext context, Service service, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.ResolveOptional(IComponentContext context, Type serviceType, IEnumerable`1 parameters)
+   at Autofac.ResolutionExtensions.ResolveOptional(IComponentContext context, Type serviceType)
+   at Autofac.Extensions.DependencyInjection.AutofacServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetService[T](IServiceProvider provider)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at DataImporter.ImportWorker.Program.Main(String[] args) in D:\#FinalProject\3\DataImporter.ImportWorker\Program.cs:line 47
+2021-09-28 16:34:39.566 +06:00 [INF] Application Starting up
+2021-09-28 16:34:46.356 +06:00 [INF] no file to delete
+2021-09-28 16:34:46.357 +06:00 [INF] Worker running at: "2021-09-28T16:34:46.3569929+06:00"
+2021-09-28 16:35:06.384 +06:00 [INF] no file to delete
+2021-09-28 16:35:06.384 +06:00 [INF] Worker running at: "2021-09-28T16:35:06.3849212+06:00"
+2021-09-28 16:35:26.394 +06:00 [INF] no file to delete
+2021-09-28 16:35:26.394 +06:00 [INF] Worker running at: "2021-09-28T16:35:26.3942104+06:00"
+2021-09-28 16:35:46.435 +06:00 [INF] no file to delete
+2021-09-28 16:35:46.435 +06:00 [INF] Worker running at: "2021-09-28T16:35:46.4358340+06:00"
+2021-09-28 16:36:06.449 +06:00 [INF] no file to delete
+2021-09-28 16:36:06.449 +06:00 [INF] Worker running at: "2021-09-28T16:36:06.4495679+06:00"
+2021-09-28 16:36:26.458 +06:00 [INF] no file to delete
+2021-09-28 16:36:26.458 +06:00 [INF] Worker running at: "2021-09-28T16:36:26.4581704+06:00"
+2021-09-28 16:36:46.476 +06:00 [INF] no file to delete
+2021-09-28 16:36:46.476 +06:00 [INF] Worker running at: "2021-09-28T16:36:46.4763946+06:00"
+2021-09-28 16:37:08.839 +06:00 [INF] no file to delete
+2021-09-28 16:37:08.839 +06:00 [INF] Worker running at: "2021-09-28T16:37:08.8394565+06:00"
+2021-09-28 16:37:28.880 +06:00 [INF] no file to delete
+2021-09-28 16:37:28.880 +06:00 [INF] Worker running at: "2021-09-28T16:37:28.8806970+06:00"
+2021-09-28 16:37:48.891 +06:00 [INF] no file to delete
+2021-09-28 16:37:48.891 +06:00 [INF] Worker running at: "2021-09-28T16:37:48.8917279+06:00"
+2021-09-28 16:38:08.911 +06:00 [INF] no file to delete
+2021-09-28 16:38:08.911 +06:00 [INF] Worker running at: "2021-09-28T16:38:08.9116313+06:00"
+2021-09-28 16:38:25.848 +06:00 [INF] Application Starting up
+2021-09-28 16:38:47.228 +06:00 [INF] Application Starting up
+2021-09-28 16:38:48.679 +06:00 [INF] no file to delete
+2021-09-28 16:38:48.680 +06:00 [INF] Worker running at: "2021-09-28T16:38:48.6801128+06:00"
+2021-09-28 16:39:08.693 +06:00 [INF] no file to delete
+2021-09-28 16:39:08.693 +06:00 [INF] Worker running at: "2021-09-28T16:39:08.6937492+06:00"
+2021-09-28 16:40:27.744 +06:00 [INF] Application Starting up
+2021-09-28 16:40:29.253 +06:00 [INF] no file to delete
+2021-09-28 16:40:29.255 +06:00 [INF] Worker running at: "2021-09-28T16:40:29.2546146+06:00"
+2021-09-28 16:40:49.276 +06:00 [INF] no file to delete
+2021-09-28 16:40:49.276 +06:00 [INF] Worker running at: "2021-09-28T16:40:49.2765771+06:00"
+2021-09-28 16:41:39.542 +06:00 [INF] Application Starting up
+2021-09-28 16:41:41.031 +06:00 [INF] no file to delete
+2021-09-28 16:41:41.033 +06:00 [INF] Worker running at: "2021-09-28T16:41:41.0330686+06:00"
+2021-09-28 16:42:01.052 +06:00 [INF] no file to delete
+2021-09-28 16:42:01.052 +06:00 [INF] Worker running at: "2021-09-28T16:42:01.0528487+06:00"
+2021-09-28 16:43:25.484 +06:00 [INF] Application Starting up
+2021-09-28 16:43:27.008 +06:00 [INF] no file to delete
+2021-09-28 16:43:27.010 +06:00 [INF] Worker running at: "2021-09-28T16:43:27.0098762+06:00"
+2021-09-28 16:43:47.029 +06:00 [INF] no file to delete
+2021-09-28 16:43:47.029 +06:00 [INF] Worker running at: "2021-09-28T16:43:47.0297874+06:00"
+2021-09-28 16:44:23.280 +06:00 [INF] no file to delete
+2021-09-28 16:44:23.280 +06:00 [INF] Worker running at: "2021-09-28T16:44:23.2809189+06:00"
+2021-09-28 16:44:43.296 +06:00 [INF] no file to delete
+2021-09-28 16:44:43.296 +06:00 [INF] Worker running at: "2021-09-28T16:44:43.2963659+06:00"
+2021-09-28 16:45:03.307 +06:00 [INF] no file to delete
+2021-09-28 16:45:03.308 +06:00 [INF] Worker running at: "2021-09-28T16:45:03.3079821+06:00"
+2021-09-28 16:45:23.320 +06:00 [INF] no file to delete
+2021-09-28 16:45:23.320 +06:00 [INF] Worker running at: "2021-09-28T16:45:23.3203611+06:00"
+2021-09-28 16:45:43.324 +06:00 [INF] no file to delete
+2021-09-28 16:45:43.324 +06:00 [INF] Worker running at: "2021-09-28T16:45:43.3249511+06:00"
+2021-09-28 16:46:03.340 +06:00 [INF] no file to delete
+2021-09-28 16:46:03.340 +06:00 [INF] Worker running at: "2021-09-28T16:46:03.3409755+06:00"
+2021-09-28 16:46:21.846 +06:00 [INF] Application Starting up
+2021-09-28 16:46:23.419 +06:00 [INF] no file to delete
+2021-09-28 16:46:23.420 +06:00 [INF] Worker running at: "2021-09-28T16:46:23.4204041+06:00"
+2021-09-28 16:46:43.441 +06:00 [INF] no file to delete
+2021-09-28 16:46:43.441 +06:00 [INF] Worker running at: "2021-09-28T16:46:43.4415842+06:00"
+2021-09-28 16:47:03.464 +06:00 [INF] no file to delete
+2021-09-28 16:47:03.464 +06:00 [INF] Worker running at: "2021-09-28T16:47:03.4649624+06:00"
+2021-09-28 16:48:16.845 +06:00 [INF] no file to delete
+2021-09-28 16:48:16.845 +06:00 [INF] Worker running at: "2021-09-28T16:48:16.8451679+06:00"
+2021-09-28 16:48:25.453 +06:00 [INF] Application Starting up
+2021-09-28 16:48:26.937 +06:00 [INF] no file to delete
+2021-09-28 16:48:26.939 +06:00 [INF] Worker running at: "2021-09-28T16:48:26.9385326+06:00"
+2021-09-28 16:48:46.965 +06:00 [INF] no file to delete
+2021-09-28 16:48:46.965 +06:00 [INF] Worker running at: "2021-09-28T16:48:46.9651749+06:00"
+2021-09-28 16:49:12.642 +06:00 [INF] Application Starting up
+2021-09-28 16:49:23.174 +06:00 [INF] Application Starting up
+2021-09-28 16:49:24.588 +06:00 [INF] no file to delete
+2021-09-28 16:49:24.590 +06:00 [INF] Worker running at: "2021-09-28T16:49:24.5899071+06:00"
+2021-09-28 16:49:44.601 +06:00 [INF] no file to delete
+2021-09-28 16:49:44.601 +06:00 [INF] Worker running at: "2021-09-28T16:49:44.6016353+06:00"
+2021-09-28 16:54:07.386 +06:00 [INF] Application Starting up
+2021-09-28 16:54:08.808 +06:00 [INF] no file to delete
+2021-09-28 16:54:08.810 +06:00 [INF] Worker running at: "2021-09-28T16:54:08.8097848+06:00"
+2021-09-28 16:54:28.838 +06:00 [INF] no file to delete
+2021-09-28 16:54:28.838 +06:00 [INF] Worker running at: "2021-09-28T16:54:28.8384981+06:00"
+2021-09-28 16:54:52.627 +06:00 [INF] no file to delete
+2021-09-28 16:54:52.627 +06:00 [INF] Worker running at: "2021-09-28T16:54:52.6276163+06:00"
+2021-09-28 17:12:56.616 +06:00 [INF] Application Starting up
+2021-09-28 17:12:58.730 +06:00 [INF] no file to delete
+2021-09-28 17:12:58.732 +06:00 [INF] Worker running at: "2021-09-28T17:12:58.7315062+06:00"
+2021-09-28 17:13:18.755 +06:00 [INF] no file to delete
+2021-09-28 17:13:18.755 +06:00 [INF] Worker running at: "2021-09-28T17:13:18.7554860+06:00"
+2021-09-28 17:13:38.763 +06:00 [INF] no file to delete
+2021-09-28 17:13:38.763 +06:00 [INF] Worker running at: "2021-09-28T17:13:38.7636305+06:00"
+2021-09-28 17:13:58.778 +06:00 [INF] no file to delete
+2021-09-28 17:13:58.778 +06:00 [INF] Worker running at: "2021-09-28T17:13:58.7784756+06:00"
+2021-09-28 17:14:19.028 +06:00 [INF] Deleted 
+2021-09-28 17:14:19.028 +06:00 [INF] Worker running at: "2021-09-28T17:14:19.0285338+06:00"
+2021-09-28 17:14:39.111 +06:00 [INF] Deleted 
+2021-09-28 17:14:39.112 +06:00 [INF] Worker running at: "2021-09-28T17:14:39.1120843+06:00"
+2021-09-28 17:14:59.126 +06:00 [INF] no file to delete
+2021-09-28 17:14:59.126 +06:00 [INF] Worker running at: "2021-09-28T17:14:59.1267118+06:00"
+2021-09-28 17:15:20.097 +06:00 [INF] no file to delete
+2021-09-28 17:15:20.097 +06:00 [INF] Worker running at: "2021-09-28T17:15:20.0973415+06:00"
+2021-09-28 17:15:52.882 +06:00 [INF] no file to delete
+2021-09-28 17:15:52.882 +06:00 [INF] Worker running at: "2021-09-28T17:15:52.8820923+06:00"
+2021-09-28 17:16:43.147 +06:00 [INF] Application Starting up
+2021-09-28 17:16:44.645 +06:00 [INF] no file to delete
+2021-09-28 17:16:44.646 +06:00 [INF] Worker running at: "2021-09-28T17:16:44.6464030+06:00"
+2021-09-28 17:20:34.532 +06:00 [INF] Application Starting up
+2021-09-28 17:20:35.971 +06:00 [INF] no file to delete
+2021-09-28 17:20:35.972 +06:00 [INF] Worker running at: "2021-09-28T17:20:35.9723669+06:00"
+2021-09-28 17:20:55.983 +06:00 [INF] no file to delete
+2021-09-28 17:20:55.983 +06:00 [INF] Worker running at: "2021-09-28T17:20:55.9831105+06:00"
+2021-09-28 17:21:15.994 +06:00 [INF] no file to delete
+2021-09-28 17:21:15.994 +06:00 [INF] Worker running at: "2021-09-28T17:21:15.9947381+06:00"
+2021-09-28 17:21:36.249 +06:00 [INF] Deleted 
+2021-09-28 17:21:36.249 +06:00 [INF] Worker running at: "2021-09-28T17:21:36.2492242+06:00"
+2021-09-28 17:21:56.253 +06:00 [INF] no file to delete
+2021-09-28 17:21:56.253 +06:00 [INF] Worker running at: "2021-09-28T17:21:56.2538470+06:00"
+2021-09-28 17:22:16.268 +06:00 [INF] no file to delete
+2021-09-28 17:22:16.268 +06:00 [INF] Worker running at: "2021-09-28T17:22:16.2681149+06:00"
+2021-09-28 17:22:36.285 +06:00 [INF] no file to delete
+2021-09-28 17:22:36.285 +06:00 [INF] Worker running at: "2021-09-28T17:22:36.2858909+06:00"
+2021-09-28 17:22:56.296 +06:00 [INF] no file to delete
+2021-09-28 17:22:56.296 +06:00 [INF] Worker running at: "2021-09-28T17:22:56.2961961+06:00"
+2021-09-28 17:23:20.630 +06:00 [INF] Application Starting up
+2021-09-28 17:23:22.193 +06:00 [INF] no file to delete
+2021-09-28 17:23:22.195 +06:00 [INF] Worker running at: "2021-09-28T17:23:22.1947038+06:00"
+2021-09-28 17:23:42.217 +06:00 [INF] no file to delete
+2021-09-28 17:23:42.217 +06:00 [INF] Worker running at: "2021-09-28T17:23:42.2174602+06:00"
+2021-09-28 17:24:02.222 +06:00 [INF] no file to delete
+2021-09-28 17:24:02.222 +06:00 [INF] Worker running at: "2021-09-28T17:24:02.2221352+06:00"
+2021-09-28 17:34:41.996 +06:00 [INF] Application Starting up
+2021-09-28 17:34:43.621 +06:00 [INF] no file to delete
+2021-09-28 17:34:43.623 +06:00 [INF] Worker running at: "2021-09-28T17:34:43.6228411+06:00"
+2021-09-28 17:35:03.641 +06:00 [INF] no file to delete
+2021-09-28 17:35:03.641 +06:00 [INF] Worker running at: "2021-09-28T17:35:03.6412681+06:00"
+2021-09-28 17:35:23.661 +06:00 [INF] no file to delete
+2021-09-28 17:35:23.661 +06:00 [INF] Worker running at: "2021-09-28T17:35:23.6616657+06:00"
+2021-09-28 17:35:43.887 +06:00 [INF] Deleted 
+2021-09-28 17:35:43.887 +06:00 [INF] Worker running at: "2021-09-28T17:35:43.8878700+06:00"
+2021-09-28 17:36:03.901 +06:00 [INF] no file to delete
+2021-09-28 17:36:03.901 +06:00 [INF] Worker running at: "2021-09-28T17:36:03.9018057+06:00"
+2021-09-28 17:36:23.903 +06:00 [INF] no file to delete
+2021-09-28 17:36:23.903 +06:00 [INF] Worker running at: "2021-09-28T17:36:23.9033517+06:00"
+2021-09-28 17:36:43.915 +06:00 [INF] no file to delete
+2021-09-28 17:36:43.916 +06:00 [INF] Worker running at: "2021-09-28T17:36:43.9160084+06:00"
+2021-09-28 17:37:03.926 +06:00 [INF] no file to delete
+2021-09-28 17:37:03.926 +06:00 [INF] Worker running at: "2021-09-28T17:37:03.9263401+06:00"
+2021-09-28 17:37:23.945 +06:00 [INF] no file to delete
+2021-09-28 17:37:23.945 +06:00 [INF] Worker running at: "2021-09-28T17:37:23.9458511+06:00"
+2021-09-28 17:37:43.966 +06:00 [INF] no file to delete
+2021-09-28 17:37:43.966 +06:00 [INF] Worker running at: "2021-09-28T17:37:43.9664534+06:00"
+2021-09-28 17:38:03.973 +06:00 [INF] no file to delete
+2021-09-28 17:38:03.973 +06:00 [INF] Worker running at: "2021-09-28T17:38:03.9738818+06:00"
+2021-09-28 17:38:23.988 +06:00 [INF] no file to delete
+2021-09-28 17:38:23.988 +06:00 [INF] Worker running at: "2021-09-28T17:38:23.9889231+06:00"
+2021-09-28 17:38:44.003 +06:00 [INF] no file to delete
+2021-09-28 17:38:44.004 +06:00 [INF] Worker running at: "2021-09-28T17:38:44.0040206+06:00"
+2021-09-28 17:39:04.052 +06:00 [INF] no file to delete
+2021-09-28 17:39:04.052 +06:00 [INF] Worker running at: "2021-09-28T17:39:04.0521270+06:00"
+2021-09-28 17:39:24.069 +06:00 [INF] no file to delete
+2021-09-28 17:39:24.069 +06:00 [INF] Worker running at: "2021-09-28T17:39:24.0699166+06:00"
+2021-09-28 17:39:44.083 +06:00 [INF] no file to delete
+2021-09-28 17:39:44.083 +06:00 [INF] Worker running at: "2021-09-28T17:39:44.0839250+06:00"
+2021-09-28 17:40:04.095 +06:00 [INF] no file to delete
+2021-09-28 17:40:04.095 +06:00 [INF] Worker running at: "2021-09-28T17:40:04.0953089+06:00"
+2021-09-28 17:40:24.110 +06:00 [INF] no file to delete
+2021-09-28 17:40:24.110 +06:00 [INF] Worker running at: "2021-09-28T17:40:24.1103990+06:00"
+2021-09-28 17:40:44.129 +06:00 [INF] no file to delete
+2021-09-28 17:40:44.129 +06:00 [INF] Worker running at: "2021-09-28T17:40:44.1295301+06:00"
+2021-09-28 17:41:04.147 +06:00 [INF] no file to delete
+2021-09-28 17:41:04.147 +06:00 [INF] Worker running at: "2021-09-28T17:41:04.1473615+06:00"
+2021-09-28 17:41:24.163 +06:00 [INF] no file to delete
+2021-09-28 17:41:24.163 +06:00 [INF] Worker running at: "2021-09-28T17:41:24.1630827+06:00"
+2021-09-28 17:41:44.171 +06:00 [INF] no file to delete
+2021-09-28 17:41:44.203 +06:00 [INF] Worker running at: "2021-09-28T17:41:44.2033768+06:00"
+2021-09-28 17:42:04.209 +06:00 [INF] no file to delete
+2021-09-28 17:42:04.209 +06:00 [INF] Worker running at: "2021-09-28T17:42:04.2096869+06:00"
+2021-09-28 17:42:24.217 +06:00 [INF] no file to delete
+2021-09-28 17:42:24.217 +06:00 [INF] Worker running at: "2021-09-28T17:42:24.2171601+06:00"
+2021-09-28 17:42:44.225 +06:00 [INF] no file to delete
+2021-09-28 17:42:44.226 +06:00 [INF] Worker running at: "2021-09-28T17:42:44.2264567+06:00"
+2021-09-28 17:43:04.235 +06:00 [INF] no file to delete
+2021-09-28 17:43:04.235 +06:00 [INF] Worker running at: "2021-09-28T17:43:04.2356664+06:00"
+2021-09-28 18:00:11.287 +06:00 [INF] Application Starting up
+2021-09-28 18:00:13.238 +06:00 [INF] no file to delete
+2021-09-28 18:00:13.239 +06:00 [INF] Worker running at: "2021-09-28T18:00:13.2394262+06:00"
+2021-09-28 18:00:33.264 +06:00 [INF] no file to delete
+2021-09-28 18:00:33.264 +06:00 [INF] Worker running at: "2021-09-28T18:00:33.2643852+06:00"
+2021-09-28 18:00:53.265 +06:00 [INF] no file to delete
+2021-09-28 18:00:53.266 +06:00 [INF] Worker running at: "2021-09-28T18:00:53.2660614+06:00"
+2021-09-28 18:01:13.284 +06:00 [INF] no file to delete
+2021-09-28 18:01:13.285 +06:00 [INF] Worker running at: "2021-09-28T18:01:13.2857489+06:00"
+2021-09-28 18:01:33.482 +06:00 [INF] Deleted 
+2021-09-28 18:01:33.482 +06:00 [INF] Worker running at: "2021-09-28T18:01:33.4826931+06:00"
+2021-09-28 18:01:53.497 +06:00 [INF] no file to delete
+2021-09-28 18:01:53.497 +06:00 [INF] Worker running at: "2021-09-28T18:01:53.4975936+06:00"
+2021-09-28 18:02:13.516 +06:00 [INF] no file to delete
+2021-09-28 18:02:13.516 +06:00 [INF] Worker running at: "2021-09-28T18:02:13.5162784+06:00"
+2021-09-28 18:02:33.519 +06:00 [INF] no file to delete
+2021-09-28 18:02:33.519 +06:00 [INF] Worker running at: "2021-09-28T18:02:33.5192058+06:00"
+2021-09-28 18:02:53.526 +06:00 [INF] no file to delete
+2021-09-28 18:02:53.526 +06:00 [INF] Worker running at: "2021-09-28T18:02:53.5261512+06:00"
+2021-09-28 18:03:13.537 +06:00 [INF] no file to delete
+2021-09-28 18:03:13.537 +06:00 [INF] Worker running at: "2021-09-28T18:03:13.5371678+06:00"
+2021-09-28 18:03:33.548 +06:00 [INF] no file to delete
+2021-09-28 18:03:33.548 +06:00 [INF] Worker running at: "2021-09-28T18:03:33.5488241+06:00"
+2021-09-28 18:03:53.559 +06:00 [INF] no file to delete
+2021-09-28 18:03:53.560 +06:00 [INF] Worker running at: "2021-09-28T18:03:53.5600346+06:00"
+2021-09-28 18:14:48.844 +06:00 [INF] Application Starting up
+2021-09-28 18:14:50.681 +06:00 [INF] no file to delete
+2021-09-28 18:14:50.683 +06:00 [INF] Worker running at: "2021-09-28T18:14:50.6826939+06:00"
+2021-09-28 18:15:10.713 +06:00 [INF] no file to delete
+2021-09-28 18:15:10.713 +06:00 [INF] Worker running at: "2021-09-28T18:15:10.7133615+06:00"
+2021-09-28 18:15:30.729 +06:00 [INF] no file to delete
+2021-09-28 18:15:30.729 +06:00 [INF] Worker running at: "2021-09-28T18:15:30.7292258+06:00"
+2021-09-28 18:15:50.737 +06:00 [INF] no file to delete
+2021-09-28 18:15:50.737 +06:00 [INF] Worker running at: "2021-09-28T18:15:50.7378451+06:00"
+2021-09-28 18:16:10.755 +06:00 [INF] no file to delete
+2021-09-28 18:16:10.755 +06:00 [INF] Worker running at: "2021-09-28T18:16:10.7551021+06:00"
+2021-09-28 18:16:30.766 +06:00 [INF] no file to delete
+2021-09-28 18:16:30.766 +06:00 [INF] Worker running at: "2021-09-28T18:16:30.7667509+06:00"
+2021-09-28 18:16:50.790 +06:00 [INF] no file to delete
+2021-09-28 18:16:50.790 +06:00 [INF] Worker running at: "2021-09-28T18:16:50.7907420+06:00"
+2021-09-28 18:17:10.797 +06:00 [INF] no file to delete
+2021-09-28 18:17:10.797 +06:00 [INF] Worker running at: "2021-09-28T18:17:10.7975176+06:00"
+2021-09-28 18:17:30.826 +06:00 [INF] no file to delete
+2021-09-28 18:17:30.826 +06:00 [INF] Worker running at: "2021-09-28T18:17:30.8262381+06:00"
+2021-09-28 18:17:50.840 +06:00 [INF] no file to delete
+2021-09-28 18:17:50.840 +06:00 [INF] Worker running at: "2021-09-28T18:17:50.8409320+06:00"
+2021-09-28 18:18:10.848 +06:00 [INF] no file to delete
+2021-09-28 18:18:10.848 +06:00 [INF] Worker running at: "2021-09-28T18:18:10.8488284+06:00"
+2021-09-28 18:18:30.850 +06:00 [INF] no file to delete
+2021-09-28 18:18:30.850 +06:00 [INF] Worker running at: "2021-09-28T18:18:30.8508856+06:00"
+2021-09-28 18:18:50.860 +06:00 [INF] no file to delete
+2021-09-28 18:18:50.860 +06:00 [INF] Worker running at: "2021-09-28T18:18:50.8608321+06:00"
+2021-09-28 18:19:10.882 +06:00 [INF] no file to delete
+2021-09-28 18:19:10.882 +06:00 [INF] Worker running at: "2021-09-28T18:19:10.8824344+06:00"
+2021-09-28 18:19:30.903 +06:00 [INF] no file to delete
+2021-09-28 18:19:30.903 +06:00 [INF] Worker running at: "2021-09-28T18:19:30.9031688+06:00"
+2021-09-28 18:19:50.914 +06:00 [INF] no file to delete
+2021-09-28 18:19:50.914 +06:00 [INF] Worker running at: "2021-09-28T18:19:50.9147282+06:00"
+2021-09-28 18:20:10.919 +06:00 [INF] no file to delete
+2021-09-28 18:20:10.919 +06:00 [INF] Worker running at: "2021-09-28T18:20:10.9199732+06:00"
+2021-09-28 18:20:30.934 +06:00 [INF] no file to delete
+2021-09-28 18:20:30.934 +06:00 [INF] Worker running at: "2021-09-28T18:20:30.9340648+06:00"
+2021-09-28 18:20:50.939 +06:00 [INF] no file to delete
+2021-09-28 18:20:50.941 +06:00 [INF] Worker running at: "2021-09-28T18:20:50.9410970+06:00"
+2021-09-28 18:21:10.964 +06:00 [INF] no file to delete
+2021-09-28 18:21:10.964 +06:00 [INF] Worker running at: "2021-09-28T18:21:10.9645772+06:00"
+2021-09-28 18:21:30.975 +06:00 [INF] no file to delete
+2021-09-28 18:21:30.975 +06:00 [INF] Worker running at: "2021-09-28T18:21:30.9752800+06:00"
+2021-09-28 18:21:50.991 +06:00 [INF] no file to delete
+2021-09-28 18:21:50.991 +06:00 [INF] Worker running at: "2021-09-28T18:21:50.9912889+06:00"
+2021-09-28 18:22:11.006 +06:00 [INF] no file to delete
+2021-09-28 18:22:11.006 +06:00 [INF] Worker running at: "2021-09-28T18:22:11.0061349+06:00"
+2021-09-28 18:22:31.021 +06:00 [INF] no file to delete
+2021-09-28 18:22:31.021 +06:00 [INF] Worker running at: "2021-09-28T18:22:31.0219230+06:00"
+2021-09-28 18:22:51.031 +06:00 [INF] no file to delete
+2021-09-28 18:22:51.031 +06:00 [INF] Worker running at: "2021-09-28T18:22:51.0311591+06:00"
+2021-09-28 18:23:11.034 +06:00 [INF] no file to delete
+2021-09-28 18:23:11.034 +06:00 [INF] Worker running at: "2021-09-28T18:23:11.0347242+06:00"
+2021-09-28 18:23:31.037 +06:00 [INF] no file to delete
+2021-09-28 18:23:31.037 +06:00 [INF] Worker running at: "2021-09-28T18:23:31.0378401+06:00"
+2021-09-28 18:23:51.060 +06:00 [INF] no file to delete
+2021-09-28 18:23:51.061 +06:00 [INF] Worker running at: "2021-09-28T18:23:51.0616048+06:00"
+2021-09-28 18:24:11.077 +06:00 [INF] no file to delete
+2021-09-28 18:24:11.077 +06:00 [INF] Worker running at: "2021-09-28T18:24:11.0774843+06:00"
+2021-09-28 18:24:31.086 +06:00 [INF] no file to delete
+2021-09-28 18:24:31.086 +06:00 [INF] Worker running at: "2021-09-28T18:24:31.0865408+06:00"
+2021-09-28 18:24:51.125 +06:00 [INF] no file to delete
+2021-09-28 18:24:51.125 +06:00 [INF] Worker running at: "2021-09-28T18:24:51.1258609+06:00"
+2021-09-28 18:25:11.128 +06:00 [INF] no file to delete
+2021-09-28 18:25:11.128 +06:00 [INF] Worker running at: "2021-09-28T18:25:11.1285787+06:00"
+2021-09-28 18:25:31.133 +06:00 [INF] no file to delete
+2021-09-28 18:25:31.133 +06:00 [INF] Worker running at: "2021-09-28T18:25:31.1333302+06:00"
+2021-09-28 18:25:51.139 +06:00 [INF] no file to delete
+2021-09-28 18:25:51.140 +06:00 [INF] Worker running at: "2021-09-28T18:25:51.1406277+06:00"
+2021-09-28 18:26:11.161 +06:00 [INF] no file to delete
+2021-09-28 18:26:11.161 +06:00 [INF] Worker running at: "2021-09-28T18:26:11.1613444+06:00"
+2021-09-28 18:26:31.170 +06:00 [INF] no file to delete
+2021-09-28 18:26:31.170 +06:00 [INF] Worker running at: "2021-09-28T18:26:31.1704028+06:00"
+2021-09-28 18:26:51.182 +06:00 [INF] no file to delete
+2021-09-28 18:26:51.183 +06:00 [INF] Worker running at: "2021-09-28T18:26:51.1830232+06:00"
+2021-09-28 18:27:11.196 +06:00 [INF] no file to delete
+2021-09-28 18:27:11.196 +06:00 [INF] Worker running at: "2021-09-28T18:27:11.1964439+06:00"
+2021-09-28 18:27:25.031 +06:00 [INF] Application Starting up
+2021-09-28 18:27:26.616 +06:00 [INF] no file to delete
+2021-09-28 18:27:26.618 +06:00 [INF] Worker running at: "2021-09-28T18:27:26.6178905+06:00"
+2021-09-28 18:27:46.641 +06:00 [INF] no file to delete
+2021-09-28 18:27:46.641 +06:00 [INF] Worker running at: "2021-09-28T18:27:46.6416904+06:00"
+2021-09-28 18:28:07.131 +06:00 [INF] Deleted 
+2021-09-28 18:28:07.131 +06:00 [INF] Worker running at: "2021-09-28T18:28:07.1316435+06:00"
+2021-09-28 18:28:27.143 +06:00 [INF] no file to delete
+2021-09-28 18:28:27.144 +06:00 [INF] Worker running at: "2021-09-28T18:28:27.1439466+06:00"
+2021-09-28 18:28:47.163 +06:00 [INF] no file to delete
+2021-09-28 18:28:47.163 +06:00 [INF] Worker running at: "2021-09-28T18:28:47.1636921+06:00"
+2021-09-28 18:29:07.178 +06:00 [INF] no file to delete
+2021-09-28 18:29:07.178 +06:00 [INF] Worker running at: "2021-09-28T18:29:07.1785216+06:00"
+2021-09-28 18:29:27.181 +06:00 [INF] no file to delete
+2021-09-28 18:29:27.181 +06:00 [INF] Worker running at: "2021-09-28T18:29:27.1816369+06:00"
+2021-09-28 18:29:47.187 +06:00 [INF] no file to delete
+2021-09-28 18:29:47.187 +06:00 [INF] Worker running at: "2021-09-28T18:29:47.1875522+06:00"
+2021-09-28 18:30:07.201 +06:00 [INF] no file to delete
+2021-09-28 18:30:07.201 +06:00 [INF] Worker running at: "2021-09-28T18:30:07.2012780+06:00"
+2021-09-28 18:30:27.206 +06:00 [INF] no file to delete
+2021-09-28 18:30:27.206 +06:00 [INF] Worker running at: "2021-09-28T18:30:27.2061571+06:00"
+2021-09-28 18:30:47.209 +06:00 [INF] no file to delete
+2021-09-28 18:30:47.209 +06:00 [INF] Worker running at: "2021-09-28T18:30:47.2097583+06:00"
+2021-09-28 18:31:07.254 +06:00 [INF] Deleted 
+2021-09-28 18:31:07.254 +06:00 [INF] Worker running at: "2021-09-28T18:31:07.2543986+06:00"
+2021-09-28 18:31:27.268 +06:00 [INF] no file to delete
+2021-09-28 18:31:27.269 +06:00 [INF] Worker running at: "2021-09-28T18:31:27.2688855+06:00"
+2021-09-28 18:31:47.280 +06:00 [INF] no file to delete
+2021-09-28 18:31:47.281 +06:00 [INF] Worker running at: "2021-09-28T18:31:47.2810321+06:00"
+2021-09-28 18:32:07.327 +06:00 [INF] Deleted 
+2021-09-28 18:32:07.327 +06:00 [INF] Worker running at: "2021-09-28T18:32:07.3279636+06:00"
+2021-09-28 18:32:27.373 +06:00 [INF] no file to delete
+2021-09-28 18:32:27.373 +06:00 [INF] Worker running at: "2021-09-28T18:32:27.3735073+06:00"
+2021-09-28 18:32:47.389 +06:00 [INF] no file to delete
+2021-09-28 18:32:47.389 +06:00 [INF] Worker running at: "2021-09-28T18:32:47.3894062+06:00"
+2021-09-28 18:33:07.394 +06:00 [INF] no file to delete
+2021-09-28 18:33:07.394 +06:00 [INF] Worker running at: "2021-09-28T18:33:07.3942204+06:00"
+2021-09-28 19:25:12.917 +06:00 [INF] Application Starting up
+2021-09-28 19:25:14.537 +06:00 [INF] no file to delete
+2021-09-28 19:25:14.538 +06:00 [INF] Worker running at: "2021-09-28T19:25:14.5380909+06:00"
+2021-09-28 19:25:34.556 +06:00 [INF] no file to delete
+2021-09-28 19:25:34.556 +06:00 [INF] Worker running at: "2021-09-28T19:25:34.5564412+06:00"
+2021-09-28 19:25:54.571 +06:00 [INF] no file to delete
+2021-09-28 19:25:54.571 +06:00 [INF] Worker running at: "2021-09-28T19:25:54.5715628+06:00"
+2021-09-28 19:26:14.583 +06:00 [INF] no file to delete
+2021-09-28 19:26:14.583 +06:00 [INF] Worker running at: "2021-09-28T19:26:14.5834500+06:00"
+2021-09-28 19:26:34.584 +06:00 [INF] no file to delete
+2021-09-28 19:26:34.584 +06:00 [INF] Worker running at: "2021-09-28T19:26:34.5848775+06:00"
+2021-09-28 19:26:54.596 +06:00 [INF] no file to delete
+2021-09-28 19:26:54.596 +06:00 [INF] Worker running at: "2021-09-28T19:26:54.5965400+06:00"
+2021-09-28 19:27:14.611 +06:00 [INF] no file to delete
+2021-09-28 19:27:14.611 +06:00 [INF] Worker running at: "2021-09-28T19:27:14.6119186+06:00"
+2021-09-28 19:27:34.621 +06:00 [INF] no file to delete
+2021-09-28 19:27:34.621 +06:00 [INF] Worker running at: "2021-09-28T19:27:34.6214401+06:00"
+2021-09-28 19:27:54.833 +06:00 [INF] Deleted 
+2021-09-28 19:27:54.833 +06:00 [INF] Worker running at: "2021-09-28T19:27:54.8339767+06:00"
+2021-09-28 19:28:14.840 +06:00 [INF] no file to delete
+2021-09-28 19:28:14.842 +06:00 [INF] Worker running at: "2021-09-28T19:28:14.8420649+06:00"
+2021-09-28 19:28:34.844 +06:00 [INF] no file to delete
+2021-09-28 19:28:34.844 +06:00 [INF] Worker running at: "2021-09-28T19:28:34.8446673+06:00"
+2021-09-28 19:29:25.253 +06:00 [INF] Application Starting up
+2021-09-28 19:29:26.764 +06:00 [INF] no file to delete
+2021-09-28 19:29:26.765 +06:00 [INF] Worker running at: "2021-09-28T19:29:26.7651877+06:00"
+2021-09-28 19:29:46.788 +06:00 [INF] no file to delete
+2021-09-28 19:29:46.788 +06:00 [INF] Worker running at: "2021-09-28T19:29:46.7883267+06:00"
+2021-09-28 19:37:27.802 +06:00 [INF] Application Starting up
+2021-09-28 19:37:29.315 +06:00 [INF] no file to delete
+2021-09-28 19:37:29.317 +06:00 [INF] Worker running at: "2021-09-28T19:37:29.3172331+06:00"
+2021-09-28 19:37:49.333 +06:00 [INF] no file to delete
+2021-09-28 19:37:49.333 +06:00 [INF] Worker running at: "2021-09-28T19:37:49.3336973+06:00"
+2021-09-28 19:38:09.350 +06:00 [INF] no file to delete
+2021-09-28 19:38:09.350 +06:00 [INF] Worker running at: "2021-09-28T19:38:09.3507105+06:00"
+2021-09-28 19:38:29.367 +06:00 [INF] no file to delete
+2021-09-28 19:38:29.367 +06:00 [INF] Worker running at: "2021-09-28T19:38:29.3672838+06:00"
+2021-09-28 19:38:49.677 +06:00 [INF] Deleted 
+2021-09-28 19:38:49.677 +06:00 [INF] Worker running at: "2021-09-28T19:38:49.6775513+06:00"
+2021-09-28 19:39:09.728 +06:00 [INF] Deleted 
+2021-09-28 19:39:09.728 +06:00 [INF] Worker running at: "2021-09-28T19:39:09.7288184+06:00"
+2021-09-28 19:39:29.799 +06:00 [INF] Deleted 
+2021-09-28 19:39:29.799 +06:00 [INF] Worker running at: "2021-09-28T19:39:29.7992197+06:00"
+2021-09-28 19:39:49.930 +06:00 [INF] Deleted 
+2021-09-28 19:39:49.930 +06:00 [INF] Worker running at: "2021-09-28T19:39:49.9306963+06:00"
+2021-09-28 19:40:09.935 +06:00 [INF] no file to delete
+2021-09-28 19:40:09.935 +06:00 [INF] Worker running at: "2021-09-28T19:40:09.9359710+06:00"
+2021-09-28 19:40:29.953 +06:00 [INF] no file to delete
+2021-09-28 19:40:29.953 +06:00 [INF] Worker running at: "2021-09-28T19:40:29.9535347+06:00"
+2021-09-28 19:40:49.960 +06:00 [INF] no file to delete
+2021-09-28 19:40:49.961 +06:00 [INF] Worker running at: "2021-09-28T19:40:49.9609811+06:00"
+2021-09-28 19:41:10.002 +06:00 [INF] no file to delete
+2021-09-28 19:41:10.002 +06:00 [INF] Worker running at: "2021-09-28T19:41:10.0021574+06:00"
+2021-09-28 19:41:30.020 +06:00 [INF] no file to delete
+2021-09-28 19:41:30.020 +06:00 [INF] Worker running at: "2021-09-28T19:41:30.0208363+06:00"
+2021-09-28 19:41:50.035 +06:00 [INF] no file to delete
+2021-09-28 19:41:50.035 +06:00 [INF] Worker running at: "2021-09-28T19:41:50.0355152+06:00"
+2021-09-28 19:54:26.167 +06:00 [INF] Application Starting up
+2021-09-28 19:54:27.800 +06:00 [INF] no file to delete
+2021-09-28 19:54:27.801 +06:00 [INF] Worker running at: "2021-09-28T19:54:27.8012437+06:00"
+2021-09-28 19:54:47.818 +06:00 [INF] no file to delete
+2021-09-28 19:54:47.818 +06:00 [INF] Worker running at: "2021-09-28T19:54:47.8181029+06:00"
+2021-09-28 19:55:07.850 +06:00 [INF] no file to delete
+2021-09-28 19:55:07.850 +06:00 [INF] Worker running at: "2021-09-28T19:55:07.8508538+06:00"
+2021-09-28 19:55:27.856 +06:00 [INF] no file to delete
+2021-09-28 19:55:27.858 +06:00 [INF] Worker running at: "2021-09-28T19:55:27.8582234+06:00"
+2021-09-28 19:55:48.136 +06:00 [INF] Deleted 
+2021-09-28 19:55:48.136 +06:00 [INF] Worker running at: "2021-09-28T19:55:48.1364966+06:00"
+2021-09-28 19:56:08.149 +06:00 [INF] no file to delete
+2021-09-28 19:56:08.149 +06:00 [INF] Worker running at: "2021-09-28T19:56:08.1495702+06:00"
+2021-09-28 19:56:28.161 +06:00 [INF] no file to delete
+2021-09-28 19:56:28.161 +06:00 [INF] Worker running at: "2021-09-28T19:56:28.1614475+06:00"
+2021-09-28 19:56:48.174 +06:00 [INF] no file to delete
+2021-09-28 19:56:48.174 +06:00 [INF] Worker running at: "2021-09-28T19:56:48.1747534+06:00"
+2021-09-28 19:57:08.217 +06:00 [INF] no file to delete
+2021-09-28 19:57:08.217 +06:00 [INF] Worker running at: "2021-09-28T19:57:08.2174779+06:00"
+2021-09-28 20:03:57.921 +06:00 [INF] Application Starting up
+2021-09-28 20:03:59.554 +06:00 [INF] no file to delete
+2021-09-28 20:03:59.555 +06:00 [INF] Worker running at: "2021-09-28T20:03:59.5550292+06:00"
+2021-09-28 20:04:19.576 +06:00 [INF] no file to delete
+2021-09-28 20:04:19.576 +06:00 [INF] Worker running at: "2021-09-28T20:04:19.5766555+06:00"
+2021-09-28 20:04:39.581 +06:00 [INF] no file to delete
+2021-09-28 20:04:39.581 +06:00 [INF] Worker running at: "2021-09-28T20:04:39.5817838+06:00"
+2021-09-28 20:04:59.596 +06:00 [INF] no file to delete
+2021-09-28 20:04:59.596 +06:00 [INF] Worker running at: "2021-09-28T20:04:59.5963046+06:00"
+2021-09-28 20:22:38.882 +06:00 [INF] Application Starting up
+2021-09-28 20:22:40.343 +06:00 [INF] no file to delete
+2021-09-28 20:22:40.345 +06:00 [INF] Worker running at: "2021-09-28T20:22:40.3445897+06:00"
+2021-09-28 20:23:00.370 +06:00 [INF] no file to delete
+2021-09-28 20:23:00.371 +06:00 [INF] Worker running at: "2021-09-28T20:23:00.3710026+06:00"
+2021-09-28 20:23:20.412 +06:00 [INF] no file to delete
+2021-09-28 20:23:20.412 +06:00 [INF] Worker running at: "2021-09-28T20:23:20.4122513+06:00"
+2021-09-28 20:23:40.688 +06:00 [INF] Deleted 
+2021-09-28 20:23:40.688 +06:00 [INF] Worker running at: "2021-09-28T20:23:40.6885228+06:00"
+2021-09-28 20:24:00.695 +06:00 [INF] no file to delete
+2021-09-28 20:24:00.695 +06:00 [INF] Worker running at: "2021-09-28T20:24:00.6956062+06:00"
+2021-09-28 20:24:20.699 +06:00 [INF] no file to delete
+2021-09-28 20:24:20.699 +06:00 [INF] Worker running at: "2021-09-28T20:24:20.6998960+06:00"
+2021-09-28 20:24:40.715 +06:00 [INF] no file to delete
+2021-09-28 20:24:40.715 +06:00 [INF] Worker running at: "2021-09-28T20:24:40.7157451+06:00"

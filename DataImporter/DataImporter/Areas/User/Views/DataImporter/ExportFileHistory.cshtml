@@ -38,7 +38,7 @@
         });
     </script>
 }
-<!-- Content Header (Page header) -->
+
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -46,7 +46,7 @@
                 <h1>Exports File History</h1>
             </div>
         </div>
-    </div><!-- /.container-fluid -->
+    </div>
     <form method="get" asp-controller="DataImporter" asp-action="Importdate" asp-antiforgery="true">
 
 
@@ -82,7 +82,7 @@
         </div>
     </form>
 </section>
-<!-- Main content -->
+
 <section class="content">
     <div class="container-fluid">
         <div class="row">
@@ -91,13 +91,13 @@
                     <div class="card-header" style="color: black;background-color: #9c94d6">
                         <h3 class="card-title">List</h3>
                     </div>
-                    <!-- /.card-header -->
+
                     <div class="card-body">
                         <table id="History" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>Group Name</th>
-                                    <th>Email Status</th>
+                                    <th>Email </th>
                                     <th>Download </th>
                                     <th>Exports Date</th>
                                 </tr>
@@ -106,14 +106,9 @@
 
                         <partial name="_deletePartial" />
                     </div>
-                    <!-- /.card-body -->
-                </div>
 
+                </div>
             </div>
-            <!-- /.row -->
         </div>
     </div>
-    <!-- /.container-fluid -->
 </section>
-<!-- /.content -->
-<!-- /.content-wrapper -->
