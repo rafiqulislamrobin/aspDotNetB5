@@ -13,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DataImporter.Info.Context;
 using Microsoft.EntityFrameworkCore;
+using DataImporter.Common;
 
 namespace DataImporter.ImportWorker
 {
@@ -68,6 +69,7 @@ namespace DataImporter.ImportWorker
                         (_connectionString, _migrationAssemblyName));
                     builder.RegisterModule(new WorkerModule
                         (_connectionString, _migrationAssemblyName,_configuration ));
+                    builder.RegisterModule(new CommonModule());
 
                 })
                 .ConfigureServices((hostContext, services) =>
@@ -84,8 +86,6 @@ namespace DataImporter.ImportWorker
 
                     //services.AddTransient<IStockService, StockService>();
                     //services.AddTransient<StockModel>();
-
-
 
                 });
 

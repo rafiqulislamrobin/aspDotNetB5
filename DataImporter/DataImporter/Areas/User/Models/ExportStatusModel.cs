@@ -39,7 +39,7 @@ namespace DataImporter.Areas.User.Models
         }
         internal void MakeStatus(int groupId , string email)
         {
-            var exportHistory = _exportServices.GetExportHistory(groupId);
+
             
                     ExportStatus exportStatus = new();
                     exportStatus.Email = email;                  

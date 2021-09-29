@@ -14,11 +14,11 @@ namespace DataImporter.Info.Services
     public class DataImporterService : IDataImporterService
     {
         private readonly IDataUnitOfWork _dataUnitOfWork;
-    
-        public DataImporterService(IDataUnitOfWork dataUnitOfWork)
+        private readonly IDatetimeUtility _DatetimeUtility;
+        public DataImporterService(IDataUnitOfWork dataUnitOfWork , IDatetimeUtility DatetimeUtility)
         {
             _dataUnitOfWork = dataUnitOfWork;
-         
+            _DatetimeUtility = DatetimeUtility;
         }
 
         public (List<string>, List<List<string>>) ContactList(int groupId)
@@ -261,10 +261,9 @@ namespace DataImporter.Info.Services
                                         Key = v.Key,
                                         Value = v.Value,
                                         GroupId = GroupId,
-                                        ContactDate = DateTime.Now
+                                        ContactDate = _DatetimeUtility.Now
                                     });
-
-                                    _dataUnitOfWork.Save();
+                                      _dataUnitOfWork.Save();
 
                                 }
                             }
@@ -298,18 +297,18 @@ namespace DataImporter.Info.Services
 
 
             _dataUnitOfWork.FilePath.Add(
-        new Entities.FilePath
-        {
-            FileName = filepath.FileName,
-            FilePathName = filepath.FilePathName,
-            DateTime = filepath.DateTime,
-            GroupId = filepath.GroupId,
-            GroupName = filepath.GroupName,
-            FileStatus = filepath.FileStatus
+                new Entities.FilePath
+                {
+                    FileName = filepath.FileName,
+                    FilePathName = filepath.FilePathName,
+                    DateTime = filepath.DateTime,
+                    GroupId = filepath.GroupId,
+                    GroupName = filepath.GroupName,
+                    FileStatus = filepath.FileStatus
 
 
 
-        });
+                });
             _dataUnitOfWork.Save();
         }
 

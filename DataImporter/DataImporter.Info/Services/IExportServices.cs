@@ -11,7 +11,7 @@ namespace DataImporter.Info.Services
     {
         (IList<ExportStatus> records, int total, int totalDisplay) GetExportHistory(int pageIndex, int pageSize,
                          string searchText, string sortText, Guid id, DateTime DateTo, DateTime DateFrom);
-        ExportStatus GetExportHistory(int groupId);
+
         void GetExportStatus(ExportStatus exportStatus);
         (int, DateTime) GetExportHistoryForDownload(int id);
         void SaveExportHistory(ExportStatus exportStatus);

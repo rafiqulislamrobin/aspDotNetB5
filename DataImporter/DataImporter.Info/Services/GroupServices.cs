@@ -47,16 +47,20 @@ namespace DataImporter.Info.Services
 
         public List<Group> LoadAllGroups(Guid id)
         {
+            if (id == Guid.Empty)
+            {
+                return null;
+            }
             var groupEntities = _dataUnitOfWork.Group.GetAll().Where(g => g.ApplicationUserId == id);
-            var groups = new List<Group>();
-            var result = (from g in groupEntities
 
+            var result = (from g in groupEntities
                           select new Group
                           {
                               Id = g.Id,
                               Name = g.Name
                           }).ToList();
             return result;
+
         }
 
         public Group LoadGroup(int id)
@@ -74,9 +78,10 @@ namespace DataImporter.Info.Services
         }
         public void UpdateGroup(Group group, Guid id)
         {
-            if (group == null)
+            if (group == null && id == Guid.Empty)
             {
-                throw new InvalidOperationException("Group is missing");
+                throw new InvalidParameterException("Group is missing");
+             
             }
             if (IsNameAlreadyUsed(group.Name, id))
             {
@@ -95,11 +100,12 @@ namespace DataImporter.Info.Services
         }
 
 
-        public (IList<Group> records, int total, int totalDisplay) GetGroupsList(int pageIndex, int pageSize, string searchText, Guid id, string sortText)
+        public (IList<Group> records, int total, int totalDisplay) GetGroupsList(int pageIndex, int pageSize,
+                                                        string searchText, Guid id, string sortText)
         {
             var groupData = _dataUnitOfWork.Group.GetDynamic(
-               string.IsNullOrWhiteSpace(searchText) ? x => x.ApplicationUserId == id : x => x.Name.Contains(searchText) && x.ApplicationUserId == id,
-               sortText, "ApplicationUser", pageIndex, pageSize);
+               string.IsNullOrWhiteSpace(searchText) ? x => x.ApplicationUserId == id : x => x.Name.Contains
+               (searchText) && x.ApplicationUserId == id, sortText, "ApplicationUser", pageIndex, pageSize);
 
 
             var resultData = (from groups in groupData.data
@@ -114,7 +120,7 @@ namespace DataImporter.Info.Services
             return (resultData, groupData.total, groupData.totalDisplay);
         }
         private bool IsNameAlreadyUsed(string name, Guid id) =>
-          _dataUnitOfWork.Group.GetCount(n => n.Name == name && n.ApplicationUserId == id) > 0;
+          _dataUnitOfWork.Group.GetCount(g => g.Name == name && g.ApplicationUserId == id) > 0;
 
     }
 }

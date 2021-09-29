@@ -1,4 +1,5 @@
 ﻿using DataImporter.Info.Business_Object;
+using DataImporter.Info.Exceptions;
 using DataImporter.Info.UnitOfWorks;
 using System;
 using System.Collections.Generic;
@@ -77,24 +78,6 @@ namespace DataImporter.Info.Services
         }
 
 
-        public ExportStatus GetExportHistory(int groupId)
-        {
-            var history = _dataUnitOfWork.ExportStatus.Get(g => g.Group.Id == groupId, "");
-
-
-            if (history.Count == 0)
-            {
-                return null;
-            }
-            return new ExportStatus
-            {
-                Id = history.First().Id,
-                Email = history.First().Email,
-                DateTime = history.First().DateTime,
-                GroupName = history.First().Group.Name
-            };
-
-        }
 
         public (int, DateTime) GetExportHistoryForDownload(int id)
         {
@@ -106,15 +89,22 @@ namespace DataImporter.Info.Services
 
         public void SaveExportHistory(ExportStatus exportStatus)
         {
-            _dataUnitOfWork.ExportStatus.Add(
-                 new Entities.ExportStatus
-                 {
-                     Id = exportStatus.Id,
-                     Email = exportStatus.Email,
-                     DateTime = exportStatus.DateTime,
-                     GroupId = exportStatus.GroupId
-                 });
-            _dataUnitOfWork.Save();
+            if (exportStatus!=null)
+            {
+                _dataUnitOfWork.ExportStatus.Add(
+                     new Entities.ExportStatus
+                     {
+                         Id = exportStatus.Id,
+                         Email = exportStatus.Email,
+                         DateTime = exportStatus.DateTime,
+                         GroupId = exportStatus.GroupId
+                     });
+                _dataUnitOfWork.Save();
+            }
+            else
+            {
+                throw new InvalidOperationException("export status is not available");
+            }
         }
     }
 }
