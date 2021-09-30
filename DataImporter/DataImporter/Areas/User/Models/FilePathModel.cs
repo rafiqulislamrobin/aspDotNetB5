@@ -20,7 +20,7 @@ namespace DataImporter.Areas.User.Models
         public string file { get; set; }
 
         //public DateTime DateTime { get; set; }
-      
+        public List<int> GroupIds { get; set; }
         public int GroupId { get; set; }
         public int GroupName { get; set; }
 

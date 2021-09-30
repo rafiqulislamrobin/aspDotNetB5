@@ -355,5 +355,47 @@ namespace DataImporter.Areas.User.Controllers
             var data = model.GetHistories(dataTableAjaxRequestModel);
             return Json(data);
         }
+        [HttpGet]
+        public IActionResult ExportFileMultiple()
+        {
+
+
+            var model = _scope.Resolve<ExportFileModel>();
+            var list = model.LoadAllGroups();
+            ViewBag.GroupList = new SelectList(list, "Id", "Name");
+
+            return View(model);
+
+        }
+        [HttpPost]
+        public IActionResult ExportFileMultiple(FilePathModel filePathmodel, ExportFileModel exportFileModel)
+        {
+            filePathmodel.Resolve(_scope);
+            var model = _scope.Resolve<ExportFileModel>();
+            //model.GetContactsList(filePathmodel.GroupId);
+
+            var list = model.LoadAllGroups();
+
+            ViewBag.GroupList = new SelectList(list, "Id", "Name");
+
+            TempData["GroupIds"] = filePathmodel.GroupIds;
+
+
+            return RedirectToAction("DownloadMultiple", filePathmodel);
+
+        }
+        public IActionResult DownloadMultiple(FilePathModel filePathmodel)
+        {
+
+            var model = _scope.Resolve<ExportFileModel>();
+            var contacts = model.GetExportMultipleFiles(filePathmodel.GroupIds);
+            
+            string fileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            string fileFormat = "User.xlsx";
+            contacts.Position = 0;
+            return File(contacts, fileType, fileFormat);
+
+        }
+
     }
 }

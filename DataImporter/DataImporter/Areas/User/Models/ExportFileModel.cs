@@ -20,6 +20,8 @@ namespace DataImporter.Areas.User.Models
         private  IGroupServices _groupServices;
         private  IExportServices _exportServices;
         private ILifetimeScope _scope;
+
+        public List<int> GroupIds { get; set; }
         public int GroupId { get; set; }
         public DateTime ExportDate{ get; set; }
         public List<string> Headers { get; set; }      
@@ -109,6 +111,57 @@ namespace DataImporter.Areas.User.Models
             return(stream);
         }
 
+
+        internal MemoryStream GetExportMultipleFiles(List<int> id)
+        {
+
+            //start exporting to excel
+            var stream = new MemoryStream();
+            using (var excelPackage = new ExcelPackage(stream))
+            {
+                foreach (var groupid in id)
+                {
+             
+               
+                    var contacts = _iDataImporterService.ContactList(groupid);
+                    Headers = new();
+                    Items = new();
+                    Headers = contacts.Item1;
+                    Items = contacts.Item2;
+                    GroupId = groupid;
+                    var worksheet = excelPackage.Workbook.Worksheets.Add($"{groupid}");
+
+                    for (int i = 1; i <= Headers.Count; i++)
+                    {
+                        var r = 1;
+                        worksheet.Cells[r, i].Value = Headers[i - 1];
+                        worksheet.Cells[r, i].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                        worksheet.Cells[r, i].Style.Fill.BackgroundColor.SetColor(Color.Yellow);
+
+                    }
+
+                    //filling information
+
+                    for (int row = 0; row < Items.Count; row++)
+                    {
+                        List<string> values = new();
+                        for (int col = 0; col < Headers.Count; col++)
+                        {
+                            worksheet.Cells[row + 2, col + 1].Value = Items[row][col];
+                        }
+                    }
+                    excelPackage.Workbook.Properties.Title = "User list";
+                    excelPackage.Workbook.Properties.Author = "Robin";
+                   
+                  
+                }
+                //define a worksheet
+
+                excelPackage.Save();
+            }
+          
+            return (stream);
+        }
 
 
         internal List<Group> LoadAllGroups()
