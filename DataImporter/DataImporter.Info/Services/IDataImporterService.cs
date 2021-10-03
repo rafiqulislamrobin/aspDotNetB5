@@ -16,8 +16,10 @@ namespace DataImporter.Info.Services
         string SaveExcelDatatoDb();
         List<ExportStatus> LoadAllExportHistory(Guid id);
         (List<string>, List<List<string>>) ContactList(int groupId);
+        (List<string>, List<List<string>>) ContactListByDate(int groupId, 
+            DateTime dateFrom, DateTime dateTo);
         List<FilePath> LoadAllImportHistory(Guid id);
 
-        (List<string>, List<List<string>>) ContactListByDate(int groupId, DateTime exportDate);
+        (List<string>, List<List<string>>) ContactListByExportDate(int groupId, DateTime exportDate);
     }
 }

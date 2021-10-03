@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -13,9 +14,13 @@ namespace DataImporter.Services
     {
         public  bool ReCaptchaPassed(string gRecaptchaResponse)
         {
+            var configBuilder = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json", true, true)
+            .Build();
+            var secretKey = configBuilder.GetValue<string>("Captcha:SecretKey");
             HttpClient httpClient = new HttpClient();
 
-            var res = httpClient.GetAsync($"https://www.google.com/recaptcha/api/siteverify?secret=6LfA81ocAAAAAKlIu0WyHUYkbRWRcB3P98oj6PL5&response={gRecaptchaResponse}").Result;
+            var res = httpClient.GetAsync($"https://www.google.com/recaptcha/api/siteverify?secret={secretKey}&response={gRecaptchaResponse}").Result;
 
             if (res.StatusCode != HttpStatusCode.OK)
             {

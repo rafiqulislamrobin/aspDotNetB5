@@ -1,3 +1,4 @@
+using AspNetCoreHero.ToastNotification;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using DataImporter.Common;
@@ -71,7 +72,7 @@ namespace DataImporter
                    options.UseSqlServer(connectionInfo.connectionString,
                   b => b.MigrationsAssembly(connectionInfo.migrationAssemblyName)));
 
-            services.AddTransient<IEmailService, EmailSender>();
+            //services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IRecaptchaService, RecaptchaService>();
 
 
@@ -111,8 +112,12 @@ namespace DataImporter
                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
                 options.User.RequireUniqueEmail = false;
             });
-
-
+            services.AddNotyf(Configuration =>
+            {
+                Configuration.DurationInSeconds = 10;
+                Configuration.Position = NotyfPosition.BottomRight;
+                Configuration.IsDismissable = true;
+            });
 
 
             services.ConfigureApplicationCookie(options =>

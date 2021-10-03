@@ -1,6 +1,6 @@
-﻿using Autofac;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Autofac;
 using DataImporter.Areas.User.Models;
-using DataImporter.Info.Business_Object;
 using DataImporter.Models;
 using ExcelDataReader;
 using Microsoft.AspNetCore.Authorization;
@@ -9,13 +9,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
-using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Threading.Tasks;
+
 
 namespace DataImporter.Areas.User.Controllers
 {
@@ -24,12 +21,15 @@ namespace DataImporter.Areas.User.Controllers
     {
         private readonly ILogger<DataImporterController> _logger;
         private readonly ILifetimeScope _scope;
-        public IWebHostEnvironment _WebHostEnvironment;
+        private IWebHostEnvironment _WebHostEnvironment;
+        private INotyfService _notyfService;
         public int temp { get; set; }
-        public DataImporterController(ILogger<DataImporterController> logger , ILifetimeScope scope)
+        public DataImporterController(ILogger<DataImporterController> logger , ILifetimeScope scope,
+            INotyfService notyfService)
         {
             _logger = logger;
             _scope = scope;
+            _notyfService = notyfService;
         }
        
         public IActionResult Index()
@@ -66,13 +66,14 @@ namespace DataImporter.Areas.User.Controllers
                 {
                     model.Resolve(_scope);
                     model.CreateGroup();
+                    _notyfService.Custom("Group Create Successfully.", 4, "#0e9e37", "fas fa-check");
                 }
                 catch (Exception ex)
                 {
                     //ModelState.AddModelError("", "Failed to Create Group");
                     if (ex.Message == "Group name is already used")
                     {
-                        ViewBag.DuplicationMessage = "Group name already used , try another name";
+                        _notyfService.Custom("Group name is already used.", 4, "#c92f04", "fas fa-times");
                     }
                     _logger.LogError(ex, "Add Group Failed");
                 }
@@ -97,13 +98,14 @@ namespace DataImporter.Areas.User.Controllers
                 {
                     model.Resolve(_scope);
                     model.Update();
+                    _notyfService.Custom("Group edited Successfully.", 4, "#0e9e37", "fas fa-check");
                 }
                 catch (Exception ex)
                 {
                     //ModelState.AddModelError("", "Failed to Create Group");
                     if (ex.Message == "Group name is already used")
                     {
-                        ViewBag.DuplicationMessage = "Group name already used , try another name";
+                        _notyfService.Custom(ex.Message, 4, "#c92f04", "fas fa-times");
                     }
                     _logger.LogError(ex, "Upload Group Failed");
                     return View(model);
@@ -115,6 +117,7 @@ namespace DataImporter.Areas.User.Controllers
         {
             var model = _scope.Resolve <CreateGroupModel>();
             model.DeleteGroup(id);
+            _notyfService.Custom("Group Deleted Successfully.", 4, "#0e9e37", "fas fa-check");
             return RedirectToAction(nameof(ViewGroups));
         }
 
@@ -158,13 +161,36 @@ namespace DataImporter.Areas.User.Controllers
             var file = filemodels.file;
             var filepath = $"{Directory.GetCurrentDirectory()}{@"\wwwroot\ExcelFiles"}" + "\\" + file;
 
-           var z = model.ConfirmFileUpload(filepath);
+            var fileStatus = filemodels.GetGroupStatusById(filemodels.GroupId);
+
+            var list = filemodels.LoadAllGroups();
+
+                if (fileStatus.Item1 == "incomplete")
+                {
+                    if (fileStatus.Item2 == file)
+                    {
+                        ViewBag.FileProcess = "A file is processing in this group , please wait  ";
+                        ViewBag.GroupList = new SelectList(list, "Id", "Name");
+                        return View(nameof(ImportFile));
+                    }
+                    else
+                    {
+                        ViewBag.FileProcess = "A file is processing in this group , please wait  ";
+                        System.IO.File.Delete(filepath);
+                        ViewBag.GroupList = new SelectList(list, "Id", "Name");
+                        return View(nameof(ImportFile));
+                    }
+
+                }
+
+
+
+            var z = model.ConfirmFileUpload(filepath);
             if (z.Item2==null)
             {
                 ViewBag.HeaderMissMatch = "FIles Columns dosent match to this group." +
                                           " Please select another group or create a group";
                 System.IO.File.Delete(filepath);
-                var list = filemodels.LoadAllGroups();
                 ViewBag.GroupList = new SelectList(list, "Id", "Name");
                 return View(nameof(ImportFile));
             }
@@ -224,15 +250,16 @@ namespace DataImporter.Areas.User.Controllers
             return View(model);
         }
         [HttpPost]
-        public IActionResult ViewContacts(FilePathModel filePathmodel)
+        public IActionResult ViewContacts(ExportFileModel exportFileModel)
         {
-            filePathmodel.Resolve(_scope);
+ 
             var model = _scope.Resolve<ExportFileModel>();
-            model.GetContactsList(filePathmodel.GroupId);
+            model.GetContactsList(exportFileModel.GroupId, exportFileModel.DateFrom,exportFileModel.DateTo);
 
             var list = model.LoadAllGroups();
             if (model.Headers.Count == 0)
             {
+                _notyfService.Error("No Contact Available", 10);
                 ViewBag.ContactListNullMassage = "(No Contact Available)";
                 ViewBag.GroupList = new SelectList(list, "Id", "Name");
             }
@@ -240,14 +267,14 @@ namespace DataImporter.Areas.User.Controllers
             {
                 ViewBag.GroupList = new SelectList(list, "Id", "Name");
             }
+            //no need
+            //List<string> headers = new();
+            //foreach (var item in model.Headers)
+            //{
+            //    headers.Add(item);
+            //}
 
-            List<string> headers = new();
-            foreach (var item in model.Headers)
-            {
-                headers.Add(item);
-            }
-
-            TempData["id"] = filePathmodel.GroupId;
+            TempData["id"] = exportFileModel.GroupId;
 
             return View(model);
         }
@@ -273,6 +300,7 @@ namespace DataImporter.Areas.User.Controllers
             var list = model.LoadAllGroups();
             if (model.Headers.Count == 0)
             {
+                _notyfService.Error("No Contact Available", 4);
                 ViewBag.ContactListNullMassage = "(No Contact Available)";
                 ViewBag.GroupList = new SelectList(list, "Id", "Name");
             }
@@ -328,14 +356,12 @@ namespace DataImporter.Areas.User.Controllers
             var groupId = emailSenderModel.GroupId;
             var email = (emailSenderModel.Email);
 
-
             emailSenderModel.GetData(groupId);
             emailSenderModel.SendEmail(email);
 
-
-
             var model = _scope.Resolve<ExportStatusModel>();
             model.MakeStatus(groupId, email);
+            _notyfService.Custom("Email sent", 4, "#0e9e37", "fas fa-check");
             return RedirectToAction(nameof(ExportFileHistory));
         }
 
@@ -359,7 +385,6 @@ namespace DataImporter.Areas.User.Controllers
         public IActionResult ExportFileMultiple()
         {
 
-
             var model = _scope.Resolve<ExportFileModel>();
             var list = model.LoadAllGroups();
             ViewBag.GroupList = new SelectList(list, "Id", "Name");
@@ -368,7 +393,7 @@ namespace DataImporter.Areas.User.Controllers
 
         }
         [HttpPost]
-        public IActionResult ExportFileMultiple(FilePathModel filePathmodel, ExportFileModel exportFileModel)
+        public IActionResult ExportFileMultiple(FilePathModel filePathmodel)
         {
             filePathmodel.Resolve(_scope);
             var model = _scope.Resolve<ExportFileModel>();
@@ -379,8 +404,6 @@ namespace DataImporter.Areas.User.Controllers
             ViewBag.GroupList = new SelectList(list, "Id", "Name");
 
             TempData["GroupIds"] = filePathmodel.GroupIds;
-
-
             return RedirectToAction("DownloadMultiple", filePathmodel);
 
         }

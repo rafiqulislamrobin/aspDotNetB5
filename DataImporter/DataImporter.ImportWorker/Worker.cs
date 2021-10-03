@@ -30,7 +30,7 @@ namespace DataImporter.ImportWorker
                var message = _iDataImporterService.SaveExcelDatatoDb();
                 _logger.LogInformation(message);
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-                await Task.Delay(20000, stoppingToken);
+                await Task.Delay(30000, stoppingToken);
             }
 
         }

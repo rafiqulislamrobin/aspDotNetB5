@@ -22,7 +22,7 @@
             $('#Contact').DataTable({
                 "paging": true,
                 "lengthChange": false,
-                "searching": false,
+                "searching": true,
                 "ordering": true,
                 "autoWidth": false,
                 "responsive": true
@@ -36,38 +36,58 @@
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <form method="post" enctype="multipart/form-data" asp-controller="DataImporter" asp-action="ViewContacts">
 
-
-
-        <div asp-validation-summary="All" class="container-fluid">
-            <div class="card-header" style="color: black;">
-                <h3 class="card-title">Group Contacts</h3>
-            </div>
-            <!-- /.card-header -->
-            <!-- form start -->
-
-            <div class="card-body" type="select" style="color: black;">
-                <label for="select group" id="groupid">Choice group:  </label>
-                @Html.DropDownListFor(m => m.GroupId, ViewBag.GroupList as SelectList, "--Select A Group--", new { required = "required", id = "selectTwo" })
-
-
-            </div>
-            <!-- /.card-body -->
-            <input type="hidden" asp-for="GroupId" value="@Model.GroupId " id="groupid" />
-            <div class="card-footer">
-                <button type="submit" class="btn btn-primary"
-                        style="color: black;background-color: #9c94d6;border-color:#9c94d6">
-                    search
-                </button>
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h3 style="color:black;">Contacts</h3>
             </div>
 
         </div>
+    </div><!-- /.container-fluid -->
+    <form method="post" enctype="multipart/form-data" asp-controller="DataImporter" asp-action="ViewContacts" asp-antiforgery="true">
 
+
+        <div class="card w-75" style="background-image: -webkit-linear-gradient(-135deg, #abbaab,#ffffff); margin-bottom: 0">
+            <div class="card-body">
+                <div style="display: flex;justify-content:center;">
+                    <div class="mt-4" style="display: flex; ">
+
+                        <div class="form-group" style="color:black">
+                            <label asp-for="DateFrom" style="margin-left:-20px">Date From </label>
+                            <input asp-for="DateFrom" class="form-control" id="datefrom"
+                                   type="date" style="margin-left:-20px" />
+                        </div>
+                        <div class="form-group" style="color:black">
+                            <label asp-for="DateTo" style="margin-left:-10px">Date To</label>
+                            <input asp-for="DateTo" class="form-control" id="dateTo"
+                                   type="date" style="margin-left:-10px" />
+                        </div>
+
+                        <div class="card-body" type="select" style="color: black;margin-top:18px">
+                            <label for="select group" id="groupid">Choice group:  </label>
+                            @Html.DropDownListFor(m => m.GroupId, ViewBag.GroupList as SelectList, "--Select A Group--", new { required = "required", id = "selectTwo" })
+
+
+                        </div>
+                        <input type="hidden" asp-for="GroupId" value="@Model.GroupId " id="groupid" />
+                        <div style="margin-top: 30px">
+
+                            <button type="submit" class="btn btn-primary"
+                                    style="color: black;background-color: white;border-color:white; ">
+                                search
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </form>
 
+    <br>
     <!-- Main content -->
-    <h1 style="text-align:center; color:black">@ViewBag.ContactListNullMassage</h1>
+
     @if (ViewBag.ContactListNullMassage == null)
     {
         @if (Model.GroupId != 0)

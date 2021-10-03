@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using ClosedXML.Excel;
 using DataImporter.Info.Services;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using OfficeOpenXml;
 using System;
@@ -27,6 +28,7 @@ namespace DataImporter.Areas.User.Models
         private IDataImporterService _iDataImporterService;
         private ILogger<EmailSenderModel> _logger;
         private ILifetimeScope _scope;
+        private IConfiguration configBuilder;
         public EmailSenderModel()
         {
         }
@@ -36,22 +38,29 @@ namespace DataImporter.Areas.User.Models
             _scope = scope;
             _iDataImporterService = _scope.Resolve<IDataImporterService>();
             _logger = _scope.Resolve<ILogger<EmailSenderModel>>();
+            configBuilder = _scope.Resolve<IConfiguration>();
         }
-        public EmailSenderModel(IDataImporterService iDataImporterService, ILogger<EmailSenderModel> logger)
+        public EmailSenderModel(IDataImporterService iDataImporterService, ILogger<EmailSenderModel> logger
+            , IConfiguration ConfigBuilder)
         {
             _iDataImporterService = iDataImporterService;
             _logger = logger;
+            configBuilder = ConfigBuilder;
         }
 
 
         public void SendEmail(string Email)
         {
+           // var configBuilder = new ConfigurationBuilder()
+           //.AddJsonFile("appsettings.json", true, true)
+           //.Build();
+
             string filepath = ($"{Directory.GetCurrentDirectory()}{@"\wwwroot\ExcelFiles"}" + "\\" + "User.xlsx");
             MailMessage mail = new MailMessage();
             try
             {
-                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-                mail.From = new MailAddress("kratosrobin467@gmail.com");
+                SmtpClient SmtpServer = new SmtpClient(configBuilder.GetValue<string>("Smtp:Host"));
+                mail.From = new MailAddress(configBuilder.GetValue<string>("Email:Form"));
                 mail.To.Add(Email); // Sending MailTo  
   
                 mail.Subject = "Exported User Excel File";
@@ -59,11 +68,11 @@ namespace DataImporter.Areas.User.Models
                 System.Net.Mail.Attachment attachment;
                 attachment = new Attachment(filepath); //Attaching File to Mail  
                 mail.Attachments.Add(attachment);
-                SmtpServer.Port = Convert.ToInt32("587"); //PORT  
-                SmtpServer.EnableSsl = true;
+                SmtpServer.Port = Convert.ToInt32(configBuilder.GetValue<string>("Smtp:Port")); //PORT  
+                SmtpServer.EnableSsl =Convert.ToBoolean( configBuilder.GetValue<string>("Email:EnableSsl"));
                 SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
                 SmtpServer.UseDefaultCredentials = false;
-                SmtpServer.Credentials = new NetworkCredential("kratosrobin467@gmail.com", "letthewarbegin946");
+                SmtpServer.Credentials = new NetworkCredential(configBuilder.GetValue<string>("Email:Form"), configBuilder.GetValue<string>("Email:Password"));
                 SmtpServer.Send(mail);
 
                 if (mail.Attachments != null)

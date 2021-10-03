@@ -81,5 +81,24 @@ namespace DataImporter.Areas.User.Models
         {
             File.Delete($"{Directory.GetCurrentDirectory()}{@"\wwwroot\ExcelFiles"}" + "\\" + fileName);
         }
+
+        internal (string,string) GetGroupStatusById(int groupId)
+        {
+            var id = Guid.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var fileStatus = _iDataImporterService.LoadAllImportHistory(id);
+            foreach (var item in fileStatus)
+            {
+                if (groupId==item.GroupId)
+                {
+                    if (item.FileStatus != "Completed" && item.FileStatus != null)
+                    {
+                        return ("incomplete", item.FileName);
+                    }
+                }
+            }
+            
+            return ("Completed","");
+            
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using DataImporter.Areas.User.Models;
 using DataImporter.Models.AccountModel;
+using DataImporter.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,8 @@ namespace DataImporter
 
             builder.RegisterType<LoginModel>().AsSelf();
             builder.RegisterType<RegisterModel>().AsSelf();
+            builder.RegisterType<EmailService>().As<IEmailService>()
+             .InstancePerLifetimeScope();
             base.Load(builder);
         }
     }

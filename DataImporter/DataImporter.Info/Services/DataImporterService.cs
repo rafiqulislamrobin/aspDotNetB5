@@ -57,7 +57,7 @@ namespace DataImporter.Info.Services
 
             return (headers, itemsRow);
         }
-        public (List<string>, List<List<string>>) ContactListByDate(int groupId, DateTime dateTime)
+        public (List<string>, List<List<string>>) ContactListByExportDate(int groupId, DateTime dateTime)
         {
             //var group = _dataUnitOfWork.Group.GetById(groupId);
 
@@ -96,8 +96,76 @@ namespace DataImporter.Info.Services
 
 
 
-  
-      
+        public (List<string>, List<List<string>>) ContactListByDate(int groupId,
+                DateTime DateFrom, DateTime DateTo)
+        {
+
+            List<string> headers = new();
+            List<string> items = new();
+            List<List<string>> itemsRow = new();
+
+            if (DateTo != DateTime.MinValue && DateFrom != DateTime.MinValue)
+            {
+                var contactEntities = _dataUnitOfWork.Contact.GetAll().Where(x => x.GroupId == groupId );
+                var contactsByDate = from contacts in contactEntities
+                                     where contacts.ContactDate <= DateTo && contacts.ContactDate >= DateFrom
+                                     select contacts;
+                var h = 0;
+                foreach (var contactRow in contactsByDate)
+                {
+                    if (headers.Contains(contactRow.Key))
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        headers.Add(contactRow.Key);
+                    }
+                }
+                foreach (var contactRow in contactsByDate)
+                {
+                    items.Add(contactRow.Value);
+                    h++;
+                    if (h == headers.Count)
+                    {
+                        itemsRow.Add(items);
+                        items = new List<string>();
+                        h = 0;
+                    }
+                }
+            }
+            else
+            {
+                var contactEntities = _dataUnitOfWork.Contact.GetAll().Where(x => x.GroupId == groupId );
+                var h = 0;
+                foreach (var contactRow in contactEntities)
+                {
+                    if (headers.Contains(contactRow.Key))
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        headers.Add(contactRow.Key);
+                    }
+                }
+                foreach (var contactRow in contactEntities)
+                {
+                    items.Add(contactRow.Value);
+                    h++;
+                    if (h == headers.Count)
+                    {
+                        itemsRow.Add(items);
+                        items = new List<string>();
+                        h = 0;
+                    }
+                }
+            }
+
+            return (headers, itemsRow);
+        }
+
+
 
 
 
@@ -167,17 +235,19 @@ namespace DataImporter.Info.Services
       
         public List<FilePath> LoadAllImportHistory(Guid id)
         {
-            var ExportStatusEntities = _dataUnitOfWork.FilePath.GetAll().Where(g => g.Group.ApplicationUserId == id);
+            var ExportStatusEntities = _dataUnitOfWork.FilePath.Get(x=>x.Group.ApplicationUserId==id,"Group");
 
             var result = (from e in ExportStatusEntities
-
+                          where e.Group.ApplicationUserId ==id
                           select new FilePath
                           {
                               Id = e.Id,
                               FilePathName = e.FilePathName,
                               GroupName = e.GroupName,
                               DateTime = e.DateTime,
-                              FileStatus =e.FileStatus
+                              FileStatus =e.FileStatus,
+                              FileName =e.FileName,
+                              GroupId =e.GroupId
 
                           }).ToList();
             return result;

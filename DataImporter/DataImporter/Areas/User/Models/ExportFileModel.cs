@@ -24,6 +24,8 @@ namespace DataImporter.Areas.User.Models
         public List<int> GroupIds { get; set; }
         public int GroupId { get; set; }
         public DateTime ExportDate{ get; set; }
+        public DateTime DateFrom { get; set; }
+        public DateTime DateTo { get; set; }
         public List<string> Headers { get; set; }      
         public List<List<string>> Items { get; set; }
 
@@ -55,18 +57,28 @@ namespace DataImporter.Areas.User.Models
         {
             if (groupId>0)
             {
-                var contacts = _iDataImporterService.ContactList(groupId);
+                var contacts = _iDataImporterService.ContactListByDate(groupId, DateFrom, DateTo);
+                Headers = contacts.Item1;
+                Items = contacts.Item2;
+                GroupId = groupId;
+            }
+         
+        }
+        internal void GetContactsList(int groupId , DateTime datefrom ,DateTime dateto)
+        {
+            if (groupId > 0)
+            {
+                var contacts = _iDataImporterService.ContactListByDate(groupId, datefrom, dateto);
                 Headers = contacts.Item1;
                 Items = contacts.Item2;
                 GroupId = groupId;
             }
 
-         
         }
         internal void GetContactsListByDate(int groupId)
         {
           
-                var contacts = _iDataImporterService.ContactListByDate(groupId , ExportDate);
+                var contacts = _iDataImporterService.ContactListByExportDate(groupId , ExportDate);
                 Headers = contacts.Item1;
                 Items = contacts.Item2;
                 GroupId = groupId;
