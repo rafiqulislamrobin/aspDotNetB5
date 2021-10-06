@@ -58,10 +58,7 @@ namespace DataImporter.Areas.User.Models
                 var dataSet = reader.AsDataSet(conf);
 
 
-
-                // Now you can get data from each sheet by its index or its "name"
                 var dataTable = dataSet.Tables[0];
-
 
                 for (var i = 0; i < 1; i++)
                 {
@@ -85,7 +82,7 @@ namespace DataImporter.Areas.User.Models
                         }
                         else
                         {
-                            contacts.Properties.Add(headers[j], "(no value)");
+                            contacts.Properties.Add(headers[j], "");
                         }
                        
                     }

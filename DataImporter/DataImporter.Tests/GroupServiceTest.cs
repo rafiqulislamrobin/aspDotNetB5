@@ -64,30 +64,27 @@ namespace DataImporter.Tests
         }
         [Test]
         //fail
-        public void UpdateGroup_IsGroupNameExist_throwException()
+        public void UpdateGroup_IsGroupNameAlreadyExist_throwException()
         {
             Guid id =  Guid.NewGuid();
             Group group = new Group { Id = 2, Name = "asp.net", ApplicationUserId = id };
 
-            var groupEntity = new EO.Group { Id = 2, ApplicationUserId = id, Name = group.Name };
-
-
-            _groupRepositoryMock.Setup(x => x.Add(groupEntity));
-
+            var groupEntity = new EO.Group { Id = 2, ApplicationUserId = id, Name = "asp.net" };
+           
             _dataUnitOfWorkMock.Setup(x => x.Group).Returns(_groupRepositoryMock.Object);
 
-              _groupRepositoryMock.Setup(x => x.GetCount(
-                  g => g.Name ==groupEntity.Name && g.ApplicationUserId == id) > 0).Returns(true);
+            _groupRepositoryMock.Object.Add(groupEntity);
 
-            
-
+            var zzz=  _groupRepositoryMock.Object.GetCount(x => x.Name == groupEntity.Name && x.ApplicationUserId != 
+         groupEntity.ApplicationUserId);
+          
 
             //act //assert
             Should.Throw<InvalidOperationException>(
              () => _groupservice.UpdateGroup(group, id));
         }
         [Test]
-        public void UpdateGroup_GroupEntityNotExist_throwException()
+        public void UpdateGroup_GroupEntityNull_throwException()
         {
             //Arrange
             var group = new Group { Id = 2, Name = "asp.net" };
@@ -176,6 +173,21 @@ namespace DataImporter.Tests
             Assert.IsNull(_groupservice.LoadAllGroups(id));
       
         }
+        [Test]
+        public void DeleteGroup_Save()
+        {
+            //Arrange
+            var id = 1;
+            var groupEntity = new EO.Group { Id = id, ApplicationUserId = Guid.NewGuid(), Name = "C#" };
+
+            _dataUnitOfWorkMock.Setup(x => x.Group).Returns(_groupRepositoryMock.Object);
+
+            _groupRepositoryMock.Object.Add(groupEntity);
+            //act //assert
+            _groupservice.DeleteGroup(id);
+
+        }
+
 
     }
 }

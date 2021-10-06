@@ -21,10 +21,9 @@ namespace DataImporter.Data.Migrations
 
             modelBuilder.Entity("DataImporter.Info.Entities.Contact", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("ContactDate")
                         .HasColumnType("datetime2");
@@ -37,6 +36,9 @@ namespace DataImporter.Data.Migrations
 
                     b.Property<string>("Key")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SequenceId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");

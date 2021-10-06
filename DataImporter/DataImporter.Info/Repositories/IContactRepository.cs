@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataImporter.Info.Repositories
 {
-    public interface IContactRepository : IRepository<Contact, int>
+    public interface IContactRepository : IRepository<Contact, Guid>
     {
     }
 }

@@ -313,7 +313,7 @@ namespace DataImporter.Info.Services
                                     }
                                     else
                                     {
-                                        contacts.Properties.Add(headers[j], "(no value)");
+                                        contacts.Properties.Add(headers[j], "");
                                     }
                                 }
                                 cont.Add(i + 1, contacts.Properties);
@@ -333,11 +333,9 @@ namespace DataImporter.Info.Services
                                         GroupId = GroupId,
                                         ContactDate = _DatetimeUtility.Now
                                     });
-                                      _dataUnitOfWork.Save();
-
                                 }
                             }
-
+                            
                         }
                     }
 

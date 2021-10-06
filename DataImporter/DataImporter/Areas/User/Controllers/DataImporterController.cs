@@ -21,7 +21,7 @@ namespace DataImporter.Areas.User.Controllers
     {
         private readonly ILogger<DataImporterController> _logger;
         private readonly ILifetimeScope _scope;
-        private IWebHostEnvironment _WebHostEnvironment;
+  
         private INotyfService _notyfService;
         public int temp { get; set; }
         public DataImporterController(ILogger<DataImporterController> logger , ILifetimeScope scope,
@@ -66,14 +66,14 @@ namespace DataImporter.Areas.User.Controllers
                 {
                     model.Resolve(_scope);
                     model.CreateGroup();
-                    _notyfService.Custom("Group Create Successfully.", 4, "#0e9e37", "fas fa-check");
+                    _notyfService.Custom("Group Create Successfully.", 4, "#0e9e37", "fas fa-check-circle");
                 }
                 catch (Exception ex)
                 {
                     //ModelState.AddModelError("", "Failed to Create Group");
                     if (ex.Message == "Group name is already used")
                     {
-                        _notyfService.Custom("Group name is already used.", 4, "#c92f04", "fas fa-times");
+                        _notyfService.Custom("Group name is already used.", 4, "#c92f04", "fas fa-times-circle");
                     }
                     _logger.LogError(ex, "Add Group Failed");
                 }
@@ -98,14 +98,14 @@ namespace DataImporter.Areas.User.Controllers
                 {
                     model.Resolve(_scope);
                     model.Update();
-                    _notyfService.Custom("Group edited Successfully.", 4, "#0e9e37", "fas fa-check");
+                    _notyfService.Custom("Group edited Successfully.", 4, "#0e9e37", "fas fa-check-circle");
                 }
                 catch (Exception ex)
                 {
                     //ModelState.AddModelError("", "Failed to Create Group");
                     if (ex.Message == "Group name is already used")
                     {
-                        _notyfService.Custom(ex.Message, 4, "#c92f04", "fas fa-times");
+                        _notyfService.Custom(ex.Message, 4, "#c92f04", "fas fa-times-circle");
                     }
                     _logger.LogError(ex, "Upload Group Failed");
                     return View(model);
@@ -117,7 +117,7 @@ namespace DataImporter.Areas.User.Controllers
         {
             var model = _scope.Resolve <CreateGroupModel>();
             model.DeleteGroup(id);
-            _notyfService.Custom("Group Deleted Successfully.", 4, "#0e9e37", "fas fa-check");
+            _notyfService.Custom("Group Deleted Successfully.", 4, "#0e9e37", "fas fa-check-circle");
             return RedirectToAction(nameof(ViewGroups));
         }
 
@@ -267,12 +267,6 @@ namespace DataImporter.Areas.User.Controllers
             {
                 ViewBag.GroupList = new SelectList(list, "Id", "Name");
             }
-            //no need
-            //List<string> headers = new();
-            //foreach (var item in model.Headers)
-            //{
-            //    headers.Add(item);
-            //}
 
             TempData["id"] = exportFileModel.GroupId;
 
@@ -361,7 +355,7 @@ namespace DataImporter.Areas.User.Controllers
 
             var model = _scope.Resolve<ExportStatusModel>();
             model.MakeStatus(groupId, email);
-            _notyfService.Custom("Email sent", 4, "#0e9e37", "fas fa-check");
+            _notyfService.Custom("Email sent", 4, "#0e9e37", "fas fa-check-circle");
             return RedirectToAction(nameof(ExportFileHistory));
         }
 

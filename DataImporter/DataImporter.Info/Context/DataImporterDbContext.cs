@@ -36,6 +36,8 @@ namespace DataImporter.Info.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+
             modelBuilder.Entity<ApplicationUser>()
                 .ToTable("AspNetUsers", a => a.ExcludeFromMigrations())
                 .HasMany<Group>()
@@ -45,6 +47,14 @@ namespace DataImporter.Info.Context
                 .HasMany(c => c.Contacts)
                 .WithOne(g => g.Group);
 
+
+            // modelBuilder.HasSequence<int>("OrderNumbers", schema: "shared")
+            //        .StartsAt(1000)
+            //        .IncrementsBy(5);
+
+            //modelBuilder.Entity<Contact>()
+            //      .Property(o => o.SequenceId)
+            //      .HasDefaultValueSql("NEXT VALUE FOR shared.OrderNumbers");
 
             modelBuilder.Entity<Group>()
               .HasMany(f => f.FilePaths)
@@ -59,6 +69,8 @@ namespace DataImporter.Info.Context
         public DbSet<FilePath> FilePaths { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<ExportStatus> ExportStatus { get; set; }
+
 
     }
 }

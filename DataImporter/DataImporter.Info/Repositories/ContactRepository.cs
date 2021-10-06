@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataImporter.Info.Repositories
 {
-    public class ContactRepository : Repository<Contact, int>, IContactRepository
+    public class ContactRepository : Repository<Contact, Guid>, IContactRepository
     {
         public ContactRepository(IDataImporterDbContext context)
         : base((DbContext)context)
