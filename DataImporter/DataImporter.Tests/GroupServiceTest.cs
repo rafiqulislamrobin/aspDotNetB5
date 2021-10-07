@@ -187,6 +187,42 @@ namespace DataImporter.Tests
             _groupservice.DeleteGroup(id);
 
         }
+        [Test]
+        public void CreateGroup_Save()
+        {
+            //Arrange
+            var id = Guid.NewGuid();
+            var group = new Group { Id = 2, Name = "asp.net", ApplicationUserId = id };
+
+
+            var groupEntity = new EO.Group { Id = 2, ApplicationUserId = id, Name = group.Name };
+
+            _dataUnitOfWorkMock.Setup(x => x.Group).Returns(_groupRepositoryMock.Object);
+            _groupRepositoryMock.Object.Add(groupEntity);
+            _dataUnitOfWorkMock.Setup(x => x.Save()).Verifiable();
+
+
+            //Act 
+            _groupservice.CreateGroup(group, id);
+
+            //Assert
+            this.ShouldSatisfyAllConditions(
+               () => groupEntity.ApplicationUserId.ShouldBe(group.ApplicationUserId),
+               () => groupEntity.Name.ShouldBe(group.Name),
+               () => _dataUnitOfWorkMock.Verify(),
+               () => _groupRepositoryMock.Verify()
+               );
+        }
+        [Test]
+        public void CreateGroup_GroupNotExist_throwException()
+        {
+            Group group = null;
+            Guid id = Guid.Empty;
+
+            //act //assert
+            Should.Throw<InvalidParameterException>(
+             () => _groupservice.CreateGroup(group, id));
+        }
 
 
     }

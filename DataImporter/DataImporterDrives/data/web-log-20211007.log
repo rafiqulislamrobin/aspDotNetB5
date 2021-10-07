@@ -1,0 +1,5 @@
+2021-10-07 12:48:42.419 +00:00 [INF] Application Starting up
+2021-10-07 12:48:42.905 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2021-10-07 12:48:42.928 +00:00 [WRN] No XML encryptor configured. Key {628182cb-83f7-4440-bee2-a605e33699b3} may be persisted to storage in unencrypted form.
+2021-10-07 12:49:32.183 +00:00 [WRN] Failed to determine the https port for redirect.
+2021-10-07 12:49:49.703 +00:00 [INF] User logged in.

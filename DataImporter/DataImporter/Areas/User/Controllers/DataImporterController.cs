@@ -66,7 +66,7 @@ namespace DataImporter.Areas.User.Controllers
                 {
                     model.Resolve(_scope);
                     model.CreateGroup();
-                    _notyfService.Custom("Group Create Successfully.", 4, "#0e9e37", "fas fa-check-circle");
+                    _notyfService.Custom("Group Create Successfully.", 4, "#f5f5f5", "fas fa-check-circle");
                 }
                 catch (Exception ex)
                 {
@@ -98,7 +98,7 @@ namespace DataImporter.Areas.User.Controllers
                 {
                     model.Resolve(_scope);
                     model.Update();
-                    _notyfService.Custom("Group edited Successfully.", 4, "#0e9e37", "fas fa-check-circle");
+                    _notyfService.Custom("Group edited Successfully.", 4, "#f5f5f5", "fas fa-check-circle");
                 }
                 catch (Exception ex)
                 {
@@ -117,7 +117,7 @@ namespace DataImporter.Areas.User.Controllers
         {
             var model = _scope.Resolve <CreateGroupModel>();
             model.DeleteGroup(id);
-            _notyfService.Custom("Group Deleted Successfully.", 4, "#0e9e37", "fas fa-check-circle");
+            _notyfService.Custom("Group Deleted Successfully.", 4, "#f5f5f5", "fas fa-check-circle");
             return RedirectToAction(nameof(ViewGroups));
         }
 
@@ -355,7 +355,7 @@ namespace DataImporter.Areas.User.Controllers
 
             var model = _scope.Resolve<ExportStatusModel>();
             model.MakeStatus(groupId, email);
-            _notyfService.Custom("Email sent", 4, "#0e9e37", "fas fa-check-circle");
+            _notyfService.Custom("Email sent", 4, "#f5f5f5", "fas fa-check-circle");
             return RedirectToAction(nameof(ExportFileHistory));
         }
 

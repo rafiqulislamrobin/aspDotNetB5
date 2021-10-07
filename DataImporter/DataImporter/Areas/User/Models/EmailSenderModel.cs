@@ -22,7 +22,7 @@ namespace DataImporter.Areas.User.Models
         [Required]
         public string Email { get; set; }
         public int GroupId { get; set; }
-
+        public string FileName { get; set; }
         public List<string> Headers { get; set; }
         public List<List<string>> Items { get; set; }
         private IDataImporterService _iDataImporterService;
@@ -51,11 +51,8 @@ namespace DataImporter.Areas.User.Models
 
         public void SendEmail(string Email)
         {
-           // var configBuilder = new ConfigurationBuilder()
-           //.AddJsonFile("appsettings.json", true, true)
-           //.Build();
 
-            string filepath = ($"{Directory.GetCurrentDirectory()}{@"\wwwroot\ExcelFiles"}" + "\\" + "User.xlsx");
+            string filepath = ($"{Directory.GetCurrentDirectory()}{@"\wwwroot\exportfiles"}" + "\\" + $"{FileName}.xlsx");
             MailMessage mail = new MailMessage();
             try
             {
@@ -86,7 +83,7 @@ namespace DataImporter.Areas.User.Models
                 }
                 mail.Dispose();
                 mail = null;
-                File.Delete($"{Directory.GetCurrentDirectory()}{@"\wwwroot\ExcelFiles"}" + "\\" + "User.xlsx");
+                File.Delete($"{Directory.GetCurrentDirectory()}{@"\wwwroot\exportfiles"}" + "\\" + $"{FileName}.xlsx");
             }
             catch (Exception ex)
             {
@@ -137,8 +134,9 @@ namespace DataImporter.Areas.User.Models
                  excelPackage.Workbook.Properties.Title = "User list";
                  excelPackage.Workbook.Properties.Author = "Robin";
 
+                FileName = Guid.NewGuid().ToString();
                 //saving excel
-                var filepath = ($"{Directory.GetCurrentDirectory()}{@"\wwwroot\ExcelFiles"}" + "\\" + "User.xlsx");
+                var filepath = ($"{Directory.GetCurrentDirectory()}{@"\wwwroot\exportfiles"}" + "\\" + $"{FileName}.xlsx");
                  excelPackage.SaveAs(new FileInfo (filepath));
 
             }

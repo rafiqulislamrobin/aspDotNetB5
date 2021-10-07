@@ -141,7 +141,8 @@ namespace DataImporter.Areas.User.Models
                     Headers = contacts.Item1;
                     Items = contacts.Item2;
                     GroupId = groupid;
-                    var worksheet = excelPackage.Workbook.Worksheets.Add($"{groupid}");
+                   var group = _groupServices.LoadGroup(groupid);
+                    var worksheet = excelPackage.Workbook.Worksheets.Add($"{group.Name}");
 
                     for (int i = 1; i <= Headers.Count; i++)
                     {
